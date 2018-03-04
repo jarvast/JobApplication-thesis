@@ -1,0 +1,26 @@
+<mat-toolbar id="top-menu" color="warn">
+  <div class="left-side">
+    <button mat-button routerLink="/help">
+      <mat-icon>home</mat-icon>
+      Job Finder
+    </button>
+  </div>
+
+  <div class="center">
+    <a mat-button *ngFor="let menu of menus" [routerLink]="menu.link" routerLinkActive="active">{{menu.title}}</a>
+  </div>
+
+  <div class="welcome" *ngIf="authService.isLoggedIn">Hello, {{ authService.user.username }}!</div>
+
+  <div class="right-side">
+    <div *ngIf="!authService.isLoggedIn" class="unauthorized">
+      <a mat-button routerLink="/login" routerLinkActive="active">Login</a>/
+      <a mat-button routerLink="/register"
+         routerLinkActive="active">Register</a>
+    </div>
+    
+    <div *ngIf="authService.isLoggedIn" class="authorized">
+      <button mat-button (click)="logout()">Logout</button>
+    </div>
+  </div>
+</mat-toolbar>

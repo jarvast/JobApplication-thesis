@@ -1,10 +1,10 @@
 package jarvast.app.jobs.entity;
 
-import java.util.HashSet;
-import java.util.Set;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -14,9 +14,11 @@ public class Role extends BaseEntity{
     @Column(unique = true, nullable = false)
     private String role;
     
-    @ManyToMany(mappedBy = "roles")
-    private Set<User> users = new HashSet<User>();
-
+    @OneToMany(targetEntity = User.class, mappedBy = "role")
+    @JsonIgnore
+    private List<User> users;
+    
+    
     public String getRole() {
         return role;
     }
@@ -25,13 +27,14 @@ public class Role extends BaseEntity{
         this.role = role;
     }
 
-    public Set<User> getUsers() {
+    public List<User> getUsers() {
         return users;
     }
 
-    public void setUsers(Set<User> users) {
+    public void setUsers(List<User> users) {
         this.users = users;
     }
+    
 
     @Override
     public String toString() {
