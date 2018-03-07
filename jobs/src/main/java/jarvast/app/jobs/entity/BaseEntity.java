@@ -1,6 +1,5 @@
 package jarvast.app.jobs.entity;
 
-
 import javax.persistence.*;
 
 @MappedSuperclass

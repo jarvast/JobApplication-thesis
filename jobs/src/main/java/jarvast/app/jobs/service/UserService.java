@@ -1,51 +1,44 @@
 package jarvast.app.jobs.service;
 
-import jarvast.app.jobs.entity.User;
 import jarvast.app.jobs.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserService {// implements UserDetailsService{
-    
+public class UserService<T> {
+
     private UserRepository userRepository;
-    
-    //@Autowired
-    private User user;
-    
+    private T user;
+
     @Autowired
-    public UserService(UserRepository userRepository){
-        this.userRepository=userRepository;
-    }
-    
-    public User findByUsername(String username){
-        return userRepository.findByUsername(username);
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+        this.user = null;
     }
 
-    /*@Override
+    /*public BaseUser findByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }*/
+
+ /*@Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = findByUsername(username);
+        BaseUser user = findByUsername(username);
         if (user == null){
             throw new UsernameNotFoundException(username);
         }
         System.out.println(user.getRoles().toString() + user.getPassword());
         return new UserDetailsImpl(user);
     }*/
-
-    public void login(User user) {
+    public void login(T user) {
         this.user = user;
-        System.out.println("thisservice" + this.user.toString());
     }
 
-    public User getLoggedInUser() {
+    public T getLoggedInUser() {
         return user;
     }
 
     public void logout() {
-        this.user=null;
+        this.user = null;
     }
-    
+
 }

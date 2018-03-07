@@ -1,91 +1,99 @@
 package jarvast.app.jobs.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import org.springframework.security.core.Authentication;
 
-@Entity
-@Table (name = "users")
-public class User extends BaseEntity{
-    
-    @Column(unique = true, nullable = false)
-    private String username;
-    
-    @Column(nullable = false)
-    private String password;
-    
-   /* @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+@Entity(name = "User")
+@DiscriminatorValue("User")
+public class User extends BaseUser {
+
+    @Column
+    private String email;
+
+    @Column
+    private String name;
+
+    @Column
+    private String phoneNum;
+
+    @Column
+    private String location;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
-            name = "users_roles",
-            joinColumns = {@JoinColumn(name = "user_id")},
-            inverseJoinColumns = {@JoinColumn(name = "role_id")}
+            name = "users_favorites",
+            joinColumns = {
+                @JoinColumn(name = "user_id")},
+            inverseJoinColumns = {
+                @JoinColumn(name = "worker_id")}
     )
-    private Set<Role> roles = new HashSet<Role>();*/
-    
-    
-    @JoinColumn
-    @ManyToOne(targetEntity = Role.class, optional = false)
-    //@JsonIgnoreProperties("items")
-    private Role role;
+    private List<Worker> favorites = new ArrayList<Worker>();
+
+    public User(String email, String name, String phoneNum, String location) {
+        this.email = email;
+        this.name = name;
+        this.phoneNum = phoneNum;
+        this.location = location;
+    }
 
     public User() {
     }
-    
-    
 
-    public User(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
-    
-    public String getUsername() {
-        return username;
+    //private String imgUrl;*/
+    ;
+
+    public List<Worker> getFavorites() {
+        return favorites;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setFavorites(List<Worker> favorites) {
+        this.favorites = favorites;
     }
 
-    public String getPassword() {
-        return password;
+    //private String imgUrl;*/
+    public String getEmail() {
+        return email;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    /*public Set<Role> getRoles() {
-        return roles;
+    public String getName() {
+        return name;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }*/
-
-    public Role getRole() {
-        return role;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public String getPhoneNum() {
+        return phoneNum;
     }
-    
+
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNum = phoneNum;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
 
     @Override
     public String toString() {
-        return "User{" + "username=" + username + ", password=" + password + ", roles=" + role.toString() + '}';
+        return "User{" + "email=" + email + ", name=" + name + ", phoneNum=" + phoneNum + ", location=" + location + "" + this.getUsername() + " " + this.getPassword() + "}";
     }
-    
-    
-    
+
 }

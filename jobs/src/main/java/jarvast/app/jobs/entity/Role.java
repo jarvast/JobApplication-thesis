@@ -9,36 +9,34 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "roles")
-public class Role extends BaseEntity{
-    
+public class Role extends BaseEntity {
+
     @Column(unique = true, nullable = false)
-    private String role;
-    
-    @OneToMany(targetEntity = User.class, mappedBy = "role")
+    private String roleName;
+
+    @OneToMany(targetEntity = BaseUser.class, mappedBy = "role")
     @JsonIgnore
-    private List<User> users;
-    
-    
+    private List<BaseUser> users;
+
     public String getRole() {
-        return role;
+        return roleName;
     }
 
     public void setRole(String role) {
-        this.role = role;
+        this.roleName = role;
     }
 
-    public List<User> getUsers() {
+    public List<BaseUser> getUsers() {
         return users;
     }
 
-    public void setUsers(List<User> users) {
+    public void setUsers(List<BaseUser> users) {
         this.users = users;
     }
-    
 
     @Override
     public String toString() {
-        return "Role{" + "role=" + role + '}';
+        return "Role{" + "role=" + roleName + '}';
     }
-    
+
 }
