@@ -32,6 +32,9 @@ public abstract class BaseUser {
 
     @Column(nullable = false)
     private String password;
+    
+    @Column
+    private String imgName;
 
     @OneToMany(
             mappedBy = "sender",
@@ -68,6 +71,15 @@ public abstract class BaseUser {
     public void setUsername(String username) {
         this.username = username;
     }
+
+    public String getImgName() {
+        return imgName;
+    }
+
+    public void setImgName(String imgName) {
+        this.imgName = imgName;
+    }
+    
 
     public String getPassword() {
         return password;
@@ -111,7 +123,7 @@ public abstract class BaseUser {
 
     @Override
     public String toString() {
-        return "User{" + "username=" + username + ", password=" + password + ", roles=" + role.getRole() + '}';
+        return "User{" + "username=" + username + imgName +"iiii" + ", password=" + password + ", roles=" + role.getRole() + '}';
     }
 
 }

@@ -14,9 +14,7 @@
 
   <div class="right-side">
     <div *ngIf="!authService.isLoggedIn" class="unauthorized">
-      <a mat-button routerLink="/login" routerLinkActive="active">Login</a>/
-      <a mat-button routerLink="/register"
-         routerLinkActive="active">Register</a>
+      <a mat-button routerLink="/login" routerLinkActive="active">Login</a>
     </div>
     
     <div *ngIf="authService.isLoggedIn" class="authorized">

@@ -1,0 +1,26 @@
+.form-control{
+    margin: auto;
+    text-align: center;
+    background-image: url("../../../assets/dog.jpg");
+}
+
+.input-field {
+    
+    margin: auto;
+    width: 50%;
+    border: 1px solid black;
+    padding: 19px;
+    background-color : lightgoldenrodyellow;
+}
+.searchbutton{
+    text-align: center;
+}
+.mat-raised-button{
+    margin:auto;
+    padding: 15px 32px;
+}
+.example-card {
+    max-width: 200px;
+}
+.mat-card-image{
+}

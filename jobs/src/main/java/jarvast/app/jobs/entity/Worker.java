@@ -145,4 +145,10 @@ public class Worker extends BaseUser {
         this.ratings = ratings;
     }
 
+    @Override
+    public String toString() {
+        return "Worker{" + "email=" + email + ", name=" + name + ", phoneNum=" + phoneNum + ", locations=" + locations + ", category=" + category + ", description=" + description ;//+ ", tasks=" + tasks + ", userList=" + userList + ", ratings=" + ratings + '}';
+    }
+
+    
 }

@@ -11,7 +11,8 @@ import {
     MatSortModule,
     MatPaginatorModule,
     MatCardModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatGridListModule
   } from '@angular/material';
   import {NgModule} from "@angular/core";
   
@@ -29,7 +30,8 @@ import {
       MatSortModule,
       MatPaginatorModule,
       MatCardModule,
-      MatSnackBarModule],
+      MatSnackBarModule,
+    MatGridListModule],
     exports: [
       MatFormFieldModule,
       MatInputModule, MatButtonModule,
@@ -42,7 +44,8 @@ import {
       MatSortModule,
       MatPaginatorModule,
       MatCardModule,
-      MatSnackBarModule],
+      MatSnackBarModule,
+    MatGridListModule],
   })
   export class MaterialItemsModule {
   }

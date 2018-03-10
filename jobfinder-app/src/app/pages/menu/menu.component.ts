@@ -17,7 +17,8 @@ interface MenuItem {
 })
 export class MenuComponent implements OnInit {
   private common: MenuItem[] = [
-    {link: '/help', title: 'Help'}
+    {link: '/help', title: 'Szakember reg'},
+    {link: '/help', title: 'Felhasználó reg'}
   ];
 
   
@@ -36,7 +37,7 @@ export class MenuComponent implements OnInit {
     if (this.authService.isLoggedIn) {
       this.menus = this.common;
     }else{
-      this.menus = null;
+      this.menus = this.common;
     }
   }
     logout(){

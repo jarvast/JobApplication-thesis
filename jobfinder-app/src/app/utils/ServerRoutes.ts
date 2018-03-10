@@ -2,9 +2,10 @@ export class Routes {
     static LOGIN: String = 'user/login';
     static REGISTER: String = 'user/register';
     static LOGOUT: String = 'user/logout';
-    static ISSUES: String = 'issues';
-    static CATEGORIES: String = 'categories';
-    static ITEMS: String = 'items';
+    static UPLOAD: String = 'upload/getallfiles';
+    static UPLOADASD: String = 'upload/post';
+    static PICTURE: String = 'upload/files/';
+    static WORKERS: String = '/user/workers';
     static CART: String = 'cart';
     static ORDERS: String = 'orders';
   }
