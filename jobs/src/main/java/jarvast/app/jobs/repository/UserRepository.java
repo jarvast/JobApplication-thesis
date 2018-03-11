@@ -12,4 +12,9 @@ public interface UserRepository extends CrudRepository<BaseUser, Long> {
     
     @Query("select a from BaseUser a WHERE User_Type = Worker")
     public List<Worker> findAllWorkers();
+
+   /* @Override
+    public <S extends BaseUser> S save(S s);*/
+    
+    
 }

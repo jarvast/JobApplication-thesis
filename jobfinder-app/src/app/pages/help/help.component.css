@@ -24,3 +24,7 @@
 }
 .mat-card-image{
 }
+.profiles{
+    margin-left: 20%;
+    display: flex;
+}

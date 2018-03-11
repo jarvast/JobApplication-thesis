@@ -13,23 +13,24 @@
 </div>
 
 <mat-grid-list cols="8" rowHeight="160px">
-    <mat-grid-tile *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows" routerLink="/login">
-    <img src="/assets/dog.jpg">
+    <mat-grid-tile *ngFor="let category of categories" routerLink="/login">
+    <img src="{{fileUpload + category.picture}}">
     <mat-grid-tile-footer>
-      <h1>helo</h1>
+      <h1>{{category.categoryName}}</h1>
     </mat-grid-tile-footer>
   </mat-grid-tile>
 </mat-grid-list>
 
 <h2>Legnépszerűbb szakemberek</h2>
 
+<div class="profiles">
 <mat-card *ngFor="let worker of workers" class="example-card">
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
     <mat-card-title>{{worker.username}}</mat-card-title>
-    <mat-card-subtitle>{{worker.password}}</mat-card-subtitle>
+    <mat-card-subtitle>{{worker.imgName}}</mat-card-subtitle>
   </mat-card-header>
-  <img mat-card-image src="{{fileUpload + worker.username}}" alt="{{fileUpload + worker.username}}">
+  <img mat-card-image src="{{fileUpload + worker.imgName}}" alt="{{fileUpload + worker.imgName}}">
   <mat-card-content>
     <p>
       The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
@@ -42,6 +43,7 @@
     <button mat-button>SHARE</button>
   </mat-card-actions>
 </mat-card>
+</div>
 
 <div class="container" style="width:400px">
 	<div style="color: blue; margin-bottom: 20px">

@@ -12,11 +12,11 @@ public class Message extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "sender_id")
-    private User sender;
+    private BaseUser sender;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "recipient_id")
-    private User receiver;
+    private BaseUser receiver;
 
     @Column
     private String content;
@@ -27,7 +27,7 @@ public class Message extends BaseEntity {
     @Column
     private boolean isSeen;
 
-    public Message(User sender, User receiver, String content, Timestamp sendTimestamp, boolean isSeen) {
+    public Message(BaseUser sender, BaseUser receiver, String content, Timestamp sendTimestamp, boolean isSeen) {
         this.sender = sender;
         this.receiver = receiver;
         this.content = content;
@@ -38,19 +38,19 @@ public class Message extends BaseEntity {
     public Message() {
     }
 
-    public User getSender() {
+    public BaseUser getSender() {
         return sender;
     }
 
-    public void setSender(User sender) {
+    public void setSender(BaseUser sender) {
         this.sender = sender;
     }
 
-    public User getReceiver() {
+    public BaseUser getReceiver() {
         return receiver;
     }
 
-    public void setReceiver(User receiver) {
+    public void setReceiver(BaseUser receiver) {
         this.receiver = receiver;
     }
 

@@ -6,7 +6,7 @@ export class Routes {
     static UPLOADASD: String = 'upload/post';
     static PICTURE: String = 'upload/files/';
     static WORKERS: String = '/user/workers';
-    static CART: String = 'cart';
+    static CATEGORIES: String = 'categories';
     static ORDERS: String = 'orders';
   }
   

@@ -39,7 +39,6 @@ export class FormUploadComponent implements OnInit {
         console.log('File is completely uploaded!');
       }
     })
- 
     this.selectedFiles = undefined
   }
 

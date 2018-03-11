@@ -13,6 +13,9 @@ public class Category extends BaseEntity{
     @Column(name = "category_name")
     private String categoryName;
     
+    @Column(name = "picture")
+    private String picture;
+    
     @OneToMany(
         mappedBy = "category", 
         cascade = CascadeType.ALL,
@@ -35,6 +38,14 @@ public class Category extends BaseEntity{
 
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
     
     

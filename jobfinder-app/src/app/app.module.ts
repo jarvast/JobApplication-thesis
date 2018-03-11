@@ -18,6 +18,7 @@ import { FormUploadComponent } from './upload/form-upload/form-upload.component'
 import { DetailsUploadComponent } from './upload/details-upload/details-upload.component';
 import { UploadFileService } from './upload/upload-file.service';
 import { UserService } from './services/user.service';
+import { CategoryService } from './services/category.service';
 
 
 @NgModule({
@@ -39,7 +40,7 @@ import { UserService } from './services/user.service';
     BrowserAnimationsModule,
     MaterialItemsModule
   ],
-  providers: [AuthService, RouteGuard, UploadFileService, UserService],
+  providers: [AuthService, RouteGuard, UploadFileService, UserService, CategoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

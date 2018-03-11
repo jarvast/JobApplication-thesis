@@ -47,13 +47,20 @@ public class UserService<T> {
     public BaseUser getLoggedInUser(){
         return user;
     }
+    public String getLoggedInUserName(){
+        return user.getUsername();
+    }
     public long getloggedId(){
         return user.getId();
     }
-    public void updateImg(String name){
-        user.setImgName(name);
-        System.out.println(user.toString());
-        userRepository.save(user);
+    public void updateImg(String imgname){
+        System.out.println("belemegy azé");
+        //BaseUser oldUser = this.user;
+        //System.out.println("olduser" + oldUser.toString());
+        this.user.setImgName(imgname);
+        //user.setImgName(name);
+        //System.out.println("RATYI" + oldUser.toString());
+        userRepository.save(this.user);
     }
     public String getImg(){
         return this.user.getImgName();

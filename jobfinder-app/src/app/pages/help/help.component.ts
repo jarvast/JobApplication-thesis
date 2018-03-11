@@ -3,6 +3,8 @@ import { Server, Routes } from '../../utils/ServerRoutes';
 import { AuthService } from '../../services/auth.service';
 import { WorkerUser } from '../../model/WorkerUser';
 import { UserService } from '../../services/user.service';
+import { Category } from '../../model/Category';
+import { CategoryService } from '../../services/category.service';
 
 @Component({
   selector: 'app-help',
@@ -12,6 +14,7 @@ import { UserService } from '../../services/user.service';
 export class HelpComponent implements OnInit{
   title = 'JavaSampleApproach';
   fileUpload: String;// = Server.routeTo(Routes.PICTURE) + this.authService.user.username;// "http://localhost:4200/api/upload/files/user";
+  asd: String;
   description = 'Angular4-SpringBosot Demo';
   value = '';
   tiles = [
@@ -24,15 +27,21 @@ export class HelpComponent implements OnInit{
     {text: 'Four', cols: 1, rows: 1, color: '#DDBDF1'},
     {text: 'Four', cols: 1, rows: 1, color: '#DDBDF1'},
   ];
+  //ng for mögé  [colspan]="tile.cols" [rowspan]="tile.rows" 
+  categories: Category[];
   workers : WorkerUser[];
 
-  constructor(private authService: AuthService, private userService : UserService) {
+  constructor(private authService: AuthService, private userService : UserService, private categoryService: CategoryService) {
     this.fileUpload = Server.routeTo(Routes.PICTURE); // + "user";
+    this.asd = Server.routeTo(Routes.PICTURE + 'cat/');
   }
   ngOnInit()
   {
     this.userService.getWorkers().subscribe(workers => {
       this.workers = workers;
+    });
+    this.categoryService.getCategories().subscribe(cat => {
+      this.categories = cat;
     });
   }  
   //consturctorban a servicet meghívni

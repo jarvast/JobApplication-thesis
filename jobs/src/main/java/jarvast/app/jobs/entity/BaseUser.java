@@ -33,8 +33,8 @@ public abstract class BaseUser {
     @Column(nullable = false)
     private String password;
     
-    @Column
-    private String imgName;
+    @Column(columnDefinition = "varchar(40) default 'default.jpg'")
+    private String image;
 
     @OneToMany(
             mappedBy = "sender",
@@ -73,11 +73,11 @@ public abstract class BaseUser {
     }
 
     public String getImgName() {
-        return imgName;
+        return image;
     }
 
     public void setImgName(String imgName) {
-        this.imgName = imgName;
+        this.image = imgName;
     }
     
 
@@ -123,7 +123,7 @@ public abstract class BaseUser {
 
     @Override
     public String toString() {
-        return "User{" + "username=" + username + imgName +"iiii" + ", password=" + password + ", roles=" + role.getRole() + '}';
+        return "User{" + "username=" + username + image +"iiii" + ", password=" + password + ", roles=" + role.getRole() + '}';
     }
 
 }
