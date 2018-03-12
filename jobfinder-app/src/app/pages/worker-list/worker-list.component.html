@@ -1,0 +1,25 @@
+<h1>Keresési eredmények: </h1>
+<mat-divider></mat-divider>
+
+<div class="profiles">
+  <mat-card *ngFor="let worker of selectedWorkers" class="example-card">
+    <mat-card-header>
+      <img mat-card-avatar src ="{{fileUpload + worker.category.picture}}" class="example-header-image">
+      <mat-card-title style="font-size:20px;text-decoration:underline">{{worker.name}}</mat-card-title>
+      <mat-card-subtitle>{{worker.category.categoryName}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="{{fileUpload + worker.imgName}}" alt="{{fileUpload + worker.imgName}}">
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <app-rating [workerId]='worker.id'></app-rating>
+      <p>
+        {{worker.description}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <body>oollasd</body>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card>
+  </div>

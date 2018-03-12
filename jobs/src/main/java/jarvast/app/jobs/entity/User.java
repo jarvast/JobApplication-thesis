@@ -93,7 +93,7 @@ public class User extends BaseUser {
 
     @Override
     public String toString() {
-        return "User{" + "email=" + email + ", name=" + name + ", phoneNum=" + phoneNum + ", location=" + location + "" + this.getUsername() + " " + this.getPassword() + "}";
+        return "User{" + "email=" + email + ", name=" + name + ", phoneNum=" + phoneNum + ", location=" + location + "" + this.getUsername() + " " +  "}";
     }
 
 }

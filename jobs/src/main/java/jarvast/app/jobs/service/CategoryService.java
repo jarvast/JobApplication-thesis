@@ -25,6 +25,9 @@ public class CategoryService {
         this.categoryRepository = categoryRepository;
     }
     
+    public Category read (String name){
+        return categoryRepository.findBycategoryName(name);
+    }
     public List<Category> getCategories(){
         return categoryRepository.findAll();
     }

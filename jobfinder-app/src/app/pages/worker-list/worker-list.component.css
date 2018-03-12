@@ -1,0 +1,50 @@
+h1{
+    font-size: 30px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: italic;
+}
+h2{
+    background: brown;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+p{
+    font-size: 15px;
+}
+img {
+    border: 1px solid cadetblue;
+    border-radius: 4px;
+    padding: 2px;
+    max-width: 140px;
+    float : left;
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 30px;
+}
+img:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+mat-card{
+    margin-left: 20%;
+    margin-right: 30%;
+    background-color: thistle;
+}
+mat-card-header{
+    text-align: left;
+    float: center;
+}
+mat-card-actions{
+    text-align: right;
+}
+mat-card-content{
+    margin-left: 170px;
+}
+body{
+    text-align: right;
+}
+app-rating{
+    text-align: right;
+}
+mat-card-title{
+    width: 300px;
+    height: 30px;
+}

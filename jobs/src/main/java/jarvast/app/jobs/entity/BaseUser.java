@@ -31,6 +31,7 @@ public abstract class BaseUser {
     private String username;
 
     @Column(nullable = false)
+    @JsonIgnore
     private String password;
     
     @Column(columnDefinition = "varchar(40) default 'default.jpg'")

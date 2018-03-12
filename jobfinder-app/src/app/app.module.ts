@@ -19,6 +19,10 @@ import { DetailsUploadComponent } from './upload/details-upload/details-upload.c
 import { UploadFileService } from './upload/upload-file.service';
 import { UserService } from './services/user.service';
 import { CategoryService } from './services/category.service';
+import { WorkerListComponent } from './pages/worker-list/worker-list.component';
+import { RatingComponent } from './pages/rating/rating.component';
+import { RatingsService } from './services/ratings.service';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -29,7 +33,9 @@ import { CategoryService } from './services/category.service';
     HelpComponent,
     ListUploadComponent,
     FormUploadComponent,
-    DetailsUploadComponent
+    DetailsUploadComponent,
+    WorkerListComponent,
+    RatingComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +46,7 @@ import { CategoryService } from './services/category.service';
     BrowserAnimationsModule,
     MaterialItemsModule
   ],
-  providers: [AuthService, RouteGuard, UploadFileService, UserService, CategoryService],
+  providers: [AuthService, RouteGuard, UploadFileService, UserService, CategoryService, RatingsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

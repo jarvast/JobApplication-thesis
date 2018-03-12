@@ -1,6 +1,7 @@
 package jarvast.app.jobs.repository;
 
 import jarvast.app.jobs.entity.BaseUser;
+import jarvast.app.jobs.entity.Category;
 import jarvast.app.jobs.entity.Worker;
 import java.util.List;
 import org.springframework.data.jpa.repository.Query;
@@ -15,6 +16,9 @@ public interface UserRepository extends CrudRepository<BaseUser, Long> {
 
    /* @Override
     public <S extends BaseUser> S save(S s);*/
+    public Worker findOne(Long id);
+
+    public List<Worker> findByCategory(Category category);
     
     
 }

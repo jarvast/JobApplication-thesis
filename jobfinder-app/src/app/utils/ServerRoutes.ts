@@ -7,7 +7,7 @@ export class Routes {
     static PICTURE: String = 'upload/files/';
     static WORKERS: String = '/user/workers';
     static CATEGORIES: String = 'categories';
-    static ORDERS: String = 'orders';
+    static RATING: String = 'ratings';
   }
   
   export class Server {

@@ -31,6 +31,11 @@ public class Rating extends BaseEntity {
     @Min(1)
     private int rating;
 
+    public Rating() {
+    }
+    
+    
+
     public Rating(User sender, Worker receiver, String content, Timestamp timestamp, int rating) {
         this.sender = sender;
         this.receiver = receiver;
@@ -79,4 +84,10 @@ public class Rating extends BaseEntity {
         this.rating = rating;
     }
 
+    @Override
+    public String toString() {
+        return "Rating{" + "sender=" + sender + ", receiver=" + receiver + ", content=" + content + ", timestamp=" + timestamp + ", rating=" + rating + '}';
+    }
+
+    
 }

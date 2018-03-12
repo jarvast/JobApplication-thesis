@@ -1,6 +1,7 @@
 package jarvast.app.jobs.service;
 
 import jarvast.app.jobs.entity.BaseUser;
+import jarvast.app.jobs.entity.Category;
 import jarvast.app.jobs.entity.Worker;
 import jarvast.app.jobs.repository.UserRepository;
 import java.util.ArrayList;
@@ -82,6 +83,13 @@ public class UserService<T> {
     }
     public List<Worker> getWorkers(){
         return userRepository.findAllWorkers();
+    }
+    
+    public List<Worker> listByCategory(Category category){
+        return userRepository.findByCategory(category);
+    }
+    public Worker getOne(Long id){
+        return (Worker) userRepository.findOne(id);
     }
 
 }

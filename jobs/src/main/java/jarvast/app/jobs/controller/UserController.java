@@ -1,6 +1,8 @@
 package jarvast.app.jobs.controller;
 
+import jarvast.app.jobs.entity.Category;
 import jarvast.app.jobs.entity.Worker;
+import jarvast.app.jobs.service.CategoryService;
 import jarvast.app.jobs.service.UserService;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +13,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +25,9 @@ public class UserController<T> {
 
     @Autowired
     private UserService userService;
+    
+    @Autowired
+    private CategoryService categoryService;
 
     @PostMapping("/login")
     public ResponseEntity<T> login(HttpServletRequest http) {
@@ -42,5 +48,11 @@ public class UserController<T> {
     public ResponseEntity<List<Worker>> getWorkers(){
         return ResponseEntity.ok(userService.getWorkers());
     }
+    
+    @GetMapping("/workers/{categoryName}")
+    private ResponseEntity<Iterable<Worker>> listByCategory(@PathVariable(value = "categoryName") String categoryName) {
+        Category category = categoryService.read(categoryName);
+        return ResponseEntity.ok(userService.listByCategory(category));
+}
 
 }
