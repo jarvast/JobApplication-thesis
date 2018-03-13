@@ -1,32 +1,32 @@
 h1{
-    font-size: 30px;
+    font-size: 200%;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-style: italic;
-}
-h2{
-    background: brown;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-left: 10%;
+    margin-bottom: 0%;
 }
 p{
-    font-size: 15px;
+    font-size: 110%;
 }
 img {
     border: 1px solid cadetblue;
     border-radius: 4px;
-    padding: 2px;
-    max-width: 140px;
-    float : left;
-    margin-left: 10px;
-    margin-top: 5px;
-    margin-bottom: 30px;
+    padding: 0.3%;
+    max-width: 15%;
+    max-height: 150px;
+    float: left;
+    margin-left: 0.5%;
+    margin-bottom: 0.5%;
 }
 img:hover {
     box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 }
 mat-card{
     margin-left: 20%;
+    margin-bottom: 1%;
     margin-right: 30%;
     background-color: thistle;
+    height: 20%;
 }
 mat-card-header{
     text-align: left;
@@ -34,9 +34,10 @@ mat-card-header{
 }
 mat-card-actions{
     text-align: right;
+    margin-bottom: 0%;
 }
 mat-card-content{
-    margin-left: 170px;
+    margin-left: 20%;
 }
 body{
     text-align: right;
@@ -45,6 +46,27 @@ app-rating{
     text-align: right;
 }
 mat-card-title{
-    width: 300px;
-    height: 30px;
+    width: 200%;
+    height: 40%;
+}
+mat-card-subtitle{
+    font-size: 100%;
+}
+.row{
+    text-align: center;
+}
+mat-select{
+    width: 20%;
+    margin-left: 48%;
+    background: khaki;
+    border-radius: 6px;
+    padding: 1%;
+}
+mat-option{
+    background: khaki;
+}
+h5{
+    margin-left: 25%;
+    margin-top: 0.4%;
+    margin-bottom: 0%;
 }

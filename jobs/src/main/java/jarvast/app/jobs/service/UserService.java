@@ -15,11 +15,15 @@ public class UserService<T> {
     private UserRepository userRepository;
     //private T user;
     private BaseUser user;
+    
+    private RatingService ratingService;
 
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, RatingService ratingService) {
         this.userRepository = userRepository;
         this.user = null;
+        this.ratingService = ratingService;
+        
     }
 
     /*public BaseUser findByUsername(String username) {
@@ -82,14 +86,48 @@ public class UserService<T> {
         }
     }
     public List<Worker> getWorkers(){
-        return userRepository.findAllWorkers();
+        List<Worker> list = userRepository.findAllWorkers();
+        for (Worker w : list){
+            w.setRating(ratingService.calculateRating(w));
+        }
+        //return userRepository.findAllWorkers();
+        return list;
     }
     
     public List<Worker> listByCategory(Category category){
-        return userRepository.findByCategory(category);
+        /*List<Worker> asda = userRepository.findByNameIgnoreCaseContainingOrDescriptionIgnoreCaseContainingOrEmailIgnoreCaseContaining("tam","tam","tam");
+        for (Worker w : asda){
+            System.out.println("szörscs " + w.toString());
+        }*/
+        //KISZERVEZNI KÜLÖN METHODBA
+        List<Worker> list = userRepository.findByCategory(category);
+        for (Worker w : list){
+            Double rate = ratingService.calculateRating(w);
+            if (Double.isNaN(rate)){
+                w.setRating(0.0);
+            }else{
+                w.setRating(ratingService.calculateRating(w));
+            }
+        }
+        return list;
+        //return userRepository.findByCategory(category);
     }
     public Worker getOne(Long id){
         return (Worker) userRepository.findOne(id);
+    }
+    public List<Worker> searchForString(String input){
+        String searchWord = input.replace("searchFor:", "");
+        List<Worker> list = userRepository.findByNameIgnoreCaseContainingOrDescriptionIgnoreCaseContainingOrEmailIgnoreCaseContaining(searchWord, searchWord, searchWord);
+        for (Worker w : list){
+            Double rate = ratingService.calculateRating(w);
+            if (Double.isNaN(rate)){
+                w.setRating(0.0);
+            }else{
+                w.setRating(ratingService.calculateRating(w));
+            }
+        }
+        return list;
+        //return userRepository.findByNameIgnoreCaseContainingOrDescriptionIgnoreCaseContainingOrEmailIgnoreCaseContaining(searchWord, searchWord, searchWord);
     }
 
 }

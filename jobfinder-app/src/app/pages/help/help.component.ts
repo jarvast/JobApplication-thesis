@@ -5,6 +5,7 @@ import { WorkerUser } from '../../model/WorkerUser';
 import { UserService } from '../../services/user.service';
 import { Category } from '../../model/Category';
 import { CategoryService } from '../../services/category.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-help',
@@ -31,7 +32,7 @@ export class HelpComponent implements OnInit{
   categories: Category[];
   workers : WorkerUser[];
 
-  constructor(private authService: AuthService, private userService : UserService, private categoryService: CategoryService) {
+  constructor(private authService: AuthService, private userService : UserService, private categoryService: CategoryService,private router : Router) {
     this.fileUpload = Server.routeTo(Routes.PICTURE); // + "user";
     this.asd = Server.routeTo(Routes.PICTURE + 'cat/');
   }
@@ -50,6 +51,7 @@ export class HelpComponent implements OnInit{
       .subscribe(
         res => ...
       )*/
+      this.router.navigate(['/categories', "searchFor:" + this.value]);
       console.log("ez a list" + this.workers.length);
       console.log("keresed ezt" + this.value);
   }

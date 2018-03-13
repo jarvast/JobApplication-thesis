@@ -23,6 +23,9 @@ import { WorkerListComponent } from './pages/worker-list/worker-list.component';
 import { RatingComponent } from './pages/rating/rating.component';
 import { RatingsService } from './services/ratings.service';
 import { CommonModule } from '@angular/common';
+import { LocationsComponent } from './pages/locations/locations.component';
+import { LocationService } from './services/location.service';
+import { TruncatePipe } from './utils/TruncatePipe';
 
 
 @NgModule({
@@ -35,7 +38,9 @@ import { CommonModule } from '@angular/common';
     FormUploadComponent,
     DetailsUploadComponent,
     WorkerListComponent,
-    RatingComponent
+    RatingComponent,
+    LocationsComponent,
+    TruncatePipe
   ],
   imports: [
     BrowserModule,
@@ -46,7 +51,7 @@ import { CommonModule } from '@angular/common';
     BrowserAnimationsModule,
     MaterialItemsModule
   ],
-  providers: [AuthService, RouteGuard, UploadFileService, UserService, CategoryService, RatingsService],
+  providers: [AuthService, RouteGuard, UploadFileService, UserService, CategoryService, RatingsService, LocationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

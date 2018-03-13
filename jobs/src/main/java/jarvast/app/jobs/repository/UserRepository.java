@@ -20,5 +20,15 @@ public interface UserRepository extends CrudRepository<BaseUser, Long> {
 
     public List<Worker> findByCategory(Category category);
     
+    public List<Worker> findAllByNameContainingAllIgnoreCase(String searchword);
+    
+    List<Worker> findByNameIgnoreCaseContainingOrDescriptionIgnoreCaseContainingOrEmailIgnoreCaseContaining(String name, String desc, String email);
+            
+        /*      List<Person> findPeopleDistinctByLastnameOrFirstname(String lastname, String firstname);
+
+  List<Person> findByLastnameAndFirstnameAllIgnoreCase(String lastname, String firstname);
+  
+  findByFirstnameContaining
+    */
     
 }

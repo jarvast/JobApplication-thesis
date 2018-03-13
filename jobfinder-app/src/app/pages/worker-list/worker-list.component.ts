@@ -10,24 +10,60 @@ import { Server, Routes } from '../../utils/ServerRoutes';
   styleUrls: ['./worker-list.component.css']
 })
 export class WorkerListComponent implements OnInit {
-
+  selected ="";
   categoryName : String;
-  private sub: any;
   selectedWorkers: WorkerUser[];
   fileUpload: String;
+  length : number;
 
   constructor(private route: ActivatedRoute, private userService: UserService) {
     this.fileUpload = Server.routeTo(Routes.PICTURE);
    }
 
   ngOnInit() {
-    this.sub = this.route.params.subscribe(param => {
+    this.route.params.subscribe(param => {
       this.categoryName = param['id'];
+      if (this.categoryName.startsWith("searchFor")){
+        this.userService.searchForWorkers(this.categoryName).subscribe(data =>{
+          this.selectedWorkers = data;
+          this.length = this.selectedWorkers.length;
+        });
+      }else{
+        this.userService.getWorkersByCategory(this.categoryName).subscribe(data => {
+          this.selectedWorkers = data;
+          this.length = this.selectedWorkers.length;
+        });
+      }
     });
-    console.log("ez a tab" + this.categoryName);
-    this.userService.getWorkersByCategory(this.categoryName).subscribe(data => {
-      this.selectedWorkers = data;
-    })
+    //console.log("ez a tab" + this.categoryName);
+  }
+  sortbyBestRating(){
+    this.selectedWorkers.sort((leftSide,rightSide): number =>{
+      if (leftSide.rating > rightSide.rating) return -1;
+      if (leftSide.rating < rightSide.rating) return 1;
+      return 0;
+    });
+  }
+  sortbyWorstRating(){
+    this.selectedWorkers.sort((leftSide,rightSide): number =>{
+      if (leftSide.rating < rightSide.rating) return -1;
+      if (leftSide.rating > rightSide.rating) return 1;
+      return 0;
+    });
+  }
+  sortbyNameZA(){
+    this.selectedWorkers.sort((leftSide,rightSide): number =>{
+      if (leftSide.name > rightSide.name) return -1;
+      if (leftSide.name < rightSide.name) return 1;
+      return 0;
+    });
+  }
+  sortbyNameAZ(){
+    this.selectedWorkers.sort((leftSide,rightSide): number =>{
+      if (leftSide.name < rightSide.name) return -1;
+      if (leftSide.name > rightSide.name) return 1;
+      return 0;
+    });
   }
 
 }

@@ -25,7 +25,7 @@ public class RatingService {
 
     public double calculateRating(Worker worker) {
         List<Rating> rates = repository.findByReceiver(worker);
-        double sum =0;
+        double sum= 0.0;
         for (Rating rate : rates){
             sum += rate.getRating();
         }

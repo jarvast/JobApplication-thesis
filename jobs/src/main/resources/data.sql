@@ -19,17 +19,18 @@ INSERT INTO USERS (USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, LOCATION, NAME
 INSERT INTO USERS (USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, LOCATION, NAME, PHONE_NUM) VALUES ('User', 'user','szilvi',2, 'kutyak@asd.hu', 'Pest', 'Szilvi', '06202124');
 INSERT INTO USERS (USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, LOCATION, NAME, PHONE_NUM) VALUES ('User', 'user','kshai',2, 'ksk@asd.hu', 'Pest', 'Dani', '06202125');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('laci.jpg', 'Worker', 'laci1','laci',3, 'asdasd@asd.hu', 'Laci', '06202126',2, 'Jonapot! Remelem, hogy engem valasztanak. Megprobalom a leheto legjobb munkat nyujtani! Koszonom, hogy ranyomtal az oldalamra!');
-INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('peti.jpg','Worker', 'peti1','peti',3, 'peti65@asd.hu', 'Peter', '06202127',3, 'Jonapot! Remelem, hogy engem valasztanak. Megprobalom a leheto legjobb munkat nyujtani! Koszonom, hogy ranyomtal az oldalamra!Jonapot! Remelem, hogydasdasdasdasdasdasdasdas3123123, 1231231231231312dasdasdasdasdasdasdasdas31231231231231231231312');
-INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('peti.jpg','Worker', 'kutya','erzsebet',3, 'erzsike@asd.hu', 'Erzsebet', '06202128',3, 'Jonapot! Remelem, hogy engem valasztanak. Megprobalom a leheto legjobb munkat nyujtani! Koszonom, hogy ranyomtal az oldalamra!');
-INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('peti.jpg','Worker', 'kutya','zsolt6',3, 'zszs@asd.hu', 'Zsolti', '06202129',4, 'dasdasdasdasdasdasdasdas31231231231231231231312');
-INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('peti.jpg','Worker', 'kutya','tomi',3, 'kocsik@asd.hu', 'Tamas', '06202120',6, 'rosdasdasdasdasdasdasdasdas31231231231231231231312dasdasdasdasdasdasdasdas31231231231231231231312dasdasdasdasdasdasdasdas31231231231231231231312dasdasdasdasdasdasdasdas31231231231231231231312z');
-INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('peti.jpg','Worker', 'kutya','lala4343',3, 'lala@asd.hu', 'Laura', '06202112',3, 'rosz');
-INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('peti.jpg','Worker', 'kutya','csokitorta',3, 'fagyi@asd.hu', 'Bettina', '06202113',8, 'rosz');
-INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('peti.jpg','Worker', 'kutya','alkalmazzatokpls',3, 'pls@asd.hu', 'Gyula', '06202111',7, 'rosz');
-INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('peti.jpg','Worker', 'kutya','csakegymunkas',3, 'szia@asd.hu', 'Bence', '06202114',6, 'rosz');
-INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('peti.jpg','Worker', 'kutya','kerekesnorbert',3, 'kn22@asd.hu', 'Norbert', '06202115',1, 'rosz');
+INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('lio.jpg','Worker', 'peti1','peti',3, 'petamti65@asd.hu', 'Peter', '06202127',3, 'Jonapot! Remelem, hogy engem valasztanak. Megprobalom a leheto legjobb munkat nyujtani! Koszonom, hogy ranyomtal az oldalamra!Jonapot! Remelem, hogydasdasdasdasdasdasdasdas3123123, 1231231231231312dasdasdasdasdasdasdasdas31231231231231231231312');
+INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('szilvi.png','Worker', 'kutya','erzsebet',3, 'erzsike@asd.hu', 'Erzsebet', '06202128',3, 'Jonapot! Remelem, hogy engem valasztanak. Megprobalom a leheto legjobb munkat nyujtani! Koszonom, hogy ranyomtal az oldalamra!');
+INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('jani.jpg','Worker', 'kutya','zsolt6',3, 'zszs@asd.hu', 'Zsolti', '06202129',4, 'dasdasdasdasdasdasdastamdas31231231231231231231312');
+INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('szilvi.png','Worker', 'kutya','tomi',3, 'kocsik@asd.hu', 'Tamas', '06202120',6, 'rosdasdasdasdasdasdasdasdas31231231231231 231231312dasdasdasdasdasdasdasdas, 31231231231231231231312dasdasdasdasdasdasdasdas312312312312 31231231312dasdasdasdasdasdasdasdas312312 31231231231231312z');
+INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('joe.jpg','Worker', 'kutya','lala4343',3, 'lala@asd.hu', 'Laura', '06202112',3, 'rosz');
+INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('joe.jpg','Worker', 'kutya','csokitorta',3, 'fagyi@asd.hu', 'Bettina', '06202113',8, 'rosz');
+INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('szilvi.png','Worker', 'kutya','alkalmazzatokpls',3, 'pls@asd.hu', 'Gyula', '06202111',7, 'rosz');
+INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('joe.jpg','Worker', 'kutya','csakegymunkas',3, 'szia@asd.hu', 'Bence', '06202114',6, 'rosz');
+INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('jani.jpg','Worker', 'kutya','kerekesnorbert',3, 'kn22@asd.hu', 'Tampere', '06202115',1, 'rosz');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('peti.jpg','Worker', 'kutya','abc123',3, 'def456@asd.hu', 'Kriszta', '06202116',3, 'dasdasdasdasdasdasdasdas31231231231231231231312');
-INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('peti.jpg','Worker', 'kutya','anna78',3, 'gsew@asd.hu', 'Anna', '06202136',5, 'dasdasdasdasdasdasdasdas31231231231231231231312dasdasdasdasdasdasdasdas31231231231231231231312');
+INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('peti.jpg','Worker', 'kutya','asd',3, 'def456@asd.hu', 'Tisztelt Dr Jarvas Tamas Szilveszter', '06202116',3, 'dasdasdasdasdasdasdasdas31231231231231231231312');
+INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('peti.jpg','Worker', 'kutya','anna78',3, 'gsew@asd.hu', 'Anna', '06202136',5, 'dasdasdasdasdasdasdasdas31231231231231231231312, dasdasdasdasdasdasdasdas31231231231231231231312');
 
 
 INSERT INTO LOCATIONS (LOCATION_NAME, WORKER_ID) VALUES ('Pest', 7);
@@ -40,6 +41,11 @@ INSERT INTO LOCATIONS (LOCATION_NAME, WORKER_ID) VALUES ('Csepel', 7);
 INSERT INTO LOCATIONS (LOCATION_NAME, WORKER_ID) VALUES ('Csepel', 7);
 INSERT INTO LOCATIONS (LOCATION_NAME, WORKER_ID) VALUES ('Csepel', 7);
 INSERT INTO LOCATIONS (LOCATION_NAME, WORKER_ID) VALUES ('brrapp', 7);
+INSERT INTO LOCATIONS (LOCATION_NAME, WORKER_ID) VALUES ('brrapp', 8);
+INSERT INTO LOCATIONS (LOCATION_NAME, WORKER_ID) VALUES ('brrapp', 8);
+INSERT INTO LOCATIONS (LOCATION_NAME, WORKER_ID) VALUES ('brrapp', 8);
+INSERT INTO LOCATIONS (LOCATION_NAME, WORKER_ID) VALUES ('brrapp', 8);
+INSERT INTO LOCATIONS (LOCATION_NAME, WORKER_ID) VALUES ('brrapp', 8);
 INSERT INTO LOCATIONS (LOCATION_NAME, WORKER_ID) VALUES ('brrapp', 8);
 INSERT INTO LOCATIONS (LOCATION_NAME, WORKER_ID) VALUES ('brrapp', 9);
 

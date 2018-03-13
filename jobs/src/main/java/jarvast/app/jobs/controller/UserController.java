@@ -53,6 +53,11 @@ public class UserController<T> {
     private ResponseEntity<Iterable<Worker>> listByCategory(@PathVariable(value = "categoryName") String categoryName) {
         Category category = categoryService.read(categoryName);
         return ResponseEntity.ok(userService.listByCategory(category));
-}
+    }
+    
+    @GetMapping("/workers/search/{searchword}")
+    private ResponseEntity<Iterable<Worker>> searchforWorkers(@PathVariable(value = "searchword") String searchword) {
+        return ResponseEntity.ok(userService.searchForString(searchword));
+    }
 
 }

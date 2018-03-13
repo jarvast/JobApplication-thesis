@@ -5,11 +5,11 @@
 
 <div class="form-control">
   <mat-form-field class="input-field">
-    <input matInput type="text" placeholder="Név, szakma, cím..." [(ngModel)]="value"/>
+    <input matInput type="text" placeholder="Név, leírás, email..." [(ngModel)]="value"/>
   </mat-form-field>
 </div>
 <div class="searchbutton">
-  <button mat-raised-button color="warn" (click)="submit()">Keressés</button>
+  <button mat-raised-button color="warn" (click)="submit()" >Keressés</button>
 </div>
 
 <mat-grid-list cols="8" rowHeight="160px">

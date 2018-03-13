@@ -1,6 +1,7 @@
 package jarvast.app.jobs.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jarvast.app.jobs.service.UserService;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -12,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity(name = "Worker")
 @DiscriminatorValue("Worker")
@@ -41,6 +44,17 @@ public class Worker extends BaseUser {
 
     @Column
     private String description;
+    
+    @Transient
+    private double rating;
+
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
 
     @OneToMany(
             mappedBy = "worker",
@@ -62,12 +76,13 @@ public class Worker extends BaseUser {
     @JsonIgnore
     private List<Rating> ratings = new ArrayList<Rating>();
 
-    public Worker(String email, String name, String phoneNum, Category category, String description) {
+    public Worker(String email, String name, String phoneNum, Category category, String description, Double rating) {
         this.email = email;
         this.name = name;
         this.phoneNum = phoneNum;
         this.category = category;
         this.description = description;
+        this.rating =rating;
     }
 
     public Worker() {
