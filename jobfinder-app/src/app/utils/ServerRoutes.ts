@@ -10,6 +10,8 @@ export class Routes {
     static RATING: String = 'ratings';
     static LOCATION: String = 'location';
     static SEARCH: String = '/user/workers/search';
+    static WORKER: String = '/user/worker';
+    static TASKS: String = 'tasks';
   }
   
   export class Server {

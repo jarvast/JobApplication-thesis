@@ -1,0 +1,25 @@
+.toppart{
+    display: flex;
+    width: 80%;
+}
+img{
+    max-width: 20%;
+    margin-left: 5%;
+}
+h1{
+    margin-left: 20px;
+}
+.textpart{
+    width: 60%;
+}
+.descpart{
+    margin-left: 30%;
+    margin-right: 30%;
+    border: 2px solid red;
+    border-radius: 25px;
+    padding: 5px;
+}
+.taskpart{
+    margin-left: 30%;
+    margin-right: 30%;
+}

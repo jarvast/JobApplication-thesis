@@ -1,0 +1,9 @@
+<h1>Értékelések</h1>
+<div class="list">
+  <mat-list>
+    <mat-list-item *ngFor="let rating of ratings">
+      <h4 mat-line>{{rating.sender.name}} {{rating.rating}} <p>{{rating.content}}</p> </h4>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+</div>

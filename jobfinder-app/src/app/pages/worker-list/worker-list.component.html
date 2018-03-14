@@ -21,7 +21,7 @@
       <mat-card-title style="font-size:180%;text-decoration:underline">{{worker.name}}</mat-card-title>
       <mat-card-subtitle>{{worker.category.categoryName}}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image style="margin-top: 1.5%;" src="{{fileUpload + worker.imgName}}" alt="{{fileUpload + worker.imgName}}">
+    <img mat-card-image style="margin-top: 1.5%;" src="{{fileUpload + worker.imgName}}" alt="{{fileUpload + worker.imgName}}" [routerLink]="['/worker', worker.id]">
     <mat-divider></mat-divider>
     <mat-card-content>
       <app-rating [workerId]='worker.id'></app-rating>

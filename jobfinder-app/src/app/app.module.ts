@@ -26,6 +26,10 @@ import { CommonModule } from '@angular/common';
 import { LocationsComponent } from './pages/locations/locations.component';
 import { LocationService } from './services/location.service';
 import { TruncatePipe } from './utils/TruncatePipe';
+import { WorkerProfileComponent } from './pages/worker-profile/worker-profile.component';
+import { TaskTableComponent } from './pages/task-table/task-table.component';
+import { TasksService } from './services/tasks.service';
+import { RatingDetailedComponent } from './pages/rating-detailed/rating-detailed.component';
 
 
 @NgModule({
@@ -40,7 +44,10 @@ import { TruncatePipe } from './utils/TruncatePipe';
     WorkerListComponent,
     RatingComponent,
     LocationsComponent,
-    TruncatePipe
+    TruncatePipe,
+    WorkerProfileComponent,
+    TaskTableComponent,
+    RatingDetailedComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +58,7 @@ import { TruncatePipe } from './utils/TruncatePipe';
     BrowserAnimationsModule,
     MaterialItemsModule
   ],
-  providers: [AuthService, RouteGuard, UploadFileService, UserService, CategoryService, RatingsService, LocationService],
+  providers: [AuthService, RouteGuard, UploadFileService, UserService, CategoryService, RatingsService, LocationService, TasksService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

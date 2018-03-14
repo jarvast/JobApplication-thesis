@@ -1,0 +1,14 @@
+<div class="toppart">
+  <img src="{{fileUpload + worker.imgName}}" alt="{{fileUpload + worker.imgName}}">
+  <div class="textpart"><h1>{{worker.name}}</h1><p>{{worker.phoneNum}}</p><app-locations [workerId]='worker.id'></app-locations></div>
+</div>
+<div class="descpart">
+  <p>{{worker.description}}</p>
+</div>
+<div class="taskpart">
+  Az árak a típustól, mérettől és határidőtől függenek!
+  <app-task-table [workerId]='worker.id'></app-task-table>
+</div>
+<div class="ratingpart">
+  <app-rating-detailed [workerId]='worker.id'></app-rating-detailed>
+</div>

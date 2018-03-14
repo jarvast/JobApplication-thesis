@@ -59,5 +59,10 @@ public class UserController<T> {
     private ResponseEntity<Iterable<Worker>> searchforWorkers(@PathVariable(value = "searchword") String searchword) {
         return ResponseEntity.ok(userService.searchForString(searchword));
     }
+    
+    @GetMapping("/worker/{id}")
+    private ResponseEntity<Worker> getWorker(@PathVariable (value = "id") Long id){
+        return ResponseEntity.ok(userService.getWorker(id));
+    }
 
 }

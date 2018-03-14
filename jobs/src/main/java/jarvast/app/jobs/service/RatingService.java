@@ -32,5 +32,8 @@ public class RatingService {
         sum = (double) sum / rates.size();
         return sum;
     }
+    public List<Rating> getAllRatingsByWorker(Worker worker){
+        return repository.findByReceiver(worker);
+    }
     
 }

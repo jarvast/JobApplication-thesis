@@ -5,10 +5,12 @@
  */
 package jarvast.app.jobs.controller;
 
+import jarvast.app.jobs.entity.Rating;
 import jarvast.app.jobs.entity.Worker;
 import jarvast.app.jobs.service.RatingService;
 import jarvast.app.jobs.service.UserService;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -37,6 +39,13 @@ public class RatingController {
         Worker worker = userService.getOne(userId);
         FullRating rating = new FullRating(ratingService.calculateRating(worker));
         return ResponseEntity.ok(rating);
+    }
+    
+    @GetMapping("/worker/{userId}")
+    private ResponseEntity<List<Rating>> getAllRatingsByWorker(@PathVariable(value = "userId") Long userId){
+        // ebből a getoneból kettő van
+        Worker worker = userService.getOne(userId);
+        return ResponseEntity.ok(ratingService.getAllRatingsByWorker(worker));
     }
 
     private static class FullRating {

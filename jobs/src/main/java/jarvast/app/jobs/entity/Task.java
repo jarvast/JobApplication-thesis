@@ -1,5 +1,6 @@
 package jarvast.app.jobs.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -17,6 +18,7 @@ public class Task extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "worker_id")
+    @JsonIgnore
     private Worker worker;
 
     public Task(String taskName, String taskPrices, Worker worker) {

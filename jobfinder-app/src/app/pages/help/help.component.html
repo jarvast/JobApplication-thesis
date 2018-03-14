@@ -3,14 +3,19 @@
   help works!
 </p>
 
+<form [formGroup]="searchForm" novalidate>
 <div class="form-control">
   <mat-form-field class="input-field">
-    <input matInput type="text" placeholder="Név, leírás, email..." [(ngModel)]="value"/>
+    <input matInput type="search" placeholder="Név, leírás, hely, email..." formControlName="searchWord"/>
+    <mat-error *ngIf="searchWord.hasError('required')">
+      A keresőszó legalább <strong>3 karakter</strong> legyen
+    </mat-error>
   </mat-form-field>
 </div>
 <div class="searchbutton">
-  <button mat-raised-button color="warn" (click)="submit()" >Keressés</button>
+  <button mat-raised-button color="warn" type="submit" (click)="submit()" [disabled]="!searchForm.valid">Keresés</button>
 </div>
+</form>
 
 <mat-grid-list cols="8" rowHeight="160px">
     <mat-grid-tile *ngFor="let category of categories"   [routerLink]="['/categories', category.categoryName]">

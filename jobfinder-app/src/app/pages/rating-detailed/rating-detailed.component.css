@@ -1,0 +1,15 @@
+p{
+    margin-top: 0.5%;
+}
+mat-list-item{
+    padding: 10px;
+    border: 2px solid black;
+}
+mat-list{
+    margin-top: 5%;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+h1{
+    margin-left: 30%;
+}

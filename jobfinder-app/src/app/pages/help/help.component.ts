@@ -6,6 +6,7 @@ import { UserService } from '../../services/user.service';
 import { Category } from '../../model/Category';
 import { CategoryService } from '../../services/category.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AbstractControl, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-help',
@@ -13,6 +14,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./help.component.css']
 })
 export class HelpComponent implements OnInit{
+  searchForm: FormGroup = new FormGroup({
+    searchWord: new FormControl('', [Validators.required,Validators.minLength(3)])});
   title = 'JavaSampleApproach';
   fileUpload: String;// = Server.routeTo(Routes.PICTURE) + this.authService.user.username;// "http://localhost:4200/api/upload/files/user";
   asd: String;
@@ -51,9 +54,13 @@ export class HelpComponent implements OnInit{
       .subscribe(
         res => ...
       )*/
-      this.router.navigate(['/categories', "searchFor:" + this.value]);
+      this.router.navigate(['/categories', "searchFor:" + this.searchWord.value]);
       console.log("ez a list" + this.workers.length);
       console.log("keresed ezt" + this.value);
   }
+
+  get searchWord(): AbstractControl {
+    return this.searchForm.get('searchWord');
+}
 
 }

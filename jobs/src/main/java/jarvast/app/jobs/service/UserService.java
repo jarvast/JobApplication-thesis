@@ -6,6 +6,8 @@ import jarvast.app.jobs.entity.Worker;
 import jarvast.app.jobs.repository.UserRepository;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,12 +19,15 @@ public class UserService<T> {
     private BaseUser user;
     
     private RatingService ratingService;
+    
+    private LocationService locationService;
 
     @Autowired
-    public UserService(UserRepository userRepository, RatingService ratingService) {
+    public UserService(UserRepository userRepository, RatingService ratingService, LocationService locationService) {
         this.userRepository = userRepository;
         this.user = null;
         this.ratingService = ratingService;
+        this.locationService =locationService;
         
     }
 
@@ -102,12 +107,13 @@ public class UserService<T> {
         //KISZERVEZNI KÜLÖN METHODBA
         List<Worker> list = userRepository.findByCategory(category);
         for (Worker w : list){
-            Double rate = ratingService.calculateRating(w);
+            calculateRate(w);
+            /*Double rate = ratingService.calculateRating(w);
             if (Double.isNaN(rate)){
                 w.setRating(0.0);
             }else{
                 w.setRating(ratingService.calculateRating(w));
-            }
+            }*/
         }
         return list;
         //return userRepository.findByCategory(category);
@@ -117,17 +123,35 @@ public class UserService<T> {
     }
     public List<Worker> searchForString(String input){
         String searchWord = input.replace("searchFor:", "");
+        List<Worker> locList = locationService.searchByString(searchWord);
         List<Worker> list = userRepository.findByNameIgnoreCaseContainingOrDescriptionIgnoreCaseContainingOrEmailIgnoreCaseContaining(searchWord, searchWord, searchWord);
-        for (Worker w : list){
-            Double rate = ratingService.calculateRating(w);
+        
+
+        List<Worker> newList = Stream.concat(list.stream(), locList.stream()).collect(Collectors.toList());
+        for (Worker w : newList){
+            calculateRate(w);
+            /*Double rate = ratingService.calculateRating(w);
             if (Double.isNaN(rate)){
                 w.setRating(0.0);
             }else{
                 w.setRating(ratingService.calculateRating(w));
-            }
+            }*/
         }
-        return list;
+        return newList;
         //return userRepository.findByNameIgnoreCaseContainingOrDescriptionIgnoreCaseContainingOrEmailIgnoreCaseContaining(searchWord, searchWord, searchWord);
+    }
+    public Worker getWorker(Long id){
+        //return userRepository.findOne(id);
+        return calculateRate(userRepository.findOne(id));
+    }
+    private Worker calculateRate(Worker worker){
+        Double rate = ratingService.calculateRating(worker);
+        if (Double.isNaN(rate)){
+                worker.setRating(0.0);
+            }else{
+                worker.setRating(rate);
+            }
+        return worker;
     }
 
 }

@@ -19,4 +19,7 @@ export class UserService {
   searchForWorkers(searchword: String): Observable<WorkerUser[]>{
     return this.http.get<WorkerUser[]>(Server.routeTo(Routes.SEARCH) + '/' + searchword);
   }
+  getWorker(id: number) : Observable<WorkerUser>{
+    return this.http.get<WorkerUser>(Server.routeTo(Routes.WORKER) + '/' + id);
+  }
 }
