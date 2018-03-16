@@ -9,34 +9,24 @@ import { isNumber } from 'util';
 })
 export class RatingComponent implements OnInit {
 
-  @Input() workerId: number; 
+  @Input() inputRating: number;
   rating : any;
-  starNumber : any[];
-  max : number;
+  starArray : any[];
+  roundedRating : number;
 
-  constructor(private rateService: RatingsService) {
-    /*for(var i=0;i<this.max; i++){
-      console.log("--" + i)
-      this.starNumber.push(i);
-    }*/
-   }
+  constructor(private rateService: RatingsService) {}
 
   ngOnInit() {
-    this.rateService.getRating(this.workerId).subscribe(res =>{
-      if (isNaN(res.rating)){
-        this.rating = "Még nem érkezett értékelés"
-      }else{
-        this.rating = res.rating;
-        this.max = Math.round(res.rating);
-        console.log(this.max + "max");
-        this.starNumber =[];
-        for (var i=0;i<this.max; i++){
-          this.starNumber.push(i);
-        }
+    if (this.inputRating===0){
+      this.rating = "Még nem érkezett értékelés";
+    }else{
+      this.rating= this.inputRating;
+      this.roundedRating = Math.round(this.inputRating);
+      this.starArray =[];
+      for (var i=0;i<this.roundedRating; i++){
+        this.starArray.push(i);
       }
-      //this.rating = res.rating;
-    });
-    
+    }
   }
 
 }

@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(new User(this.username.value,this.password.value)).subscribe(data => {
       this.authService.user = data;
       this.authService.isLoggedIn = true;
-      this.router.navigate(['/help']);
+      this.router.navigate(['/main']);
     },
     err => this.openSnackBar())
     }

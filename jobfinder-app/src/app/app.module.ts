@@ -12,10 +12,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { RouteGuard } from './route.guard';
-import { HelpComponent } from './pages/help/help.component';
-import { ListUploadComponent } from './upload/list-upload/list-upload.component';
+import { MainComponent } from './pages/help/help.component';
 import { FormUploadComponent } from './upload/form-upload/form-upload.component';
-import { DetailsUploadComponent } from './upload/details-upload/details-upload.component';
 import { UploadFileService } from './upload/upload-file.service';
 import { UserService } from './services/user.service';
 import { CategoryService } from './services/category.service';
@@ -37,10 +35,8 @@ import { RatingDetailedComponent } from './pages/rating-detailed/rating-detailed
     AppComponent,
     LoginComponent,
     MenuComponent,
-    HelpComponent,
-    ListUploadComponent,
+    MainComponent,
     FormUploadComponent,
-    DetailsUploadComponent,
     WorkerListComponent,
     RatingComponent,
     LocationsComponent,

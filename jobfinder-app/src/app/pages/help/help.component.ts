@@ -13,31 +13,15 @@ import { AbstractControl, FormGroup, FormControl, Validators } from '@angular/fo
   templateUrl: './help.component.html',
   styleUrls: ['./help.component.css']
 })
-export class HelpComponent implements OnInit{
+export class MainComponent implements OnInit{
   searchForm: FormGroup = new FormGroup({
     searchWord: new FormControl('', [Validators.required,Validators.minLength(3)])});
-  title = 'JavaSampleApproach';
-  fileUpload: String;// = Server.routeTo(Routes.PICTURE) + this.authService.user.username;// "http://localhost:4200/api/upload/files/user";
-  asd: String;
-  description = 'Angular4-SpringBosot Demo';
-  value = '';
-  tiles = [
-    {text: 'One', cols: 1, rows: 1, color: 'lightblue'},
-    {text: 'Two', cols: 1, rows: 1, color: 'lightgreen'},
-    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
-    {text: 'Four', cols: 1, rows: 1, color: '#DDBDF1'},
-    {text: 'Four', cols: 1, rows: 1, color: '#DDBDF1'},
-    {text: 'Four', cols: 1, rows: 1, color: '#DDBDF1'},
-    {text: 'Four', cols: 1, rows: 1, color: '#DDBDF1'},
-    {text: 'Four', cols: 1, rows: 1, color: '#DDBDF1'},
-  ];
-  //ng for mögé  [colspan]="tile.cols" [rowspan]="tile.rows" 
+  imgRoute: String;
   categories: Category[];
   workers : WorkerUser[];
 
   constructor(private authService: AuthService, private userService : UserService, private categoryService: CategoryService,private router : Router) {
-    this.fileUpload = Server.routeTo(Routes.PICTURE); // + "user";
-    this.asd = Server.routeTo(Routes.PICTURE + 'cat/');
+    this.imgRoute = Server.routeTo(Routes.PICTURE);
   }
   ngOnInit()
   {
@@ -47,16 +31,9 @@ export class HelpComponent implements OnInit{
     this.categoryService.getCategories().subscribe(cat => {
       this.categories = cat;
     });
-  }  
-  //consturctorban a servicet meghívni
+  };
   submit(){
-   /* this.searchservice.search(this.value)
-      .subscribe(
-        res => ...
-      )*/
       this.router.navigate(['/categories', "searchFor:" + this.searchWord.value]);
-      console.log("ez a list" + this.workers.length);
-      console.log("keresed ezt" + this.value);
   }
 
   get searchWord(): AbstractControl {

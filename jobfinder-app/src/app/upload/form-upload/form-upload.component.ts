@@ -24,7 +24,7 @@ export class FormUploadComponent implements OnInit {
     if (file.type.match('image.*')) {
       this.selectedFiles = event.target.files;
     } else {
-      alert('invalid format!');
+      alert('Érvénytelen képformátum!');
     }
   }
 

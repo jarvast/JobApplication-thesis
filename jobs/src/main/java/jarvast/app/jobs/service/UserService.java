@@ -4,7 +4,6 @@ import jarvast.app.jobs.entity.BaseUser;
 import jarvast.app.jobs.entity.Category;
 import jarvast.app.jobs.entity.Worker;
 import jarvast.app.jobs.repository.UserRepository;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -15,11 +14,8 @@ import org.springframework.stereotype.Service;
 public class UserService<T> {
 
     private UserRepository userRepository;
-    //private T user;
     private BaseUser user;
-    
     private RatingService ratingService;
-    
     private LocationService locationService;
 
     @Autowired
@@ -27,130 +23,72 @@ public class UserService<T> {
         this.userRepository = userRepository;
         this.user = null;
         this.ratingService = ratingService;
-        this.locationService =locationService;
-        
+        this.locationService = locationService;
+
     }
-
-    /*public BaseUser findByUsername(String username) {
-        return userRepository.findByUsername(username);
-    }*/
-
- /*@Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        BaseUser user = findByUsername(username);
-        if (user == null){
-            throw new UsernameNotFoundException(username);
-        }
-        System.out.println(user.getRoles().toString() + user.getPassword());
-        return new UserDetailsImpl(user);
-    }*/
-    /*public void login(T user) {
+    public void login(BaseUser user) {
         this.user = user;
     }
 
-    public T getLoggedInUser() {
-        return user;
-    }*/
-    public void login(BaseUser user){
-        this.user=user;
-    }
-    public BaseUser getLoggedInUser(){
+    public BaseUser getLoggedInUser() {
         return user;
     }
-    public String getLoggedInUserName(){
+
+    public String getLoggedInUserName() {
         return user.getUsername();
     }
-    public long getloggedId(){
-        return user.getId();
-    }
-    public void updateImg(String imgname){
-        System.out.println("belemegy azé");
-        //BaseUser oldUser = this.user;
-        //System.out.println("olduser" + oldUser.toString());
+
+    public void updateImg(String imgname) {
         this.user.setImgName(imgname);
-        //user.setImgName(name);
-        //System.out.println("RATYI" + oldUser.toString());
         userRepository.save(this.user);
     }
-    public String getImg(){
+
+    public String getImg() {
         return this.user.getImgName();
     }
-    /*public T getLoggedInUserId() {
-        return (T) (BaseUser) user;
-    }*/
 
     public void logout() {
         this.user = null;
     }
 
-    public void test() {
-        System.out.println("BENT VOK");
-        ArrayList<Worker> arr = (ArrayList<Worker>) userRepository.findAllWorkers();
-        for (Worker w : arr){
-            System.out.println(w.toString());
-        }
-    }
-    public List<Worker> getWorkers(){
+    public List<Worker> getWorkers() {
         List<Worker> list = userRepository.findAllWorkers();
-        for (Worker w : list){
+        for (Worker w : list) {
             w.setRating(ratingService.calculateRating(w));
         }
-        //return userRepository.findAllWorkers();
         return list;
     }
-    
-    public List<Worker> listByCategory(Category category){
-        /*List<Worker> asda = userRepository.findByNameIgnoreCaseContainingOrDescriptionIgnoreCaseContainingOrEmailIgnoreCaseContaining("tam","tam","tam");
-        for (Worker w : asda){
-            System.out.println("szörscs " + w.toString());
-        }*/
-        //KISZERVEZNI KÜLÖN METHODBA
-        List<Worker> list = userRepository.findByCategory(category);
-        for (Worker w : list){
-            calculateRate(w);
-            /*Double rate = ratingService.calculateRating(w);
-            if (Double.isNaN(rate)){
-                w.setRating(0.0);
-            }else{
-                w.setRating(ratingService.calculateRating(w));
-            }*/
-        }
-        return list;
-        //return userRepository.findByCategory(category);
-    }
-    public Worker getOne(Long id){
-        return (Worker) userRepository.findOne(id);
-    }
-    public List<Worker> searchForString(String input){
-        String searchWord = input.replace("searchFor:", "");
-        List<Worker> locList = locationService.searchByString(searchWord);
-        List<Worker> list = userRepository.findByNameIgnoreCaseContainingOrDescriptionIgnoreCaseContainingOrEmailIgnoreCaseContaining(searchWord, searchWord, searchWord);
-        
 
-        List<Worker> newList = Stream.concat(list.stream(), locList.stream()).collect(Collectors.toList());
-        for (Worker w : newList){
+    public List<Worker> listByCategory(Category category) {
+        List<Worker> workerlist = userRepository.findByCategory(category);
+        for (Worker w : workerlist) {
             calculateRate(w);
-            /*Double rate = ratingService.calculateRating(w);
-            if (Double.isNaN(rate)){
-                w.setRating(0.0);
-            }else{
-                w.setRating(ratingService.calculateRating(w));
-            }*/
         }
-        return newList;
-        //return userRepository.findByNameIgnoreCaseContainingOrDescriptionIgnoreCaseContainingOrEmailIgnoreCaseContaining(searchWord, searchWord, searchWord);
+        return workerlist;
     }
-    public Worker getWorker(Long id){
-        //return userRepository.findOne(id);
+    public List<Worker> searchForString(String input) {
+        String searchWord = input.replace("searchFor:", "");
+        List<Worker> locationList = locationService.searchByString(searchWord);
+        List<Worker> workerList = userRepository.findByNameIgnoreCaseContainingOrDescriptionIgnoreCaseContainingOrEmailIgnoreCaseContaining(searchWord, searchWord, searchWord);
+
+        List<Worker> mergedList = Stream.concat(workerList.stream(), locationList.stream()).collect(Collectors.toList());
+        for (Worker w : mergedList) {
+            calculateRate(w);
+        }
+        return mergedList;
+    }
+
+    public Worker getWorker(Long id) {
         return calculateRate(userRepository.findOne(id));
     }
-    private Worker calculateRate(Worker worker){
+
+    private Worker calculateRate(Worker worker) {
         Double rate = ratingService.calculateRating(worker);
-        if (Double.isNaN(rate)){
-                worker.setRating(0.0);
-            }else{
-                worker.setRating(rate);
-            }
+        if (Double.isNaN(rate)) {
+            worker.setRating(0.0);
+        } else {
+            worker.setRating(rate);
+        }
         return worker;
     }
 

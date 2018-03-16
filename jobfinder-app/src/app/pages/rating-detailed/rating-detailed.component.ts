@@ -3,7 +3,7 @@ import { RatingsService } from '../../services/ratings.service';
 import { Rating } from '../../model/Rating';
 
 @Component({
-  selector: 'app-rating-detailed',
+  selector: 'rating-detailed',
   templateUrl: './rating-detailed.component.html',
   styleUrls: ['./rating-detailed.component.css']
 })
@@ -17,8 +17,7 @@ export class RatingDetailedComponent implements OnInit {
   ngOnInit() {
     this.ratingService.getAllRatingsByWorker(this.workerId).subscribe(res => {
       this.ratings=res;
-      console.log("raéétét" + this.ratings);
-    })
+    });
   }
 
 }

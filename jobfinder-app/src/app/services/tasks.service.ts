@@ -10,7 +10,7 @@ export class TasksService {
   constructor(private http: HttpClient) { }
 
   getTasks(id:number): Observable<Task[]>{
-    return this.http.get<Task[]>(Server.routeTo(Routes.TASKS) + '/' + id);
+    return this.http.get<Task[]>(Server.routeTo(Routes.TASKSBYUSER) + '/' + id);
   }
 
 }

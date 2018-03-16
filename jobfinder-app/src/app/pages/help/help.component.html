@@ -19,7 +19,7 @@
 
 <mat-grid-list cols="8" rowHeight="160px">
     <mat-grid-tile *ngFor="let category of categories"   [routerLink]="['/categories', category.categoryName]">
-    <img src="{{fileUpload + category.picture}}">
+    <img src="{{imgRoute + category.picture}}">
     <mat-grid-tile-footer>
       <h1>{{category.categoryName}}</h1>
     </mat-grid-tile-footer>
@@ -35,7 +35,7 @@
     <mat-card-title>{{worker.username}}</mat-card-title>
     <mat-card-subtitle>{{worker.imgName}}</mat-card-subtitle>
   </mat-card-header>
-  <img mat-card-image src="{{fileUpload + worker.imgName}}" alt="{{fileUpload + worker.imgName}}">
+  <img mat-card-image src="{{imgRoute + worker.imgName}}" alt="{{imgRoute + worker.imgName}}">
   <mat-card-content>
       <p>
         {{worker.description}}
@@ -49,10 +49,6 @@
 </div>
 
 <div class="container" style="width:400px">
-	<div style="color: blue; margin-bottom: 20px">
-		<h1>{{title}}</h1>
-		<h3>{{description}}</h3>
-	</div>
 
 	<form-upload></form-upload>
 	

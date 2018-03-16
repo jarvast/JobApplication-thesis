@@ -11,8 +11,8 @@ export class LocationsComponent implements OnInit {
 
   @Input() workerId: number;
   locations : Location[];
-  stringy : String[];
-  commad : String ="";
+  temp : String[];
+  separatedLocations : String = "";
 
   constructor(private locationService: LocationService) { }
 
@@ -20,11 +20,11 @@ export class LocationsComponent implements OnInit {
     this.locationService.getLocations(this.workerId).subscribe(res => {
       this.locations = res;
       this.locations.join(', ');
-      this.stringy = [];
+      this.temp = [];
       for (let entry of this.locations){
-        this.stringy.push(entry.location);
+        this.temp.push(entry.location);
       }
-      this.commad= this.stringy.join(', ');
+      this.separatedLocations= this.temp.join(', ');
     });
   }
 

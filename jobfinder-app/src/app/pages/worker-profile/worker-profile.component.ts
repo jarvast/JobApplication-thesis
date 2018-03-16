@@ -12,10 +12,10 @@ import { Server, Routes } from '../../utils/ServerRoutes';
 export class WorkerProfileComponent implements OnInit {
   workerId: number;
   worker : WorkerUser;
-  fileUpload: String;
+  imgRoute: String;
 
   constructor(private route: ActivatedRoute, private userService: UserService) { 
-    this.fileUpload = Server.routeTo(Routes.PICTURE);
+    this.imgRoute = Server.routeTo(Routes.PICTURE);
   }
 
   ngOnInit() {

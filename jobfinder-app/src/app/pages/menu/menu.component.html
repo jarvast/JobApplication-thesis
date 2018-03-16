@@ -1,6 +1,6 @@
 <mat-toolbar id="top-menu" color="warn">
   <div class="left-side">
-    <button mat-button routerLink="/help">
+    <button mat-button routerLink="/main">
       <mat-icon>home</mat-icon>
       Job Finder
     </button>
@@ -14,11 +14,11 @@
 
   <div class="right-side">
     <div *ngIf="!authService.isLoggedIn" class="unauthorized">
-      <a mat-button routerLink="/login" routerLinkActive="active">Login</a>
+      <a mat-button routerLink="/login" routerLinkActive="active">Bejelentkezés</a>
     </div>
     
     <div *ngIf="authService.isLoggedIn" class="authorized">
-      <button mat-button (click)="logout()">Logout</button>
+      <button mat-button (click)="logout()">Kijelentkezés</button>
     </div>
   </div>
 </mat-toolbar>

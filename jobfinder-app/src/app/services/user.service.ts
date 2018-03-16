@@ -10,16 +10,16 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getWorkers(): Observable<WorkerUser[]>{
-    return this.http.get<WorkerUser[]>(Server.routeTo(Routes.WORKERS));
+    return this.http.get<WorkerUser[]>(Server.routeTo(Routes.ALLWORKERS));
   }
 
   getWorkersByCategory(categoryName : String): Observable<WorkerUser[]>{
-    return this.http.get<WorkerUser[]>(Server.routeTo(Routes.WORKERS) + '/' + categoryName);
+    return this.http.get<WorkerUser[]>(Server.routeTo(Routes.ALLWORKERS) + '/' + categoryName);
   }
   searchForWorkers(searchword: String): Observable<WorkerUser[]>{
-    return this.http.get<WorkerUser[]>(Server.routeTo(Routes.SEARCH) + '/' + searchword);
+    return this.http.get<WorkerUser[]>(Server.routeTo(Routes.SEARCHWORKERS) + '/' + searchword);
   }
   getWorker(id: number) : Observable<WorkerUser>{
-    return this.http.get<WorkerUser>(Server.routeTo(Routes.WORKER) + '/' + id);
+    return this.http.get<WorkerUser>(Server.routeTo(Routes.SINGLEWORKER) + '/' + id);
   }
 }

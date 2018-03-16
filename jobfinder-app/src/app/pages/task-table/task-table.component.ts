@@ -13,14 +13,12 @@ export class TaskTableComponent implements OnInit {
   @Input() workerId: number;
   tasks: MatTableDataSource<Task>;
   displayedColumns: String[] = ['taskName', 'taskPrices'];
-  //tasks: Task[];
 
   constructor(private taskService: TasksService) { }
 
   ngOnInit() {
     this.taskService.getTasks(this.workerId).subscribe(res =>{
       this.tasks = new MatTableDataSource(res);
-      console.log("GENYOKA" + this.tasks.data);
     });
   }
 

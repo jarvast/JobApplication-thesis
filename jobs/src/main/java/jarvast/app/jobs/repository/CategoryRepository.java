@@ -1,7 +1,6 @@
 package jarvast.app.jobs.repository;
 
 import jarvast.app.jobs.entity.Category;
-import java.io.Serializable;
 import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 

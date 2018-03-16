@@ -1,5 +1,5 @@
 <div class="toppart">
-  <img src="{{fileUpload + worker.imgName}}" alt="{{fileUpload + worker.imgName}}">
+  <img src="{{imgRoute + worker.imgName}}" alt="{{imgRoute + worker.imgName}}">
   <div class="textpart"><h1>{{worker.name}}</h1><p>{{worker.phoneNum}}</p><app-locations [workerId]='worker.id'></app-locations></div>
 </div>
 <div class="descpart">
@@ -10,5 +10,5 @@
   <app-task-table [workerId]='worker.id'></app-task-table>
 </div>
 <div class="ratingpart">
-  <app-rating-detailed [workerId]='worker.id'></app-rating-detailed>
+  <rating-detailed [workerId]='worker.id'></rating-detailed>
 </div>

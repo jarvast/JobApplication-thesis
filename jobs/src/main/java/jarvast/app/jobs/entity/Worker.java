@@ -37,7 +37,7 @@ public class Worker extends BaseUser {
     @JsonIgnore
     private List<Location> locations = new ArrayList<Location>();
 
-    //private String imgUrl;*/
+    
     @ManyToOne(targetEntity = Category.class, fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id")
     private Category category;
@@ -47,14 +47,6 @@ public class Worker extends BaseUser {
     
     @Transient
     private double rating;
-
-    public double getRating() {
-        return rating;
-    }
-
-    public void setRating(double rating) {
-        this.rating = rating;
-    }
 
     @OneToMany(
             mappedBy = "worker",
@@ -112,6 +104,13 @@ public class Worker extends BaseUser {
         this.phoneNum = phoneNum;
     }
 
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
     public List<Location> getLocations() {
         return locations;
     }

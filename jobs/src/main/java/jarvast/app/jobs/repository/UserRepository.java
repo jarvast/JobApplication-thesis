@@ -10,25 +10,16 @@ import org.springframework.data.repository.CrudRepository;
 public interface UserRepository extends CrudRepository<BaseUser, Long> {
 
     public BaseUser findByUsername(String username);
-    
+
     @Query("select a from BaseUser a WHERE User_Type = Worker")
     public List<Worker> findAllWorkers();
 
-   /* @Override
-    public <S extends BaseUser> S save(S s);*/
     public Worker findOne(Long id);
 
     public List<Worker> findByCategory(Category category);
-    
-    public List<Worker> findAllByNameContainingAllIgnoreCase(String searchword);
-    
-    List<Worker> findByNameIgnoreCaseContainingOrDescriptionIgnoreCaseContainingOrEmailIgnoreCaseContaining(String name, String desc, String email);
-            
-        /*      List<Person> findPeopleDistinctByLastnameOrFirstname(String lastname, String firstname);
 
-  List<Person> findByLastnameAndFirstnameAllIgnoreCase(String lastname, String firstname);
-  
-  findByFirstnameContaining
-    */
-    
+    public List<Worker> findAllByNameContainingAllIgnoreCase(String searchword);
+
+    List<Worker> findByNameIgnoreCaseContainingOrDescriptionIgnoreCaseContainingOrEmailIgnoreCaseContaining(String name, String desc, String email);
+
 }

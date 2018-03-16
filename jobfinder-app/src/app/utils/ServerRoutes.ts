@@ -1,17 +1,17 @@
 export class Routes {
     static LOGIN: String = 'user/login';
-    static REGISTER: String = 'user/register';
+    //static REGISTER: String = 'user/register';
     static LOGOUT: String = 'user/logout';
-    static UPLOAD: String = 'upload/getallfiles';
-    static UPLOADASD: String = 'upload/post';
+    //static UPLOAD: String = 'upload/getallfiles';
+    static UPLOADFILE: String = 'upload/post';
     static PICTURE: String = 'upload/files/';
-    static WORKERS: String = '/user/workers';
+    static ALLWORKERS: String = 'user/workers';
+    static SEARCHWORKERS: String = 'user/workers/search';
+    static SINGLEWORKER: String = 'user/worker';
     static CATEGORIES: String = 'categories';
     static RATING: String = 'ratings';
     static LOCATION: String = 'location';
-    static SEARCH: String = '/user/workers/search';
-    static WORKER: String = '/user/worker';
-    static TASKS: String = 'tasks';
+    static TASKSBYUSER: String = 'tasks';
   }
   
   export class Server {

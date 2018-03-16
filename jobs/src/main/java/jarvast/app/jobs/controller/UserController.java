@@ -25,7 +25,7 @@ public class UserController<T> {
 
     @Autowired
     private UserService userService;
-    
+
     @Autowired
     private CategoryService categoryService;
 
@@ -43,25 +43,25 @@ public class UserController<T> {
         userService.logout();
         return ResponseEntity.ok(204);
     }
-    
+
     @GetMapping("/workers")
-    public ResponseEntity<List<Worker>> getWorkers(){
+    public ResponseEntity<List<Worker>> getWorkers() {
         return ResponseEntity.ok(userService.getWorkers());
     }
-    
+
     @GetMapping("/workers/{categoryName}")
     private ResponseEntity<Iterable<Worker>> listByCategory(@PathVariable(value = "categoryName") String categoryName) {
-        Category category = categoryService.read(categoryName);
+        Category category = categoryService.findByCategoryName(categoryName);
         return ResponseEntity.ok(userService.listByCategory(category));
     }
-    
+
     @GetMapping("/workers/search/{searchword}")
     private ResponseEntity<Iterable<Worker>> searchforWorkers(@PathVariable(value = "searchword") String searchword) {
         return ResponseEntity.ok(userService.searchForString(searchword));
     }
-    
+
     @GetMapping("/worker/{id}")
-    private ResponseEntity<Worker> getWorker(@PathVariable (value = "id") Long id){
+    private ResponseEntity<Worker> getWorker(@PathVariable(value = "id") Long id) {
         return ResponseEntity.ok(userService.getWorker(id));
     }
 

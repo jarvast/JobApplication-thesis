@@ -10,14 +10,14 @@ import { Server, Routes } from '../../utils/ServerRoutes';
   styleUrls: ['./worker-list.component.css']
 })
 export class WorkerListComponent implements OnInit {
-  selected ="";
+  selectedOption ="";
   categoryName : String;
   selectedWorkers: WorkerUser[];
-  fileUpload: String;
-  length : number;
+  imgRoute: String;
+  foundArrayLength : number;
 
   constructor(private route: ActivatedRoute, private userService: UserService) {
-    this.fileUpload = Server.routeTo(Routes.PICTURE);
+    this.imgRoute = Server.routeTo(Routes.PICTURE);
    }
 
   ngOnInit() {
@@ -26,12 +26,12 @@ export class WorkerListComponent implements OnInit {
       if (this.categoryName.startsWith("searchFor")){
         this.userService.searchForWorkers(this.categoryName).subscribe(data =>{
           this.selectedWorkers = data;
-          this.length = this.selectedWorkers.length;
+          this.foundArrayLength = this.selectedWorkers.length;
         });
       }else{
         this.userService.getWorkersByCategory(this.categoryName).subscribe(data => {
           this.selectedWorkers = data;
-          this.length = this.selectedWorkers.length;
+          this.foundArrayLength = this.selectedWorkers.length;
         });
       }
     });
