@@ -23,3 +23,9 @@ h1{
     margin-left: 30%;
     margin-right: 30%;
 }
+.buttons{
+    padding: 10px;
+}
+button{
+    margin: 10px;
+}

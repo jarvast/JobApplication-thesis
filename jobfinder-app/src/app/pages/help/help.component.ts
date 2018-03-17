@@ -25,7 +25,7 @@ export class MainComponent implements OnInit{
   }
   ngOnInit()
   {
-    this.userService.getWorkers().subscribe(workers => {
+    this.userService.getTop5().subscribe(workers => {
       this.workers = workers;
     });
     this.categoryService.getCategories().subscribe(cat => {

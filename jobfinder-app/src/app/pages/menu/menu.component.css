@@ -10,7 +10,7 @@ mat-toolbar {
 
 .center {
   flex: 3 3 auto;
-  padding: 20px;
+  text-align: center;
 }
 .left-side{
   border-style: solid;
@@ -21,4 +21,8 @@ mat-toolbar {
 }
 .right-side{
   margin-right: 50px;
+}
+.butt{
+  margin-right: 15%;
+  margin-left: 15%;
 }

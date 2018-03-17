@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { WorkerUser } from '../../model/WorkerUser';
 import { Server, Routes } from '../../utils/ServerRoutes';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-worker-profile',
@@ -14,7 +15,7 @@ export class WorkerProfileComponent implements OnInit {
   worker : WorkerUser;
   imgRoute: String;
 
-  constructor(private route: ActivatedRoute, private userService: UserService) { 
+  constructor(private route: ActivatedRoute, private userService: UserService, private authService: AuthService) { 
     this.imgRoute = Server.routeTo(Routes.PICTURE);
   }
 
@@ -25,5 +26,22 @@ export class WorkerProfileComponent implements OnInit {
         this.worker=data;
       })
   });
+  }
+  //lehet az egész gombokat ki lehetne szervezni
+  sendMessage(){
+    if (this.authService.isLoggedIn){
+      console.log("send");
+    }else{
+      console.log("empty");
+    }
+  }
+  favorite(){
+    console.log("fam");
+  }
+  report(){
+    console.log("report")
+  }
+  reservation(){
+    console.log("reserve")
   }
 }

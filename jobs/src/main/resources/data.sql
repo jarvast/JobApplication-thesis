@@ -2,14 +2,14 @@ INSERT INTO ROLES (ROLE_NAME) VALUES ('ADMIN');
 INSERT INTO ROLES (ROLE_NAME) VALUES ('USER');
 INSERT INTO ROLES (ROLE_NAME) VALUES ('WORKER');
 
-INSERT INTO CATEGORIES (CATEGORY_NAME, PICTURE) VALUES ('Autoszerelo', '1.jpg');
+INSERT INTO CATEGORIES (CATEGORY_NAME, PICTURE) VALUES ('Autoszerelo', '1.png');
 INSERT INTO CATEGORIES (CATEGORY_NAME, PICTURE) VALUES ('Villanyszerelo', '2.png');
-INSERT INTO CATEGORIES (CATEGORY_NAME, PICTURE) VALUES ('Acs', '1.jpg');
-INSERT INTO CATEGORIES (CATEGORY_NAME, PICTURE) VALUES ('Kalapos', '1.jpg');
-INSERT INTO CATEGORIES (CATEGORY_NAME, PICTURE) VALUES ('Haztartasi gepszerelo', '1.jpg');
-INSERT INTO CATEGORIES (CATEGORY_NAME, PICTURE) VALUES ('Viz-gaz-futes', '1.jpg');
-INSERT INTO CATEGORIES (CATEGORY_NAME, PICTURE) VALUES ('Asztalos', '1.jpg');
-INSERT INTO CATEGORIES (CATEGORY_NAME, PICTURE) VALUES ('Bohoc', '1.jpg');
+INSERT INTO CATEGORIES (CATEGORY_NAME, PICTURE) VALUES ('Asztalos', '5.png');
+INSERT INTO CATEGORIES (CATEGORY_NAME, PICTURE) VALUES ('Kertesz', '4.png');
+INSERT INTO CATEGORIES (CATEGORY_NAME, PICTURE) VALUES ('Festo', '6.png');
+INSERT INTO CATEGORIES (CATEGORY_NAME, PICTURE) VALUES ('Vizszerelo', '3.png');
+INSERT INTO CATEGORIES (CATEGORY_NAME, PICTURE) VALUES ('Komuves', '8.png');
+INSERT INTO CATEGORIES (CATEGORY_NAME, PICTURE) VALUES ('Kisgepszerelo', '7.png');
 
 
 INSERT INTO USERS (USER_TYPE, PASSWORD, USERNAME, ROLE_ID, NAME) VALUES ('Admin', 'admin','admin',1, 'Tomi');
@@ -19,14 +19,14 @@ INSERT INTO USERS (USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, LOCATION, NAME
 INSERT INTO USERS (USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, LOCATION, NAME, PHONE_NUM) VALUES ('User', 'user','szilvi',2, 'kutyak@asd.hu', 'Pest', 'Szilvi', '06202124');
 INSERT INTO USERS (USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, LOCATION, NAME, PHONE_NUM) VALUES ('User', 'user','kshai',2, 'ksk@asd.hu', 'Pest', 'Dani', '06202125');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('laci.jpg', 'Worker', 'laci1','laci',3, 'asdasd@asd.hu', 'Laci', '06202126',2, 'Jonapot! Remelem, hogy engem valasztanak. Megprobalom a leheto legjobb munkat nyujtani! Koszonom, hogy ranyomtal az oldalamra!');
-INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('laci.jpg', 'Worker', 'lac21','laci',3, 'asdasd@asd.hu', 'Laca', '06202126',2, 'Jonapot! Remelem, hogy engem valasztanak. Megprobalom a leheto legjobb munkat nyujtani! Koszonom, hogy ranyomtal az oldalamra!');
+INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('laci.jpg', 'Worker', 'lac21','lacsi',3, 'asdasd@asd.hu', 'Laca', '06202126',2, 'Jonapot! Remelem, hogy engem valasztanak. Megprobalom a leheto legjobb munkat nyujtani! Koszonom, hogy ranyomtal az oldalamra!');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('lio.jpg','Worker', 'peti1','peti',3, 'petamti65@asd.hu', 'Peter', '06202127',3, 'Jonapot! Remelem, hogy engem valasztanak. Megprobalom a leheto legjobb munkat nyujtani! Koszonom, hogy ranyomtal az oldalamra!Jonapot! Remelem, hogydasdasdasdasdasdasdasdas3123123, 1231231231231312dasdasdasdasdasdasdasdas31231231231231231231312');
-INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('szilvi.png','Worker', 'kutya','erzsebet',3, 'erzsike@asd.hu', 'Erzsebet', '06202128',3, 'Jonapot! Remelem, hogy engem valasztanak. Megprobalom a leheto legjobb munkat nyujtani! Koszonom, hogy ranyomtal az oldalamra!');
+INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('szilvi.jpg','Worker', 'kutya','erzsebet',3, 'erzsike@asd.hu', 'Erzsebet', '06202128',3, 'Jonapot! Remelem, hogy engem valasztanak. Megprobalom a leheto legjobb munkat nyujtani! Koszonom, hogy ranyomtal az oldalamra!');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('jani.jpg','Worker', 'kutya','zsolt6',3, 'zszs@asd.hu', 'Zsolti', '06202129',4, 'dasdasdasdasdasdasdastamdas31231231231231231231312');
-INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('szilvi.png','Worker', 'kutya','tomi',3, 'kocsik@asd.hu', 'Tamas', '06202120',6, 'rosdasdasdasdasdasdasdasdas31231231231231 231231312dasdasdasdasdasdasdasdas, 31231231231231231231312dasdasdasdasdasdasdasdas312312312312 31231231312dasdasdasdasdasdasdasdas312312 31231231231231312z');
+INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('szilvi.jpg','Worker', 'kutya','tomi',3, 'kocsik@asd.hu', 'Tamas', '06202120',6, 'rosdasdasdasdasdasdasdasdas31231231231231 231231312dasdasdasdasdasdasdasdas, 31231231231231231231312dasdasdasdasdasdasdasdas312312312312 31231231312dasdasdasdasdasdasdasdas312312 31231231231231312z');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('joe.jpg','Worker', 'kutya','lala4343',3, 'lala@asd.hu', 'Laura', '06202112',3, 'rosz');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('joe.jpg','Worker', 'kutya','csokitorta',3, 'fagyi@asd.hu', 'Bettina', '06202113',8, 'rosz');
-INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('szilvi.png','Worker', 'kutya','alkalmazzatokpls',3, 'pls@asd.hu', 'Gyula', '06202111',7, 'rosz');
+INSERT INTO USERS (USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('Worker', 'kutya','alkalmazzatokpls',3, 'pls@asd.hu', 'Gyula', '06202111',7, 'rosz');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('joe.jpg','Worker', 'kutya','csakegymunkas',3, 'szia@asd.hu', 'Bence', '06202114',6, 'rosz');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('jani.jpg','Worker', 'kutya','kerekesnorbert',3, 'kn22@asd.hu', 'Tampere', '06202115',1, 'rosz');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('peti.jpg','Worker', 'kutya','abc123',3, 'def456@asd.hu', 'Kriszta', '06202116',3, 'dasdasdasdasdasdasdasdas31231231231231231231312');
@@ -99,7 +99,12 @@ INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES
 INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('user vok, dsdssdsda', '2', current_timestamp, 11,2);
 INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('user vok, petsadasdasdinnak', '3', current_timestamp, 12,2);
 INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('asddas vok, pedsadsatinnak', '4', current_timestamp, 13,2);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('asddas vok, pedsadsatinnak', '4', current_timestamp, 13,3);
 INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('user vok, petinnak', '5', current_timestamp, 14,2);
 INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('user das, petinnak', '3', current_timestamp, 8,3);
 INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('user vok, petinnak', '4', current_timestamp, 8,4);
 INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('user vok, petidasnnak', '1', current_timestamp, 8,5);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('user vok, petidasnnak', '1', current_timestamp, 15,5);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('user vok, petidasnnak', '5', current_timestamp, 15,4);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('user vok, petidasnnak', '2', current_timestamp, 15,3);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('user vok, petidasnnak', '1', current_timestamp, 15,2);

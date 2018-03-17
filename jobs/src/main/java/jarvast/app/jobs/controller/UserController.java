@@ -1,6 +1,7 @@
 package jarvast.app.jobs.controller;
 
 import jarvast.app.jobs.entity.Category;
+import jarvast.app.jobs.entity.User;
 import jarvast.app.jobs.entity.Worker;
 import jarvast.app.jobs.service.CategoryService;
 import jarvast.app.jobs.service.UserService;
@@ -63,6 +64,15 @@ public class UserController<T> {
     @GetMapping("/worker/{id}")
     private ResponseEntity<Worker> getWorker(@PathVariable(value = "id") Long id) {
         return ResponseEntity.ok(userService.getWorker(id));
+    }
+    @GetMapping("/user/{id}")
+    private ResponseEntity<User> getUser(@PathVariable(value = "id") Long id) {
+        return ResponseEntity.ok(userService.getUser(id));
+    }
+    
+    @GetMapping("/workers/top")
+    private ResponseEntity<Iterable<Worker>> getTop5Workers(){
+        return ResponseEntity.ok(userService.getTop5());
     }
 
 }

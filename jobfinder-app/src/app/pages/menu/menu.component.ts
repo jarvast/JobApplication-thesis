@@ -17,8 +17,8 @@ interface MenuItem {
 })
 export class MenuComponent implements OnInit {
   private common: MenuItem[] = [
-    {link: '/help', title: 'Szakember reg'},
-    {link: '/help', title: 'Felhasználó reg'}
+    {link: '/help', title: 'Szakember regisztráció'},
+    {link: '/help', title: 'Felhasználó regisztráció'}
   ];
 
   

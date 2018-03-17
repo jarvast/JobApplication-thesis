@@ -37,6 +37,9 @@ export class WorkerListComponent implements OnInit {
     });
     //console.log("ez a tab" + this.categoryName);
   }
+  favorite(){
+    console.log("fav")
+  }
   sortbyBestRating(){
     this.selectedWorkers.sort((leftSide,rightSide): number =>{
       if (leftSide.rating > rightSide.rating) return -1;

@@ -34,7 +34,7 @@ public abstract class BaseUser {
     @JsonIgnore
     private String password;
     
-    @Column(columnDefinition = "varchar(40) default 'default.jpg'")
+    @Column(columnDefinition = "varchar(40) default 'default.png'")
     private String image;
 
     @OneToMany(

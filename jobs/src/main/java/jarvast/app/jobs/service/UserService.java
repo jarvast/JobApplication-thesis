@@ -2,8 +2,10 @@ package jarvast.app.jobs.service;
 
 import jarvast.app.jobs.entity.BaseUser;
 import jarvast.app.jobs.entity.Category;
+import jarvast.app.jobs.entity.User;
 import jarvast.app.jobs.entity.Worker;
 import jarvast.app.jobs.repository.UserRepository;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -81,6 +83,9 @@ public class UserService<T> {
     public Worker getWorker(Long id) {
         return calculateRate(userRepository.findOne(id));
     }
+    public User getUser(Long id){
+        return userRepository.findById(id);
+    }
 
     private Worker calculateRate(Worker worker) {
         Double rate = ratingService.calculateRating(worker);
@@ -90,6 +95,11 @@ public class UserService<T> {
             worker.setRating(rate);
         }
         return worker;
+    }
+    public List<Worker> getTop5(){
+        List<Worker> workerList = userRepository.findAllWorkers();
+        workerList.sort((r1, r2) -> Integer.compare(r2.getRatings().size(), r1.getRatings().size()));
+        return workerList.subList(0, 5);
     }
 
 }

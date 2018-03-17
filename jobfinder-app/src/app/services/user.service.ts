@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Server, Routes } from '../utils/ServerRoutes';
 import { WorkerUser } from '../model/WorkerUser';
+import { UserUser } from '../model/UserUser';
 
 @Injectable()
 export class UserService {
@@ -21,5 +22,11 @@ export class UserService {
   }
   getWorker(id: number) : Observable<WorkerUser>{
     return this.http.get<WorkerUser>(Server.routeTo(Routes.SINGLEWORKER) + '/' + id);
+  }
+  getTop5(): Observable<WorkerUser[]>{
+    return this.http.get<WorkerUser[]>(Server.routeTo(Routes.ALLWORKERS) + '/top');
+  }
+  getUser(id: number) : Observable<UserUser>{
+    return this.http.get<UserUser>(Server.routeTo(Routes.SINGLEUSER) + '/' + id);
   }
 }

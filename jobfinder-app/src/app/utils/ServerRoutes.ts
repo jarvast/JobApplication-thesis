@@ -8,6 +8,7 @@ export class Routes {
     static ALLWORKERS: String = 'user/workers';
     static SEARCHWORKERS: String = 'user/workers/search';
     static SINGLEWORKER: String = 'user/worker';
+    static SINGLEUSER: String = 'user/user';
     static CATEGORIES: String = 'categories';
     static RATING: String = 'ratings';
     static LOCATION: String = 'location';

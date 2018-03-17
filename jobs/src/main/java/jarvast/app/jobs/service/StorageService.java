@@ -17,7 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class StorageService {
 
     private final Path rootLocation = Paths.get("upload-dir");
-    private final String defaultFileName = "default.jpg";
+    private final String defaultFileName = "default.png";
     @Autowired
     private UserService userService;
 
@@ -39,7 +39,7 @@ public class StorageService {
             userService.updateImg(newFileName);
             Files.move(this.rootLocation.resolve(file.getOriginalFilename()), this.rootLocation.resolve(file.getOriginalFilename()).resolveSibling(newFileName), StandardCopyOption.REPLACE_EXISTING);
         } catch (Exception e) {
-            throw new RuntimeException("Fail with storage!");
+            throw new RuntimeException("Fail with swtorage!");
         }
     }
 

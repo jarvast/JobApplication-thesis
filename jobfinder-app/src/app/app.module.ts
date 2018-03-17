@@ -28,6 +28,7 @@ import { WorkerProfileComponent } from './pages/worker-profile/worker-profile.co
 import { TaskTableComponent } from './pages/task-table/task-table.component';
 import { TasksService } from './services/tasks.service';
 import { RatingDetailedComponent } from './pages/rating-detailed/rating-detailed.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { RatingDetailedComponent } from './pages/rating-detailed/rating-detailed
     TruncatePipe,
     WorkerProfileComponent,
     TaskTableComponent,
-    RatingDetailedComponent
+    RatingDetailedComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

@@ -1,12 +1,21 @@
 <div class="toppart">
   <img src="{{imgRoute + worker.imgName}}" alt="{{imgRoute + worker.imgName}}">
-  <div class="textpart"><h1>{{worker.name}}</h1><p>{{worker.phoneNum}}</p><app-locations [workerId]='worker.id'></app-locations></div>
+  <div class="textpart"><h1>{{worker.name}}   
+    <button mat-fab (click)="favorite()" matTooltip="Kedveléshez jelentkezzen be!" matTooltipHideDelay="2000">
+      <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+    </button> </h1><p>{{worker.phoneNum}}</p><app-locations [workerId]='worker.id'></app-locations></div>
+</div>
+<div class="buttons">
+  <button mat-raised-button color="primary" (click)="sendMessage()" matTooltip="Üzenetküldéshez jelentkezzen be!" matTooltipHideDelay="2000">Üzenetküldés</button>
+  <div>
+    <button mat-raised-button color="primary" (click)="report()" matTooltip="Jelentéshez jelentkezzen be!" matTooltipHideDelay="2000">Jelentés</button>
+  </div>
 </div>
 <div class="descpart">
   <p>{{worker.description}}</p>
 </div>
 <div class="taskpart">
-  Az árak a típustól, mérettől és határidőtől függenek!
+  Az árak a típustól, mérettől és határidőtől függenek! <button mat-raised-button color="primary" (click)="reservation()" matTooltip="Időpontfoglaláshoz jelentkezzen be!" matTooltipHideDelay="2000">Időpontfoglalás</button>
   <app-task-table [workerId]='worker.id'></app-task-table>
 </div>
 <div class="ratingpart">
