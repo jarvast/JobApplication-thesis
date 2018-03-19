@@ -11,6 +11,9 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity(name = "User")
 @DiscriminatorValue("User")
@@ -25,8 +28,9 @@ public class User extends BaseUser {
     @Column
     private String phoneNum;
 
-    @Column
-    private String location;
+    @ManyToOne(targetEntity = Location.class ,fetch = FetchType.EAGER)
+    @JoinColumn(name = "location_id")
+    private Location location;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
@@ -39,7 +43,7 @@ public class User extends BaseUser {
     @JsonIgnore
     private List<Worker> favorites = new ArrayList<Worker>();
 
-    public User(String email, String name, String phoneNum, String location) {
+    public User(String email, String name, String phoneNum, Location location) {
         this.email = email;
         this.name = name;
         this.phoneNum = phoneNum;
@@ -49,9 +53,6 @@ public class User extends BaseUser {
     public User() {
     }
 
-    //private String imgUrl;*/
-    ;
-
     public List<Worker> getFavorites() {
         return favorites;
     }
@@ -60,7 +61,6 @@ public class User extends BaseUser {
         this.favorites = favorites;
     }
 
-    //private String imgUrl;*/
     public String getEmail() {
         return email;
     }
@@ -85,11 +85,11 @@ public class User extends BaseUser {
         this.phoneNum = phoneNum;
     }
 
-    public String getLocation() {
+    public Location getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(Location location) {
         this.location = location;
     }
 

@@ -1,23 +1,51 @@
 package jarvast.app.jobs.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity(name = "Locations")
 public class Location extends BaseEntity {
 
     @Column(name = "location_name")
     private String locationName;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "worker_id")
+    
+    @ManyToMany(mappedBy = "locations", cascade = CascadeType.ALL)
     @JsonIgnore
-    private Worker worker;
+    private List<Worker> worker = new ArrayList<Worker>();
+    
+    @OneToMany(
+        mappedBy = "location", 
+        cascade = CascadeType.ALL,
+        orphanRemoval = true
+    )
+    @JsonIgnore
+    private List<User> users;
+
+    public List<Worker> getWorker() {
+        return worker;
+    }
+
+    public void setWorker(List<Worker> worker) {
+        this.worker = worker;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
 
     public String getLocation() {
         return locationName;
@@ -27,11 +55,11 @@ public class Location extends BaseEntity {
         this.locationName = location;
     }
 
-    public Worker getWorker() {
+    public List<Worker> getWorkers() {
         return worker;
     }
 
-    public void setWorker(Worker worker) {
+    public void setWorkers(List<Worker> worker) {
         this.worker = worker;
     }
 

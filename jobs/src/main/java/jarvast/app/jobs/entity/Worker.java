@@ -1,7 +1,6 @@
 package jarvast.app.jobs.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jarvast.app.jobs.service.UserService;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -10,11 +9,11 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity(name = "Worker")
 @DiscriminatorValue("Worker")
@@ -28,11 +27,14 @@ public class Worker extends BaseUser {
 
     @Column
     private String phoneNum;
-
-    @OneToMany(
-            mappedBy = "worker",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
+    
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "workers_locations",
+            joinColumns = {
+                @JoinColumn(name = "worker_id")},
+            inverseJoinColumns = {
+                @JoinColumn(name = "locations_id")}
     )
     @JsonIgnore
     private List<Location> locations = new ArrayList<Location>();
@@ -111,6 +113,7 @@ public class Worker extends BaseUser {
     public void setRating(double rating) {
         this.rating = rating;
     }
+    
     public List<Location> getLocations() {
         return locations;
     }

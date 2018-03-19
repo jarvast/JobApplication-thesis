@@ -24,12 +24,14 @@ public class LocationService {
         List<Location> locationList = locationRepository.findPeopleDistinctBylocationNameContainingAllIgnoreCase(input);
         List<Worker> noDuplicateList = new ArrayList<>();
         for (Location loc : locationList) {
-            noDuplicateList.add(loc.getWorker());
+            noDuplicateList.addAll(loc.getWorkers());
         }
+        /*
         Set<Worker> temp = new HashSet<>();
         temp.addAll(noDuplicateList);
         noDuplicateList.clear();
-        noDuplicateList.addAll(temp);
+        noDuplicateList.addAll(temp);*/
         return noDuplicateList;
+        //return noDuplicateList;
     }
 }
