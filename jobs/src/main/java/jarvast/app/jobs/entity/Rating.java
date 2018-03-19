@@ -22,7 +22,7 @@ public class Rating extends BaseEntity {
     @JsonIgnore
     private Worker receiver;
 
-    @Column
+    @Column(columnDefinition = "varchar(250) default 'A felhasználó nem adott meg szöveges értékelést.'")
     private String content;
 
     @Column

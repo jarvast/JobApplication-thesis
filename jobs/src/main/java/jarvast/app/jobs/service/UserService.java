@@ -5,6 +5,8 @@ import jarvast.app.jobs.entity.Category;
 import jarvast.app.jobs.entity.User;
 import jarvast.app.jobs.entity.Worker;
 import jarvast.app.jobs.repository.UserRepository;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -89,10 +91,13 @@ public class UserService<T> {
 
     private Worker calculateRate(Worker worker) {
         Double rate = ratingService.calculateRating(worker);
+        //DecimalFormat df = new DecimalFormat("0,00");
+        //df.setRoundingMode(RoundingMode.CEILING);
         if (Double.isNaN(rate)) {
             worker.setRating(0.0);
         } else {
             worker.setRating(rate);
+           // worker.setRating(Double.parseDouble(df.format(rate)));
         }
         return worker;
     }

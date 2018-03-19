@@ -1,7 +1,7 @@
 INSERT INTO ROLES (ROLE_NAME) VALUES ('ADMIN');
 INSERT INTO ROLES (ROLE_NAME) VALUES ('USER');
 INSERT INTO ROLES (ROLE_NAME) VALUES ('WORKER');
-
+--1-8
 INSERT INTO CATEGORIES (CATEGORY_NAME, PICTURE) VALUES ('Autoszerelo', '1.png');
 INSERT INTO CATEGORIES (CATEGORY_NAME, PICTURE) VALUES ('Villanyszerelo', '2.png');
 INSERT INTO CATEGORIES (CATEGORY_NAME, PICTURE) VALUES ('Viz-gaz-futesszerelo', '3.png');
@@ -12,7 +12,8 @@ INSERT INTO CATEGORIES (CATEGORY_NAME, PICTURE) VALUES ('Haztartasi gepszerelo',
 INSERT INTO CATEGORIES (CATEGORY_NAME, PICTURE) VALUES ('Komuves', '8.png');
 
 
-
+--1-30
+INSERT INTO LOCATIONS (LOCATION_NAME) VALUES ('Budapest');
 INSERT INTO LOCATIONS (LOCATION_NAME) VALUES ('Budapest I.');
 INSERT INTO LOCATIONS (LOCATION_NAME) VALUES ('Budapest II.');
 INSERT INTO LOCATIONS (LOCATION_NAME) VALUES ('Budapest III.');
@@ -43,14 +44,21 @@ INSERT INTO LOCATIONS (LOCATION_NAME) VALUES ('Miskolc');
 INSERT INTO LOCATIONS (LOCATION_NAME) VALUES ('Debrecen');
 INSERT INTO LOCATIONS (LOCATION_NAME) VALUES ('Szekszard');
 
+--1-12
 INSERT INTO USERS (USER_TYPE, PASSWORD, USERNAME, ROLE_ID, NAME) VALUES ('Admin', 'admin','admin',1, 'Tomi');
-INSERT INTO USERS (USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, LOCATION_ID) VALUES ('User', 'user','user',2, 'asd1@asd.hu',  'Jancsi', '06202121', 11);
-INSERT INTO USERS (USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, LOCATION_ID) VALUES ('User', 'user','kutyabarat21',2, 'asdzdt@asd.hu',  'Eniko', '06202122',1);
-INSERT INTO USERS (USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, LOCATION_ID) VALUES ('User', 'user','jozsef882',2, 'asd323@asd.hu',  'Jozsef', '06202123',4);
-INSERT INTO USERS (USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, LOCATION_ID) VALUES ('User', 'user','szilviuser',2, 'kutyak@asd.hu',  'Szilvi', '06202124',6);
-INSERT INTO USERS (USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, LOCATION_ID) VALUES ('User', 'user','kshai',2, 'ksk@asd.hu', 'Dani', '06202125',8);
+INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, LOCATION_ID) VALUES ('user.jpg', 'User', 'user','user',2, 'user@user.hu',  'Lee Sandor', '06309987876', 11);
+INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, LOCATION_ID) VALUES ('tomi.jpg', 'User', 'user','tomi',2, 'tomi34@gmail.hu',  'Ablakos Tomi', '06309987876',21);
+INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, LOCATION_ID) VALUES ('tibor.jpg', 'User', 'user','tibor',2, 'tibi96@asd.hu',  'Terep Tibor', '06309987876',4);
+INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, LOCATION_ID) VALUES ('patrik.jpg', 'User', 'user','patrik',2, 'pati@invitel.hu',  'Vizi Patrik', '06309987876',6);
+INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, LOCATION_ID) VALUES ('jozsef.jpg', 'User', 'user','jozsef',2, 'jozsi21@gmail.hu', 'Kovacs Jozsef', '06309987876',7);
+INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, LOCATION_ID) VALUES ('gyorgyi.jpg', 'User', 'user','gyorgyi',2, 'gyorgyike@digi.hu', 'Nyugati Gyorgyi', '06309987876',8);
+INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, LOCATION_ID) VALUES ('gergely.jpg', 'User', 'user','gergely',2, 'gergo25@digi.hu', 'Dani', '06309987876',24);
+INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, LOCATION_ID) VALUES ('erzsi.jpg', 'User', 'user','erzsi',2, 'erzsimama@thome.hu', 'Dani', '06309987876',7);
+INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, LOCATION_ID) VALUES ('balazs.jpg', 'User', 'user','balazs',2, 'balazs@freemail.hu', 'Dani', '06309987876',21);
+INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, LOCATION_ID) VALUES ('anna.jpg', 'User', 'user','anna',2, 'anna.kiss@gmail.hu', 'Kiss Anna', '06309987876',10);
+INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, LOCATION_ID) VALUES ('adam.jpg', 'User', 'user','adam',2, 'adamszalai@citromail.hu', 'Szalai Adam', '06309987876',26);
 
-
+--13-20
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('kriszti1992.jpg', 'Worker', 'krisz','kriszti1992',3, 'kriszti92@gmail.com', 'Kriszti', '062022126',1, 'Foglalkozom regi illetve ujabb evjaratu autok szervizelesevel, szeretettel varom a muhelyemben, illetve kiszallasra is van lehetoseg!');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('ferenc.jpg', 'Worker', 'kriz','ferenc',3, 'ferenc1995@gmail.com', 'Ferenc Ajtos', '06302218787',1, 'Udv! Fiatalos, de tapasztalt csapat varja Ont szervizunkben Budapesten, a fo profilunk a japan illetve a koreai gyartmanyu autok javitasa.');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('javito.jpg', 'Worker', 'kisz','javito',3, 'javitok@gmail.com', 'Javito Jani', '06202233236',1, 'Kozel 20 eve foglalkozom BMW, Mercedes, Audi, Opel es egyeb nemet gyartmanyu autok szervizelesevel, forduljon bizalommal hozzank!');
@@ -59,24 +67,24 @@ INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, P
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('autos.jpg', 'Worker', 'kisz','autos',3, 'autospeti@gmail.com', 'Autos Peter', '062022556236',1, 'Motorok, illetve kisteherautok szervizelese is megoldhato nalunk, kuldjon uzenetet!');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('erika778.jpg', 'Worker', 'pass','erika778',3, 'erika778@asd.hu', 'Nagy Erika', '06202126',1, 'Foglaljon idopontot es autojat akar par oran belul megvizsgaljuk, a felmeres utan az arlistat figyelembe veve kap tolunk ajanlatot!');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('barat.jpg', 'Worker', 'kisz','barat',3, 'barattamas@gmail.com', 'Barat Tamas', '062022556236',1, 'Alvazjavitasra nem talal jobb embert nalam, vegye fel a kapcsolatot!');
-
+--21-25
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('alma112.jpg','Worker', 'almafa','alma112',3, 'almaalma@citromail.hu', 'Kovacs Alma', '06708765657',2, 'Udvozlom! Kedvezmenyes kiszallasi dijjal allok rendelkezesere, az arlistamon mindent megtalal, tovabbi informaciokert kuldjon uzenetet!');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('peter.jpg','Worker', 'almafa','peter',3, 'peternagy@citromail.hu', 'Nagy Peter', '06708765657',2, '20 eve villanyszerelessel foglalkozom, a felmeres utan kepessegeimhez merten barmit meg tudok valositani!');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('laci.jpg','Worker', 'almafa','laci',3, 'laci1993@citromail.hu', 'Laszlo', '06708765657',2, 'Barmilyen villanyszerelesi, illetve epuletgepeszeti munkaval keressen bizalommal, velem a leggyorsabban megvalosithatja terveit! ');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('andris5.jpg','Worker', 'almafa','andris5',3, 'andris1956@citromail.hu', 'Alma Andras', '067065657',2, 'Uj kapcsolok, dugaljak, lampak felszerelese? Az ilyen gyors munkakat kedvezmenyes aron vegzem el, tudva milyen gyorsan szukseg lehet az ilyen aprosagokra! ');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('feri22.jpg','Worker', 'almafa','feri22',3, 'ferenc@freemail.hu', 'Szegedi Ferenc', '06708766757',2, 'Nagyobb intezmenyek, ingatlanok teljeskoru villanyszerelesevel is foglalkozom, ilyen munka eseten uzenetben keressen fel mindenkepp! ');
-
+--26-29
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('aladar.jpg','Worker', 'alad','aladar',3, 'aladar47@freemail.hu', 'Arany Aladar', '06708766757',3, 'Viz-gaz es futessel is foglalkozom, az arlistan ilyen jellegu feladatokat is megtalal. Leggyakrabban csaladi hazak, illetve uj epitesu ingatlanok szerelesehez/epitkezesehez hivnak, hivjon On is!');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('istvan.jpg','Worker', 'alad','istvan',3, 'kovacs.istvan@freemail.hu', 'Kovacs Istvan', '06708766757',3, '30 eves tapasztalattal rendelkezem, egeszen az egyszeru dugulastol a teljes vizesblokk beszereleseig. Ne feledje, ha vizszereles, akkor Kovacs Istvan!');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('bence.jpg','Worker', 'alad','bence',3, 'bence.kiss@freemail.hu', 'Kiss Bence', '06708766757',3, 'Fiatalos, gyors munkavegzes, kis felar eseten villamfelmeressel, irjon ram :) !');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('denes.jpg','Worker', 'alad','denes',3, 'denes77@citromail.hu', 'Horvath Denes', '06207896765',3, 'Futesrendszer a fo szakteruletem, ezek kozul gazos, elektromos, de akar fatuzeleses megoldasokat is konyneden szerelek/epitek!');
 
-
+--30-33
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('lilla12.jpg','Worker', 'kutya2','lilla12',3, 'lilla12@hotmail.hu', 'Fekete Lilla', '0620212229',4, '');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('kerteszferi.jpg','Worker', 'kutya4','kerteszferi',3, 'kerteszferenc@hotmail.hu', 'Kertesz Ferenc', '06304567676',4, 'Faiskolaban dolgoztam 10 evig, gyumolcsoskertek gondozasaval, erdeszeti munkakkal foglalkoznek, kisebb munkakent akar favagassal is!');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('sandor.jpg','Worker', 'kutya2','sandor',3, 'sandor@hotmail.hu', 'Foldes Sandor', '0620212229',4, 'Viragoskertek illetve akar zoldsegeskertek karbantartasaval kapcsolatban keressen nyugodtan!');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('antal.jpg','Worker', 'kuter','antal',3, 'antalj40@hotmail.hu', 'Jonas Antal', '06704453434',4, '30 eves tapasztalattal rendelkezo kertesz keres csaladi hazat vagy birtokot, amit felugyelhet.');
-
+--34-39
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('girl126.jpg','Worker', 'kutya','girl126',3, 'erzsike@asd.hu', 'Erzsebet', '0620222128',5, 'Egyedi butorok es haztartasi eszkozok keszitesevel tervezesevel foglalkozunk, ha van barmilyen otlete vegye fel a kapcsolatot es megnezzuk mit tehetunk!');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('gabor.jpg','Worker', 'kutya','gabor',3, 'gabor@gmail.hu', 'Takacs Gabor', '067210101',5, 'Kisebb butorok keszitesevel foglalkozom, csak a legjobb minosegu alapanyagokbol!');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('karoly.jpg','Worker', 'kutya','karoly',3, 'karoly@freemail.hu', 'Tolgyes Karoly', '0688799867',5, 'Udvozlom! Barmilyen faipari termek elolallitasat rank bizhatja a gerendatol egeszen a hajopadloig!');
@@ -84,75 +92,185 @@ INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, P
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('marcell.jpg','Worker', 'kutya','marcell',3, 'marcell@gmail.hu', 'Marcell', '0620232221',5, '30 eves tapasztalattal rendelkezo asztalosmester varja a hivasat.');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('lali.jpg','Worker', 'kutya','lali',3, 'laliapu@gmail.hu', 'Gerendas Lajos', '0620232221',5, 'Muhelyemben barmilyen szekreny, garbrobszekreny, konyhabutor, nappali butor vagy komod kesziteset vallalom!');
 
-
+--40-42
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('szilvi.jpg','Worker', 'cica','szilvi',3, 'szilvi79@freemail.hu', 'Barat Szilvia', '06202120',6, 'Szobafestes most kedvezmenyes aron, a hely meretetol fuggoen, akar mennyisegi kedvezmennyel is, keressen batran!');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('festo.jpg','Worker', 'cica','festo',3, 'oli55@freemail.hu', 'Kocka Oliver', '06202189920',6, 'Az anyag miatt se aggodjon, a festek kevereset en magam vegzem minosegi alapanyagokbol, evtizedes szakertelemmel!');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('joe.jpg','Worker', 'cica','joe',3, 'joe21@freemail.hu', 'Barna Jonas', '06202189920',6, 'Muveszi kepek festesevel is foglalkoztam par evig, igy akar gyermekszobai rajzokat is festhetek egyedi otlet alapjan.');
-
+--43-46
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('david.jpg','Worker', 'cica','david',3, 'david33@freemail.hu', 'Budai David', '06202189920',7, 'Kedvezo kiszallasi dijjal vallalom mosogepek, hutogepek, mosogatogepek szervizeleset, keressen uzenetben ajanlatert!');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('jani.jpg','Worker', 'cica','jani',3, 'jancsika@freemail.hu', 'Pesti Janos', '06202189920',7, 'Pesti Janos, a mosogepek szakertoje: barmilyen markaju es tipusu mosogep javitasaval foglalkozom, legyen akar kisebb meghibasodasrol szo vagy akar nagyobb komponensek cserejerol!');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('feco.jpg','Worker', 'cica','feco',3, 'fecofeco@freemail.hu', 'Ferenc Oliver', '06202189920',7, 'Akar televiziorol, akar mosogeprol van szo, hivjon batran es megnezem mi a gond!');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('geri.jpg','Worker', 'cica','geri',3, 'geri22@freemail.hu', 'Balatoni Gabi', '06202189920',7, 'Nem megy a tv? Nincsen internet? Irjon ram es par oran belul mar ott is vagyok, ingatlanok kabelezesevel is foglalkozom es egyeb aprosagokkal!');
-
+--47-51
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('gergo.jpg','Worker', 'cica','gergo',3, 'gergely@freemail.hu', 'Erdei Gergo', '06202189920',8, 'Hazak epiteseben szerzett 20 eves tapasztalattal varom a leendo ugyfeleim, ha betonozasra, falepitesre vagy alapozasra van szuksege!');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('mate.jpg','Worker', 'cica','mate',3, 'mate126@freemail.hu', 'Matek Mate', '06202189920',8, 'Csapatommal vallaljuk hazak epiteset, alapozasat, igeny eseten tervezeset is, forduljon hozzank bizalommal!');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('komuves.jpg','Worker', 'cica','komuves',3, 'gyuripapa@freemail.hu', 'Komuves Gyuri', '06202189920',8, 'Barmilyen egyedi otlet megvalostiasat vallalom elozetes egyeztetes utan, gyors munkaidovel!');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('gazsi.jpg','Worker', 'cica','gazsi',3, 'gerzson@freemail.hu', 'Gerzson', '06202189920',8, 'Udv! Az alapveto komuves munkakon kivul hoszigetelest, burkolast, kulso festest is vallalunk, ha minket valaszt az ingatlanja idotallo lesz evtizedek mulva is!');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('peti95.jpg','Worker', 'cica','peti95',3, 'peter.95@freemail.hu', 'Kalap Peter', '06306754432',8, 'Falazas, vakolas, nyilaszarok behelyezese, ezek csak izelitok a szeles palettankrol, kuldjon uzenetet vagy hivjon minket meg ma!');
 
-INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('olajcsere', '1000-2000 Ft', 7);
-INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('olajcsere', '1000-2000 Ft', 7);
-INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('olajcsere', '1000-2000 Ft', 7);
-INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('olajcsere', '1000-2000 Ft', 7);
-INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('kerekcsere', '50000 Ft', 8);
-INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('kerekcsere', '50000 Ft', 8);
-INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('kerekcsere', '50000 Ft', 8);
-INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('kerekcsere', '50000 Ft', 8);
-INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('kerekcsere', '50000 Ft', 8);
-INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('asztal', '50000 Ft', 9);
-INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('fa', '50000 Ft', 9);
-INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('raty', '50000 Ft', 9);
+INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('olajcsere', '1000-2000 Ft', 13);
+INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('olajcsere', '1000-2000 Ft', 13);
+INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('olajcsere', '1000-2000 Ft', 13);
+INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('olajcsere', '1000-2000 Ft', 13);
+INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('olajcsere', '1000-2000 Ft', 13);
+INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('olajcsere', '1000-2000 Ft', 13);
+INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('olajcsere', '1000-2000 Ft', 13);
+INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('kerekcsere', '50000 Ft', 15);
+INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('kerekcsere', '50000 Ft', 16);
+INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('kerekcsere', '50000 Ft', 18);
+INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('kerekcsere', '50000 Ft', 20);
+INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('kerekcsere', '50000 Ft', 22);
+INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('asztal', '50000 Ft', 45);
+INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('fa', '50000 Ft', 37);
+INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('favagas', '50000 Ft', 16);
+INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('szek', '50000 Ft', 16);
 INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('szek', '50000 Ft', 10);
-INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('szek', '50000 Ft', 10);
-INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('szek', '50000 Ft', 10);
-INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('szek', '50000 Ft', 10);
-INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('szek', '50000 Ft', 10);
+INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('szek', '50000 Ft', 14);
+INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('szek', '50000 Ft', 14);
+INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('szek', '50000 Ft', 14);
 
 
-INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok user, laci vagyok', 'false', current_timestamp, 2,3);
-INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok laci, user vagyok', 'false', current_timestamp, 7,4);
-INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok laci, user vagyok', 'false', current_timestamp, 5,2);
-INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok laci, user vagyok', 'false', current_timestamp, 3,4);
-INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok laci, user vagyok', 'false', current_timestamp, 7,1);
+INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok user, laci vagyok', 'false', current_timestamp, 13,3);
+INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok laci, user vagyok', 'false', current_timestamp, 13,4);
+INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok laci, user vagyok', 'false', current_timestamp, 13,2);
+INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok laci, user vagyok', 'false', current_timestamp, 13,3);
+INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok laci, user vagyok', 'false', current_timestamp, 14,4);
+INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok laci, user vagyok', 'false', current_timestamp, 15,4);
+INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok laci, user vagyok', 'false', current_timestamp, 15,12);
+INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok laci, user vagyok', 'false', current_timestamp, 16,12);
+INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok laci, user vagyok', 'false', current_timestamp, 17,12);
+INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok laci, user vagyok', 'false', current_timestamp, 18,12);
+INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok laci, user vagyok', 'false', current_timestamp, 19,12);
 
-INSERT INTO USERS_FAVORITES (USER_ID, WORKER_ID) VALUES (2,8);
-INSERT INTO USERS_FAVORITES (USER_ID, WORKER_ID) VALUES (2,9);
-INSERT INTO USERS_FAVORITES (USER_ID, WORKER_ID) VALUES (2,10);
-INSERT INTO USERS_FAVORITES (USER_ID, WORKER_ID) VALUES (2,11);
-INSERT INTO USERS_FAVORITES (USER_ID, WORKER_ID) VALUES (3,7);
-INSERT INTO USERS_FAVORITES (USER_ID, WORKER_ID) VALUES (3,8);
+INSERT INTO USERS_FAVORITES (USER_ID, WORKER_ID) VALUES (2,13);
+INSERT INTO USERS_FAVORITES (USER_ID, WORKER_ID) VALUES (2,14);
+INSERT INTO USERS_FAVORITES (USER_ID, WORKER_ID) VALUES (2,15);
+INSERT INTO USERS_FAVORITES (USER_ID, WORKER_ID) VALUES (3,13);
+INSERT INTO USERS_FAVORITES (USER_ID, WORKER_ID) VALUES (5,17);
+INSERT INTO USERS_FAVORITES (USER_ID, WORKER_ID) VALUES (6,18);
 
-INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Jo volt a fiu', '2', current_timestamp, 7,2);
-INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('user vok remek munka', '5', current_timestamp, 8,2);
-INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('A munka végzését elvégezte A munka végzését elvégezte A munka végzését elvégezte A munka végzését elvégezte A munka végzését elvégezte A munka végzését elvégezte A munka végzését elvégezte A munka végzését elvégezte ', '5', current_timestamp, 9,2);
-INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('user vok, pdsadasetinnak', '4', current_timestamp, 7,3);
-INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('user vok, petinnak', '4', current_timestamp, 7,4);
-INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('dasdasd, petidasdasdsannak', '2', current_timestamp, 7,5);
-INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('user vok, petinnak', '1', current_timestamp, 7,6);
-INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('user vok, petinnak', '5', current_timestamp, 10,2);
-INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('user vok, dsdssdsda', '2', current_timestamp, 11,2);
-INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('user vok, petsadasdasdinnak', '3', current_timestamp, 12,2);
-INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('asddas vok, pedsadsatinnak', '4', current_timestamp, 13,2);
-INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('asddas vok, pedsadsatinnak', '4', current_timestamp, 13,3);
-INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('user vok, petinnak', '5', current_timestamp, 14,2);
-INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('user das, petinnak', '3', current_timestamp, 8,3);
-INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('user vok, petinnak', '4', current_timestamp, 8,4);
-INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('user vok, petidasnnak', '1', current_timestamp, 8,5);
-INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('user vok, petidasnnak', '1', current_timestamp, 15,5);
-INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('user vok, petidasnnak', '5', current_timestamp, 15,4);
-INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('user vok, petidasnnak', '2', current_timestamp, 15,3);
-INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('user vok, petidasnnak', '1', current_timestamp, 15,2);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Jol elvegezte a munkat', '4', current_timestamp, 13,3);
+INSERT INTO RATINGS (RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('5', current_timestamp, 13,4);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('A munka vegzese maradektalanul megtortent, de fizetes kozben egy kis nezetelteresunk akadt, amit aztan sikerult megoldani ', '3', current_timestamp, 13,2);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Barmikor rabiznam az automat, nagyon megbizhato es keszseges ember!', '5', current_timestamp, 13,4);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('8eve hozza viszem a csaladi autot, eddig mindig tudott segiteni es nem is draga!', '5', current_timestamp, 14,5);
+INSERT INTO RATINGS (RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('2', current_timestamp, 15,4);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Megfelelo, gyors munkavegzes', '1', current_timestamp, 16,4);
+INSERT INTO RATINGS (RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('3', current_timestamp, 17,5);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('10 perc alatt megtortent a kerekcsere, ajanlott!', '2', current_timestamp, 18,12);
+INSERT INTO RATINGS (RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('3', current_timestamp, 19,12);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('A munkat nem tudta hataridore elvegezni igy kenytelen voltam mashova vinni az automat', '1', current_timestamp, 18,11);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Teljesen alkalmatlan volt a munkara, nem ajanlom senkinek', '1', current_timestamp, 21,3);
+INSERT INTO RATINGS (RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('5', current_timestamp, 21,4);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Gyorsan kierekezett es gyorsan el is vegezte a munkat!', '5', current_timestamp, 22,2);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Nem voltam teljes mertekben elegedett...', '2', current_timestamp, 22,5);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Az uj hazunk teljes szereleset rabiztuk, a munkat, nem olcson, de kivaloan elvegezte.', '4', current_timestamp, 24,6);
+INSERT INTO RATINGS (RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('1', current_timestamp, 26,2);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Kivalo szakember es nem utolsosorban turelmes is az emberekkel', '5', current_timestamp, 26,4);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Mindent szepen elmagyarazott, nem az ember lehuzasara koncentral, ajanlom ot!', '5', current_timestamp, 26,3);
+INSERT INTO RATINGS (RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('4', current_timestamp, 27,2);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Nagyon dragan, de vegulis elvegezte a haz teljes felujitasat, remeljuk idoallo is lesz', '3', current_timestamp, 29,8);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Gyors dugulaselharitasra hivtam, lassu dugulaselharitas lett belole', '2', current_timestamp, 24,2);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Megfelelt mindenben', '4', current_timestamp, 27,10);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('10/10', '5', current_timestamp, 27,11);
+INSERT INTO RATINGS (RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('3', current_timestamp, 30,12);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Evek ota gondozza tavasszal a birtokunkat, akar 10 pontot is adnek ra ha lehet!', '5', current_timestamp, 31,12);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Remek munkat vegzett a gyumolcsosben, ajanlom barkinek!', '1', current_timestamp, 32,12);
+INSERT INTO RATINGS (RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('2', current_timestamp, 33,12);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Nem ertem a negativ ertekelest, konnyen megegyeztunk a megbizas reszleteirol.', '4', current_timestamp, 30,4);
+INSERT INTO RATINGS (RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('1', current_timestamp, 30,11);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Csak az idomet vesztegette!', '1', current_timestamp, 33,12);
+INSERT INTO RATINGS (RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('4', current_timestamp, 34,12);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Remek munkat vegzett, ajanlom a szekrenyeit mindenkinek!', '5', current_timestamp, 34,2);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Teljesen elegedett voltam az altala gyartott butorokkal.', '5', current_timestamp, 34,6);
+INSERT INTO RATINGS (RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('5', current_timestamp, 36,7);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Nem voltak tul tartosak a butorok amiket vettem tole', '3', current_timestamp, 36,6);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Rendben volt minden.', '4', current_timestamp, 38,2);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Megegyeztunk valamiben, amit nem tudott teljesiteni, viszont nem valtunk el haraggal', '3', current_timestamp, 38,7);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Gyors es pontos volt mindenben', '4', current_timestamp, 40,6);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Jo lett a fal', '4', current_timestamp, 40,2);
+INSERT INTO RATINGS (RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('3', current_timestamp, 40,8);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('A csapataval az egesz iskolankat kifestettek es nem is dragan, jo szakemberek!', '5', current_timestamp, 41,3);
+INSERT INTO RATINGS (RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('4', current_timestamp, 42,3);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Mindig kesve erkezett, de a munkajaval alapos volt, ezt vegyek figyelembe.', '3', current_timestamp, 42,4);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Nem volt kepes csak meregdragan megjavitani a mosogatogepet', '2', current_timestamp, 43,11);
+INSERT INTO RATINGS (RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('1', current_timestamp, 43,12);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Fiatalos lendulettel erkezett, majd rovid felmeres utan megegyeztunk egymassal.', '4', current_timestamp, 44,2);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Tokeletes', '5', current_timestamp, 44,8);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Igaza a mosogepem javithatatlan volt, de legalabb talaltam egy biztosan jo szerelot a tovabbiakra!', '5', current_timestamp, 44,5);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Azt hittem, hogy a TV-m tonkrement, amig nem hivtam. Par ora mulva jobb volt mint a regi', '5', current_timestamp, 46,2);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Kisebb elotetot rendeltem toluk, 2 heten belul mar kesz is volt', '5', current_timestamp, 47,3);
+INSERT INTO RATINGS (RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('3', current_timestamp, 47,11);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('A tetoter beepitesere hivtuk, nagyon elfoglalt volt, de megis szoritott nekunk idot, ajanlom', '4', current_timestamp, 47,12);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Kesve erkezett parszor, de nagyon kozvetlen, baratsagos szakember!', '4', current_timestamp, 47,7);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('A kornyeken a legjobb komuves csapat!', '5', current_timestamp, 47,9);
+INSERT INTO RATINGS (RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('3', current_timestamp, 47,4);
+INSERT INTO RATINGS (RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('5', current_timestamp, 48,4);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Nem ajanlom', '2', current_timestamp, 48,7);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Gyorsan keszen voltak, latszik, hogy nem az idohuzas a celjuk!', '5', current_timestamp, 49,2);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('A modora hagyott kivannivalot maga utan, de a szakertelme megkerdejelozhetetlen', '3', current_timestamp, 49,11);
+INSERT INTO RATINGS (RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('4', current_timestamp, 51,11);
+INSERT INTO RATINGS (CONTENT, RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Pontos es egyben alapos is.', '5', current_timestamp, 51,12);
+INSERT INTO RATINGS (RATING, TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('4', current_timestamp, 51,2);
 
-INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (7,1);
-INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (7,2);
-INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (8,2);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (13,1);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (14,1);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (15,1);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (16,1);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (17,1);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (18,2);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (18,3);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (18,7);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (18,8);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (19,10);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (20,22);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (21,22);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (22,22);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (23,30);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (25,30);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (24,30);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (25,28);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (26,16);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (27,1);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (27,24);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (28,1);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (29,1);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (29,11);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (30,11);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (30,9);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (31,9);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (32,9);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (32,10);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (33,17);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (33,18);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (34,18);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (35,10);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (36,6);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (36,7);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (37,9);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (38,19);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (38,20);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (39,24);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (40,24);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (40,25);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (40,22);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (41,17);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (42,12);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (42,13);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (43,15);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (44,10);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (44,11);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (45,2);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (45,3);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (45,4);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (45,5);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (45,6);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (46,6);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (46,5);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (47,11);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (48,11);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (49,28);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (49,30);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (50,24);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (50,25);
+INSERT INTO WORKERS_LOCATIONS (WORKER_ID, LOCATIONS_ID) VALUES (51,1);

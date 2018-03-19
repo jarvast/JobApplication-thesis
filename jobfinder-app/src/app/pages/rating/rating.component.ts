@@ -20,7 +20,8 @@ export class RatingComponent implements OnInit {
     if (this.inputRating===0){
       this.rating = "Még nem érkezett értékelés";
     }else{
-      this.rating= this.inputRating;
+      this.rating = Math.round(this.inputRating * 10) /10;
+      //this.rating= this.inputRating;
       this.roundedRating = Math.round(this.inputRating);
       this.starArray =[];
       for (var i=0;i<this.roundedRating; i++){

@@ -30,6 +30,7 @@ public class User extends BaseUser {
 
     @ManyToOne(targetEntity = Location.class ,fetch = FetchType.EAGER)
     @JoinColumn(name = "location_id")
+    @JsonIgnore
     private Location location;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
