@@ -1,4 +1,16 @@
 <div class="toppart">
   <img src="{{imgRoute + user.imgName}}" alt="{{imgRoute + user.imgName}}">
-  <div class="textpart"><h1>{{user.name}}</h1><p>{{user.phoneNum}} {{user.location}}</p>
+  <div class="textpart">
+    <h1>{{user.name}}</h1>
+    <p><b>Telefonszám: </b><span style="display:inline-block; width: 30%;"></span>{{user.phoneNum}}</p>
+    <p><b>E-mail: </b><span style="display:inline-block; width: 41%;"></span>{{user.email}}</p>
+    <p><b>Lakhely: </b><span style="display:inline-block; width: 38%;"></span>{{user.location.locationName}}</p>
+  </div>
+</div>
+<div class="buttons">
+    <button class="messagebutton" mat-raised-button color="primary" (click)="sendMessage()"  matTooltip="Üzenetküldéshez jelentkezzen be!" matTooltipHideDelay="2000">Üzenetküldés</button>
+    <div>
+      <button class="reportbutton" mat-raised-button color="primary" (click)="report()" matTooltip="Jelentéshez jelentkezzen be!" matTooltipHideDelay="2000">Jelentés</button>
+    </div>
+    <mat-divider></mat-divider>
 </div>

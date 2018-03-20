@@ -1,3 +1,5 @@
+<mat-divider></mat-divider>
+<div class="fuk">
 <h1>Keresési eredmények: </h1><h5>{{foundArrayLength}} db találat</h5>
 <mat-select *ngIf="selectedWorkers?.length > 0" placeholder="Találatok rendezése" [(value)]="selectedOption">
   <mat-option>None</mat-option>
@@ -6,7 +8,7 @@
   <mat-option (click)="sortbyNameAZ()" value="option3">Név szerint A-Z</mat-option>
   <mat-option (click)="sortbyNameZA()" value="option4">Név szerint Z-A</mat-option>
 </mat-select>
-<mat-divider></mat-divider>
+</div>
 
 <div class="row" *ngIf="selectedWorkers?.length == 0">
   <h2>A megadott keresőszóval nem található szakember!</h2>
@@ -17,11 +19,11 @@
 <div class="profiles">
   <mat-card *ngFor="let worker of selectedWorkers" class="example-card">
     <mat-card-header>
-      <img mat-card-avatar src ="{{imgRoute + worker.category.picture}}" class="example-header-image">
-      <mat-card-title style="font-size:180%;text-decoration:underline">{{worker.name}}</mat-card-title>
+      <img mat-card-avatar src ="{{imgRoute + worker.category.picture}}" class="headerimage">
+      <mat-card-title [routerLink]="['/worker', worker.id]" style="font-size:180%;text-decoration:underline">{{worker.name}}</mat-card-title>
       <mat-card-subtitle>{{worker.category.categoryName}}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image style="margin-top: 1.5%;" src="{{imgRoute + worker.imgName}}" alt="{{imgRoute + worker.imgName}}" [routerLink]="['/worker', worker.id]">
+    <img mat-card-image style="margin-top: 1.5%;" src="{{imgRoute + worker.imgName}}" class="mainpic" alt="{{imgRoute + worker.imgName}}" [routerLink]="['/worker', worker.id]">
     <mat-divider></mat-divider>
     <mat-card-content>
       <app-rating [inputRating]='worker.rating'></app-rating>

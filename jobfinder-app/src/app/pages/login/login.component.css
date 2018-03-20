@@ -1,0 +1,19 @@
+#login-page {
+    text-align: center;
+}
+.loginButton{
+    background:darkorange;
+    margin-bottom: 20%;
+}
+mat-form-field{
+    width: 15%;
+}
+footer{
+    background-color: midnightblue;
+    text-align: center;
+    color: white;
+    height: 100px;
+}
+a{
+    color: springgreen;
+}

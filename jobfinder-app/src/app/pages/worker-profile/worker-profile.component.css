@@ -1,31 +1,69 @@
 .toppart{
     display: flex;
-    width: 80%;
+    width: 50%;
+    margin-top: 3%;
 }
 img{
-    max-width: 20%;
-    margin-left: 5%;
+    max-width: 45%;
+    margin-left: 6%;
 }
 h1{
-    margin-left: 20px;
+    margin-left: 30%;
+}
+p{
+    margin-left: 30%;
+    border-bottom: dotted;
+    font-size: 110%;
+}
+span{
+    width: 30px;
+}
+ul{
+    list-style-type: square;
+    margin-left: 65%;
+}
+h6{
+    margin-left: 30%;
+    margin-bottom: 0%;
+    font-size: 110%;
 }
 .textpart{
-    width: 60%;
+    width: 100%;
 }
 .descpart{
     margin-left: 30%;
     margin-right: 30%;
-    border: 2px solid red;
-    border-radius: 25px;
-    padding: 5px;
+    border: 2px solid rgba(70, 131, 180, 0.589);
+    border-radius: 15px;
+    background: khaki;
+    padding: 6px;
 }
 .taskpart{
+    margin-top: 1%;
     margin-left: 30%;
     margin-right: 30%;
 }
-.buttons{
-    padding: 10px;
+.disclaimer{
+    font-size: 110%;
+    margin-right: 30%;
+    font-style: italic;
 }
-button{
-    margin: 10px;
+.ratingpart{
+    margin-bottom: 6%;
+}
+.buttons{
+    padding: 1%;
+}
+.reportbutton{
+    margin-left: 15%;
+    background: red;
+    
+}
+.messagebutton{
+    margin-left: 7.3%;
+    margin-bottom: 1%;
+    padding: 0.3% 4%;
+}
+mat-divider{
+    margin-left: 30%;
 }

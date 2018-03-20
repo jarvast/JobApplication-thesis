@@ -22,7 +22,7 @@ export class LocationsComponent implements OnInit {
       this.locations.join(', ');
       this.temp = [];
       for (let entry of this.locations){
-        this.temp.push(entry.location);
+        this.temp.push(entry.locationName);
       }
       this.separatedLocations= this.temp.join(', ');
     });

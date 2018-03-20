@@ -1,11 +1,11 @@
   <mat-table #table [dataSource]="tasks">
     <ng-container matColumnDef="taskName">
-      <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>Feladat</mat-header-cell>
       <mat-cell class="name-header" *matCellDef="let element"> {{element.taskName}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="taskPrices">
-      <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>Becsült ár</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.taskPrices}}</mat-cell>
     </ng-container>
     

@@ -1,13 +1,18 @@
 
 #top-menu {
-  margin-bottom: 25px;
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
 mat-toolbar {
   justify-content: flex-end;
 }
-
+.mainicon{
+  width: 10%;
+}
+.mainpagebutton{
+  padding: 1%;
+  text-align: center;
+}
 .center {
   flex: 3 3 auto;
   text-align: center;
@@ -15,14 +20,22 @@ mat-toolbar {
 .left-side{
   border-style: solid;
   border-width: 2px;
+  border-color: darkorange;
+  width: 22%;
 }
 .welcome{
-  margin-right: 50px;
+  margin-right: 3%;
 }
 .right-side{
-  margin-right: 50px;
+  margin-right: 3%;
 }
-.butt{
+.regbuttons{
   margin-right: 15%;
-  margin-left: 15%;
+  margin-left: 10%;
+  background:darkorange;
+}
+.loginbutton{
+  border-style: solid;
+  border-width: 2px;
+  border-color: darkorange;
 }

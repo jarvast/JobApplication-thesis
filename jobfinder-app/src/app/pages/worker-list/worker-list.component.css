@@ -8,7 +8,7 @@ h1{
 p{
     font-size: 110%;
 }
-img {
+.mainpic{
     border: 1px solid cadetblue;
     border-radius: 4px;
     padding: 0.3%;
@@ -18,15 +18,24 @@ img {
     margin-left: 0.5%;
     margin-bottom: 0.5%;
 }
-img:hover {
-    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+.mainpic:hover {
+    box-shadow: 0 0 10px 1px khaki;
+    cursor: pointer;
+}
+mat-card-title:hover {
+    color: khaki;
+    cursor: pointer;
+}
+.headerimage{
+    border: 1px solid cadetblue;
+    border-radius: 10px;
 }
 mat-card{
     margin-left: 20%;
     margin-bottom: 1%;
     margin-right: 30%;
-    background-color: thistle;
-    height: 20%;
+    background-color:  rgba(70, 131, 180, 0.589);
+    height: 240px;
 }
 mat-card-header{
     text-align: left;
@@ -61,6 +70,7 @@ mat-select{
     background: khaki;
     border-radius: 6px;
     padding: 1%;
+    margin-bottom: 0.5%;
 }
 mat-option{
     background: khaki;
@@ -69,4 +79,9 @@ h5{
     margin-left: 25%;
     margin-top: 0.4%;
     margin-bottom: 0%;
+}
+.fuk{
+    margin-top: 0;
+    background: rgba(70, 131, 180, 0.589);
+    margin-bottom: 0.5%;
 }

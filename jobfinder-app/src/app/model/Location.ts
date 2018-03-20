@@ -1,8 +1,8 @@
 export class Location {
-    location: String;
+    locationName: String;
 
     
-  constructor(location?: String) {
-    this.location = this.location;
+  constructor(locationName?: String) {
+    this.locationName = this.locationName;
     }
 }

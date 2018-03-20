@@ -31,6 +31,14 @@ public class Location extends BaseEntity {
     @JsonIgnore
     private List<User> users;
 
+    public String getLocationName() {
+        return locationName;
+    }
+
+    public void setLocationName(String locationName) {
+        this.locationName = locationName;
+    }
+
     public List<Worker> getWorker() {
         return worker;
     }
@@ -38,6 +46,17 @@ public class Location extends BaseEntity {
     public void setWorker(List<Worker> worker) {
         this.worker = worker;
     }
+
+    
+    
+    /*public List<Worker> getWorker() {
+        return worker;
+    }
+    
+
+    public void setWorker(List<Worker> worker) {
+        this.worker = worker;
+    }*/
 
     public List<User> getUsers() {
         return users;
@@ -47,21 +66,13 @@ public class Location extends BaseEntity {
         this.users = users;
     }
 
-    public String getLocation() {
+    /*public String getLocation() {
         return locationName;
     }
 
     public void setLocation(String location) {
-        this.locationName = location;
-    }
-
-    public List<Worker> getWorkers() {
-        return worker;
-    }
-
-    public void setWorkers(List<Worker> worker) {
-        this.worker = worker;
-    }
+        this.locationName = location;*/
+    //}
 
     @Override
     public String toString() {

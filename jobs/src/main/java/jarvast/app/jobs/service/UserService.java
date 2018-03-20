@@ -104,7 +104,11 @@ public class UserService<T> {
     public List<Worker> getTop5(){
         List<Worker> workerList = userRepository.findAllWorkers();
         workerList.sort((r1, r2) -> Integer.compare(r2.getRatings().size(), r1.getRatings().size()));
-        return workerList.subList(0, 5);
+        List<Worker> top5 = workerList.subList(0, 5);
+        for (Worker w : top5) {
+            calculateRate(w);
+        }
+        return top5;
     }
 
 }

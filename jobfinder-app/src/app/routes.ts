@@ -1,7 +1,7 @@
 import { Routes } from "@angular/router";
 import { RouteGuard } from "./route.guard";
 import { LoginComponent } from "./pages/login/login.component";
-import { MainComponent } from "./pages/help/help.component";
+import { MainComponent } from "./pages/main/main.component";
 import { WorkerListComponent } from "./pages/worker-list/worker-list.component";
 import { WorkerProfileComponent } from "./pages/worker-profile/worker-profile.component";
 import { UserProfileComponent } from "./pages/user-profile/user-profile.component";

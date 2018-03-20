@@ -9,9 +9,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AbstractControl, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-help',
-  templateUrl: './help.component.html',
-  styleUrls: ['./help.component.css']
+  selector: 'main',
+  templateUrl: './main.component.html',
+  styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit{
   searchForm: FormGroup = new FormGroup({

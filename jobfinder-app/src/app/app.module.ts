@@ -12,7 +12,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { RouteGuard } from './route.guard';
-import { MainComponent } from './pages/help/help.component';
+import { MainComponent } from './pages/main/main.component';
 import { FormUploadComponent } from './upload/form-upload/form-upload.component';
 import { UploadFileService } from './upload/upload-file.service';
 import { UserService } from './services/user.service';

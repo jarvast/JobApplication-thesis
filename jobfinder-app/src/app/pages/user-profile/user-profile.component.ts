@@ -3,6 +3,7 @@ import { Server, Routes } from '../../utils/ServerRoutes';
 import { UserService } from '../../services/user.service';
 import { ActivatedRoute } from '@angular/router';
 import { UserUser } from '../../model/UserUser';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -14,7 +15,7 @@ export class UserProfileComponent implements OnInit {
   imgRoute: String;
   user: UserUser;
 
-  constructor(private route: ActivatedRoute, private userService: UserService) {
+  constructor(private route: ActivatedRoute, private userService: UserService,private authService: AuthService) {
     this.imgRoute = Server.routeTo(Routes.PICTURE);
    }
 

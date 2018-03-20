@@ -24,7 +24,7 @@ public class LocationService {
         List<Location> locationList = locationRepository.findPeopleDistinctBylocationNameContainingAllIgnoreCase(input);
         List<Worker> noDuplicateList = new ArrayList<>();
         for (Location loc : locationList) {
-            noDuplicateList.addAll(loc.getWorkers());
+            noDuplicateList.addAll(loc.getWorker());
         }
         /*
         Set<Worker> temp = new HashSet<>();
