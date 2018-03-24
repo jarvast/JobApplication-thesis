@@ -28,9 +28,9 @@ public class User extends BaseUser {
     @Column
     private String phoneNum;
 
-    @ManyToOne(targetEntity = Location.class ,fetch = FetchType.EAGER)
+    @ManyToOne(targetEntity = Location.class ,fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "location_id")
-    //@JsonIgnore
+    //@JsonIgnores
     private Location location;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

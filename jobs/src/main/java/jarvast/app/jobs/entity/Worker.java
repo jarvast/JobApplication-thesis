@@ -164,7 +164,7 @@ public class Worker extends BaseUser {
 
     @Override
     public String toString() {
-        return "Worker{id"+ this.id + "email=" + email + ", name=" + name + ", phoneNum=" + phoneNum + ", locations=" + locations + ", category=" + category + ", description=" + description ;//+ ", tasks=" + tasks + ", userList=" + userList + ", ratings=" + ratings + '}';
+        return "Worker{id"+ this.id + "email=" + email + ", name=" + name + ", phoneNum=" + phoneNum + ", locations="  + ", category=" + category + ", description=" + description ;//+ ", tasks=" + tasks + ", userList=" + userList + ", ratings=" + ratings + '}';
     }
 
     

@@ -20,11 +20,12 @@ export class MainComponent implements OnInit{
   categories: Category[];
   workers : WorkerUser[];
 
-  constructor(private authService: AuthService, private userService : UserService, private categoryService: CategoryService,private router : Router) {
+  constructor(private userService : UserService, private categoryService: CategoryService,private router : Router) {
     this.imgRoute = Server.routeTo(Routes.PICTURE);
   }
   ngOnInit()
   {
+   // console.log("authos" + this.authService.user.id);
     this.userService.getTop5().subscribe(workers => {
       this.workers = workers;
     });

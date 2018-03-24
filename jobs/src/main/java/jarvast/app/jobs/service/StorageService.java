@@ -33,11 +33,17 @@ public class StorageService {
             String newFileName = prefix + "." + extension;
 
             String old = userService.getImg();
-            if (!old.equals(defaultFileName)) {
-                Files.deleteIfExists(this.rootLocation.resolve(old));
+
+            if (old.equals(newFileName)) {
+                Files.move(this.rootLocation.resolve(file.getOriginalFilename()), this.rootLocation.resolve(file.getOriginalFilename()).resolveSibling(newFileName), StandardCopyOption.REPLACE_EXISTING);
+            } else {
+
+                if (!old.equals(defaultFileName)) {
+                    Files.deleteIfExists(this.rootLocation.resolve(old));
+                }
+                userService.updateImg(newFileName);
+                Files.move(this.rootLocation.resolve(file.getOriginalFilename()), this.rootLocation.resolve(file.getOriginalFilename()).resolveSibling(newFileName), StandardCopyOption.REPLACE_EXISTING);
             }
-            userService.updateImg(newFileName);
-            Files.move(this.rootLocation.resolve(file.getOriginalFilename()), this.rootLocation.resolve(file.getOriginalFilename()).resolveSibling(newFileName), StandardCopyOption.REPLACE_EXISTING);
         } catch (Exception e) {
             throw new RuntimeException("Fail with swtorage!");
         }

@@ -27,4 +27,8 @@ public class LocationController {
         Worker worker = userService.getWorker(userId);
         return ResponseEntity.ok(locationService.getLocationsByWorker(worker));
     }
+    @GetMapping()
+    private ResponseEntity<List<Location>> getLocations(){
+        return ResponseEntity.ok(locationService.getLocations());
+    }
 }

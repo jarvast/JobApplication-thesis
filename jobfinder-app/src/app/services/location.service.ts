@@ -12,5 +12,8 @@ export class LocationService {
   getLocations(id:number): Observable<Location[]>{
     return this.http.get<Location[]>(Server.routeTo(Routes.LOCATION) + '/' + id);
   }
+  getAllLocations(): Observable<Location[]>{
+    return this.http.get<Location[]>(Server.routeTo(Routes.LOCATION));
+  }
 
 }

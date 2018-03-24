@@ -8,6 +8,9 @@ import { UserUser } from '../model/UserUser';
 @Injectable()
 export class UserService {
 
+  user : UserUser;
+  worker: WorkerUser;
+
   constructor(private http: HttpClient) { }
 
   getWorkers(): Observable<WorkerUser[]>{
@@ -28,5 +31,8 @@ export class UserService {
   }
   getUser(id: number) : Observable<UserUser>{
     return this.http.get<UserUser>(Server.routeTo(Routes.SINGLEUSER) + '/' + id);
+  }
+  updateUser(user: UserUser){
+    return this.http.post(Server.routeTo(Routes.SINGLEUSER), user);
   }
 }

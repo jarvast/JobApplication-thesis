@@ -3,11 +3,13 @@ import { Router, NavigationEnd } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { Role } from '../../model/Role';
 import { User } from '../../model/User';
+import { Server, Routes } from '../../utils/ServerRoutes';
 
 
 interface MenuItem {
   link: String;
   title: String;
+  att?: any;
 }
 
 @Component({
@@ -16,15 +18,32 @@ interface MenuItem {
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
+  imgRoute:String;
+  cachebuster: number;
+
   private common: MenuItem[] = [
     {link: '/help', title: 'Szakember regisztráció'},
     {link: '/help', title: 'Felhasználó regisztráció'}
   ];
 
+  private asdo : MenuItem[] = [
+    {link: "/asd", title: 'dsadsa'},
+    {link: '/mymessages', title: 'Üzeneteim'}
+  ];
+  
+  private roleMenus = new Map<String, MenuItem[]>([
+    ["ADMIN", [...this.asdo]],
+    ["USER", [...this.asdo , {link: '/user', title: 'Profilom'}, {link: '/orders', title: 'Üzeneteim'}]],
+    ["WORKER", [...this.asdo, {link: '/cart', title: 'Feladataim'}, {link: '/orders', title: 'fingi'}]]
+]);
+
   
   menus: MenuItem[];
+  rolemenu: MenuItem[];
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {
+    this.imgRoute = Server.routeTo(Routes.PICTURE);
+   }
 
   ngOnInit() {
     this.router.events.subscribe((event) => {
@@ -32,13 +51,13 @@ export class MenuComponent implements OnInit {
         this.setMenus()
       }
     })
+    this.menus = this.common;
   }
   setMenus() {
     if (this.authService.isLoggedIn) {
-      this.menus = this.common;
-    }else{
-      this.menus = this.common;
+      this.rolemenu = this.roleMenus.get(this.authService.user.role.role);
     }
+    this.cachebuster=Date.now();
   }
     logout(){
       this.authService.logout().subscribe(res =>{
@@ -47,5 +66,8 @@ export class MenuComponent implements OnInit {
         this.router.navigate(['/login']);
       })
     }
+    getTimeStamp(){
+       return this.cachebuster;
+     }
 }
 

@@ -54,7 +54,7 @@ public abstract class BaseUser {
     private List<Message> receiverMessages = new ArrayList<>();
 
     @JoinColumn
-    @ManyToOne(targetEntity = Role.class, optional = false)
+    @ManyToOne(targetEntity = Role.class, optional = false, cascade = CascadeType.PERSIST)
     private Role role;
 
     public BaseUser() {

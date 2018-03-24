@@ -18,7 +18,12 @@
     </div>
     
     <div *ngIf="authService.isLoggedIn" class="authorized">
-      <button mat-button (click)="logout()">Kijelentkezés</button>
+    <button mat-button [matMenuTriggerFor]="menu"><img mat-card-avatar src ="{{imgRoute + this.authService.user.imgName}}?{{getTimeStamp()}}" class="headerimage"> <mat-icon>keyboard_arrow_down</mat-icon></button>
+    <mat-menu #menu="matMenu" [overlapTrigger]="false">
+      <button mat-menu-item *ngFor="let menu of rolemenu" [routerLink]="[menu.link, authService.user.id]" routerLinkActive="active">{{menu.title}}</button>
+      <button mat-menu-item (click)="logout()">Kijelentkezés</button>
+    </mat-menu>
+
     </div>
   </div>
 </mat-toolbar>

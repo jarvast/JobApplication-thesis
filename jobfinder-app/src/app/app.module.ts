@@ -29,6 +29,8 @@ import { TaskTableComponent } from './pages/task-table/task-table.component';
 import { TasksService } from './services/tasks.service';
 import { RatingDetailedComponent } from './pages/rating-detailed/rating-detailed.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { EditUserProfileComponent } from './pages/edit-user-profile/edit-user-profile.component';
+import { NocacheDirective } from './upload/nocache.directive';
 
 
 @NgModule({
@@ -45,7 +47,9 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
     WorkerProfileComponent,
     TaskTableComponent,
     RatingDetailedComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    EditUserProfileComponent,
+    NocacheDirective
   ],
   imports: [
     BrowserModule,

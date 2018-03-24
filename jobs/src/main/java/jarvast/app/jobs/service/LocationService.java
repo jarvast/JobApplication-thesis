@@ -19,6 +19,9 @@ public class LocationService {
     public List<Location> getLocationsByWorker(Worker worker) {
         return locationRepository.findByWorker(worker);
     }
+    public List<Location> getLocations(){
+        return locationRepository.findAll();
+    }
 
     List<Worker> searchByString(String input) {
         List<Location> locationList = locationRepository.findPeopleDistinctBylocationNameContainingAllIgnoreCase(input);

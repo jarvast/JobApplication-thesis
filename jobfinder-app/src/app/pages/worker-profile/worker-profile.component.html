@@ -1,3 +1,4 @@
+<div *ngIf="worker">
 <div class="toppart">
   <img src="{{imgRoute + worker.imgName}}" alt="{{imgRoute + worker.imgName}}">
   <div class="textpart">
@@ -30,4 +31,5 @@
 </div>
 <div class="ratingpart">
   <rating-detailed [workerId]='worker.id'></rating-detailed>
+</div>
 </div>

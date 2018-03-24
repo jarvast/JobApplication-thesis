@@ -39,3 +39,9 @@ mat-toolbar {
   border-width: 2px;
   border-color: darkorange;
 }
+.authorized{
+  padding: 3px;
+}
+.headerimage{
+  width: 60%;
+}

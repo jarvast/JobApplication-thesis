@@ -43,6 +43,7 @@ public class UserService<T> {
     }
 
     public void updateImg(String imgname) {
+        System.out.println("erre kell az újat " + imgname);
         this.user.setImgName(imgname);
         userRepository.save(this.user);
     }
@@ -109,6 +110,15 @@ public class UserService<T> {
             calculateRate(w);
         }
         return top5;
+    }
+    public User updateUser(User user){
+        User oldUser = userRepository.findById(user.getId());
+        
+        oldUser.setName(user.getName());
+        oldUser.setEmail(user.getEmail());
+        oldUser.setPhoneNum(user.getPhoneNum());
+        oldUser.setLocation(user.getLocation());
+        return userRepository.save(oldUser);
     }
 
 }

@@ -22,7 +22,7 @@ export class AuthService {
   }
 
   logout() {
-    return this.http.post(Server.routeTo(Routes.LOGOUT), this.user);
+    return this.http.post(Server.routeTo(Routes.LOGOUT), {});
   }
 
 }

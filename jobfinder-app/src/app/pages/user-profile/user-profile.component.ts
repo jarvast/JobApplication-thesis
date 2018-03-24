@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Server, Routes } from '../../utils/ServerRoutes';
 import { UserService } from '../../services/user.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserUser } from '../../model/UserUser';
 import { AuthService } from '../../services/auth.service';
 
@@ -14,8 +14,11 @@ export class UserProfileComponent implements OnInit {
   userId: number;
   imgRoute: String;
   user: UserUser;
+  ownprofile: boolean = false;
+  asdo :boolean;
+  asd: number;
 
-  constructor(private route: ActivatedRoute, private userService: UserService,private authService: AuthService) {
+  constructor(private route: ActivatedRoute, private userService: UserService,private authService: AuthService, private router: Router) {
     this.imgRoute = Server.routeTo(Routes.PICTURE);
    }
 
@@ -24,8 +27,21 @@ export class UserProfileComponent implements OnInit {
       this.userId = param['id'];
       this.userService.getUser(this.userId).subscribe(data =>{
         this.user=data;
+        if (this.authService.user.id==this.userId){
+          this.ownprofile=true;
+        }
       })
   });
+  //console.log("authos" + this.authService.user.id);
+    //this.userService.user=this.user;
+    this.asd= Date.now();
+  }
+  rut(){
+      this.router.navigate(['/myuser', this.userId]);
+    
+  }
+  getTimeStamp(){
+    return this.asd;
   }
 
 }

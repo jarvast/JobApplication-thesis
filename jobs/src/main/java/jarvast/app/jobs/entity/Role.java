@@ -2,6 +2,7 @@ package jarvast.app.jobs.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -14,7 +15,7 @@ public class Role extends BaseEntity {
     @Column(unique = true, nullable = false)
     private String roleName;
 
-    @OneToMany(targetEntity = BaseUser.class, mappedBy = "role")
+    @OneToMany(targetEntity = BaseUser.class, mappedBy = "role", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<BaseUser> users;
 
