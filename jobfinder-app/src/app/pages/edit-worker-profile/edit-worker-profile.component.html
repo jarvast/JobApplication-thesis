@@ -1,0 +1,27 @@
+<form *ngIf="worker" [formGroup]="editForm" novalidate>
+  <div class="toppart">
+      <img src="{{imgRoute + worker.imgName}}?{{getTimeStamp()}}" alt="{{imgRoute + worker.imgName}}">
+      <div class="textpart">
+      <mat-form-field class="namefield">
+        <input matInput type="text" placeholder="Név" formControlName="name" required>
+      </mat-form-field>
+      <mat-form-field class="namefield">
+        <input matInput placeholder="Telefonszám" formControlName="phone" required>
+      </mat-form-field>
+      <mat-form-field class= "namefield">
+        <mat-select placeholder="Lakhely"  formControlName="loc" multiple required>
+          <mat-option *ngFor="let loca of locations" [value]="loca">{{loca.locationName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="namefield">
+        <textarea matInput placeholder="Leírás" #input maxlength="250" formControlName="description" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"></textarea>
+        <mat-hint align="end">{{input.value?.length || 0}}/250</mat-hint>
+      </mat-form-field>      
+    </div>
+    </div>
+    <button mat-raised-button class="button" (click)="submit()" [disabled]="!editForm.valid">Mentés</button>
+  </form>
+  <div>
+      <br>
+      <form-upload></form-upload>
+  </div>

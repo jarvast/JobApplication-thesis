@@ -35,4 +35,7 @@ export class UserService {
   updateUser(user: UserUser){
     return this.http.post(Server.routeTo(Routes.SINGLEUSER), user);
   }
+  updateWorker(worker: WorkerUser){
+    return this.http.post(Server.routeTo(Routes.SINGLEWORKER), worker);
+  }
 }

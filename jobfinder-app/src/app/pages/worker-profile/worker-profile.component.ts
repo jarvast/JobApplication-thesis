@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { WorkerUser } from '../../model/WorkerUser';
 import { Server, Routes } from '../../utils/ServerRoutes';
@@ -19,8 +19,10 @@ export class WorkerProfileComponent implements OnInit {
   locations : Location[];
   temp : String[];
   separatedLocations : String = "";
+  ownprofile: boolean = false;
+  cachebuster: number;
 
-  constructor(private route: ActivatedRoute, private userService: UserService, private authService: AuthService, private locationService: LocationService) { 
+  constructor(private route: ActivatedRoute, private userService: UserService, private authService: AuthService, private locationService: LocationService, private router:Router) { 
     this.imgRoute = Server.routeTo(Routes.PICTURE);
   }
 
@@ -29,11 +31,15 @@ export class WorkerProfileComponent implements OnInit {
       this.workerId = param['id'];
       this.userService.getWorker(this.workerId).subscribe(data =>{
         this.worker=data;
+        if (this.authService.user.id==this.workerId){
+          this.ownprofile=true;
+        }
       })
   });
   this.locationService.getLocations(this.workerId).subscribe(res => {
     this.locations = res;
   });
+  this.cachebuster= Date.now();
   }
   //lehet az egész gombokat ki lehetne szervezni
   sendMessage(){
@@ -51,5 +57,11 @@ export class WorkerProfileComponent implements OnInit {
   }
   reservation(){
     console.log("reserve")
+  }
+  rut(){
+    this.router.navigate(['/myworker', this.worker.id]);
+  }
+  getTimeStamp(){
+    return this.cachebuster;
   }
 }

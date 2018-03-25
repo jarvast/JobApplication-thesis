@@ -74,6 +74,10 @@ public class UserController<T> {
     private ResponseEntity<User> updateUser(@RequestBody User user) {
         return ResponseEntity.ok(userService.updateUser(user));
     }
+    @PostMapping("/worker")
+    private ResponseEntity<Worker> updateUser(@RequestBody Worker worker) {
+        return ResponseEntity.ok(userService.updateWorker(worker));
+    }
     
     @GetMapping("/workers/top")
     private ResponseEntity<Iterable<Worker>> getTop5Workers(){

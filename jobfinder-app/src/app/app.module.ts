@@ -31,6 +31,7 @@ import { RatingDetailedComponent } from './pages/rating-detailed/rating-detailed
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { EditUserProfileComponent } from './pages/edit-user-profile/edit-user-profile.component';
 import { NocacheDirective } from './upload/nocache.directive';
+import { EditWorkerProfileComponent } from './pages/edit-worker-profile/edit-worker-profile.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { NocacheDirective } from './upload/nocache.directive';
     RatingDetailedComponent,
     UserProfileComponent,
     EditUserProfileComponent,
-    NocacheDirective
+    NocacheDirective,
+    EditWorkerProfileComponent
   ],
   imports: [
     BrowserModule,

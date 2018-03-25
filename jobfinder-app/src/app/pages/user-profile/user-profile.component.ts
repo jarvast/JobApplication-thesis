@@ -16,7 +16,7 @@ export class UserProfileComponent implements OnInit {
   user: UserUser;
   ownprofile: boolean = false;
   asdo :boolean;
-  asd: number;
+  cachebuster: number;
 
   constructor(private route: ActivatedRoute, private userService: UserService,private authService: AuthService, private router: Router) {
     this.imgRoute = Server.routeTo(Routes.PICTURE);
@@ -32,16 +32,14 @@ export class UserProfileComponent implements OnInit {
         }
       })
   });
-  //console.log("authos" + this.authService.user.id);
-    //this.userService.user=this.user;
-    this.asd= Date.now();
+    this.cachebuster= Date.now();
   }
   rut(){
       this.router.navigate(['/myuser', this.userId]);
     
   }
   getTimeStamp(){
-    return this.asd;
+    return this.cachebuster;
   }
 
 }

@@ -120,5 +120,13 @@ public class UserService<T> {
         oldUser.setLocation(user.getLocation());
         return userRepository.save(oldUser);
     }
+    public Worker updateWorker(Worker worker){
+        Worker oldWorker = userRepository.findOne(worker.getId());
+        
+        oldWorker.setName(worker.getName());
+        oldWorker.setDescription(worker.getDescription());
+        oldWorker.setPhoneNum(worker.getPhoneNum());
+        return userRepository.save(oldWorker);
+    }
 
 }

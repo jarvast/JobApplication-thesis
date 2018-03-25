@@ -3,6 +3,7 @@ package jarvast.app.jobs.service;
 import jarvast.app.jobs.entity.Location;
 import jarvast.app.jobs.entity.Worker;
 import jarvast.app.jobs.repository.LocationRepository;
+import jarvast.app.jobs.repository.UserRepository;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -15,6 +16,9 @@ public class LocationService {
 
     @Autowired
     private LocationRepository locationRepository;
+    
+    @Autowired
+    private UserRepository userRepository;
 
     public List<Location> getLocationsByWorker(Worker worker) {
         return locationRepository.findByWorker(worker);
@@ -36,5 +40,11 @@ public class LocationService {
         noDuplicateList.addAll(temp);*/
         return noDuplicateList;
         //return noDuplicateList;
+    }
+    public Worker updateLocationsByWorker(Worker worker, List<Location> locations){
+        System.out.println("worker:" + worker);
+        
+        worker.setLocations(locations);
+        return userRepository.save(worker);
     }
 }

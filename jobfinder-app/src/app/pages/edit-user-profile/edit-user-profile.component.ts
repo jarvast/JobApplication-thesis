@@ -23,12 +23,7 @@ export class EditUserProfileComponent{
   user: UserUser;
   editForm: FormGroup;
   selected: String;
-  asd : number; /*= new FormGroup({
-    name: new FormControl('', [Validators.required,Validators.minLength(3)]),
-    phone: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    loc: new FormControl('', [Validators.required])
-  });*/
+  cachebuster : number;
 
   constructor(private route: ActivatedRoute, private userService: UserService,private authService: AuthService, private locationService:LocationService, private fb:FormBuilder, private router: Router) {
     this.imgRoute = Server.routeTo(Routes.PICTURE);
@@ -50,41 +45,8 @@ export class EditUserProfileComponent{
         console.log(this.selected);
       })
     });
-    this.asd= Date.now();
-    /*this.locationService.getAllLocations().subscribe(res =>{
-      this.locations=res;
-    });*/
-    /*this.editForm = fb.group({
-      name: fb.control('',Validators.required),
-      phone: fb.control('',Validators.required),
-      email: fb.control('',[Validators.required, Validators.email])
-    });*/
-      //loc: new FormControl(this.user.location.locationName, [Validators.required])
-   // });
-   // this.createForm(this.user);
+    this.cachebuster= Date.now();
    }
- 
-    /*this.route.params.subscribe(param => {
-      this.userId = param['id'];
-      this.userService.getUser(this.userId).subscribe(data =>{
-        this.user=data;
-      })
-    });*/
-    //this.editForm.patchValue({name: this.user.name});
-    //this.editForm.setValue({name: this.user.name});
-    //console.log(this.user.name);
-    //this.formGro
-   
-
-  /*createForm(){
-    this.editForm = this.fb.group({
-      name: new FormControl('anyád', [Validators.required,Validators.minLength(3)]),
-      phone: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      loc: new FormControl(this.user.location, [Validators.required])
-    });
-  }*/
-  
   get name() {
     return this.editForm.get('name')
   }
@@ -111,6 +73,6 @@ submit() {
    /* setTimeout(() => {
       
     }, 2000);*/
-    return this.asd;
+    return this.cachebuster;
   }
 }

@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,5 +32,10 @@ public class LocationController {
     @GetMapping()
     private ResponseEntity<List<Location>> getLocations(){
         return ResponseEntity.ok(locationService.getLocations());
+    }
+    @PostMapping("/{userId}")
+    private ResponseEntity<Worker> updateLocationsByWorker(@PathVariable(value = "userId") Long userId, @RequestBody List<Location> locations) {
+        Worker worker = userService.getWorker(userId);
+        return ResponseEntity.ok(locationService.updateLocationsByWorker(worker, locations));
     }
 }
