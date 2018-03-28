@@ -83,5 +83,17 @@ public class UserController<T> {
     private ResponseEntity<Iterable<Worker>> getTop5Workers(){
         return ResponseEntity.ok(userService.getTop5());
     }
+    @GetMapping("/favorite/{id}")
+    private ResponseEntity<User> favorite(@PathVariable(value = "id") Long id){
+        return ResponseEntity.ok(userService.favorite(id));
+    }
+    @GetMapping("/favorite/remove/{id}")
+    private ResponseEntity<User> removeFavorite(@PathVariable(value = "id") Long id){
+        return ResponseEntity.ok(userService.removeFavorite(id));
+    }
+    @GetMapping("/favorite")
+    private ResponseEntity<List<Worker>> listFavorites(){
+        return ResponseEntity.ok(userService.listFavorites());
+    }
 
 }

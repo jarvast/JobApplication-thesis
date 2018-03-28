@@ -38,4 +38,13 @@ export class UserService {
   updateWorker(worker: WorkerUser){
     return this.http.post(Server.routeTo(Routes.SINGLEWORKER), worker);
   }
+  putFavorite(id:number){
+    return this.http.get(Server.routeTo(Routes.FAVORITE)+ '/' + id);
+  }
+  listFavorites(): Observable<WorkerUser[]>{
+    return this.http.get<WorkerUser[]>(Server.routeTo(Routes.FAVORITE));
+  }
+  notFavorite(id:number){
+    return this.http.get(Server.routeTo(Routes.FAVORITE) + '/remove/' + id);
+  }
 }

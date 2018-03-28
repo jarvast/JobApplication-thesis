@@ -128,5 +128,28 @@ public class UserService<T> {
         oldWorker.setPhoneNum(worker.getPhoneNum());
         return userRepository.save(oldWorker);
     }
+    public User favorite(Long workerId){
+        Worker worker = userRepository.findOne(workerId);
+        User oldUser = (User) getLoggedInUser();
+        List<Worker> favorites = oldUser.getFavorites();
+        favorites.add(worker);
+        oldUser.setFavorites(favorites);
+        return userRepository.save(oldUser);
+    }
+    public User removeFavorite(Long workerId){
+        Worker worker = userRepository.findOne(workerId);
+        User oldUser = (User) getLoggedInUser();
+        List<Worker> favorites = oldUser.getFavorites();
+        System.out.println(favorites + "aa");
+        System.out.println("remove:" + worker);
+        favorites.remove(worker);
+        System.out.println(favorites);
+        oldUser.setFavorites(favorites);
+        return userRepository.save(oldUser);
+    }
+    public List<Worker> listFavorites(){
+        User user = (User) getLoggedInUser();
+        return user.getFavorites();
+    }
 
 }

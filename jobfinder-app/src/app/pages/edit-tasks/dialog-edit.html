@@ -1,0 +1,15 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+<h1 mat-dialog-title>Feladat szerkesztése</h1>
+<div mat-dialog-content>
+    <mat-form-field>
+        <input matInput formControlName="name" placeholder="Név">
+    </mat-form-field>
+    <mat-form-field>
+            <input matInput formControlName="prices" placeholder="Árak">
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-button type="submit">Mentés</button>
+    <button mat-button type="button" mat-dialog-close>Mégse</button>
+</div>
+</form>

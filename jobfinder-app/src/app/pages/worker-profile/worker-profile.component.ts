@@ -21,16 +21,31 @@ export class WorkerProfileComponent implements OnInit {
   separatedLocations : String = "";
   ownprofile: boolean = false;
   cachebuster: number;
+  isUser: boolean = false;
+  favorites: WorkerUser[] =[];
+  isFavorite: boolean = false;
 
   constructor(private route: ActivatedRoute, private userService: UserService, private authService: AuthService, private locationService: LocationService, private router:Router) { 
     this.imgRoute = Server.routeTo(Routes.PICTURE);
   }
 
   ngOnInit() {
+    if (this.authService.isLoggedIn && this.authService.user.role.role=="USER"){
+      this.isUser= true;
+      this.userService.listFavorites().subscribe(fav =>{
+        this.favorites = fav;
+      });
+    }
+    //console.log(this.favorites);
     this.route.params.subscribe(param => {
       this.workerId = param['id'];
       this.userService.getWorker(this.workerId).subscribe(data =>{
         this.worker=data;
+        for (let entry of this.favorites){
+          if (entry.id==this.worker.id){
+            this.isFavorite=true;
+          }
+        }
         if (this.authService.user.id==this.workerId){
           this.ownprofile=true;
         }
@@ -50,7 +65,24 @@ export class WorkerProfileComponent implements OnInit {
     }
   }
   favorite(){
-    console.log("fam");
+    this.userService.putFavorite(this.workerId).subscribe(res =>{
+      this.userService.listFavorites().subscribe(fav =>{
+        this.favorites = fav;
+      });
+      this.isFavorite=true;
+    });
+    this.userService.listFavorites().subscribe(fav =>{
+      this.favorites = fav;
+    });
+    //this.router.navigate(['worker', this.workerId],{queryParams: { 'refresh': 1 } });
+  }
+  notFavorite(){
+    this.userService.notFavorite(this.workerId).subscribe(res =>{
+      this.userService.listFavorites().subscribe(fav =>{
+        this.favorites = fav;
+      });
+      this.isFavorite = false;
+    });
   }
   report(){
     console.log("report")

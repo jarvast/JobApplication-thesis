@@ -13,6 +13,9 @@ export class Routes {
     static RATING: String = 'ratings';
     static LOCATION: String = 'location';
     static TASKSBYUSER: String = 'tasks';
+    static UPDATETASK: String = 'tasks/update';
+    static NEWTASK: String = 'tasks/create';
+    static FAVORITE: String = 'user/favorite';
   }
   
   export class Server {

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AuthService {
-  user: User;
+  user: User = new User();
   isLoggedIn: boolean = false;
 
   constructor(private http: HttpClient) {

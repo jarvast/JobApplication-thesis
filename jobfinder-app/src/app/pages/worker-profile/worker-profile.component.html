@@ -3,9 +3,12 @@
   <img src="{{imgRoute + worker.imgName}}?{{getTimeStamp()}}" alt="{{imgRoute + worker.imgName}}">
   <div class="textpart">
     <h1>{{worker.name}}
-    <button style="margin-left:10%;" *ngIf="!ownprofile" [disabled]="!authService.isLoggedIn" mat-fab color="warn" (click)="favorite()" matTooltip="Kedveléshez jelentkezzen be!" [matTooltipDisabled]=authService.isLoggedIn matTooltipHideDelay="2000">
+    <button style="margin-left:10%;" *ngIf="!ownprofile && isUser && !isFavorite" [disabled]="!authService.isLoggedIn" mat-fab color="warn" (click)="favorite()" matTooltip="Kedveléshez jelentkezzen be!" [matTooltipDisabled]=authService.isLoggedIn matTooltipHideDelay="2000">
       <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
     </button>
+    <button style="margin-left:10%;background-color:black;" *ngIf="isFavorite" mat-fab color="warn" (click)="notFavorite()" matTooltip="Kedveléshez jelentkezzen be!" [matTooltipDisabled]=authService.isLoggedIn matTooltipHideDelay="2000">
+        <mat-icon aria-label="Example icon-button with a heart icon">favorite_border</mat-icon>
+      </button>
     </h1>
     <p><b>Telefonszám: </b><span style="display:inline-block; width: 30%;"></span>{{worker.phoneNum}}</p>
     <h6>Szolgáltatási helyek: </h6>

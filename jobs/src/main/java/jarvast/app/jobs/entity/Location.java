@@ -25,8 +25,8 @@ public class Location extends BaseEntity {
     
     @OneToMany(
         mappedBy = "location", 
-        cascade = CascadeType.ALL,
-        orphanRemoval = true
+        cascade = CascadeType.ALL
+        //orphanRemoval = true
     )
     @JsonIgnore
     private List<User> users;

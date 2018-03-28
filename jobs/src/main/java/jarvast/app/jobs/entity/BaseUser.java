@@ -3,6 +3,7 @@ package jarvast.app.jobs.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
@@ -126,5 +127,35 @@ public abstract class BaseUser {
     public String toString() {
         return "User{" + "username=" + username + image +"iiii" + ", password=" + password + ", roles=" + role.getRole() + '}';
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 13 * hash + (int) (this.id ^ (this.id >>> 32));
+        hash = 13 * hash + Objects.hashCode(this.username);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final BaseUser other = (BaseUser) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (!Objects.equals(this.username, other.username)) {
+            return false;
+        }
+        return true;
+    }
+    
 
 }

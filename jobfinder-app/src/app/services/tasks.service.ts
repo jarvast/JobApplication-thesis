@@ -12,5 +12,11 @@ export class TasksService {
   getTasks(id:number): Observable<Task[]>{
     return this.http.get<Task[]>(Server.routeTo(Routes.TASKSBYUSER) + '/' + id);
   }
+  updateTask(task:Task){
+    return this.http.post(Server.routeTo(Routes.UPDATETASK),task);
+  }
+  create(id:number, task:Task){
+    return this.http.post(Server.routeTo(Routes.NEWTASK) + '/' + id, task);
+  }
 
 }

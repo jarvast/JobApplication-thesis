@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,5 +28,14 @@ public class TaskController {
     private ResponseEntity<List<Task>> getTasksByUser(@PathVariable(value = "userId") Long userId) {
         Worker worker = userService.getWorker(userId);
         return ResponseEntity.ok(taskService.getTasksByWorker(worker));
+    }
+    @PostMapping("/update")
+    private ResponseEntity<Task> updateTask(@RequestBody Task task){
+        return ResponseEntity.ok(taskService.updateTask(task));
+    }
+    @PostMapping("/create/{workerid}")
+    private ResponseEntity<Task> createTask(@PathVariable(value = "workerid") Long workerId, @RequestBody Task task){
+        Worker worker = userService.getWorker(workerId);
+        return ResponseEntity.ok(taskService.createTask(worker,task));
     }
 }

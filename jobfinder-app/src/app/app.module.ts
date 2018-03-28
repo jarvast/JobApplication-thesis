@@ -30,8 +30,8 @@ import { TasksService } from './services/tasks.service';
 import { RatingDetailedComponent } from './pages/rating-detailed/rating-detailed.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { EditUserProfileComponent } from './pages/edit-user-profile/edit-user-profile.component';
-import { NocacheDirective } from './upload/nocache.directive';
 import { EditWorkerProfileComponent } from './pages/edit-worker-profile/edit-worker-profile.component';
+import { EditTasksComponent, DialogEditor, NewTaskDialog } from './pages/edit-tasks/edit-tasks.component';
 
 
 @NgModule({
@@ -50,8 +50,10 @@ import { EditWorkerProfileComponent } from './pages/edit-worker-profile/edit-wor
     RatingDetailedComponent,
     UserProfileComponent,
     EditUserProfileComponent,
-    NocacheDirective,
-    EditWorkerProfileComponent
+    EditWorkerProfileComponent,
+    EditTasksComponent,
+    DialogEditor,
+    NewTaskDialog
   ],
   imports: [
     BrowserModule,
@@ -62,6 +64,7 @@ import { EditWorkerProfileComponent } from './pages/edit-worker-profile/edit-wor
     BrowserAnimationsModule,
     MaterialItemsModule
   ],
+  entryComponents: [DialogEditor, NewTaskDialog],
   providers: [AuthService, RouteGuard, UploadFileService, UserService, CategoryService, RatingsService, LocationService, TasksService],
   bootstrap: [AppComponent]
 })

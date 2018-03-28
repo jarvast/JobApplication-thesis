@@ -14,7 +14,8 @@ import {
     MatSnackBarModule,
     MatGridListModule,
     MatListModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDialogModule
   } from '@angular/material';
   import {NgModule} from "@angular/core";
   
@@ -22,6 +23,7 @@ import {
     imports: [
       MatFormFieldModule,
       MatInputModule,
+      MatDialogModule,
       MatButtonModule,
       MatToolbarModule,
       MatTableModule,
@@ -45,6 +47,7 @@ import {
       MatSelectModule,
       MatCheckboxModule,
       MatIconModule,
+      MatDialogModule,
       MatMenuModule,
       MatSortModule,
       MatPaginatorModule,
