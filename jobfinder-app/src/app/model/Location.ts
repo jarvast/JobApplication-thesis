@@ -3,6 +3,6 @@ export class Location {
 
     
   constructor(locationName?: String) {
-    this.locationName = this.locationName;
+    this.locationName = locationName;
     }
 }

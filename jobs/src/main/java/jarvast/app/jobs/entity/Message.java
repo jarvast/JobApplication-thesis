@@ -20,6 +20,9 @@ public class Message extends BaseEntity {
 
     @Column
     private String content;
+    
+    @Column
+    private String subject;
 
     @Column
     private Timestamp sendTimestamp;
@@ -27,10 +30,11 @@ public class Message extends BaseEntity {
     @Column
     private boolean isSeen;
 
-    public Message(BaseUser sender, BaseUser receiver, String content, Timestamp sendTimestamp, boolean isSeen) {
+    public Message(BaseUser sender, BaseUser receiver, String content,String subject, Timestamp sendTimestamp, boolean isSeen) {
         this.sender = sender;
         this.receiver = receiver;
         this.content = content;
+        this.subject = subject;
         this.sendTimestamp = sendTimestamp;
         this.isSeen = isSeen;
     }
@@ -49,6 +53,15 @@ public class Message extends BaseEntity {
     public BaseUser getReceiver() {
         return receiver;
     }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+    
 
     public void setReceiver(BaseUser receiver) {
         this.receiver = receiver;

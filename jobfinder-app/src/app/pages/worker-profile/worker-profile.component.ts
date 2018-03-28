@@ -23,7 +23,7 @@ export class WorkerProfileComponent implements OnInit {
   cachebuster: number;
   isUser: boolean = false;
   favorites: WorkerUser[] =[];
-  isFavorite: boolean = false;
+  isFavorite: boolean;
 
   constructor(private route: ActivatedRoute, private userService: UserService, private authService: AuthService, private locationService: LocationService, private router:Router) { 
     this.imgRoute = Server.routeTo(Routes.PICTURE);
@@ -41,15 +41,17 @@ export class WorkerProfileComponent implements OnInit {
       this.workerId = param['id'];
       this.userService.getWorker(this.workerId).subscribe(data =>{
         this.worker=data;
+        this.isFavorite=false;
         for (let entry of this.favorites){
           if (entry.id==this.worker.id){
             this.isFavorite=true;
+            break;
           }
         }
         if (this.authService.user.id==this.workerId){
           this.ownprofile=true;
         }
-      })
+      });
   });
   this.locationService.getLocations(this.workerId).subscribe(res => {
     this.locations = res;

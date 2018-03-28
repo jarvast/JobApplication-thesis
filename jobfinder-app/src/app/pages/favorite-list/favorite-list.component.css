@@ -1,0 +1,87 @@
+h1{
+    font-size: 200%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: italic;
+    margin-left: 10%;
+    margin-bottom: 0%;
+}
+p{
+    font-size: 110%;
+}
+.mainpic{
+    border: 1px solid cadetblue;
+    border-radius: 4px;
+    padding: 0.3%;
+    max-width: 15%;
+    max-height: 150px;
+    float: left;
+    margin-left: 0.5%;
+    margin-bottom: 0.5%;
+}
+.mainpic:hover {
+    box-shadow: 0 0 10px 1px cadetblue;
+    cursor: pointer;
+}
+mat-card-title:hover {
+    color: cadetblue;
+    cursor: pointer;
+}
+.headerimage{
+    border: 1px solid cadetblue;
+    border-radius: 10px;
+}
+mat-card{
+    margin-left: 20%;
+    margin-bottom: 1%;
+    margin-right: 30%;
+    background-color: khaki;
+    height: 240px;
+}
+mat-card-header{
+    text-align: left;
+    float: center;
+}
+mat-card-actions{
+    text-align: right;
+    margin-bottom: 0%;
+}
+mat-card-content{
+    margin-left: 20%;
+}
+body{
+    text-align: right;
+}
+app-rating{
+    text-align: right;
+}
+mat-card-title{
+    width: 200%;
+    height: 40%;
+}
+mat-card-subtitle{
+    font-size: 100%;
+}
+.row{
+    text-align: center;
+}
+mat-select{
+    width: 20%;
+    margin-left: 48%;
+    background: cadetblue;
+    border-radius: 6px;
+    padding: 1%;
+    margin-bottom: 0.5%;
+}
+mat-option{
+    background: cadetblue;
+}
+h5{
+    margin-left: 25%;
+    margin-top: 0.4%;
+    margin-bottom: 0%;
+}
+.fuk{
+    margin-top: 0;
+    background: khaki;
+    margin-bottom: 0.5%;
+}

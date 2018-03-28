@@ -17,6 +17,7 @@ public interface UserRepository extends CrudRepository<BaseUser, Long> {
 
     public Worker findOne(Long id);
     public User findById(Long id);
+    public BaseUser findPeopleById(Long id);
 
     public List<Worker> findByCategory(Category category);
 

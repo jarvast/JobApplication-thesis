@@ -8,6 +8,10 @@ import { MenuComponent } from './pages/menu/menu.component';
 import { MaterialItemsModule } from './MaterialItemsModule';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
+import {LOCALE_ID} from '@angular/core';
+import { registerLocaleData } from "@angular/common";
+import localeHu from "@angular/common/locales/hu";
+registerLocaleData(localeHu);
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
@@ -32,6 +36,9 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { EditUserProfileComponent } from './pages/edit-user-profile/edit-user-profile.component';
 import { EditWorkerProfileComponent } from './pages/edit-worker-profile/edit-worker-profile.component';
 import { EditTasksComponent, DialogEditor, NewTaskDialog } from './pages/edit-tasks/edit-tasks.component';
+import { FavoriteListComponent } from './pages/favorite-list/favorite-list.component';
+import { MessagesComponent } from './pages/messages/messages.component';
+import { MessageService } from './services/message.service';
 
 
 @NgModule({
@@ -53,7 +60,9 @@ import { EditTasksComponent, DialogEditor, NewTaskDialog } from './pages/edit-ta
     EditWorkerProfileComponent,
     EditTasksComponent,
     DialogEditor,
-    NewTaskDialog
+    NewTaskDialog,
+    FavoriteListComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +74,9 @@ import { EditTasksComponent, DialogEditor, NewTaskDialog } from './pages/edit-ta
     MaterialItemsModule
   ],
   entryComponents: [DialogEditor, NewTaskDialog],
-  providers: [AuthService, RouteGuard, UploadFileService, UserService, CategoryService, RatingsService, LocationService, TasksService],
+  providers: [AuthService, RouteGuard, UploadFileService, UserService, CategoryService, RatingsService, LocationService, TasksService, MessageService, 
+    { provide: LOCALE_ID, useValue: 'hu' }
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -33,7 +33,7 @@ export class MenuComponent implements OnInit {
   
   private roleMenus = new Map<String, MenuItem[]>([
     ["ADMIN", [...this.asdo]],
-    ["USER", [...this.asdo , {link: '/user', title: 'Profilom'}, {link: '/favorites', title: 'Kedvenceim'}]],
+    ["USER", [...this.asdo , {link: '/user', title: 'Profilom'}, {link: '/myfavorites', title: 'Kedvenceim'}]],
     ["WORKER", [...this.asdo, {link: '/worker', title: 'Profilom'}, {link: '/mytasks', title: 'Feladataim'}]]
 ]);
 

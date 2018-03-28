@@ -8,6 +8,8 @@ import { UserProfileComponent } from "./pages/user-profile/user-profile.componen
 import { EditUserProfileComponent } from "./pages/edit-user-profile/edit-user-profile.component";
 import { EditWorkerProfileComponent } from "./pages/edit-worker-profile/edit-worker-profile.component";
 import { EditTasksComponent } from "./pages/edit-tasks/edit-tasks.component";
+import { FavoriteListComponent } from "./pages/favorite-list/favorite-list.component";
+import { MessagesComponent } from "./pages/messages/messages.component";
 
 export const appRoutes: Routes = [
     {
@@ -22,7 +24,9 @@ export const appRoutes: Routes = [
             {path: 'user/:id', component: UserProfileComponent},
             {path: 'myuser/:id', component: EditUserProfileComponent},
             {path: 'myworker/:id', component: EditWorkerProfileComponent},
-            {path: 'mytasks/:id', component: EditTasksComponent}
+            {path: 'mytasks/:id', component: EditTasksComponent},
+            {path: 'myfavorites/:id', component: FavoriteListComponent},
+            {path: 'mymessages/:id', component: MessagesComponent}
         ]
     }
 ]

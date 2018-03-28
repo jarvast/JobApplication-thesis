@@ -16,6 +16,7 @@ export class Routes {
     static UPDATETASK: String = 'tasks/update';
     static NEWTASK: String = 'tasks/create';
     static FAVORITE: String = 'user/favorite';
+    static MESSAGES: String = 'messages';
   }
   
   export class Server {

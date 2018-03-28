@@ -8,6 +8,7 @@ import jarvast.app.jobs.repository.UserRepository;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -149,7 +150,11 @@ public class UserService<T> {
     }
     public List<Worker> listFavorites(){
         User user = (User) getLoggedInUser();
-        return user.getFavorites();
+        List<Worker> favorites = user.getFavorites();
+        for(Iterator<Worker> it = favorites.iterator(); it.hasNext();){
+            calculateRate(it.next());
+        }
+        return favorites;
     }
 
 }

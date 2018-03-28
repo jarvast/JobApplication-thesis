@@ -130,11 +130,11 @@ INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('szek', '50000 Ft'
 INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('szek', '50000 Ft', 14);
 
 
-INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok user, laci vagyok', 'false', current_timestamp, 13,3);
-INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok laci, user vagyok', 'false', current_timestamp, 13,4);
-INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok laci, user vagyok', 'false', current_timestamp, 13,2);
-INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok laci, user vagyok', 'false', current_timestamp, 13,3);
-INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok laci, user vagyok', 'false', current_timestamp, 14,4);
+INSERT INTO MESSAGES (CONTENT,SUBJECT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok user, laci vagyok','subject' ,'false', current_timestamp, 13,2);
+INSERT INTO MESSAGES (CONTENT,SUBJECT,  IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok laci, user vagyok', 'subject' ,'false', current_timestamp, 13,2);
+INSERT INTO MESSAGES (CONTENT,SUBJECT,  IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok laci, user vagyok','subject' , 'false', current_timestamp, 14,2);
+INSERT INTO MESSAGES (CONTENT,SUBJECT,  IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok laci, user vagyok','subject' , 'false', current_timestamp, 15,2);
+INSERT INTO MESSAGES (CONTENT,SUBJECT,  IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok laci, user vagyok','subject' , 'false', current_timestamp, 2,13);
 INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok laci, user vagyok', 'false', current_timestamp, 15,4);
 INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok laci, user vagyok', 'false', current_timestamp, 15,12);
 INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok laci, user vagyok', 'false', current_timestamp, 16,12);

@@ -1,4 +1,4 @@
-<div *ngIf="worker">
+<div *ngIf="worker && favorites">
 <div class="toppart">
   <img src="{{imgRoute + worker.imgName}}?{{getTimeStamp()}}" alt="{{imgRoute + worker.imgName}}">
   <div class="textpart">
