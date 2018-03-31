@@ -18,7 +18,8 @@
     </div>
     
     <div *ngIf="authService.isLoggedIn" class="authorized">
-    <button mat-button [matMenuTriggerFor]="menu"><img mat-card-avatar src ="{{imgRoute + this.authService.user.imgName}}?{{getTimeStamp()}}" class="headerimage"> <mat-icon>keyboard_arrow_down</mat-icon></button>
+    <button mat-button [matMenuTriggerFor]="menu"><img mat-card-avatar src ="{{imgRoute + this.authService.user.imgName}}?{{getTimeStamp()}}" class="headerimage">
+       <mat-icon *ngIf="!notify">keyboard_arrow_down</mat-icon><mat-icon *ngIf="notify">announcement</mat-icon></button>
     <mat-menu #menu="matMenu" [overlapTrigger]="false">
       <button mat-menu-item *ngFor="let menu of rolemenu" [routerLink]="[menu.link, authService.user.id]" routerLinkActive="active">{{menu.title}}</button>
       <button mat-menu-item (click)="logout()">Kijelentkezés</button>

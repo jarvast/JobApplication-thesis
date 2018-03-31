@@ -18,7 +18,7 @@ public class Message extends BaseEntity {
     @JoinColumn(name = "recipient_id")
     private BaseUser receiver;
 
-    @Column
+    @Column(length = 1000)
     private String content;
     
     @Column
@@ -28,15 +28,19 @@ public class Message extends BaseEntity {
     private Timestamp sendTimestamp;
 
     @Column
-    private boolean isSeen;
+    private Boolean isSeen;
+    
+    @Column
+    private Boolean isRatingRequest;
 
-    public Message(BaseUser sender, BaseUser receiver, String content,String subject, Timestamp sendTimestamp, boolean isSeen) {
+    public Message(BaseUser sender, BaseUser receiver, String content,String subject, Timestamp sendTimestamp, Boolean isSeen, Boolean isRatingRequest) {
         this.sender = sender;
         this.receiver = receiver;
         this.content = content;
         this.subject = subject;
         this.sendTimestamp = sendTimestamp;
         this.isSeen = isSeen;
+        this.isRatingRequest = isRatingRequest;
     }
 
     public Message() {
@@ -83,12 +87,21 @@ public class Message extends BaseEntity {
         this.sendTimestamp = sendTimestamp;
     }
 
-    public boolean isIsSeen() {
+    public Boolean isIsSeen() {
         return isSeen;
     }
 
-    public void setIsSeen(boolean isSeen) {
+    public void setIsSeen(Boolean isSeen) {
         this.isSeen = isSeen;
     }
+
+    public Boolean isIsRatingRequest() {
+        return isRatingRequest;
+    }
+
+    public void setIsRatingRequest(Boolean isRatingRequest) {
+        this.isRatingRequest = isRatingRequest;
+    }
+    
 
 }

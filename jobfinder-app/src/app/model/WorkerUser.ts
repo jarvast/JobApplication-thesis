@@ -1,4 +1,5 @@
 import { Category } from "./Category";
+import { Role } from "./Role";
 
 export class WorkerUser {
   id: number;
@@ -10,9 +11,10 @@ export class WorkerUser {
   category: Category;
   description: String;
   rating : number;
+  role: Role;
 
     
-  constructor( username?: String,  imgName?: String, id?: number, email?: String, name?: String, phoneNum?: String, category?: Category, description?: String, rating?: number) {
+  constructor( username?: String,  imgName?: String, id?: number, email?: String, name?: String, phoneNum?: String, category?: Category, description?: String, rating?: number, role?:Role) {
     this.username = username || "";
     this.imgName = imgName || "";
     this.id = id;
@@ -22,5 +24,6 @@ export class WorkerUser {
     this.category = category;
     this.description =description || "";
     this.rating = rating;
+    this.role = role;
     }
 }

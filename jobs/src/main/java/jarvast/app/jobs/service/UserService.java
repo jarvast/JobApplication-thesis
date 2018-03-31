@@ -142,7 +142,7 @@ public class UserService<T> {
         User oldUser = (User) getLoggedInUser();
         List<Worker> favorites = oldUser.getFavorites();
         System.out.println(favorites + "aa");
-        System.out.println("remove:" + worker);
+        System.out.println("remsove:" + worker);
         favorites.remove(worker);
         System.out.println(favorites);
         oldUser.setFavorites(favorites);

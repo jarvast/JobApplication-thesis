@@ -6,6 +6,9 @@ import { Server, Routes } from '../../utils/ServerRoutes';
 import { AuthService } from '../../services/auth.service';
 import { LocationService } from '../../services/location.service';
 import { Location } from '../../model/Location';
+import { UserUser } from '../../model/UserUser';
+import { WriteMessageDialogComponent } from '../messages/popups/write-message-dialog/write-message-dialog.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-worker-profile',
@@ -25,7 +28,7 @@ export class WorkerProfileComponent implements OnInit {
   favorites: WorkerUser[] =[];
   isFavorite: boolean;
 
-  constructor(private route: ActivatedRoute, private userService: UserService, private authService: AuthService, private locationService: LocationService, private router:Router) { 
+  constructor(public dialog : MatDialog,private route: ActivatedRoute, private userService: UserService, private authService: AuthService, private locationService: LocationService, private router:Router) { 
     this.imgRoute = Server.routeTo(Routes.PICTURE);
   }
 
@@ -59,12 +62,15 @@ export class WorkerProfileComponent implements OnInit {
   this.cachebuster= Date.now();
   }
   //lehet az egész gombokat ki lehetne szervezni
-  sendMessage(){
-    if (this.authService.isLoggedIn){
-      console.log("send");
-    }else{
-      console.log("empty");
-    }
+  writeMessage(){
+    let dialogRefa = this.dialog.open(WriteMessageDialogComponent, {
+      width: '30%',
+      //data: { id: task.id, name: task.taskName, prices: task.taskPrices, task: task }
+      data :{receiver:this.worker}
+    });
+    dialogRefa.afterClosed().subscribe(res =>{
+      //this.dialogRef.close();
+    })
   }
   favorite(){
     this.userService.putFavorite(this.workerId).subscribe(res =>{

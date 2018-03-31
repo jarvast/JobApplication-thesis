@@ -1,0 +1,14 @@
+<h1 mat-dialog-title >{{message.subject}}
+    <h2 *ngIf="isSent" style="margin-bottom:0px;">Címzett: {{message.receiver.name}}</h2>
+    <h2 *ngIf="!isSent" style="margin-bottom:0px;">Küldő: {{message.sender.name}}</h2>
+</h1>
+<mat-divider></mat-divider>
+        <div mat-dialog-content>
+            <p>{{message.content}}</p>
+        </div>
+        <mat-divider></mat-divider>
+        <div mat-dialog-actions>
+                <button *ngIf="!isSent" mat-button (click)="writeMessage(message.sender)">Válasz</button>
+                <button *ngIf="isRateable" class="ratebutton" mat-button mat-dialog-close (click)="requestRating();">Értékelés</button>
+                <button mat-button mat-dialog-close>Vissza</button>
+            </div>

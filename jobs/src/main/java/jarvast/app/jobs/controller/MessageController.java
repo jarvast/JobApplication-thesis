@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package jarvast.app.jobs.controller;
 
 import jarvast.app.jobs.entity.Message;
@@ -12,13 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- *
- * @author TomiPC
- */
+
 @RestController
 @RequestMapping("/api/messages")
 public class MessageController {
@@ -26,9 +20,30 @@ public class MessageController {
     @Autowired
     private MessageService messageService;
     
+    @PostMapping("/send")
+    private ResponseEntity<Message> sendMessage(@RequestBody Message message){
+        return ResponseEntity.ok(messageService.sendMessage(message));
+    }
+    
     @GetMapping("/{id}")
-    private ResponseEntity<List<Message>> getMessagesById(@PathVariable (value = "id") Long id){
-        return ResponseEntity.ok(messageService.getMessagesById(id));
+    private ResponseEntity<List<Message>> getSentMessagesById(@PathVariable (value = "id") Long id){
+        return ResponseEntity.ok(messageService.getSentMessagesById(id));
+    }
+    @GetMapping("/received/{id}")
+    private ResponseEntity<List<Message>> getReceivedMessagesById(@PathVariable (value = "id") Long id){
+        return ResponseEntity.ok(messageService.getReceivedMessagesById(id));
+    }
+    @GetMapping("/see/{id}")
+    private ResponseEntity<Message> seeMessage(@PathVariable (value = "id") Long id){
+        return ResponseEntity.ok(messageService.seeMessage(id));
+    }
+    @GetMapping("/new/{id}")
+    private ResponseEntity<List<Message>> newMessages(@PathVariable (value = "id") Long id){
+        return ResponseEntity.ok(messageService.newMessages(id));
+    }
+    @GetMapping("/rating/{id}")
+    private ResponseEntity<Message> requestRating(@PathVariable (value = "id") Long id){
+        return ResponseEntity.ok(messageService.requestRating(id));
     }
     
 }

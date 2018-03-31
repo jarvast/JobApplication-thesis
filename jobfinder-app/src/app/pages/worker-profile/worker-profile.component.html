@@ -18,7 +18,7 @@
     </div>
 </div>
 <div class="buttons">
-  <button class="messagebutton" *ngIf="!ownprofile" [disabled]="!authService.isLoggedIn" mat-raised-button color="primary" (click)="sendMessage()" matTooltip="Üzenetküldéshez jelentkezzen be!" [matTooltipDisabled]=authService.isLoggedIn matTooltipHideDelay="2000">Üzenetküldés</button>
+  <button class="messagebutton" *ngIf="!ownprofile" [disabled]="!authService.isLoggedIn" mat-raised-button color="primary" (click)="writeMessage()" matTooltip="Üzenetküldéshez jelentkezzen be!" [matTooltipDisabled]=authService.isLoggedIn matTooltipHideDelay="2000">Üzenetküldés</button>
   <button *ngIf="ownprofile" class="messagebutton" mat-raised-button color="primary" (click)="rut()">Profil szerkesztése</button>
   <div>
     <button class="reportbutton" *ngIf="!ownprofile" [disabled]="!authService.isLoggedIn" mat-raised-button color="primary" (click)="report()" matTooltip="Jelentéshez jelentkezzen be!" [matTooltipDisabled]=authService.isLoggedIn matTooltipHideDelay="2000">Jelentés</button>

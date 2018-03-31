@@ -1,15 +1,16 @@
+
 INSERT INTO ROLES (ROLE_NAME) VALUES ('ADMIN');
 INSERT INTO ROLES (ROLE_NAME) VALUES ('USER');
 INSERT INTO ROLES (ROLE_NAME) VALUES ('WORKER');
 --1-8
-INSERT INTO CATEGORIES (CATEGORY_NAME, PICTURE) VALUES ('Autoszerelo', '1.png');
-INSERT INTO CATEGORIES (CATEGORY_NAME, PICTURE) VALUES ('Villanyszerelo', '2.png');
-INSERT INTO CATEGORIES (CATEGORY_NAME, PICTURE) VALUES ('Viz-gaz-futesszerelo', '3.png');
-INSERT INTO CATEGORIES (CATEGORY_NAME, PICTURE) VALUES ('Kertesz', '4.png');
+INSERT INTO CATEGORIES (CATEGORY_NAME, PICTURE) VALUES ('Autószerelõ', '1.png');
+INSERT INTO CATEGORIES (CATEGORY_NAME, PICTURE) VALUES ('Villanyszerelõ', '2.png');
+INSERT INTO CATEGORIES (CATEGORY_NAME, PICTURE) VALUES ('Víz-gáz-fûtésszerelõ', '3.png');
+INSERT INTO CATEGORIES (CATEGORY_NAME, PICTURE) VALUES ('Kertész', '4.png');
 INSERT INTO CATEGORIES (CATEGORY_NAME, PICTURE) VALUES ('Asztalos', '5.png');
-INSERT INTO CATEGORIES (CATEGORY_NAME, PICTURE) VALUES ('Festo', '6.png');
-INSERT INTO CATEGORIES (CATEGORY_NAME, PICTURE) VALUES ('Haztartasi gepszerelo', '7.png');
-INSERT INTO CATEGORIES (CATEGORY_NAME, PICTURE) VALUES ('Komuves', '8.png');
+INSERT INTO CATEGORIES (CATEGORY_NAME, PICTURE) VALUES ('Festõ', '6.png');
+INSERT INTO CATEGORIES (CATEGORY_NAME, PICTURE) VALUES ('Háztartási gépszerelõ', '7.png');
+INSERT INTO CATEGORIES (CATEGORY_NAME, PICTURE) VALUES ('Kõmûves', '8.png');
 
 
 --1-30
@@ -46,10 +47,10 @@ INSERT INTO LOCATIONS (LOCATION_NAME) VALUES ('Szekszard');
 
 --1-12
 INSERT INTO USERS (USER_TYPE, PASSWORD, USERNAME, ROLE_ID, NAME) VALUES ('Admin', 'admin','admin',1, 'Tomi');
-INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, LOCATION_ID) VALUES ('user.jpg', 'User', 'user','user',2, 'user@user.hu',  'Lee Sandor', '06309987876', 11);
+INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, LOCATION_ID) VALUES ('user.jpg', 'User', 'user','user',2, 'user@user.hu',  'Lee Sándor', '06309987876', 11);
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, LOCATION_ID) VALUES ('tomi.jpg', 'User', 'user','tomi',2, 'tomi34@gmail.hu',  'Ablakos Tomi', '06309987876',21);
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, LOCATION_ID) VALUES ('tibor.jpg', 'User', 'user','tibor',2, 'tibi96@asd.hu',  'Terep Tibor', '06309987876',4);
-INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, LOCATION_ID) VALUES ('patrik.jpg', 'User', 'user','patrik',2, 'pati@invitel.hu',  'Vizi Patrik', '06309987876',6);
+INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, LOCATION_ID) VALUES ('patrik.jpg', 'User', 'user','patrik',2, 'pati@invitel.hu',  'Vízi Patrik', '06309987876',6);
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, LOCATION_ID) VALUES ('jozsef.jpg', 'User', 'user','jozsef',2, 'jozsi21@gmail.hu', 'Kovacs Jozsef', '06309987876',7);
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, LOCATION_ID) VALUES ('gyorgyi.jpg', 'User', 'user','gyorgyi',2, 'gyorgyike@digi.hu', 'Nyugati Gyorgyi', '06309987876',8);
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, LOCATION_ID) VALUES ('gergely.jpg', 'User', 'user','gergely',2, 'gergo25@digi.hu', 'Dani', '06309987876',24);
@@ -59,7 +60,7 @@ INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, P
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, LOCATION_ID) VALUES ('adam.jpg', 'User', 'user','adam',2, 'adamszalai@citromail.hu', 'Szalai Adam', '06309987876',26);
 
 --13-20
-INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('kriszti1992.jpg', 'Worker', 'krisz','kriszti1992',3, 'kriszti92@gmail.com', 'Kriszti', '062022126',1, 'Foglalkozom regi illetve ujabb evjaratu autok szervizelesevel, szeretettel varom a muhelyemben, illetve kiszallasra is van lehetoseg!');
+INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('kriszti1992.jpg', 'Worker', 'krisz','kriszti1992',3, 'kriszti92@gmail.com', 'Kriszti', '062022126',1, 'Foglalkozom régi illetve ujabb evjaratu autok szervizelesevel, szeretettel varom a muhelyemben, illetve kiszallasra is van lehetoseg!');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('ferenc.jpg', 'Worker', 'kriz','ferenc',3, 'ferenc1995@gmail.com', 'Ferenc Ajtos', '06302218787',1, 'Udv! Fiatalos, de tapasztalt csapat varja Ont szervizunkben Budapesten, a fo profilunk a japan illetve a koreai gyartmanyu autok javitasa.');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('javito.jpg', 'Worker', 'kisz','javito',3, 'javitok@gmail.com', 'Javito Jani', '06202233236',1, 'Kozel 20 eve foglalkozom BMW, Mercedes, Audi, Opel es egyeb nemet gyartmanyu autok szervizelesevel, forduljon bizalommal hozzank!');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION) VALUES ('kerekes.jpg', 'Worker', 'kisz','kerekes',3, 'kerek@gmail.com', 'Kerekes Geza', '06202233236',1, 'Gumis illetve kerekjavito szervizembe varom a vendegeket, barmilyen tipusu autora/tehergepjarmuvel foglalkozunk!');
@@ -131,10 +132,13 @@ INSERT INTO TASKS (TASK_NAME, TASK_PRICES, WORKER_ID) VALUES ('szek', '50000 Ft'
 
 
 INSERT INTO MESSAGES (CONTENT,SUBJECT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok user, laci vagyok','subject' ,'false', current_timestamp, 13,2);
-INSERT INTO MESSAGES (CONTENT,SUBJECT,  IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok laci, user vagyok', 'subject' ,'false', current_timestamp, 13,2);
+INSERT INTO MESSAGES (CONTENT,SUBJECT,  IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok laci, user vagyok', 'subject' ,'false', current_timestamp, 13,6);
 INSERT INTO MESSAGES (CONTENT,SUBJECT,  IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok laci, user vagyok','subject' , 'false', current_timestamp, 14,2);
-INSERT INTO MESSAGES (CONTENT,SUBJECT,  IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok laci, user vagyok','subject' , 'false', current_timestamp, 15,2);
-INSERT INTO MESSAGES (CONTENT,SUBJECT,  IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok laci, user vagyok','subject' , 'false', current_timestamp, 2,13);
+INSERT INTO MESSAGES (CONTENT,SUBJECT,  IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok laci, user vagyok','subject' , 'false', '2018-02-21 13:21:32', 15,2);
+INSERT INTO MESSAGES (CONTENT,SUBJECT,  IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok laci, user vagyok','subject' , 'false', '2018-02-21 13:21:32', 2,13);
+INSERT INTO MESSAGES (CONTENT,SUBJECT,  IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok laci, user vagyok','subject' , 'false', '2018-02-21 13:21:32', 14,13);
+INSERT INTO MESSAGES (CONTENT,SUBJECT,  IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok laci, user vagyok','subject' , 'false', '2018-02-21 13:21:32', 13,14);
+INSERT INTO MESSAGES (CONTENT,SUBJECT,  IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok szeretnek erdeklodni hogy hangy eves a kapitany es mi legyen most jonapot kivanok szeretnek erdeklodni hogy hangy eves a kapitany es mi legyen most jonapot kivanok szeretnek erdeklodni hogy hangy eves a kapitany es mi legyen most jonapot kivanok szeretnek erdeklodni hogy hangy eves a kapitany es mi legyen most','Idopontkeres az epitkezeshez' , 'true', current_timestamp, 26,2);
 INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok laci, user vagyok', 'false', current_timestamp, 15,4);
 INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok laci, user vagyok', 'false', current_timestamp, 15,12);
 INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('jonapot kivanok laci, user vagyok', 'false', current_timestamp, 16,12);

@@ -4,6 +4,7 @@ import { AuthService } from '../../services/auth.service';
 import { Role } from '../../model/Role';
 import { User } from '../../model/User';
 import { Server, Routes } from '../../utils/ServerRoutes';
+import { MessageService } from '../../services/message.service';
 
 
 interface MenuItem {
@@ -40,8 +41,9 @@ export class MenuComponent implements OnInit {
   
   menus: MenuItem[];
   rolemenu: MenuItem[];
+  notify : boolean = true;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router, private messageService: MessageService) {
     this.imgRoute = Server.routeTo(Routes.PICTURE);
    }
 
@@ -56,6 +58,12 @@ export class MenuComponent implements OnInit {
   setMenus() {
     if (this.authService.isLoggedIn) {
       this.rolemenu = this.roleMenus.get(this.authService.user.role.role);
+      this.messageService.newMessages(this.authService.user.id).subscribe(data =>{
+        if (data.length==0){
+          this.notify = false;
+          console.log("notifyfalse")
+        }
+      });
     }
     this.cachebuster=Date.now();
   }
@@ -64,6 +72,7 @@ export class MenuComponent implements OnInit {
         this.authService.isLoggedIn=false;
         this.authService.user= new User();
         this.router.navigate(['/login']);
+        this.notify=true;
       })
     }
     getTimeStamp(){

@@ -39,6 +39,8 @@ import { EditTasksComponent, DialogEditor, NewTaskDialog } from './pages/edit-ta
 import { FavoriteListComponent } from './pages/favorite-list/favorite-list.component';
 import { MessagesComponent } from './pages/messages/messages.component';
 import { MessageService } from './services/message.service';
+import { MessageDialog } from './pages/messages/popups/message-dialog/message-dialog';
+import { WriteMessageDialogComponent } from './pages/messages/popups/write-message-dialog/write-message-dialog.component';
 
 
 @NgModule({
@@ -61,8 +63,10 @@ import { MessageService } from './services/message.service';
     EditTasksComponent,
     DialogEditor,
     NewTaskDialog,
+    MessageDialog,
     FavoriteListComponent,
-    MessagesComponent
+    MessagesComponent,
+    WriteMessageDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +77,7 @@ import { MessageService } from './services/message.service';
     BrowserAnimationsModule,
     MaterialItemsModule
   ],
-  entryComponents: [DialogEditor, NewTaskDialog],
+  entryComponents: [DialogEditor, NewTaskDialog, MessageDialog, WriteMessageDialogComponent],
   providers: [AuthService, RouteGuard, UploadFileService, UserService, CategoryService, RatingsService, LocationService, TasksService, MessageService, 
     { provide: LOCALE_ID, useValue: 'hu' }
     ],

@@ -4,6 +4,8 @@ import { UserService } from '../../services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserUser } from '../../model/UserUser';
 import { AuthService } from '../../services/auth.service';
+import { MatDialog } from '@angular/material';
+import { WriteMessageDialogComponent } from '../messages/popups/write-message-dialog/write-message-dialog.component';
 
 @Component({
   selector: 'app-user-profile',
@@ -18,7 +20,7 @@ export class UserProfileComponent implements OnInit {
   asdo :boolean;
   cachebuster: number;
 
-  constructor(private route: ActivatedRoute, private userService: UserService,private authService: AuthService, private router: Router) {
+  constructor(public dialog : MatDialog,private route: ActivatedRoute, private userService: UserService,private authService: AuthService, private router: Router) {
     this.imgRoute = Server.routeTo(Routes.PICTURE);
    }
 
@@ -37,6 +39,16 @@ export class UserProfileComponent implements OnInit {
   rut(){
       this.router.navigate(['/myuser', this.userId]);
     
+  }
+  writeMessage(){
+    let dialogRefa = this.dialog.open(WriteMessageDialogComponent, {
+      width: '30%',
+      //data: { id: task.id, name: task.taskName, prices: task.taskPrices, task: task }
+      data :{receiver:this.user}
+    });
+    dialogRefa.afterClosed().subscribe(res =>{
+      //this.dialogRef.close();
+    })
   }
   getTimeStamp(){
     return this.cachebuster;
