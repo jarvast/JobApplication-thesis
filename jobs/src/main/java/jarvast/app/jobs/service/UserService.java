@@ -24,13 +24,17 @@ public class UserService<T> {
     private LocationService locationService;
 
     @Autowired
-    public UserService(UserRepository userRepository, RatingService ratingService, LocationService locationService) {
+    public UserService(UserRepository userRepository, LocationService locationService) {
         this.userRepository = userRepository;
         this.user = null;
-        this.ratingService = ratingService;
         this.locationService = locationService;
 
     }
+    @Autowired
+    public void setRatingService(RatingService ratingService) {
+        this.ratingService = ratingService;
+    }
+    
     public void login(BaseUser user) {
         this.user = user;
     }
@@ -94,7 +98,7 @@ public class UserService<T> {
     private Worker calculateRate(Worker worker) {
         Double rate = ratingService.calculateRating(worker);
         //DecimalFormat df = new DecimalFormat("0,00");
-        //df.setRoundingMode(RoundingMode.CEILING);
+        //df.setRoundingMode(RoundingMode.CEILING);//
         if (Double.isNaN(rate)) {
             worker.setRating(0.0);
         } else {
@@ -151,8 +155,11 @@ public class UserService<T> {
     public List<Worker> listFavorites(){
         User user = (User) getLoggedInUser();
         List<Worker> favorites = user.getFavorites();
-        for(Iterator<Worker> it = favorites.iterator(); it.hasNext();){
+        /*for(Iterator<Worker> it = favorites.iterator(); it.hasNext();){
             calculateRate(it.next());
+        }*/
+        for (int i =0 ;i< favorites.size();i++){
+            calculateRate(favorites.get(i));
         }
         return favorites;
     }

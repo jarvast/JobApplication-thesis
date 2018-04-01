@@ -33,6 +33,14 @@ public class MessageService {
     public List<Message> getSentMessagesById(Long id){
         BaseUser sender = this.userRepository.findPeopleById(id);
         List<Message> sentMessages = sender.getSenderMessages();
+        /*for (Message msg : sentMessages){
+            if (msg.isIsRatingRequest()!=null) sentMessages.remove(msg);
+        }*/
+        for(Iterator<Message> it = sentMessages.iterator(); it.hasNext();){
+            if (it.next().isIsRatingRequest()!=null){
+                it.remove();
+            }
+        }
         return sentMessages;
     }
     public List<Message> getReceivedMessagesById(Long id){
@@ -62,5 +70,8 @@ public class MessageService {
         String content = "Kérjük értékelje a szakembert az 5 fokozatú skálán, illetve megadhat szöveges értékelést is. A minőség fenntartása érdekében kérjük reális értékelést adjon meg az elvégzett munka alapján!";
         Message requestRatingMessage = new Message(requester, raterUser, content, subject, new Timestamp(System.currentTimeMillis()), false, true);
         return messageRepository.save(requestRatingMessage);
+    }
+    public void delete(Long id){
+        messageRepository.delete(id);
     }
 }

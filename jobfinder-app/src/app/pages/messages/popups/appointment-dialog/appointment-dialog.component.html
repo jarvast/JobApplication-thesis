@@ -1,0 +1,22 @@
+<form [formGroup]="form" (ngSubmit)="submit()" class="writeform">
+<h1 mat-dialog-title>Időpontfoglalás {{receiver.name}} felhasználóhoz</h1>
+<div mat-dialog-content>
+    <mat-form-field class= "namefield">
+        <mat-select placeholder="idő"  formControlName="appo" required>
+          <mat-option *ngFor="let loca of locations" [value]="loca">{{loca.locationName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class= "namefield">
+          <mat-select placeholder="feladat"  formControlName="task" required>
+            <mat-option *ngFor="let loca of locations" [value]="loca">{{loca.locationName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+  <mat-form-field>
+          <textarea matInput formControlName="content" placeholder="Szöveges értékelés:" matAutosizeMinRows="3"></textarea>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button type="submit">Küldés</button>
+  <button mat-button type="button" mat-dialog-close>Mégse</button>
+</div>
+</form>

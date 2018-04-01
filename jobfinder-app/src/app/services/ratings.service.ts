@@ -12,5 +12,8 @@ export class RatingsService {
   getAllRatingsByWorker(id:number): Observable<Rating[]>{
     return this.http.get<Rating[]>(Server.routeTo(Routes.RATING) + '/worker/' + id);
   }
+  newRating(rating: Rating){
+    return this.http.post(Server.routeTo(Routes.RATING),rating);
+  }
 
 }

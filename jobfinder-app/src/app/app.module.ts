@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
+import 'hammerjs';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MenuComponent } from './pages/menu/menu.component';
@@ -41,6 +41,8 @@ import { MessagesComponent } from './pages/messages/messages.component';
 import { MessageService } from './services/message.service';
 import { MessageDialog } from './pages/messages/popups/message-dialog/message-dialog';
 import { WriteMessageDialogComponent } from './pages/messages/popups/write-message-dialog/write-message-dialog.component';
+import { RatingDialogComponent } from './pages/messages/popups/rating-dialog/rating-dialog.component';
+import { AppointmentDialogComponent } from './pages/messages/popups/appointment-dialog/appointment-dialog.component';
 
 
 @NgModule({
@@ -66,7 +68,9 @@ import { WriteMessageDialogComponent } from './pages/messages/popups/write-messa
     MessageDialog,
     FavoriteListComponent,
     MessagesComponent,
-    WriteMessageDialogComponent
+    WriteMessageDialogComponent,
+    RatingDialogComponent,
+    AppointmentDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +81,7 @@ import { WriteMessageDialogComponent } from './pages/messages/popups/write-messa
     BrowserAnimationsModule,
     MaterialItemsModule
   ],
-  entryComponents: [DialogEditor, NewTaskDialog, MessageDialog, WriteMessageDialogComponent],
+  entryComponents: [DialogEditor, NewTaskDialog, MessageDialog, WriteMessageDialogComponent, RatingDialogComponent, AppointmentDialogComponent],
   providers: [AuthService, RouteGuard, UploadFileService, UserService, CategoryService, RatingsService, LocationService, TasksService, MessageService, 
     { provide: LOCALE_ID, useValue: 'hu' }
     ],

@@ -9,6 +9,7 @@ import { Location } from '../../model/Location';
 import { UserUser } from '../../model/UserUser';
 import { WriteMessageDialogComponent } from '../messages/popups/write-message-dialog/write-message-dialog.component';
 import { MatDialog } from '@angular/material';
+import { AppointmentDialogComponent } from '../messages/popups/appointment-dialog/appointment-dialog.component';
 
 @Component({
   selector: 'app-worker-profile',
@@ -96,7 +97,14 @@ export class WorkerProfileComponent implements OnInit {
     console.log("report")
   }
   reservation(){
-    console.log("reserve")
+    let dialogRefa = this.dialog.open(AppointmentDialogComponent, {
+      width: '30%',
+      //data: { id: task.id, name: task.taskName, prices: task.taskPrices, task: task }
+      data :{receiver:this.worker}
+    });
+    dialogRefa.afterClosed().subscribe(res =>{
+      //this.dialogRef.close();
+    })
   }
   rut(){
     this.router.navigate(['/myworker', this.worker.id]);

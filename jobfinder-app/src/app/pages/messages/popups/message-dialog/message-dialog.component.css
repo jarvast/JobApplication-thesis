@@ -4,3 +4,13 @@ h2{
 .ratebutton{
     background-color: khaki;
 }
+.nametag:hover{
+        color: khaki;
+        cursor: pointer;
+}
+.accept{
+    margin-left: 40%;
+    margin-top: 0%;
+    color: white;
+    background-color: green;
+}

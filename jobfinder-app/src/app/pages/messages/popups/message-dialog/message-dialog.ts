@@ -9,6 +9,8 @@ import { WorkerUser } from '../../../../model/WorkerUser';
 import { WriteMessageDialogComponent } from '../write-message-dialog/write-message-dialog.component';
 import { RatingsService } from '../../../../services/ratings.service';
 import { Rating } from '../../../../model/Rating';
+import { Router } from '@angular/router';
+import { RatingDialogComponent } from '../rating-dialog/rating-dialog.component';
 
 @Component({
     selector: 'message-dialog',
@@ -30,6 +32,7 @@ import { Rating } from '../../../../model/Rating';
       private authService: AuthService,
       private ratingService: RatingsService,
       public dialog : MatDialog,
+      private router: Router,
       public dialogRef: MatDialogRef<MessageDialog>,
       @Inject(MAT_DIALOG_DATA) public data: any) {
         this.message = data.message;
@@ -87,6 +90,27 @@ import { Rating } from '../../../../model/Rating';
     this.snackBar.open('Az értékelési kérelmét elküldtük!','Rendben' ,{
       duration: 3000,
     });
-}
+  }
+  profileLink(user: UserUser | WorkerUser){
+    if (user.role.role== "WORKER"){
+      this.router.navigate(['/worker', user.id]);
+      this.dialogRef.close();
+    }else{
+      this.router.navigate(['/user', user.id]);
+      this.dialogRef.close();
+    }
+  }
+  rate(workerToRate: WorkerUser){
+    console.log("workertorate" + workerToRate.name);
+    let dialogRefa = this.dialog.open(RatingDialogComponent, {
+      width: '30%',
+      //data: { id: task.id, name: task.taskName, prices: task.taskPrices, task: task }
+      data :{receiver:workerToRate}
+    });
+    dialogRefa.afterClosed().subscribe(res =>{
+      this.dialogRef.close();
+      this.messageService.delete(this.message.id).subscribe();
+    })
+  }
   
   }

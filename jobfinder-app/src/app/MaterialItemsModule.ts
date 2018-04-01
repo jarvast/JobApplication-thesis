@@ -16,7 +16,9 @@ import {
     MatListModule,
     MatTooltipModule,
     MatDialogModule,
-    MatTabsModule
+    MatTabsModule,
+    MatSliderModule,
+    MatDatepickerModule
   } from '@angular/material';
   import {NgModule} from "@angular/core";
   
@@ -39,7 +41,9 @@ import {
       MatGridListModule,
       MatListModule,
       MatTooltipModule,
-      MatTabsModule
+      MatTabsModule,
+      MatSliderModule,
+      MatDatepickerModule
 ],
     exports: [
       MatFormFieldModule,
@@ -58,6 +62,8 @@ import {
       MatGridListModule,
       MatTooltipModule,
       MatTabsModule,
+      MatSliderModule,
+      MatDatepickerModule,
       MatListModule],
   })
   export class MaterialItemsModule {

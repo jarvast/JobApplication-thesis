@@ -1,7 +1,7 @@
 <mat-tab-group>
     <mat-tab label="Fogadott üzenetek">
       <mat-list>
-        <mat-list-item *ngFor="let message of receivedMessages" (click)="openMessage(message, false)">
+        <mat-list-item [style.background-color]="message.isSeen ? '' : 'khaki' " *ngFor="let message of receivedMessages" (click)="openMessage(message, false)">
             <img src ="{{imgRoute + message.sender.imgName}}" class="headerimage">
             <h3 mat-line>{{message.sender.name}}</h3>
             <h4 mat-line>{{message.subject}}</h4>

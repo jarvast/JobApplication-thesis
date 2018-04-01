@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef  } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MessageService } from '../../services/message.service';
 import { Message } from '../../model/Message';
 import { Server, Routes } from '../../utils/ServerRoutes';
 import { MatDialog } from '@angular/material';
 import { MessageDialog } from './popups/message-dialog/message-dialog';
+import { Location } from "@angular/common";
 
 @Component({
   selector: 'app-messages',
@@ -50,14 +51,16 @@ export class MessagesComponent implements OnInit {
       data :{message:message, type:isSent}
     });
     dialogRef.afterClosed().subscribe(res =>{
-      this.messageService.getSentMessages(this.myId).subscribe(data =>{
+      /*this.messageService.getSentMessages(this.myId).subscribe(data =>{
         this.sentMessages = data;
+        console.log("sorto")
         this.sentMessages.sort((leftSide,rightSide): number =>{
           if (leftSide.sendTimestamp > rightSide.sendTimestamp) return -1;
           if (leftSide.sendTimestamp < rightSide.sendTimestamp) return 1;
           return 0;
         });
-      });
+      });*/
+      this.ngOnInit();
   });
   }
 

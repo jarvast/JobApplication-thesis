@@ -57,6 +57,14 @@ public class Worker extends BaseUser {
     )
     @JsonIgnore
     private List<Task> tasks = new ArrayList<Task>();
+    
+    @OneToMany(
+            mappedBy = "worker",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    @JsonIgnore
+    private List<Appointment> appointments = new ArrayList<Appointment>();
 
     @ManyToMany(mappedBy = "favorites", cascade = CascadeType.ALL)
     @JsonIgnore

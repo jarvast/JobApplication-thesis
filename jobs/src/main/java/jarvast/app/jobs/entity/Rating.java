@@ -19,7 +19,7 @@ public class Rating extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "recipient_id")
-    @JsonIgnore
+    //@JsonIgnore
     private Worker receiver;
 
     @Column(columnDefinition = "varchar(250) default 'A felhasználó nem adott meg szöveges értékelést.'")

@@ -27,5 +27,8 @@ export class MessageService {
   requestRating(myId: number){
     return this.http.get(Server.routeTo(Routes.MESSAGES) + '/rating/' + myId);
   }
+  delete(id: number){
+    return this.http.delete(Server.routeTo(Routes.MESSAGES) + '/' + id);
+  }
 
 }
