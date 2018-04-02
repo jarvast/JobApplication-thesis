@@ -32,8 +32,16 @@ public class Message extends BaseEntity {
     
     @Column
     private Boolean isRatingRequest;
+    
+    @Column
+    private Boolean isAppRequest;
+    
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "app_id")
+    private Appointment appointment;
+    
 
-    public Message(BaseUser sender, BaseUser receiver, String content,String subject, Timestamp sendTimestamp, Boolean isSeen, Boolean isRatingRequest) {
+    public Message(BaseUser sender, BaseUser receiver, String content,String subject, Timestamp sendTimestamp, Boolean isSeen, Boolean isRatingRequest, Boolean isAppRequest) {
         this.sender = sender;
         this.receiver = receiver;
         this.content = content;
@@ -41,6 +49,8 @@ public class Message extends BaseEntity {
         this.sendTimestamp = sendTimestamp;
         this.isSeen = isSeen;
         this.isRatingRequest = isRatingRequest;
+        this.isAppRequest = isAppRequest;
+        
     }
 
     public Message() {
@@ -102,6 +112,23 @@ public class Message extends BaseEntity {
     public void setIsRatingRequest(Boolean isRatingRequest) {
         this.isRatingRequest = isRatingRequest;
     }
+
+    public Boolean getIsAppRequest() {
+        return isAppRequest;
+    }
+
+    public void setIsAppRequest(Boolean isAppRequest) {
+        this.isAppRequest = isAppRequest;
+    }
+
+    public Appointment getAppointment() {
+        return appointment;
+    }
+
+    public void setAppointment(Appointment appointment) {
+        this.appointment = appointment;
+    }
+    
     
 
 }

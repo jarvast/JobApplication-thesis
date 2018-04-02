@@ -43,6 +43,7 @@ import { MessageDialog } from './pages/messages/popups/message-dialog/message-di
 import { WriteMessageDialogComponent } from './pages/messages/popups/write-message-dialog/write-message-dialog.component';
 import { RatingDialogComponent } from './pages/messages/popups/rating-dialog/rating-dialog.component';
 import { AppointmentDialogComponent } from './pages/messages/popups/appointment-dialog/appointment-dialog.component';
+import { AppointmentService } from './services/appointment.service';
 
 
 @NgModule({
@@ -82,7 +83,7 @@ import { AppointmentDialogComponent } from './pages/messages/popups/appointment-
     MaterialItemsModule
   ],
   entryComponents: [DialogEditor, NewTaskDialog, MessageDialog, WriteMessageDialogComponent, RatingDialogComponent, AppointmentDialogComponent],
-  providers: [AuthService, RouteGuard, UploadFileService, UserService, CategoryService, RatingsService, LocationService, TasksService, MessageService, 
+  providers: [AuthService, RouteGuard, UploadFileService, UserService, CategoryService, RatingsService, AppointmentService, LocationService, TasksService, MessageService, 
     { provide: LOCALE_ID, useValue: 'hu' }
     ],
   bootstrap: [AppComponent]

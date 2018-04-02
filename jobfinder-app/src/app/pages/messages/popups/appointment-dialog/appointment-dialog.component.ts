@@ -9,6 +9,9 @@
   import { RatingsService } from '../../../../services/ratings.service';
   import { Rating } from '../../../../model/Rating';
 import { TasksService } from '../../../../services/tasks.service';
+import { Task } from '../../../../model/Task';
+import { AppointmentService } from '../../../../services/appointment.service';
+import { Appointment } from '../../../../model/Appointment';
   
   @Component({
     selector: 'app-appointment-dialog',
@@ -19,39 +22,63 @@ import { TasksService } from '../../../../services/tasks.service';
   
     form: FormGroup;
     message : Message = new Message();
-    receiver: UserUser | WorkerUser;
+    worker: WorkerUser;
     isRateable: boolean;
     ratedBy: Rating[];
+    tasks : Task[];
+    appointments: Appointment[];
+    date: Date;
     
     constructor(private messageService: MessageService,
       private formBuilder: FormBuilder,
       private authService: AuthService,
       private taskService: TasksService,
+      private appointmentService: AppointmentService,
       public dialog : MatDialog,
       private snackBar: MatSnackBar,
       public dialogRef: MatDialogRef<AppointmentDialogComponent>,
       @Inject(MAT_DIALOG_DATA) public data: any) {
-        this.receiver = data.receiver;
+        console.log(data.receiver);
+        this.worker = data.receiver;
+        this.taskService.getTasks(this.worker.id).subscribe(tasks =>{
+          this.tasks = tasks;
+        });
+        this.appointmentService.getAppointments(this.worker.id).subscribe(apps =>{
+          this.appointments = apps;
+        });
+
 
         }
   
     ngOnInit() {
       this.form = this.formBuilder.group({
-        date: ['',Validators.required],
-        content: ['', Validators.required]
+        appointment: ['',Validators.required],
+        task: ['', Validators.required],
+        comment: ['', Validators.required]
       });
     }
   
-    get subject() {
-      return this.form.get('subject')
+    get appointment() {
+      return this.form.get('appointment')
     }
-    get content() {
-      return this.form.get('content')
+    get task() {
+      return this.form.get('task')
+    }
+    get comment() {
+      return this.form.get('comment')
     }
   
     submit(){
-      /*this.messageService.send(new Message(this.receiver,null, this.subject.value, this.content.value,null,false)).subscribe();
-      this.dialogRef.close();*/
+      console.log(this.task.value)
+      console.log(this.comment.value)
+      this.date = this.appointment.value.appDate;
+      var day = new Date(this.date).toLocaleDateString();
+      //this.date.
+      console.log(day)
+      let content = "Az üzenet feladójától időpontkérési kérelme érkezett, kérjük reagáljon a kérelemre az alábbi gombokkal!\n Választott időpont: " + day + " " + this.appointment.value.appTime
+       + ".\n Kívánt feladat: " + this.task.value.taskName + ".\n Egyéb megjegyzés: " + this.comment.value;
+      this.messageService.send(new Message(this.worker ,null, "Időpontkérés", content,null,false,false,true, this.appointment.value)).subscribe();
+      this.dialogRef.close();
     }
   }
   

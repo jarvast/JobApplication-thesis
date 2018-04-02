@@ -68,7 +68,7 @@ public class MessageService {
         User raterUser = userRepository.findById(id);
         String subject = "A(z) " + requester.getName() + " nevű felhasználó szeretné, ha értékelné";
         String content = "Kérjük értékelje a szakembert az 5 fokozatú skálán, illetve megadhat szöveges értékelést is. A minőség fenntartása érdekében kérjük reális értékelést adjon meg az elvégzett munka alapján!";
-        Message requestRatingMessage = new Message(requester, raterUser, content, subject, new Timestamp(System.currentTimeMillis()), false, true);
+        Message requestRatingMessage = new Message(requester, raterUser, content, subject, new Timestamp(System.currentTimeMillis()), false, true, false);
         return messageRepository.save(requestRatingMessage);
     }
     public void delete(Long id){

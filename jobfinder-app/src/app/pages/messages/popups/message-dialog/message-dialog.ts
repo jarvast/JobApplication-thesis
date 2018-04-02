@@ -11,6 +11,7 @@ import { RatingsService } from '../../../../services/ratings.service';
 import { Rating } from '../../../../model/Rating';
 import { Router } from '@angular/router';
 import { RatingDialogComponent } from '../rating-dialog/rating-dialog.component';
+import { AppointmentService } from '../../../../services/appointment.service';
 
 @Component({
     selector: 'message-dialog',
@@ -23,6 +24,7 @@ import { RatingDialogComponent } from '../rating-dialog/rating-dialog.component'
     message: Message;
     isSent: boolean;
     isRateable : boolean = false;
+    date: Date;
     ratedBy: Rating[];
   
     constructor(
@@ -31,6 +33,7 @@ import { RatingDialogComponent } from '../rating-dialog/rating-dialog.component'
       private snackBar: MatSnackBar,
       private authService: AuthService,
       private ratingService: RatingsService,
+      private appointmentService: AppointmentService,
       public dialog : MatDialog,
       private router: Router,
       public dialogRef: MatDialogRef<MessageDialog>,
@@ -99,6 +102,16 @@ import { RatingDialogComponent } from '../rating-dialog/rating-dialog.component'
       this.router.navigate(['/user', user.id]);
       this.dialogRef.close();
     }
+  }
+  acceptApp(user: UserUser){
+    this.date = this.message.appointment.appDate;
+    var day = new Date(this.date).toLocaleDateString();
+    let content = "Az üzenet feladója elfogadta az időpontot! Válaszott időpont : " + day + " " + this.message.appointment.appTime + " .";
+    this.messageService.send(new Message(user ,null, "Időpontkérés elfogadva", content,null,false,false,false,this.message.appointment)).subscribe();
+    this.appointmentService.reserve(this.message.appointment.id).subscribe();
+  }
+  declineApp(user:UserUser){
+
   }
   rate(workerToRate: WorkerUser){
     console.log("workertorate" + workerToRate.name);

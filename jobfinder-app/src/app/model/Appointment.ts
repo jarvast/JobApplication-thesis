@@ -1,12 +1,12 @@
 export class Appointment {
-    appdate: Date;
-    apptime: String;
+    appDate: Date;
+    appTime: String;
     id:number;
 
     
-  constructor(appdate?: Date, apptime?: String,id?:number) {
-    this.appdate = appdate;
-    this.apptime= apptime;
+  constructor(appDate?: Date, appTime?: String,id?:number) {
+    this.appDate = appDate;
+    this.appTime= appTime;
     this.id=id;
     }
 }
