@@ -68,6 +68,9 @@ public class UserService<T> {
         }
         return list;
     }
+    public List<User> getUsers(){
+        return userRepository.findAllUsers();
+    }
 
     public List<Worker> listByCategory(Category category) {
         List<Worker> workerlist = userRepository.findByCategory(category);

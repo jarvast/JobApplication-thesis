@@ -14,6 +14,9 @@ public interface UserRepository extends CrudRepository<BaseUser, Long> {
 
     @Query("select a from BaseUser a WHERE User_Type = Worker")
     public List<Worker> findAllWorkers();
+    
+    @Query("select a from BaseUser a WHERE User_Type = User")
+    public List<User> findAllUsers();
 
     public Worker findOne(Long id);
     public User findById(Long id);

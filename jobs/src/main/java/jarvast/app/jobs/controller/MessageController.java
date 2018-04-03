@@ -30,6 +30,10 @@ public class MessageController {
     private ResponseEntity<List<Message>> getSentMessagesById(@PathVariable (value = "id") Long id){
         return ResponseEntity.ok(messageService.getSentMessagesById(id));
     }
+    @GetMapping("/reports")
+    private ResponseEntity<List<Message>> getReports(){
+        return ResponseEntity.ok(messageService.getReports());
+    }
     @DeleteMapping("/{id}")
     private ResponseEntity deleteMessage(@PathVariable (value = "id") Long id){
         messageService.delete(id);

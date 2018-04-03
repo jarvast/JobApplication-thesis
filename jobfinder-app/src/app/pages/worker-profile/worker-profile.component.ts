@@ -8,8 +8,9 @@ import { LocationService } from '../../services/location.service';
 import { Location } from '../../model/Location';
 import { UserUser } from '../../model/UserUser';
 import { WriteMessageDialogComponent } from '../messages/popups/write-message-dialog/write-message-dialog.component';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { AppointmentDialogComponent } from '../messages/popups/appointment-dialog/appointment-dialog.component';
+import { ReportDialogComponent } from '../messages/popups/report-dialog/report-dialog.component';
 
 @Component({
   selector: 'app-worker-profile',
@@ -29,7 +30,7 @@ export class WorkerProfileComponent implements OnInit {
   favorites: WorkerUser[] =[];
   isFavorite: boolean;
 
-  constructor(public dialog : MatDialog,private route: ActivatedRoute, private userService: UserService, private authService: AuthService, private locationService: LocationService, private router:Router) { 
+  constructor(public dialog : MatDialog,private route: ActivatedRoute,private snackbar: MatSnackBar, private userService: UserService, private authService: AuthService, private locationService: LocationService, private router:Router) { 
     this.imgRoute = Server.routeTo(Routes.PICTURE);
   }
 
@@ -94,7 +95,14 @@ export class WorkerProfileComponent implements OnInit {
     });
   }
   report(){
-    console.log("report")
+    let dialogRefa = this.dialog.open(ReportDialogComponent, {
+      width: '30%',
+      //data: { id: task.id, name: task.taskName, prices: task.taskPrices, task: task }
+      data :{receiver:this.worker}
+    });
+    dialogRefa.afterClosed().subscribe(res =>{
+      //this.dialogRef.close();
+    })
   }
   reservation(){
     let dialogRefa = this.dialog.open(AppointmentDialogComponent, {
@@ -103,7 +111,7 @@ export class WorkerProfileComponent implements OnInit {
       data :{receiver:this.worker}
     });
     dialogRefa.afterClosed().subscribe(res =>{
-      //this.dialogRef.close();
+      //this.openSnackBarOk();
     })
   }
   rut(){

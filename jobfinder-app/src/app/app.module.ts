@@ -44,6 +44,9 @@ import { WriteMessageDialogComponent } from './pages/messages/popups/write-messa
 import { RatingDialogComponent } from './pages/messages/popups/rating-dialog/rating-dialog.component';
 import { AppointmentDialogComponent } from './pages/messages/popups/appointment-dialog/appointment-dialog.component';
 import { AppointmentService } from './services/appointment.service';
+import { EditAppointmentsComponent, NewAppoDialog } from './pages/edit-appointments/edit-appointments.component';
+import { ReportDialogComponent } from './pages/messages/popups/report-dialog/report-dialog.component';
+import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
 
 
 @NgModule({
@@ -71,7 +74,11 @@ import { AppointmentService } from './services/appointment.service';
     MessagesComponent,
     WriteMessageDialogComponent,
     RatingDialogComponent,
-    AppointmentDialogComponent
+    AppointmentDialogComponent,
+    EditAppointmentsComponent,
+    NewAppoDialog,
+    ReportDialogComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +89,7 @@ import { AppointmentService } from './services/appointment.service';
     BrowserAnimationsModule,
     MaterialItemsModule
   ],
-  entryComponents: [DialogEditor, NewTaskDialog, MessageDialog, WriteMessageDialogComponent, RatingDialogComponent, AppointmentDialogComponent],
+  entryComponents: [DialogEditor, NewTaskDialog, MessageDialog, WriteMessageDialogComponent, RatingDialogComponent, AppointmentDialogComponent, NewAppoDialog, ReportDialogComponent],
   providers: [AuthService, RouteGuard, UploadFileService, UserService, CategoryService, RatingsService, AppointmentService, LocationService, TasksService, MessageService, 
     { provide: LOCALE_ID, useValue: 'hu' }
     ],

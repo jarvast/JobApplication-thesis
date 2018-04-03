@@ -16,6 +16,9 @@ export class UserService {
   getWorkers(): Observable<WorkerUser[]>{
     return this.http.get<WorkerUser[]>(Server.routeTo(Routes.ALLWORKERS));
   }
+  getUsers(): Observable<UserUser[]>{
+    return this.http.get<UserUser[]>(Server.routeTo(Routes.ALLUSERS));
+  }
 
   getWorkersByCategory(categoryName : String): Observable<WorkerUser[]>{
     return this.http.get<WorkerUser[]>(Server.routeTo(Routes.ALLWORKERS) + '/' + categoryName);

@@ -6,6 +6,7 @@ import { UserUser } from '../../model/UserUser';
 import { AuthService } from '../../services/auth.service';
 import { MatDialog } from '@angular/material';
 import { WriteMessageDialogComponent } from '../messages/popups/write-message-dialog/write-message-dialog.component';
+import { ReportDialogComponent } from '../messages/popups/report-dialog/report-dialog.component';
 
 @Component({
   selector: 'app-user-profile',
@@ -42,6 +43,16 @@ export class UserProfileComponent implements OnInit {
   }
   writeMessage(){
     let dialogRefa = this.dialog.open(WriteMessageDialogComponent, {
+      width: '30%',
+      //data: { id: task.id, name: task.taskName, prices: task.taskPrices, task: task }
+      data :{receiver:this.user}
+    });
+    dialogRefa.afterClosed().subscribe(res =>{
+      //this.dialogRef.close();
+    })
+  }
+  report(){
+    let dialogRefa = this.dialog.open(ReportDialogComponent, {
       width: '30%',
       //data: { id: task.id, name: task.taskName, prices: task.taskPrices, task: task }
       data :{receiver:this.user}

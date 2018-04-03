@@ -36,12 +36,15 @@ public class Message extends BaseEntity {
     @Column
     private Boolean isAppRequest;
     
+    @Column
+    private Boolean isReport;
+    
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "app_id")
     private Appointment appointment;
     
 
-    public Message(BaseUser sender, BaseUser receiver, String content,String subject, Timestamp sendTimestamp, Boolean isSeen, Boolean isRatingRequest, Boolean isAppRequest) {
+    public Message(BaseUser sender, BaseUser receiver, String content,String subject, Timestamp sendTimestamp, Boolean isSeen, Boolean isRatingRequest, Boolean isAppRequest,Boolean isReport) {
         this.sender = sender;
         this.receiver = receiver;
         this.content = content;
@@ -50,6 +53,7 @@ public class Message extends BaseEntity {
         this.isSeen = isSeen;
         this.isRatingRequest = isRatingRequest;
         this.isAppRequest = isAppRequest;
+        this.isReport = isReport;
         
     }
 
@@ -127,6 +131,14 @@ public class Message extends BaseEntity {
 
     public void setAppointment(Appointment appointment) {
         this.appointment = appointment;
+    }
+
+    public Boolean getIsReport() {
+        return isReport;
+    }
+
+    public void setIsReport(Boolean isReport) {
+        this.isReport = isReport;
     }
     
     

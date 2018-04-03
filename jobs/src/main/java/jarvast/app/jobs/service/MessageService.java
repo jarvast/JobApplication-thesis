@@ -7,6 +7,8 @@ import jarvast.app.jobs.entity.Worker;
 import jarvast.app.jobs.repository.MessageRepository;
 import jarvast.app.jobs.repository.UserRepository;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +45,16 @@ public class MessageService {
         }
         return sentMessages;
     }
+    public List<Message> getReports(){
+        List<Message> messages = (List<Message>) messageRepository.findAll();
+        List<Message> reports = new ArrayList<>();
+        for (int i=0;i<messages.size();i++){
+            if (messages.get(i).getIsReport()!=null){
+                reports.add(messages.get(i));
+            }
+        }
+        return reports;
+    }
     public List<Message> getReceivedMessagesById(Long id){
         BaseUser recipient = this.userRepository.findPeopleById(id);
         List<Message> receivedMessages = recipient.getReceiverMessages();
@@ -68,7 +80,7 @@ public class MessageService {
         User raterUser = userRepository.findById(id);
         String subject = "A(z) " + requester.getName() + " nevű felhasználó szeretné, ha értékelné";
         String content = "Kérjük értékelje a szakembert az 5 fokozatú skálán, illetve megadhat szöveges értékelést is. A minőség fenntartása érdekében kérjük reális értékelést adjon meg az elvégzett munka alapján!";
-        Message requestRatingMessage = new Message(requester, raterUser, content, subject, new Timestamp(System.currentTimeMillis()), false, true, false);
+        Message requestRatingMessage = new Message(requester, raterUser, content, subject, new Timestamp(System.currentTimeMillis()), false, true, false,false);
         return messageRepository.save(requestRatingMessage);
     }
     public void delete(Long id){

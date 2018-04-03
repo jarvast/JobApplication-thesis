@@ -30,5 +30,8 @@ export class MessageService {
   delete(id: number){
     return this.http.delete(Server.routeTo(Routes.MESSAGES) + '/' + id);
   }
+  getReports(): Observable<Message[]>{
+    return this.http.get<Message[]>(Server.routeTo(Routes.MESSAGES) + '/reports');
+  }
 
 }

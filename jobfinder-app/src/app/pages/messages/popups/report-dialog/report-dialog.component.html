@@ -1,0 +1,12 @@
+<form [formGroup]="form" (ngSubmit)="submit()" class="writeform">
+    <h1 mat-dialog-title>{{receiver.name}} jelentése</h1>
+    <div mat-dialog-content>
+        <mat-form-field>
+                <textarea matInput formControlName="content" placeholder="Üzenet:" matAutosizeMinRows="3"></textarea>
+        </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button type="submit">Küldés</button>
+        <button mat-button type="button" mat-dialog-close>Mégse</button>
+    </div>
+    </form>

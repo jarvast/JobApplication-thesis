@@ -12,8 +12,14 @@ export class AppointmentService {
   getAppointments(id:number): Observable<Appointment[]>{
     return this.http.get<Appointment[]>(Server.routeTo(Routes.APPOINTMENTS) + '/' + id);
   }
+  getOccupiedAppointments(id:number): Observable<Appointment[]>{
+    return this.http.get<Appointment[]>(Server.routeTo(Routes.APPOINTMENTS) + '/occupied/' + id);
+  }
   reserve(id: number){
     return this.http.delete<Appointment>(Server.routeTo(Routes.APPOINTMENTS) + '/' + id);
+  }
+  create(appointment: Appointment, id: number){
+    return this.http.post(Server.routeTo(Routes.APPOINTMENTS) + '/' + id,appointment);
   }
 
 }

@@ -14,9 +14,10 @@ export class Message {
     isRatingRequest: boolean;
     isAppRequest : boolean;
     appointment: Appointment;
+    isReport: boolean;
 
     
-  constructor(receiver?: UserUser | WorkerUser,sender?: UserUser | WorkerUser, subject?: String, content?: String,sendTimestamp?:Date,isSeen?:boolean,isRatingRequest?:boolean,isAppRequest?:boolean,appointment?:Appointment,id?:number) {
+  constructor(receiver?: UserUser | WorkerUser,sender?: UserUser | WorkerUser, subject?: String, content?: String,sendTimestamp?:Date,isSeen?:boolean,isRatingRequest?:boolean,isAppRequest?:boolean,appointment?:Appointment,isReport?:boolean,id?:number) {
     this.id = id;
     this.receiver = receiver;
     this.sender = sender;
@@ -26,6 +27,7 @@ export class Message {
     this.isSeen = isSeen;
     this.isRatingRequest = isRatingRequest;
     this.isAppRequest = isAppRequest;
+    this.isReport = isReport;
     this.appointment = appointment;
     }
 }

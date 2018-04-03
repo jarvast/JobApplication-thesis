@@ -1,0 +1,57 @@
+<mat-tab-group>
+  <mat-tab label="Szakemberek">
+      <mat-table #table [dataSource]="workers">
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef>Dátum</mat-header-cell>
+            <mat-cell class="name-header" *matCellDef="let element"> {{element.name}}</mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef>Időintervallum</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.email}}</mat-cell>
+          </ng-container>
+          
+          <mat-header-row *matHeaderRowDef="workerColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: workerColumns;"></mat-row>
+      </mat-table>
+
+  </mat-tab>
+  <mat-tab label="Felhasználók">
+      <mat-table #table [dataSource]="users">
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef>Dátum</mat-header-cell>
+            <mat-cell class="name-header" *matCellDef="let element"> {{element.name}}</mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef>Időintervallum</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.email}}</mat-cell>
+          </ng-container>
+          
+          <mat-header-row *matHeaderRowDef="userColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: userColumns;"></mat-row>
+      </mat-table>
+
+  </mat-tab>
+  <mat-tab label="Jelentések">
+      <mat-table #table [dataSource]="reports">
+          <ng-container matColumnDef="sender">
+            <mat-header-cell *matHeaderCellDef>Küldő</mat-header-cell>
+            <mat-cell class="name-header" *matCellDef="let element"> {{element.sender.name}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="receiver">
+              <mat-header-cell *matHeaderCellDef>Fogadó</mat-header-cell>
+              <mat-cell class="name-header" *matCellDef="let element"> {{element.receiver.name}}</mat-cell>
+            </ng-container>
+      
+          
+          <mat-header-row *matHeaderRowDef="reportColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: reportColumns;"></mat-row>
+      </mat-table>
+    
+  </mat-tab>
+  <mat-tab label="Egyéb opciók">
+    kutyafejű aladár
+  </mat-tab>
+</mat-tab-group>

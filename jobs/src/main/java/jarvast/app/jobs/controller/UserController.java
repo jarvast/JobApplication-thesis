@@ -50,6 +50,11 @@ public class UserController<T> {
     public ResponseEntity<List<Worker>> getWorkers() {
         return ResponseEntity.ok(userService.getWorkers());
     }
+    @GetMapping("/users")
+    public ResponseEntity<List<User>> getUsers() {
+        return ResponseEntity.ok(userService.getUsers());
+    }
+
 
     @GetMapping("/workers/{categoryName}")
     private ResponseEntity<Iterable<Worker>> listByCategory(@PathVariable(value = "categoryName") String categoryName) {

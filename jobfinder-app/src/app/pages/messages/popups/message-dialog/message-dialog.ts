@@ -109,9 +109,14 @@ import { AppointmentService } from '../../../../services/appointment.service';
     let content = "Az üzenet feladója elfogadta az időpontot! Válaszott időpont : " + day + " " + this.message.appointment.appTime + " .";
     this.messageService.send(new Message(user ,null, "Időpontkérés elfogadva", content,null,false,false,false,this.message.appointment)).subscribe();
     this.appointmentService.reserve(this.message.appointment.id).subscribe();
+    this.dialogRef.close();
   }
   declineApp(user:UserUser){
-
+    this.date = this.message.appointment.appDate;
+    var day = new Date(this.date).toLocaleDateString();
+    let content = "Az üzenet feladója elutasította az időpontot, kérjük válasszon másikat vagy vegye fel a kapcsolatot a szakemberrel üzenetben! Válaszott időpont : " + day + " " + this.message.appointment.appTime + " .";
+    this.messageService.send(new Message(user ,null, "Időpontkérés elutasítva", content,null,false,false,false,this.message.appointment)).subscribe();
+    this.dialogRef.close()
   }
   rate(workerToRate: WorkerUser){
     console.log("workertorate" + workerToRate.name);

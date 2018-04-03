@@ -10,6 +10,8 @@ import { EditWorkerProfileComponent } from "./pages/edit-worker-profile/edit-wor
 import { EditTasksComponent } from "./pages/edit-tasks/edit-tasks.component";
 import { FavoriteListComponent } from "./pages/favorite-list/favorite-list.component";
 import { MessagesComponent } from "./pages/messages/messages.component";
+import { EditAppointmentsComponent } from "./pages/edit-appointments/edit-appointments.component";
+import { AdminDashboardComponent } from "./pages/admin-dashboard/admin-dashboard.component";
 
 export const appRoutes: Routes = [
     {
@@ -26,7 +28,9 @@ export const appRoutes: Routes = [
             {path: 'myworker/:id', component: EditWorkerProfileComponent},
             {path: 'mytasks/:id', component: EditTasksComponent},
             {path: 'myfavorites/:id', component: FavoriteListComponent},
-            {path: 'mymessages/:id', component: MessagesComponent}
+            {path: 'mymessages/:id', component: MessagesComponent},
+            {path: 'myappointments/:id', component: EditAppointmentsComponent},
+            {path: 'dashboard/:id',component:AdminDashboardComponent }
         ]
     }
 ]

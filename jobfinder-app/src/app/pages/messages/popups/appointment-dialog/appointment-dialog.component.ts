@@ -27,6 +27,7 @@ import { Appointment } from '../../../../model/Appointment';
     ratedBy: Rating[];
     tasks : Task[];
     appointments: Appointment[];
+    isEmpty: boolean = false;
     date: Date;
     
     constructor(private messageService: MessageService,
@@ -45,6 +46,9 @@ import { Appointment } from '../../../../model/Appointment';
         });
         this.appointmentService.getAppointments(this.worker.id).subscribe(apps =>{
           this.appointments = apps;
+          if (this.appointments.length ==0){
+            this.isEmpty = true;
+          }
         });
 
 
@@ -66,6 +70,11 @@ import { Appointment } from '../../../../model/Appointment';
     }
     get comment() {
       return this.form.get('comment')
+    }
+    openSnackBarOk() {
+      this.snackBar.open('A foglalási kérelmét elküldtük!','Rendben' ,{
+        duration: 3000,
+      });
     }
   
     submit(){

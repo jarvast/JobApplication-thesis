@@ -1,0 +1,37 @@
+<mat-tab-group>
+    <mat-tab label="Szabad időpontok">
+        <button mat-fab (click)="openNewDialog()">
+            <mat-icon>add</mat-icon>
+          </button>
+          <mat-table #table [dataSource]="freeApps">
+              <ng-container matColumnDef="appDate">
+                <mat-header-cell *matHeaderCellDef>Dátum</mat-header-cell>
+                <mat-cell class="name-header" *matCellDef="let element"> {{element.appDate  | date:'MMMM d  H:mm':'':'hu'}}</mat-cell>
+              </ng-container>
+          
+              <ng-container matColumnDef="appTime">
+                <mat-header-cell *matHeaderCellDef>Időintervallum</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.appTime}}</mat-cell>
+              </ng-container>
+              
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          </mat-table>
+      </mat-tab>
+  <mat-tab label="Foglalt időpontok">
+      <mat-table #table [dataSource]="notFreeApps">
+          <ng-container matColumnDef="appDate">
+            <mat-header-cell *matHeaderCellDef>Dátum</mat-header-cell>
+            <mat-cell class="name-header" *matCellDef="let element"> {{element.appDate  | date:'MMMM d  H:mm':'':'hu'}}</mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="appTime">
+            <mat-header-cell *matHeaderCellDef>Időintervallum</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.appTime}}</mat-cell>
+          </ng-container>
+          
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+  </mat-tab>
+</mat-tab-group>

@@ -28,14 +28,13 @@ export class MenuComponent implements OnInit {
   ];
 
   private asdo : MenuItem[] = [
-    {link: "/asd", title: 'dsadsa'},
     {link: '/mymessages', title: 'Üzeneteim'}
   ];
   
   private roleMenus = new Map<String, MenuItem[]>([
-    ["ADMIN", [...this.asdo]],
+    ["ADMIN", [...this.asdo , {link: '/dashboard', title: 'Admin felület'}]],
     ["USER", [...this.asdo , {link: '/user', title: 'Profilom'}, {link: '/myfavorites', title: 'Kedvenceim'}]],
-    ["WORKER", [...this.asdo, {link: '/worker', title: 'Profilom'}, {link: '/mytasks', title: 'Feladataim'}]]
+    ["WORKER", [...this.asdo, {link: '/worker', title: 'Profilom'}, {link: '/mytasks', title: 'Feladataim'}, {link: '/myappointments', title: 'Időpontjaim'}]]
 ]);
 
   

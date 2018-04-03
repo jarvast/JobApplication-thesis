@@ -1,6 +1,7 @@
 <form [formGroup]="form" (ngSubmit)="submit()" class="writeform">
 <h1 mat-dialog-title>Időpontfoglalás {{worker.name}} felhasználóhoz</h1>
 <div mat-dialog-content>
+    <p *ngIf="isEmpty" style="color:red;">Nincs szabad időpont jelenleg!</p>
     <mat-form-field class= "namefield">
         <mat-select placeholder="Válasszon időpontot"  formControlName="appointment" required>
           <mat-option *ngFor="let app of appointments" [value]="app">{{app.appDate | date:'MMMM d':'':'hu'}} - {{app.appTime}}</mat-option>
@@ -16,7 +17,7 @@
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-button type="submit">Küldés</button>
+  <button mat-button type="submit" (click)="openSnackBarOk()" [disabled]="!form.valid" matTooltip="Nincsen szabad időpont!" [matTooltipDisabled]=!isEmpty matTooltipHideDelay="2000">Küldés</button>
   <button mat-button type="button" mat-dialog-close>Mégse</button>
 </div>
 </form>
