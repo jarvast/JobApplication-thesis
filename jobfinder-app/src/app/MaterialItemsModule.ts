@@ -19,6 +19,7 @@ import {
     MatTabsModule,
     MatSliderModule,
     MatNativeDateModule,
+    MatStepperModule,
     MatDatepickerModule
   } from '@angular/material';
   import {NgModule} from "@angular/core";
@@ -45,6 +46,7 @@ import {
       MatTabsModule,
       MatSliderModule,
       MatNativeDateModule,
+      MatStepperModule,
       MatDatepickerModule
 ],
     exports: [
@@ -64,6 +66,7 @@ import {
       MatGridListModule,
       MatTooltipModule,
       MatTabsModule,
+      MatStepperModule,
       MatSliderModule,
       MatDatepickerModule,
       MatNativeDateModule,

@@ -15,7 +15,7 @@ public class TaskService {
     private TaskRepository taskRepository;
 
     public List<Task> getTasksByWorker(Worker worker) {
-        return taskRepository.findByWorker(worker);
+        return taskRepository.findByWorkert(worker);
     }
     public Task updateTask(Task task){
         Task oldTask = taskRepository.findOne(task.getId());

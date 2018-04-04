@@ -18,13 +18,13 @@ public class Task extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "worker_id")
-    @JsonIgnore
-    private Worker worker;
+    //@JsonIgnore
+    private Worker workert;
 
     public Task(String taskName, String taskPrices, Worker worker) {
         this.taskName = taskName;
         this.taskPrices = taskPrices;
-        this.worker = worker;
+        this.workert = worker;
     }
 
     public Task() {
@@ -47,11 +47,11 @@ public class Task extends BaseEntity {
     }
 
     public Worker getWorker() {
-        return worker;
+        return workert;
     }
 
     public void setWorker(Worker worker) {
-        this.worker = worker;
+        this.workert = worker;
     }
 
 }

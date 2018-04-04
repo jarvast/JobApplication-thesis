@@ -30,7 +30,7 @@
   <body>{{worker.description}}</body>
 </div>
 <div class="taskpart">
-  <span class="disclaimer">Az árak a típustól, mérettől és határidőtől függenek!</span> <button mat-raised-button color="primary" *ngIf="!ownprofile" [disabled]="!authService.isLoggedIn" (click)="reservation()" matTooltip="Időpontfoglaláshoz jelentkezzen be!" [matTooltipDisabled]=authService.isLoggedIn matTooltipHideDelay="2000">Időpontfoglalás</button>
+  <span class="disclaimer">Az árak a típustól, mérettől és határidőtől függenek!</span> <button mat-raised-button color="primary" *ngIf="!ownprofile && isUser" [disabled]="!authService.isLoggedIn" (click)="reservation()" matTooltip="Időpontfoglaláshoz jelentkezzen be!" [matTooltipDisabled]=authService.isLoggedIn matTooltipHideDelay="2000">Időpontfoglalás</button>
   <app-task-table [workerId]='worker.id'></app-task-table>
 </div>
 <div class="ratingpart">

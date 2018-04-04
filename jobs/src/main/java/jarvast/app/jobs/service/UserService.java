@@ -1,12 +1,20 @@
 package jarvast.app.jobs.service;
 
+import jarvast.app.jobs.entity.Admin;
 import jarvast.app.jobs.entity.BaseUser;
 import jarvast.app.jobs.entity.Category;
+import jarvast.app.jobs.entity.Role;
 import jarvast.app.jobs.entity.User;
 import jarvast.app.jobs.entity.Worker;
+import jarvast.app.jobs.repository.RoleRepository;
+import jarvast.app.jobs.repository.TaskRepository;
 import jarvast.app.jobs.repository.UserRepository;
 import java.math.RoundingMode;
+import java.sql.Timestamp;
 import java.text.DecimalFormat;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
@@ -18,16 +26,21 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService<T> {
 
+    private final String defaultimagename = "default.png";
     private UserRepository userRepository;
     private BaseUser user;
     private RatingService ratingService;
     private LocationService locationService;
+    private TaskRepository taskRepository;
+    private RoleRepository roleRepository;
 
     @Autowired
-    public UserService(UserRepository userRepository, LocationService locationService) {
+    public UserService(UserRepository userRepository, LocationService locationService, TaskRepository taskRepository, RoleRepository roleRepository) {
         this.userRepository = userRepository;
         this.user = null;
         this.locationService = locationService;
+        this.taskRepository = taskRepository;
+        this.roleRepository = roleRepository;
 
     }
     @Autowired
@@ -36,7 +49,10 @@ public class UserService<T> {
     }
     
     public void login(BaseUser user) {
+        user.setLastLogin(new Timestamp(System.currentTimeMillis()));
+        userRepository.save(user);
         this.user = user;
+        
     }
 
     public BaseUser getLoggedInUser() {
@@ -63,20 +79,51 @@ public class UserService<T> {
 
     public List<Worker> getWorkers() {
         List<Worker> list = userRepository.findAllWorkers();
-        for (Worker w : list) {
-            w.setRating(ratingService.calculateRating(w));
+        
+        for(Iterator<Worker> it = list.iterator(); it.hasNext();){
+            Worker temp = it.next();
+            if (!temp.getApproved()){
+                it.remove();
+            }else{
+                calculateRate(temp);
+            }
         }
+        /*for (Worker w : list) {
+            w.setRating(ratingService.calculateRating(w));
+        }*/
         return list;
     }
+    public List<Worker> getAllWorkers() {
+        List<Worker> list = userRepository.findAllWorkers();
+        
+        for(Iterator<Worker> it = list.iterator(); it.hasNext();){
+            Worker temp = it.next();
+                calculateRate(temp);
+        }
+        /*for (Worker w : list) {
+            w.setwRating(ratingService.calculateRating(w));
+        }*/
+        return list;
+    }
+    
     public List<User> getUsers(){
         return userRepository.findAllUsers();
     }
 
     public List<Worker> listByCategory(Category category) {
         List<Worker> workerlist = userRepository.findByCategory(category);
-        for (Worker w : workerlist) {
-            calculateRate(w);
+        
+        for(Iterator<Worker> it = workerlist.iterator(); it.hasNext();){
+            Worker temp = it.next();
+            if (!temp.getApproved()){
+                it.remove();
+            }else{
+                calculateRate(temp);
+            }
         }
+        /*for (Worker w : workerlist) {
+            calculateRate(w);
+        }*/
         return workerlist;
     }
     public List<Worker> searchForString(String input) {
@@ -85,9 +132,18 @@ public class UserService<T> {
         List<Worker> workerList = userRepository.findByNameIgnoreCaseContainingOrDescriptionIgnoreCaseContainingOrEmailIgnoreCaseContaining(searchWord, searchWord, searchWord);
 
         List<Worker> mergedList = Stream.concat(workerList.stream(), locationList.stream()).collect(Collectors.toList());
-        for (Worker w : mergedList) {
-            calculateRate(w);
+        
+        for(Iterator<Worker> it = mergedList.iterator(); it.hasNext();){
+            Worker temp = it.next();
+            if (!temp.getApproved()){
+                it.remove();
+            }else{
+                calculateRate(temp);
+            }
         }
+        /*for (Worker w : mergedList) {
+            calculateRate(w);
+        }*/
         return mergedList;
     }
 
@@ -96,6 +152,31 @@ public class UserService<T> {
     }
     public User getUser(Long id){
         return userRepository.findById(id);
+    }
+    public void maintain(){
+        //Iterable<BaseUser> all = userRepository.findAll();
+        Timestamp old = new Timestamp(System.currentTimeMillis());
+        ZonedDateTime zonedDateTime = old.toInstant().atZone(ZoneId.of("UTC"));
+        Timestamp yearless = Timestamp.from(zonedDateTime.minus(365, ChronoUnit.DAYS).toInstant());
+        
+        List<User> users = userRepository.findAllUsers();
+        List<Worker> workers = userRepository.findAllWorkers();
+        /*for(Iterator<User> it = users.iterator(); it.hasNext();){
+            User asd = it.next();
+            if (asd.getLastLogin().before(yearless)){
+                System.out.println(asd);
+                //userRepository.delete(asd);
+                userRepository.delete(asd.getId());
+            }
+        }*/
+        for(Iterator<Worker> it = workers.iterator(); it.hasNext();){
+            Worker asd = it.next();
+            if (asd.getLastLogin().before(yearless)){
+                System.out.println(asd);
+                //userRepository.delete(asd);
+                userRepository.delete(asd.getId());
+            }
+        }
     }
 
     private Worker calculateRate(Worker worker) {
@@ -114,9 +195,19 @@ public class UserService<T> {
         List<Worker> workerList = userRepository.findAllWorkers();
         workerList.sort((r1, r2) -> Integer.compare(r2.getRatings().size(), r1.getRatings().size()));
         List<Worker> top5 = workerList.subList(0, 5);
-        for (Worker w : top5) {
-            calculateRate(w);
+        
+        for(Iterator<Worker> it = top5.iterator(); it.hasNext();){
+            Worker temp = it.next();
+            if (!temp.getApproved()){
+                it.remove();
+            }else{
+                calculateRate(temp);
+            }
         }
+        
+        /*for (Worker w : top5) {
+            calculateRate(w);
+        }*/
         return top5;
     }
     public User updateUser(User user){
@@ -159,12 +250,41 @@ public class UserService<T> {
         User user = (User) getLoggedInUser();
         List<Worker> favorites = user.getFavorites();
         /*for(Iterator<Worker> it = favorites.iterator(); it.hasNext();){
-            calculateRate(it.next());
+            calculateRate(it.negxt());
         }*/
+        
+        
         for (int i =0 ;i< favorites.size();i++){
             calculateRate(favorites.get(i));
         }
         return favorites;
+    }
+    public Worker approve(Long id){
+        Worker worker = userRepository.findOne(id);
+        worker.setApproved(Boolean.TRUE);
+        
+        return userRepository.save(worker);
+    }
+    public void delete(Long id){
+        userRepository.delete(userRepository.findPeopleById(id));
+    }
+    public Admin registerAdmin(Admin admin, String pass){
+        admin.setRole(roleRepository.findOne(1l));
+        admin.setPassword(pass);
+        admin.setImgName(defaultimagename);
+        return userRepository.save(admin);
+    }
+    public User registerUser(User user, String pass){
+        user.setRole(roleRepository.findOne(2l));
+        user.setPassword(pass);
+        user.setImgName(defaultimagename);
+        return userRepository.save(user);
+    }
+    public Worker registerWorker(Worker worker, String pass){
+        worker.setRole(roleRepository.findOne(3l));
+        worker.setPassword(pass);
+        worker.setImgName(defaultimagename);
+        return userRepository.save(worker);
     }
 
 }

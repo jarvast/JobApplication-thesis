@@ -7,6 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface TaskRepository extends CrudRepository<Task, Long> {
 
-    public List<Task> findByWorker(Worker worker);
+    public List<Task> findByWorkert(Worker worker);
 
 }

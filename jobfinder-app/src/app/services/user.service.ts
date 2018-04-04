@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Server, Routes } from '../utils/ServerRoutes';
 import { WorkerUser } from '../model/WorkerUser';
 import { UserUser } from '../model/UserUser';
+import { AdminUser } from '../model/AdminUser';
 
 @Injectable()
 export class UserService {
@@ -15,6 +16,9 @@ export class UserService {
 
   getWorkers(): Observable<WorkerUser[]>{
     return this.http.get<WorkerUser[]>(Server.routeTo(Routes.ALLWORKERS));
+  }
+  getAllWorkers(): Observable<WorkerUser[]>{
+    return this.http.get<WorkerUser[]>(Server.routeTo(Routes.ALLWORKERS) + '/all');
   }
   getUsers(): Observable<UserUser[]>{
     return this.http.get<UserUser[]>(Server.routeTo(Routes.ALLUSERS));
@@ -49,5 +53,35 @@ export class UserService {
   }
   notFavorite(id:number){
     return this.http.get(Server.routeTo(Routes.FAVORITE) + '/remove/' + id);
+  }
+  maintain(){
+    return this.http.get(Server.routeTo(Routes.ALLWORKERS) + '/maintain');
+  }
+  approve(id:number){
+    return this.http.get(Server.routeTo(Routes.SINGLEWORKER) + '/approve/' + id);
+  }
+  deleteWorker(id:number){
+    return this.http.delete(Server.routeTo(Routes.SINGLEWORKER) + '/'+ id);
+  }
+  newAdmin(admin: AdminUser, pass:string){
+    const httpOptions = {
+    headers: new HttpHeaders({
+      'sendo': 'Basic ' + btoa(pass)
+    })}
+    return this.http.post(Server.routeTo(Routes.NEW) + '/admin',admin, httpOptions);
+  }
+  newUser(user: UserUser, pass:string){
+    const httpOptions = {
+    headers: new HttpHeaders({
+      'sendo': 'Basic ' + btoa(pass)
+    })}
+    return this.http.post(Server.routeTo(Routes.NEW) + '/user',user, httpOptions);
+  }
+  newWorker(worker: WorkerUser, pass:string):Observable<WorkerUser>{
+    const httpOptions = {
+    headers: new HttpHeaders({
+      'sendo': 'Basic ' + btoa(pass)
+    })}
+    return this.http.post<WorkerUser>(Server.routeTo(Routes.NEW) + '/worker',worker, httpOptions);
   }
 }

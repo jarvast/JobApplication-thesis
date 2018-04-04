@@ -19,6 +19,7 @@ export class Routes {
     static FAVORITE: String = 'user/favorite';
     static MESSAGES: String = 'messages';
     static APPOINTMENTS: String = 'appointments';
+    static NEW: String = 'user/new';
   }
   
   export class Server {

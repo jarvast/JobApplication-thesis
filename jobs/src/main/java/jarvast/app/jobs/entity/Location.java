@@ -24,8 +24,8 @@ public class Location extends BaseEntity {
     private List<Worker> worker = new ArrayList<Worker>();
     
     @OneToMany(
-        mappedBy = "location", 
-        cascade = CascadeType.ALL
+        mappedBy = "location"
+        //cascade = CascadeType.ALL
         //orphanRemoval = true
     )
     @JsonIgnore

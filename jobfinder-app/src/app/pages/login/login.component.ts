@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   }
 
   submit() {
-    this.authService.login(new User(this.username.value,this.password.value)).subscribe(data => {
+    this.authService.login(new User(undefined,this.username.value,this.password.value)).subscribe(data => {
       //if ()
       this.authService.user = data;
       this.authService.isLoggedIn = true;

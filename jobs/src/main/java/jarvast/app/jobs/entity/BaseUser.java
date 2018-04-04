@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -23,14 +24,17 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
+//@JsonIgnoreProperties(value={ "money" }, allowGetters=true)
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "UserType")
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY)
+@JsonIgnoreProperties(ignoreUnknown = true, value = {"password"}, allowSetters = true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property="roletype")
 @JsonSubTypes({
     @JsonSubTypes.Type(value = User.class, name = "User"),
 
-    @JsonSubTypes.Type(value = Worker.class, name = "Worker") }
+    @JsonSubTypes.Type(value = Worker.class, name = "Worker"),
+
+    @JsonSubTypes.Type(value = Admin.class, name = "Admin")}
 )
 public abstract class BaseUser {
 
@@ -42,15 +46,18 @@ public abstract class BaseUser {
     private String username;
 
     @Column(nullable = false)
-    @JsonIgnore
+    //@JsonIgnore
     private String password;
     
     @Column(columnDefinition = "varchar(40) default 'default.png'")
     private String image;
+    
+    @Column(columnDefinition = "datetime default CURRENT_TIMESTAMP")
+    private Timestamp lastLogin;
 
     @OneToMany(
             mappedBy = "sender",
-            cascade = CascadeType.ALL,
+            cascade = CascadeType.REFRESH,
             orphanRemoval = true
     )
     @JsonIgnore
@@ -58,7 +65,7 @@ public abstract class BaseUser {
 
     @OneToMany(
             mappedBy = "receiver",
-            cascade = CascadeType.ALL,
+            cascade = CascadeType.REFRESH,
             orphanRemoval = true
     )
     @JsonIgnore
@@ -132,6 +139,15 @@ public abstract class BaseUser {
     public void setRole(Role role) {
         this.role = role;
     }
+
+    public Timestamp getLastLogin() {
+        return lastLogin;
+    }
+
+    public void setLastLogin(Timestamp lastLogin) {
+        this.lastLogin = lastLogin;
+    }
+    
 
     @Override
     public String toString() {

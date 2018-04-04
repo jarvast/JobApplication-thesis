@@ -1,0 +1,56 @@
+<mat-horizontal-stepper [linear]=true #stepper="matHorizontalStepper">
+    <mat-step [stepControl]="form">
+      <form [formGroup]="form">
+        <ng-template matStepLabel>Alapadatok</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="Username" formControlName="username" required>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="pass" formControlName="password" required>
+          </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="form2">
+      <form [formGroup]="form2">
+        <ng-template matStepLabel>Szeméályes adatok</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="nev" formControlName="fullname" required>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="mail" formControlName="email" required>
+          </mat-form-field>
+          <mat-form-field>
+              <input matInput placeholder="Address" formControlName="phone" required>
+            </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="form3">
+        <form [formGroup]="form3">
+          <ng-template matStepLabel>Alapadatok</ng-template>
+          <mat-form-field>
+              <mat-select placeholder="Lakhely"  formControlName="location" required>
+                <mat-option *ngFor="let loca of locations" [value]="loca">{{loca.locationName}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          <div>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      Kész vagy.
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-raised-button class="button" (click)="submit()">Regisztráció</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>

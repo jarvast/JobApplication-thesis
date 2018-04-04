@@ -12,9 +12,12 @@ export class WorkerUser {
   description: String;
   rating : number;
   role: Role;
+  approved: boolean;
+  lastLogin: Date;
+  roletype:String;
 
     
-  constructor( username?: String,  imgName?: String, id?: number, email?: String, name?: String, phoneNum?: String, category?: Category, description?: String, rating?: number, role?:Role) {
+  constructor( username?: String,email?: String, name?: String, phoneNum?: String, category?: Category, description?: String,roletype?:String, rating?: number,approved?:boolean,lastLogin?:Date, role?:Role,imgName?:String,id?:number) {
     this.username = username || "";
     this.imgName = imgName || "";
     this.id = id;
@@ -25,5 +28,8 @@ export class WorkerUser {
     this.description =description || "";
     this.rating = rating;
     this.role = role;
+    this.approved = approved;
+    this.roletype= roletype;
+    this.lastLogin = lastLogin;
     }
 }

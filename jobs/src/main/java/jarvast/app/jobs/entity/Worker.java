@@ -28,7 +28,7 @@ public class Worker extends BaseUser {
     @Column
     private String phoneNum;
     
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany()
     @JoinTable(
             name = "workers_locations",
             joinColumns = {
@@ -47,11 +47,14 @@ public class Worker extends BaseUser {
     @Column
     private String description;
     
+    @Column(columnDefinition = "boolean default false")
+    private Boolean approved;
+    
     @Transient
     private double rating;
 
     @OneToMany(
-            mappedBy = "worker",
+            mappedBy = "workert",
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
@@ -78,13 +81,14 @@ public class Worker extends BaseUser {
     @JsonIgnore
     private List<Rating> ratings = new ArrayList<Rating>();
 
-    public Worker(String email, String name, String phoneNum, Category category, String description, Double rating) {
+    public Worker(String email, String name, String phoneNum, Category category, String description, Double rating, Boolean approved) {
         this.email = email;
         this.name = name;
         this.phoneNum = phoneNum;
         this.category = category;
         this.description = description;
         this.rating =rating;
+        this.approved = approved;
     }
 
     public Worker() {
@@ -154,6 +158,8 @@ public class Worker extends BaseUser {
         this.tasks = tasks;
     }
 
+    
+
     public List<User> getUserList() {
         return userList;
     }
@@ -169,6 +175,15 @@ public class Worker extends BaseUser {
     public void setRatings(List<Rating> ratings) {
         this.ratings = ratings;
     }
+
+    public Boolean getApproved() {
+        return approved;
+    }
+
+    public void setApproved(Boolean approved) {
+        this.approved = approved;
+    }
+    
 
     @Override
     public String toString() {

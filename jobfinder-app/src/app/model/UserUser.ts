@@ -9,10 +9,12 @@ export class UserUser {
   phoneNum: String;
   location: Location;
   imgName: String;
-  role:Role;
+  role: Role;
+  username: String;
+  roletype: String;
 
     
-  constructor(id?: number, name?: String, email?: String, phoneNum?: String, location?: Location, imgName?: String,role?:Role) {
+  constructor(name?: String, email?: String, phoneNum?: String, location?: Location, imgName?: String,username?:String,roletype?:String,role?:Role,id?: number) {
     this.id = id;
     this.name = name;
     this.email = email;
@@ -20,5 +22,7 @@ export class UserUser {
     this.location = location;
     this.imgName = imgName;
     this.role= role;
+    this.username = username;
+    this.roletype = roletype;
     }
 }

@@ -65,6 +65,7 @@ submit() {
   this.user.phoneNum=this.phone.value;
   this.user.email=this.email.value;
   this.user.location=this.loc.value;
+  //this.user.role = "User";
   this.userService.updateUser(this.user).subscribe(res =>{
     this.router.navigate(['/user', this.userId]);
   });

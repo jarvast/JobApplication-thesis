@@ -3,6 +3,6 @@ export class Role {
 
     
   constructor(role?: String) {
-    this.role = role || "";
+    this.role = role || "GUEST";
     }
 }

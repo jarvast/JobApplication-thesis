@@ -47,6 +47,8 @@ import { AppointmentService } from './services/appointment.service';
 import { EditAppointmentsComponent, NewAppoDialog } from './pages/edit-appointments/edit-appointments.component';
 import { ReportDialogComponent } from './pages/messages/popups/report-dialog/report-dialog.component';
 import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
+import { RegisterUserComponent } from './pages/register-user/register-user.component';
+import { RegisterWorkerComponent } from './pages/register-worker/register-worker.component';
 
 
 @NgModule({
@@ -78,7 +80,9 @@ import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard
     EditAppointmentsComponent,
     NewAppoDialog,
     ReportDialogComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    RegisterUserComponent,
+    RegisterWorkerComponent
   ],
   imports: [
     BrowserModule,

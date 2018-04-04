@@ -23,8 +23,8 @@ export class MenuComponent implements OnInit {
   cachebuster: number;
 
   private common: MenuItem[] = [
-    {link: '/help', title: 'Szakember regisztráció'},
-    {link: '/help', title: 'Felhasználó regisztráció'}
+    {link: '/registerworker', title: 'Szakember regisztráció'},
+    {link: '/registeruser', title: 'Felhasználó regisztráció'}
   ];
 
   private asdo : MenuItem[] = [

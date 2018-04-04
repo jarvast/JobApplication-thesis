@@ -11,7 +11,7 @@ export class RouteGuard implements CanActivate, CanActivateChild {
 
   canActivate(next: ActivatedRouteSnapshot,
               state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    return next.data.roles == null ? true : next.data.roles.includes(this.authService.user.role)
+    return next.data.roles == null ? true : next.data.roles.includes(this.authService.user.role.role)
   }
 
   canActivateChild(next: ActivatedRouteSnapshot,

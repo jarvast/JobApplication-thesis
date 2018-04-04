@@ -35,6 +35,10 @@ export class WriteMessageDialogComponent implements OnInit {
       if (this.authService.user.role.role == "WORKER" && this.receiver.role.role == "USER"){
         this.ratingService.getAllRatingsByWorker(this.authService.user.id).subscribe(data =>{
           this.ratedBy= data;
+          if (this.ratedBy.length ==0){
+            console.log("üres")
+            this.isRateable =true;
+          }
           for (let rater of this.ratedBy){
             if (rater.sender.id == this.receiver.id){
               this.isRateable = false;

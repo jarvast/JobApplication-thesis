@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -28,12 +29,21 @@ public class User extends BaseUser {
     @Column
     private String phoneNum;
 
-    @ManyToOne(targetEntity = Location.class ,fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(targetEntity = Location.class ,fetch = FetchType.EAGER) //cascade = CascadeType.ALL)
     @JoinColumn(name = "location_id")
-    //@JsonIgnores
+    //@JsonIgnores//s
     private Location location;
+    
+    @OneToMany(
+            mappedBy = "sender",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    @JsonIgnore
+    private List<Rating> ratings = new ArrayList<Rating>();
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    //itt iss
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_favorites",
             joinColumns = {
@@ -61,6 +71,15 @@ public class User extends BaseUser {
     public void setFavorites(List<Worker> favorites) {
         this.favorites = favorites;
     }
+
+    public List<Rating> getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(List<Rating> ratings) {
+        this.ratings = ratings;
+    }
+    
 
     public String getEmail() {
         return email;
