@@ -1,16 +1,16 @@
   <h1 mat-dialog-title>{{receiver.name}} értékelése</h1>
     <div>
-        <mat-slider min="1" max="5" step="1" thumbLabel tickInterval="1" placeholder="Értékeljen az 5 fokozatú skálán:"
+        <mat-slider style="background: rgba(70, 131, 180, 0.589);" min="1" max="5" step="1" thumbLabel tickInterval="1" placeholder="Értékeljen az 5 fokozatú skálán:"
          [(ngModel)]="value"></mat-slider>
     </div>
   <form [formGroup]="form" (ngSubmit)="submit()" class="writeform">
       <div mat-dialog-content>
       <mat-form-field>
-              <textarea matInput formControlName="content" placeholder="Szöveges értékelés:" matAutosizeMinRows="3"></textarea>
+              <textarea matInput maxlength="160" formControlName="content" placeholder="Szöveges értékelés:" matAutosizeMinRows="3"></textarea>
+              <mat-hint align="end">{{content.value?.length || 0}}/160</mat-hint>
       </mat-form-field>
   </div>
   <div mat-dialog-actions>
-      <button mat-button type="submit">Küldés</button>
-      <button mat-button type="button" mat-dialog-close>Mégse</button>
+      <button mat-button type="submit" [disabled]="!form.valid">Értékelés küldése</button>
   </div>
   </form>

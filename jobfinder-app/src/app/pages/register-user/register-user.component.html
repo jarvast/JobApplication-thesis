@@ -1,56 +1,58 @@
 <mat-horizontal-stepper [linear]=true #stepper="matHorizontalStepper">
     <mat-step [stepControl]="form">
-      <form [formGroup]="form">
+      <form [formGroup]="form" style="margin-left:20%;">
         <ng-template matStepLabel>Alapadatok</ng-template>
-        <mat-form-field>
-          <input matInput placeholder="Username" formControlName="username" required>
+        <mat-form-field >
+          <input matInput placeholder="Felhasználónév" maxlength="250" formControlName="username" required>
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="pass" formControlName="password" required>
+            <input matInput placeholder="Jelszó" formControlName="password" maxlength="250" type="password" required>
           </mat-form-field>
         <div>
-          <button mat-button matStepperNext>Next</button>
+          <button mat-button matStepperNext>Következő</button>
         </div>
       </form>
     </mat-step>
     <mat-step [stepControl]="form2">
-      <form [formGroup]="form2">
-        <ng-template matStepLabel>Szeméályes adatok</ng-template>
+      <form [formGroup]="form2" style="margin-left:20%;">
+        <ng-template matStepLabel>Személyes adatok</ng-template>
         <mat-form-field>
-          <input matInput placeholder="nev" formControlName="fullname" required>
+          <input matInput placeholder="Név" maxlength="40" formControlName="fullname" required>
+          <mat-hint align="end">{{fullname.value?.length || 0}}/40</mat-hint>
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="mail" formControlName="email" required>
+            <input matInput placeholder="Email cím" formControlName="email" required>
           </mat-form-field>
           <mat-form-field>
-              <input matInput placeholder="Address" formControlName="phone" required>
+              <span matPrefix>+36 &nbsp;</span>
+              <input matInput placeholder="Telefonszám" maxlength="9" formControlName="phone" required>
             </mat-form-field>
         <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
+          <button mat-button matStepperPrevious>Vissza</button>
+          <button mat-button matStepperNext>Következő</button>
         </div>
       </form>
     </mat-step>
     <mat-step [stepControl]="form3">
-        <form [formGroup]="form3">
-          <ng-template matStepLabel>Alapadatok</ng-template>
-          <mat-form-field>
+        <form [formGroup]="form3" style="margin-left:20%;">
+          <ng-template matStepLabel>Lakhely</ng-template>
+          <mat-form-field style="width:40%;">
               <mat-select placeholder="Lakhely"  formControlName="location" required>
                 <mat-option *ngFor="let loca of locations" [value]="loca">{{loca.locationName}}</mat-option>
               </mat-select>
             </mat-form-field>
           <div>
-            <button mat-button matStepperNext>Next</button>
+            <button mat-button matStepperNext>Következő</button>
           </div>
         </form>
       </mat-step>
     <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
-      Kész vagy.
+      <ng-template matStepLabel>Kész</ng-template>
+      Ha az adatok megfelelnek, akkor elkészült a regisztrációja, a gombra kattintás után bejelentkezhet!
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
-        <button mat-raised-button class="button" (click)="submit()">Regisztráció</button>
+        <button mat-button matStepperPrevious>Vissza</button>
+        <button mat-button (click)="stepper.reset()">Újrakezdés</button>
+        <button mat-button class="button" style="background-color: green;color:white;" (click)="submit()">Regisztráció</button>
       </div>
     </mat-step>
   </mat-horizontal-stepper>

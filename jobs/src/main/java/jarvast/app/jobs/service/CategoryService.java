@@ -16,8 +16,9 @@ public class CategoryService {
         this.categoryRepository = categoryRepository;
     }
 
-    public Category findByCategoryName(String categoryName) {
-        return categoryRepository.findBycategoryName(categoryName);
+    public Category findByCategoryId(Long categoryId) {
+        return categoryRepository.findOne(categoryId);
+        //return categoryRepository.findBycategoryName(categoryName);
     }
 
     public List<Category> getCategories() {

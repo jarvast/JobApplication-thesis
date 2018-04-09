@@ -76,8 +76,7 @@ get description() {
   return this.form3.get('description')
 }
   submit(){
-    //newworker: WorkerUser;
-    this.userService.newWorker(new WorkerUser(this.username.value,'',this.fullname.value,this.phone.value,this.category.value,this.description.value,"Worker"), this.password.value).subscribe(data =>{
+    this.userService.newWorker(new WorkerUser(this.username.value,'',this.fullname.value,this.phone.value,this.category.value,this.description.value,"Worker",null,false,new Date()), this.password.value).subscribe(data =>{
       this.newWorker = data;
       this.locationService.updateLocations(this.location.value, this.newWorker.id).subscribe(res => {
       });
@@ -88,12 +87,12 @@ get description() {
     })
   }
   openSnackBarOk() {
-    this.snackBar.open('Siker','Rendben' ,{
+    this.snackBar.open('Sikeres regisztráció!','Rendben' ,{
       duration: 3000,
     });
   }
   openSnackBarErr() {
-    this.snackBar.open('NEM','Rendben' ,{
+    this.snackBar.open('Sikertelen regisztráció, már létezik ilyen felhasználónév!','Értem' ,{
       duration: 3000,
     });
   }

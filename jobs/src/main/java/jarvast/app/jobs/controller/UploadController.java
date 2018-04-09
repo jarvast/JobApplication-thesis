@@ -38,7 +38,7 @@ public class UploadController {
     @GetMapping("/files/{filename:.+}")
     @ResponseBody
     public ResponseEntity<Resource> getFile(@PathVariable String filename) {
-        System.out.println("kapott filename: " + filename);
+        //System.out.println("kapott filename: " + filename);
         Resource file = storageService.loadFile(filename);
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"")

@@ -12,7 +12,7 @@ p{
     border: 1px solid cadetblue;
     border-radius: 4px;
     padding: 0.3%;
-    max-width: 15%;
+    max-width: 20%;
     max-height: 150px;
     float: left;
     margin-left: 0.5%;
@@ -46,7 +46,7 @@ mat-card-actions{
     margin-bottom: 0%;
 }
 mat-card-content{
-    margin-left: 20%;
+    margin-left: 23%;
 }
 body{
     text-align: right;
@@ -80,8 +80,8 @@ h5{
     margin-top: 0.4%;
     margin-bottom: 0%;
 }
-.fuk{
+.headerpart{
     margin-top: 0;
     background: khaki;
-    margin-bottom: 0.5%;
+    margin-bottom: 0.4%;
 }

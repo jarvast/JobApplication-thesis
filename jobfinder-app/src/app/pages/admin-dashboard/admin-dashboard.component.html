@@ -1,28 +1,33 @@
-<mat-tab-group>
+<mat-tab-group headerPosition="center">
   <mat-tab label="Szakemberek">
-      <mat-table #table [dataSource]="workers">
+          <div class="filterhead">
+            <mat-form-field style="width:100%;">
+              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Szűrés">
+            </mat-form-field>
+          </div>
+      <mat-table #table [dataSource]="workers" matSort>
           <ng-container matColumnDef="username">
-            <mat-header-cell *matHeaderCellDef>Dátum</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Felhasználónév</mat-header-cell>
             <mat-cell class="name-header" [routerLink]="['/worker', element.id]" *matCellDef="let element"> {{element.username}}</mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef>Dátum</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Név</mat-header-cell>
             <mat-cell class="name-header" [routerLink]="['/worker', element.id]" *matCellDef="let element"> {{element.name}}</mat-cell>
           </ng-container>
       
           <ng-container matColumnDef="date">
-            <mat-header-cell *matHeaderCellDef>Időintervallum</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Utoljára bejelentkezett</mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.lastLogin | date:'yyyy MMMM d  H:mm':'':'hu'}}</mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="approved">
-            <mat-header-cell *matHeaderCellDef>Időintervallum</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Engedélyezett</mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.approved?'✔':'✗'}}</mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="edit">
-            <mat-header-cell *matHeaderCellDef>Feladatok</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>Műveletek</mat-header-cell>
             <mat-cell *matCellDef="let element">
                     <mat-icon *ngIf="!element.approved" (click)="approveWorker(element.id)">check</mat-icon>
                     <span class="spano"></span>
@@ -33,34 +38,49 @@
           <mat-header-row *matHeaderRowDef="workerColumns"></mat-header-row>
           <mat-row *matRowDef="let row; columns: workerColumns;"></mat-row>
       </mat-table>
+      
+  <mat-paginator
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 20]"
+  [showFirstLastButtons]="true">
+</mat-paginator>
 
   </mat-tab>
   <mat-tab label="Felhasználók">
-      <mat-table #table [dataSource]="users">
+      <div class="filterhead">
+          <mat-form-field style="width:100%;">
+            <input matInput (keyup)="applyFilter2($event.target.value)" placeholder="Szűrés">
+          </mat-form-field>
+        </div>
+      <mat-table #table #sort2="matSort" [dataSource]="users" matSort>
           <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef>Dátum</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Név</mat-header-cell>
             <mat-cell class="name-header" [routerLink]="['/user', element.id]" *matCellDef="let element"> {{element.name}}</mat-cell>
           </ng-container>
       
           <ng-container matColumnDef="username">
-            <mat-header-cell *matHeaderCellDef>Időintervallum</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Felhasználónév</mat-header-cell>
             <mat-cell class="name-header" [routerLink]="['/user', element.id]" *matCellDef="let element"> {{element.username}}</mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="date">
-              <mat-header-cell *matHeaderCellDef>Időintervallum</mat-header-cell>
+              <mat-header-cell *matHeaderCellDef mat-sort-header>Utoljára bejelentkezett</mat-header-cell>
               <mat-cell *matCellDef="let element"> {{element.lastLogin | date:'yyyy MMMM d  H:mm':'':'hu'}}</mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="edit">
-                <mat-header-cell *matHeaderCellDef>Időintervallum</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef>Műveletek</mat-header-cell>
                 <mat-cell *matCellDef="let element"> <mat-icon (click)="deleteWorker(element.id)">delete</mat-icon></mat-cell>
               </ng-container>
           
           <mat-header-row *matHeaderRowDef="userColumns"></mat-header-row>
           <mat-row *matRowDef="let row; columns: userColumns;"></mat-row>
       </mat-table>
-
+      <mat-paginator #pagi2
+  [pageSize]="5"
+  [pageSizeOptions]="[5, 10, 20]"
+  [showFirstLastButtons]="true">
+</mat-paginator>
   </mat-tab>
   <mat-tab label="Jelentések">
       <mat-table #table [dataSource]="reports">
@@ -75,7 +95,7 @@
             </ng-container>
 
             <ng-container matColumnDef="content">
-              <mat-header-cell *matHeaderCellDef>Fogadó</mat-header-cell>
+              <mat-header-cell *matHeaderCellDef>Szöveg</mat-header-cell>
               <mat-cell *matCellDef="let element"> {{element.content}}</mat-cell>
             </ng-container>
       
@@ -89,16 +109,16 @@
     <p>Az adatbázis karbantartás során az 1 évnél régebben belépett felhasználók <strong>törlődnek</strong> a rendszerből!</p>
     <button mat-raised-button style="background-color:darkorange;" class="button" (click)="maintain()">Adatbázis karbantartás</button>
     <mat-divider></mat-divider>
-    <p>Új adminisztrátor hozzáadása</p>
+    <p style="font-size:120%;">Új adminisztrátor hozzáadása</p>
     <form [formGroup]="adminform" novalidate>
         <mat-form-field class="namefield">
-            <input matInput placeholder="Telefonszám" formControlName="username" required>
+            <input matInput placeholder="Felhasználónév" formControlName="username" required>
           </mat-form-field>
           <mat-form-field class="namefield">
-              <input matInput placeholder="pass" formControlName="password" type="password" required>
+              <input matInput placeholder="Jelszó" formControlName="password" type="password" required>
           </mat-form-field>
           <mat-form-field class="namefield">
-                <input matInput placeholder="Telefonszám" formControlName="fullname" required>
+                <input matInput placeholder="Név" formControlName="fullname" required>
           </mat-form-field>
           <button mat-raised-button class="button" (click)="submit()" [disabled]="!adminform.valid">Mentés</button>
     </form>

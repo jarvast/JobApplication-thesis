@@ -1,9 +1,9 @@
-<button mat-fab (click)="openNewDialog()">
+<button class="new" mat-fab (click)="openNewDialog()">
   <mat-icon>add</mat-icon>
 </button>
 <mat-table #table [dataSource]="tasks">
     <ng-container matColumnDef="taskName">
-      <mat-header-cell *matHeaderCellDef>Feladat</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>Feladat elnevezése</mat-header-cell>
       <mat-cell class="name-header" *matCellDef="let element"> {{element.taskName}}</mat-cell>
     </ng-container>
 
@@ -13,9 +13,11 @@
     </ng-container>
 
     <ng-container matColumnDef="edit">
-        <mat-header-cell *matHeaderCellDef>Edit</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>Szerkesztés</mat-header-cell>
         <mat-cell *matCellDef="let element"> 
-          <button mat-button (click)="openDialog(element)">Edit</button>
+          <button mat-button (click)="openDialog(element)">
+              <mat-icon>edit</mat-icon>
+          </button>
         </mat-cell>
     </ng-container>
     

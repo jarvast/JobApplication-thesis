@@ -15,14 +15,11 @@ import { LocationService } from '../../services/location.service';
 })
 export class EditWorkerProfileComponent {
 
-  
-  //@Input() worker: UserUser;
   workerId: number;
   imgRoute: String;
   locations : Location[];
   worker: WorkerUser;
   editForm: FormGroup;
-  selected: String;
   cachebuster : number;
 
   constructor(private route: ActivatedRoute, private userService: UserService,private authService: AuthService, private locationService:LocationService, private fb:FormBuilder, private router: Router) {
@@ -66,21 +63,11 @@ submit() {
   this.worker.name=this.name.value;
   this.worker.phoneNum=this.phone.value;
   this.worker.description=this.description.value;
-  console.log(this.worker.name);
-  console.log(this.worker.phoneNum);
-  console.log(this.worker.description);
-  console.log(this.loc.value);
-  this.userService.updateWorker(this.worker).subscribe(res =>{
-    console.log("doneuser")
-  });
-  this.locationService.updateLocations(this.loc.value, this.worker.id).subscribe(res => {
-  });
+  this.userService.updateWorker(this.worker).subscribe();
+  this.locationService.updateLocations(this.loc.value, this.worker.id).subscribe();
   this.router.navigate(['/worker', this.workerId]);
   }
   getTimeStamp(){
-   /* setTimeout(() => {
-      
-    }, 2000);*/
     return this.cachebuster;
   }
 

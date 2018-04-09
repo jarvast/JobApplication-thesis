@@ -1,6 +1,6 @@
-  <mat-table #table [dataSource]="tasks">
+<mat-table *ngIf="tasks.data.length>0" #table [dataSource]="tasks">
     <ng-container matColumnDef="taskName">
-      <mat-header-cell *matHeaderCellDef>Feladat</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>Feladat elnevezése</mat-header-cell>
       <mat-cell class="name-header" *matCellDef="let element"> {{element.taskName}}</mat-cell>
     </ng-container>
 
@@ -12,3 +12,4 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 </mat-table>
+<p *ngIf="tasks.data.length==0" style="color: red;">A szakember <strong>még nem</strong> adott meg jellemző feladatokat.</p>

@@ -7,7 +7,7 @@
   </div>
 
   <div class="center">
-    <a mat-button class="regbuttons"  *ngFor="let menu of menus" [routerLink]="menu.link" routerLinkActive="active">{{menu.title}}</a>
+    <a mat-button class="regbuttons"  *ngFor="let menu of regButtons" [routerLink]="menu.link" routerLinkActive="active">{{menu.title}}</a>
   </div>
 
   <div class="welcome" *ngIf="authService.isLoggedIn">Üdv, {{ authService.user.username }}!</div>
@@ -19,7 +19,7 @@
     
     <div *ngIf="authService.isLoggedIn" class="authorized">
     <button mat-button [matMenuTriggerFor]="menu"><img mat-card-avatar src ="{{imgRoute + this.authService.user.imgName}}?{{getTimeStamp()}}" class="headerimage">
-       <mat-icon *ngIf="!notify">keyboard_arrow_down</mat-icon><mat-icon *ngIf="notify">announcement</mat-icon></button>
+       <mat-icon *ngIf="!notifyNewMessage">keyboard_arrow_down</mat-icon><mat-icon *ngIf="notifyNewMessage">announcement</mat-icon></button>
     <mat-menu #menu="matMenu" [overlapTrigger]="false">
       <button mat-menu-item *ngFor="let menu of rolemenu" [routerLink]="[menu.link, authService.user.id]" routerLinkActive="active">{{menu.title}}</button>
       <button mat-menu-item (click)="logout()">Kijelentkezés</button>

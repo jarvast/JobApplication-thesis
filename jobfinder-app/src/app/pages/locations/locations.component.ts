@@ -12,7 +12,7 @@ export class LocationsComponent implements OnInit {
   @Input() workerId: number;
   locations : Location[];
   temp : String[];
-  separatedLocations : String = "";
+  commaSeparatedLocations : String = "";
 
   constructor(private locationService: LocationService) { }
 
@@ -24,7 +24,7 @@ export class LocationsComponent implements OnInit {
       for (let entry of this.locations){
         this.temp.push(entry.locationName);
       }
-      this.separatedLocations= this.temp.join(', ');
+      this.commaSeparatedLocations= this.temp.join(', ');
     });
   }
 

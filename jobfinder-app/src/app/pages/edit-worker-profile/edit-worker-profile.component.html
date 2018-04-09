@@ -3,19 +3,21 @@
       <img src="{{imgRoute + worker.imgName}}?{{getTimeStamp()}}" alt="{{imgRoute + worker.imgName}}">
       <div class="textpart">
       <mat-form-field class="namefield">
-        <input matInput type="text" placeholder="Név" formControlName="name" required>
+        <input matInput type="text" maxlength="30" placeholder="Név" formControlName="name" required>
+        <mat-hint align="end">{{name.value?.length || 0}}/30</mat-hint>
       </mat-form-field>
       <mat-form-field class="namefield">
-        <input matInput placeholder="Telefonszám" formControlName="phone" required>
+        <span matPrefix>+36 &nbsp;</span>
+        <input matInput maxlength="9" placeholder="Telefonszám" formControlName="phone" required>
       </mat-form-field>
       <mat-form-field class= "namefield">
         <mat-select placeholder="Lakhely"  formControlName="loc" multiple required>
-          <mat-option *ngFor="let loca of locations" [value]="loca">{{loca.locationName}}</mat-option>
+          <mat-option *ngFor="let loc of locations" [value]="loc">{{loc.locationName}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field class="namefield">
-        <textarea matInput placeholder="Leírás" #input maxlength="250" formControlName="description" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"></textarea>
-        <mat-hint align="end">{{input.value?.length || 0}}/250</mat-hint>
+        <textarea matInput placeholder="Leírás" maxlength="1000" formControlName="description" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"></textarea>
+        <mat-hint align="end">{{description.value?.length || 0}}/1000</mat-hint>
       </mat-form-field>      
     </div>
     </div>

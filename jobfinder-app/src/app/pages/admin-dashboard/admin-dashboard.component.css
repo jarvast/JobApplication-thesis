@@ -5,3 +5,16 @@
 .spano{
     margin-left: 10%;
 }
+mat-tab-group{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+mat-divider{
+    margin-top: 3%;
+}
+mat-icon:hover{
+    cursor: pointer;
+}
+.filterhead{
+    width: 100%;
+}

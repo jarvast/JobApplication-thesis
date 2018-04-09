@@ -1,11 +1,11 @@
 .toppart{
     display: flex;
-    width: 50%;
+    width: 65%;
     margin-top: 3%;
 }
 .namefield{
-    margin-left: 30%;
-    width: 60%;
+    margin-left: 25%;
+    width: 80%;
 }
 p{
     margin-left: 30%;

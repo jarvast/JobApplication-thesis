@@ -66,21 +66,21 @@ export class UserService {
   newAdmin(admin: AdminUser, pass:string){
     const httpOptions = {
     headers: new HttpHeaders({
-      'sendo': 'Basic ' + btoa(pass)
+      'pass': 'Basic ' + btoa(pass)
     })}
     return this.http.post(Server.routeTo(Routes.NEW) + '/admin',admin, httpOptions);
   }
   newUser(user: UserUser, pass:string){
     const httpOptions = {
     headers: new HttpHeaders({
-      'sendo': 'Basic ' + btoa(pass)
+      'pass': 'Basic ' + btoa(pass)
     })}
     return this.http.post(Server.routeTo(Routes.NEW) + '/user',user, httpOptions);
   }
   newWorker(worker: WorkerUser, pass:string):Observable<WorkerUser>{
     const httpOptions = {
     headers: new HttpHeaders({
-      'sendo': 'Basic ' + btoa(pass)
+      'pass': 'Basic ' + btoa(pass)
     })}
     return this.http.post<WorkerUser>(Server.routeTo(Routes.NEW) + '/worker',worker, httpOptions);
   }

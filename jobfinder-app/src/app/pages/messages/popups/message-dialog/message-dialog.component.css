@@ -8,9 +8,21 @@ h2{
         color: khaki;
         cursor: pointer;
 }
-.accept{
-    margin-left: 40%;
+.acceptRateRequest{
+    margin-left: 35%;
     margin-top: 0%;
     color: white;
     background-color: green;
+}
+.acceptAppo{
+    margin-left:14%;
+    padding : 2%;
+    color: white;
+    background-color: green;
+}
+.declineAppo{
+    margin-left:20%;
+    padding : 2%;
+    color: white;
+    background-color: red;
 }

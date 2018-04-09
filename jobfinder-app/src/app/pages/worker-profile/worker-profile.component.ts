@@ -22,8 +22,6 @@ export class WorkerProfileComponent implements OnInit {
   worker : WorkerUser;
   imgRoute: String;
   locations : Location[];
-  temp : String[];
-  separatedLocations : String = "";
   ownprofile: boolean = false;
   cachebuster: number;
   isUser: boolean = false;
@@ -41,7 +39,6 @@ export class WorkerProfileComponent implements OnInit {
         this.favorites = fav;
       });
     }
-    //console.log(this.favorites);
     this.route.params.subscribe(param => {
       this.workerId = param['id'];
       this.userService.getWorker(this.workerId).subscribe(data =>{
@@ -63,15 +60,12 @@ export class WorkerProfileComponent implements OnInit {
   });
   this.cachebuster= Date.now();
   }
-  //lehet az egész gombokat ki lehetne szervezni
   writeMessage(){
     let dialogRefa = this.dialog.open(WriteMessageDialogComponent, {
       width: '30%',
-      //data: { id: task.id, name: task.taskName, prices: task.taskPrices, task: task }
       data :{receiver:this.worker}
     });
     dialogRefa.afterClosed().subscribe(res =>{
-      //this.dialogRef.close();
     })
   }
   favorite(){
@@ -84,7 +78,6 @@ export class WorkerProfileComponent implements OnInit {
     this.userService.listFavorites().subscribe(fav =>{
       this.favorites = fav;
     });
-    //this.router.navigate(['worker', this.workerId],{queryParams: { 'refresh': 1 } });
   }
   notFavorite(){
     this.userService.notFavorite(this.workerId).subscribe(res =>{
@@ -97,24 +90,20 @@ export class WorkerProfileComponent implements OnInit {
   report(){
     let dialogRefa = this.dialog.open(ReportDialogComponent, {
       width: '30%',
-      //data: { id: task.id, name: task.taskName, prices: task.taskPrices, task: task }
       data :{receiver:this.worker}
     });
     dialogRefa.afterClosed().subscribe(res =>{
-      //this.dialogRef.close();
     })
   }
   reservation(){
     let dialogRefa = this.dialog.open(AppointmentDialogComponent, {
       width: '30%',
-      //data: { id: task.id, name: task.taskName, prices: task.taskPrices, task: task }
       data :{receiver:this.worker}
     });
     dialogRefa.afterClosed().subscribe(res =>{
-      //this.openSnackBarOk();
     })
   }
-  rut(){
+  editProfile(){
     this.router.navigate(['/myworker', this.worker.id]);
   }
   getTimeStamp(){

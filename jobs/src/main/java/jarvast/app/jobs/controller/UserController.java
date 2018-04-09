@@ -6,7 +6,10 @@ import jarvast.app.jobs.entity.User;
 import jarvast.app.jobs.entity.Worker;
 import jarvast.app.jobs.service.CategoryService;
 import jarvast.app.jobs.service.UserService;
+import java.math.BigInteger;
 import java.nio.charset.Charset;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -66,7 +69,9 @@ public class UserController<T> {
 
     @GetMapping("/workers/{categoryName}")
     private ResponseEntity<Iterable<Worker>> listByCategory(@PathVariable(value = "categoryName") String categoryName) {
-        Category category = categoryService.findByCategoryName(categoryName);
+        Category category = categoryService.findByCategoryId(Long.parseLong(categoryName));
+        System.out.println(category.toString());
+        //Category category = categoryService.findByCategoryName(categoryName);
         return ResponseEntity.ok(userService.listByCategory(category));
     }
 
@@ -123,36 +128,46 @@ public class UserController<T> {
         return ResponseEntity.ok(204);
     }
     @PostMapping("/new/admin")
-    private ResponseEntity<Admin> registerAdmin(@RequestBody Admin admin, HttpServletRequest request){
+    private ResponseEntity<Admin> registerAdmin(@RequestBody Admin admin, HttpServletRequest request) throws NoSuchAlgorithmException{
         
-        final String auth = request.getHeader("sendo");
+        final String auth = request.getHeader("pass");
         
         String base64Credentials = auth.substring("Basic".length()).trim();
         String credentials = new String(Base64.getDecoder().decode(base64Credentials),
                 Charset.forName("UTF-8"));
-        System.out.println(credentials);
+                MessageDigest md = MessageDigest.getInstance("MD5");
+        byte[] temp = md.digest(credentials.getBytes());
+        credentials = String.format("%032X", new BigInteger(1, temp));
+        
         return ResponseEntity.ok(userService.registerAdmin(admin,credentials));
     }
     @PostMapping("/new/user")
-    private ResponseEntity<User> registerUser(@RequestBody User user, HttpServletRequest request){
+    private ResponseEntity<User> registerUser(@RequestBody User user, HttpServletRequest request) throws NoSuchAlgorithmException{
         
-        final String auth = request.getHeader("sendo");
+        final String auth = request.getHeader("pass");
         
         String base64Credentials = auth.substring("Basic".length()).trim();
         String credentials = new String(Base64.getDecoder().decode(base64Credentials),
                 Charset.forName("UTF-8"));
-        System.out.println(credentials);
+                MessageDigest md = MessageDigest.getInstance("MD5");
+        byte[] temp = md.digest(credentials.getBytes());
+        credentials = String.format("%032X", new BigInteger(1, temp));
+        
         return ResponseEntity.ok(userService.registerUser(user,credentials));
     }
     @PostMapping("/new/worker")
-    private ResponseEntity<Worker> registerWorker(@RequestBody Worker worker, HttpServletRequest request){
+    private ResponseEntity<Worker> registerWorker(@RequestBody Worker worker, HttpServletRequest request) throws NoSuchAlgorithmException{
         
-        final String auth = request.getHeader("sendo");
+        final String auth = request.getHeader("pass");
         
         String base64Credentials = auth.substring("Basic".length()).trim();
         String credentials = new String(Base64.getDecoder().decode(base64Credentials),
                 Charset.forName("UTF-8"));
-        System.out.println(credentials);
+        
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        byte[] temp = md.digest(credentials.getBytes());
+        credentials = String.format("%032X", new BigInteger(1, temp));
+        
         return ResponseEntity.ok(userService.registerWorker(worker,credentials));
     }
 

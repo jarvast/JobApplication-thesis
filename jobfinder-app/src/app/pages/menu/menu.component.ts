@@ -10,7 +10,6 @@ import { MessageService } from '../../services/message.service';
 interface MenuItem {
   link: String;
   title: String;
-  att?: any;
 }
 
 @Component({
@@ -22,25 +21,25 @@ export class MenuComponent implements OnInit {
   imgRoute:String;
   cachebuster: number;
 
-  private common: MenuItem[] = [
+  private registerButtons: MenuItem[] = [
     {link: '/registerworker', title: 'Szakember regisztráció'},
     {link: '/registeruser', title: 'Felhasználó regisztráció'}
   ];
 
-  private asdo : MenuItem[] = [
+  private common : MenuItem[] = [
     {link: '/mymessages', title: 'Üzeneteim'}
   ];
   
   private roleMenus = new Map<String, MenuItem[]>([
-    ["ADMIN", [...this.asdo , {link: '/dashboard', title: 'Admin felület'}]],
-    ["USER", [...this.asdo , {link: '/user', title: 'Profilom'}, {link: '/myfavorites', title: 'Kedvenceim'}]],
-    ["WORKER", [...this.asdo, {link: '/worker', title: 'Profilom'}, {link: '/mytasks', title: 'Feladataim'}, {link: '/myappointments', title: 'Időpontjaim'}]]
+    ["ADMIN", [...this.common , {link: '/dashboard', title: 'Admin felület'}]],
+    ["USER", [...this.common , {link: '/user', title: 'Profilom'}, {link: '/myfavorites', title: 'Kedvenceim'}]],
+    ["WORKER", [...this.common, {link: '/worker', title: 'Profilom'}, {link: '/mytasks', title: 'Feladataim'}, {link: '/myappointments', title: 'Időpontjaim'}]]
 ]);
 
   
-  menus: MenuItem[];
+  regButtons: MenuItem[];
   rolemenu: MenuItem[];
-  notify : boolean = true;
+  notifyNewMessage : boolean = true;
 
   constructor(private authService: AuthService, private router: Router, private messageService: MessageService) {
     this.imgRoute = Server.routeTo(Routes.PICTURE);
@@ -52,15 +51,14 @@ export class MenuComponent implements OnInit {
         this.setMenus()
       }
     })
-    this.menus = this.common;
+    this.regButtons = this.registerButtons;
   }
   setMenus() {
     if (this.authService.isLoggedIn) {
       this.rolemenu = this.roleMenus.get(this.authService.user.role.role);
       this.messageService.newMessages(this.authService.user.id).subscribe(data =>{
         if (data.length==0){
-          this.notify = false;
-          console.log("notifyfalse")
+          this.notifyNewMessage = false;
         }
       });
     }
@@ -71,7 +69,7 @@ export class MenuComponent implements OnInit {
         this.authService.isLoggedIn=false;
         this.authService.user= new User();
         this.router.navigate(['/login']);
-        this.notify=true;
+        this.notifyNewMessage=true;
       })
     }
     getTimeStamp(){

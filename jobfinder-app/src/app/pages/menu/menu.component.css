@@ -7,7 +7,7 @@ mat-toolbar {
   justify-content: flex-end;
 }
 .mainicon{
-  width: 10%;
+  width: 13%;
 }
 .mainpagebutton{
   padding: 1%;
@@ -40,8 +40,8 @@ mat-toolbar {
   border-color: darkorange;
 }
 .authorized{
-  padding: 3px;
+  padding: 8px;
 }
 .headerimage{
-  width: 60%;
+  width: 58%;
 }

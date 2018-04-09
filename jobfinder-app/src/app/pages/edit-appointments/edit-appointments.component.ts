@@ -52,6 +52,7 @@ export class NewAppoDialog{
 
   form: FormGroup;
   workerid: number;
+  minDate: Date = new Date();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -72,8 +73,6 @@ export class NewAppoDialog{
     return this.form.get('time')
   }
   submit(){
-    console.log(this.date.value)
-    console.log(this.time.value)
     this.appoService.create(new Appointment(this.date.value,this.time.value), this.workerid).subscribe();
     this.dialogRef.close();
   }

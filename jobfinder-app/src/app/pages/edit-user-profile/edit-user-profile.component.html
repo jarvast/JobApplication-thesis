@@ -3,13 +3,16 @@
     <img src="{{imgRoute + user.imgName}}?{{getTimeStamp()}}" alt="{{imgRoute + user.imgName}}">
     <div class="textpart">
     <mat-form-field class="namefield">
-      <input matInput type="text" placeholder="Név" formControlName="name" required>
+      <input matInput type="text" maxlength="30" placeholder="Név" formControlName="name" required>
+      <mat-hint align="end">{{name.value?.length || 0}}/30</mat-hint>
     </mat-form-field>
     <mat-form-field class="namefield">
-      <input matInput placeholder="Telefonszám" formControlName="phone" required>
+      <span matPrefix>+36 &nbsp;</span>
+      <input matInput maxlength="9" placeholder="Telefonszám" formControlName="phone" required>
     </mat-form-field>
     <mat-form-field class="namefield">
-      <input matInput placeholder="E-mail" formControlName="email" required>
+      <input matInput maxlength="35" placeholder="E-mail" formControlName="email" required>
+      <mat-hint align="end">{{name.value?.length || 0}}/35</mat-hint>
     </mat-form-field>
     <mat-form-field class= "namefield">
       <mat-select placeholder="Lakhely"  formControlName="loc" required>

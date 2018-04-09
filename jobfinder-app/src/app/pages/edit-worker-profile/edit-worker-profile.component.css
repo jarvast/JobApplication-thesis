@@ -1,14 +1,14 @@
 .toppart{
     display: flex;
-    width: 70%;
+    width: 65%;
     margin-top: 3%;
 }
 .namefield{
-    margin-left: 30%;
-    width: 60%;
+    margin-left: 20%;
+    width: 100%;
 }
 p{
-    margin-left: 30%;
+    margin-left: 25%;
     border-bottom: dotted;
     font-size: 110%;
 }
@@ -16,6 +16,7 @@ p{
 img{
     max-width: 45%;
     margin-left: 6%;
+    height: 19em;
 }
 span{
     width: 30px;

@@ -25,7 +25,6 @@ export class MainComponent implements OnInit{
   }
   ngOnInit()
   {
-   // console.log("authos" + this.authService.user.id);
     this.userService.getTop5().subscribe(workers => {
       this.workers = workers;
     });

@@ -1,8 +1,8 @@
 <form [formGroup]="searchForm" novalidate>
 <div class="form-control">
-  <h1>Keress rengeteg munkavállalónk között és találd meg a tökéletes szakembert</h1>
+  <h1>Keressen rengeteg munkavállalónk között és találja meg a tökéletes szakembert</h1>
   <mat-form-field class="input-field">
-    <input matInput type="search" placeholder="Név, leírás, hely, email..." formControlName="searchWord"/>
+    <input matInput type="search" maxLength="40" placeholder="Keresés (név, leírás, hely, email...)" formControlName="searchWord"/>
     <mat-error *ngIf="searchWord.hasError('required')">
       A keresőszó legalább <strong>3 karakter</strong> legyen
     </mat-error>
@@ -14,9 +14,9 @@
 </form>
 
 <mat-grid-list style="text-align:center" cols="8" rowHeight="160px">
-    <mat-grid-tile *ngFor="let category of categories"   [routerLink]="['/categories', category.categoryName]">
+    <mat-grid-tile *ngFor="let category of categories"   [routerLink]="['/categories', category.id]">
     <img src="{{imgRoute + category.picture}}" class="categoryimg">
-    <mat-grid-tile-footer style="height:12%;font-size:100%;background-color:rgba(240, 230, 140, 0.623);color:black;text-align:center;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+    <mat-grid-tile-footer style="height:18%;font-size:85%;background-color:rgba(240, 230, 140, 0.616);color:black;text-align:center;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
       <h1><b>{{category.categoryName}}</b></h1>
     </mat-grid-tile-footer>
   </mat-grid-tile>

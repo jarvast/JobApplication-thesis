@@ -1,10 +1,13 @@
 <h1>Értékelések</h1>
 <mat-divider></mat-divider>
 <div class="list">
-  <p class="norating" *ngIf="empty">Nincs értékelés</p>
+  <p class="norating" *ngIf="empty">A szakemberre még nem érkezett értékelés!</p>
   <mat-list>
-    <mat-list-item *ngFor="let rating of ratings">
-      <h4 [routerLink]="['/user', rating.sender.id]">{{rating.sender.name}} <mat-icon *ngFor="let dummy of ' '.repeat(rating.rating).split(''), let x = index">star</mat-icon><p>{{rating.content}}<p> </h4>
+    <mat-list-item *ngFor="let rating of ratings" style="height:6em;">
+      <h4 [routerLink]="['/user', rating.sender.id]">{{rating.sender.name}}
+        <mat-icon *ngFor="let dummy of ' '.repeat(rating.rating).split(''), let x = index">star</mat-icon>
+        <p>{{rating.content}}<p>
+      </h4>
     </mat-list-item>
   </mat-list>
   <button mat-button color="primary" (click)="showAll()" [disabled]="showingAll">Még több értékelés..</button>

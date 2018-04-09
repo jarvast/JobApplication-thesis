@@ -18,7 +18,6 @@ export class UserProfileComponent implements OnInit {
   imgRoute: String;
   user: UserUser;
   ownprofile: boolean = false;
-  asdo :boolean;
   cachebuster: number;
 
   constructor(public dialog : MatDialog,private route: ActivatedRoute, private userService: UserService,private authService: AuthService, private router: Router) {
@@ -37,28 +36,24 @@ export class UserProfileComponent implements OnInit {
   });
     this.cachebuster= Date.now();
   }
-  rut(){
+  editProfile(){
       this.router.navigate(['/myuser', this.userId]);
     
   }
   writeMessage(){
     let dialogRefa = this.dialog.open(WriteMessageDialogComponent, {
       width: '30%',
-      //data: { id: task.id, name: task.taskName, prices: task.taskPrices, task: task }
       data :{receiver:this.user}
     });
     dialogRefa.afterClosed().subscribe(res =>{
-      //this.dialogRef.close();
     })
   }
   report(){
     let dialogRefa = this.dialog.open(ReportDialogComponent, {
       width: '30%',
-      //data: { id: task.id, name: task.taskName, prices: task.taskPrices, task: task }
       data :{receiver:this.user}
     });
     dialogRefa.afterClosed().subscribe(res =>{
-      //this.dialogRef.close();
     })
   }
   getTimeStamp(){

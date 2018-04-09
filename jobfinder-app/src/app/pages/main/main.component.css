@@ -3,7 +3,7 @@
     margin-bottom: 2%;
     text-align: center;
     background-image: url("../../../assets/cover.jpg");
-    height: 27em;
+    height: 21em;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: darkorange;
     font-style: oblique;
@@ -34,7 +34,7 @@ h1{
 }
 .categoryimg {
     padding: 10%;
-    width: 60%;
+    width: 75%;
 }
 .cardimg{
     padding: 10%;
@@ -57,7 +57,7 @@ mat-grid-tile:hover {
     cursor: pointer;
 }
 .profiles{
-    margin-left: 10%;
+    margin-left: 2%;
     display: flex;
 }
 footer{

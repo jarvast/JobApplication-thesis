@@ -69,12 +69,12 @@ export class RegisterUserComponent implements OnInit {
     })
   }
   openSnackBarOk() {
-    this.snackBar.open('Siker','Rendben' ,{
+    this.snackBar.open('Sikeresen regisztrált!','Rendben' ,{
       duration: 3000,
     });
   }
   openSnackBarErr() {
-    this.snackBar.open('NEM','Rendben' ,{
+    this.snackBar.open('Sikertelen regisztráció, már létezik ilyen felhasználónév!','Értem' ,{
       duration: 3000,
     });
   }

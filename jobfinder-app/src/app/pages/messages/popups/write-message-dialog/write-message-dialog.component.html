@@ -4,16 +4,18 @@
       <div>
       <h2 mat-dialog-title>Címzett: {{receiver.name}}</h2>
         <mat-form-field>
-            <input matInput formControlName="subject" placeholder="Tárgy">
+            <input matInput maxlength="45" formControlName="subject" placeholder="Tárgy">
+            <mat-hint align="end">{{subject.value?.length || 0}}/45</mat-hint>
         </mat-form-field>
       </div>
         <mat-form-field>
-                <textarea matInput formControlName="content" placeholder="Üzenet:" matAutosizeMinRows="3"></textarea>
+                <textarea matInput maxlength="1000" formControlName="content" placeholder="Üzenet:" matAutosizeMinRows="3"></textarea>
+                <mat-hint align="end">{{content.value?.length || 0}}/1000</mat-hint>
         </mat-form-field>
     </div>
     <div mat-dialog-actions>
-        <button mat-button type="submit">Küldés</button>
-        <button *ngIf="isRateable" class="ratebutton" mat-button mat-dialog-close (click)="requestRating();">Értékelés</button>
+        <button mat-button type="submit" [disabled]="!form.valid">Küldés</button>
+        <button *ngIf="isRateable" class="ratebutton" mat-button mat-dialog-close (click)="requestRating();">Értékelési kérelem küldése</button>
         <button mat-button type="button" mat-dialog-close>Mégse</button>
     </div>
     </form>

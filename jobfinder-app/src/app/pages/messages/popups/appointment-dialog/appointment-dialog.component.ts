@@ -21,10 +21,7 @@ import { Appointment } from '../../../../model/Appointment';
   export class AppointmentDialogComponent implements OnInit {
   
     form: FormGroup;
-    message : Message = new Message();
     worker: WorkerUser;
-    isRateable: boolean;
-    ratedBy: Rating[];
     tasks : Task[];
     appointments: Appointment[];
     isEmpty: boolean = false;
@@ -39,7 +36,6 @@ import { Appointment } from '../../../../model/Appointment';
       private snackBar: MatSnackBar,
       public dialogRef: MatDialogRef<AppointmentDialogComponent>,
       @Inject(MAT_DIALOG_DATA) public data: any) {
-        console.log(data.receiver);
         this.worker = data.receiver;
         this.taskService.getTasks(this.worker.id).subscribe(tasks =>{
           this.tasks = tasks;
@@ -58,7 +54,7 @@ import { Appointment } from '../../../../model/Appointment';
       this.form = this.formBuilder.group({
         appointment: ['',Validators.required],
         task: ['', Validators.required],
-        comment: ['', Validators.required]
+        comment: ['']
       });
     }
   
@@ -78,13 +74,9 @@ import { Appointment } from '../../../../model/Appointment';
     }
   
     submit(){
-      console.log(this.task.value)
-      console.log(this.comment.value)
       this.date = this.appointment.value.appDate;
       var day = new Date(this.date).toLocaleDateString();
-      //this.date.
-      console.log(day)
-      let content = "Az üzenet feladójától időpontkérési kérelme érkezett, kérjük reagáljon a kérelemre az alábbi gombokkal!\n Választott időpont: " + day + " " + this.appointment.value.appTime
+      let content = "Az üzenet feladójától időpontfoglalási kérelme érkezett, kérjük reagáljon a kérelemre az alábbi gombokkal!\n Választott időpont: " + day + " " + this.appointment.value.appTime
        + ".\n Kívánt feladat: " + this.task.value.taskName + ".\n Egyéb megjegyzés: " + this.comment.value;
       this.messageService.send(new Message(this.worker ,null, "Időpontkérés", content,null,false,false,true, this.appointment.value)).subscribe();
       this.dialogRef.close();

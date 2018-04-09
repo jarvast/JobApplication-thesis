@@ -1,8 +1,7 @@
 <mat-divider></mat-divider>
-<div class="fuk">
+<div class="headerpart">
 <h1>Keresési eredmények: </h1><h5>{{foundArrayLength}} db találat</h5>
 <mat-select *ngIf="selectedWorkers?.length > 0" placeholder="Találatok rendezése" [(value)]="selectedOption">
-  <mat-option>None</mat-option>
   <mat-option (click)="sortbyBestRating()" value="option1">Legjobb értékelés elöl</mat-option>
   <mat-option (click)="sortbyWorstRating()" value="option2">Legrosszabb értékelés elöl</mat-option>
   <mat-option (click)="sortbyNameAZ()" value="option3">Név szerint A-Z</mat-option>
@@ -12,8 +11,8 @@
 
 <div class="row" *ngIf="selectedWorkers?.length == 0">
   <h2>A megadott keresőszóval nem található szakember!</h2>
-  <button mat-icon-button routerLink="/help">
-      <mat-icon aria-label="button with a heart icon">favorite</mat-icon>
+  <button mat-icon-button routerLink="/main">
+      <mat-icon aria-label="button with a heart icon">keyboard_backspace</mat-icon>
   </button>
 </div>
 <div class="profiles">

@@ -1,0 +1,12 @@
+mat-table{
+    margin-top: 2%;
+    margin-right: 20%;
+    margin-bottom: 10%;
+}
+.new{
+    margin-top: 2%;
+    background-color: green;
+}
+mat-tab-group{
+    margin-left: 15%;
+}

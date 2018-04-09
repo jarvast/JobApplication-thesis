@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
 
   submit() {
     this.authService.login(new User(undefined,this.username.value,this.password.value)).subscribe(data => {
-      //if ()
       this.authService.user = data;
       this.authService.isLoggedIn = true;
       this.router.navigate(['/main']);
@@ -32,7 +31,7 @@ export class LoginComponent implements OnInit {
     err => this.openSnackBar())
     }
   openSnackBar() {
-    this.snackBar.open('Wrong username or password!','Got it!' ,{
+    this.snackBar.open('Helytelen a felhaszálónév vagy a jelszó!','Értem' ,{
       duration: 3000,
     });
   }

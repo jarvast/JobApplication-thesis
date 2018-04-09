@@ -47,19 +47,9 @@ export class MessagesComponent implements OnInit {
   openMessage(message: Message, isSent: boolean){
     let dialogRef = this.dialog.open(MessageDialog, {
       width: '30%',
-      //data: { id: task.id, name: task.taskName, prices: task.taskPrices, task: task }
       data :{message:message, type:isSent}
     });
     dialogRef.afterClosed().subscribe(res =>{
-      /*this.messageService.getSentMessages(this.myId).subscribe(data =>{
-        this.sentMessages = data;
-        console.log("sorto")
-        this.sentMessages.sort((leftSide,rightSide): number =>{
-          if (leftSide.sendTimestamp > rightSide.sendTimestamp) return -1;
-          if (leftSide.sendTimestamp < rightSide.sendTimestamp) return 1;
-          return 0;
-        });
-      });*/
       this.ngOnInit();
   });
   }

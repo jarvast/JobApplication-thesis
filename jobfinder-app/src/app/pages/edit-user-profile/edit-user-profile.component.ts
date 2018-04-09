@@ -16,7 +16,6 @@ import { Observable } from 'rxjs/Observable';
 })
 export class EditUserProfileComponent{
 
-  //@Input() worker: UserUser;
   userId: number;
   imgRoute: String;
   locations : Location[];
@@ -42,7 +41,6 @@ export class EditUserProfileComponent{
         });
         this.editForm.patchValue({name: res.name, phone: res.phoneNum, email: res.email, loc: res.location});
         this.selected = res.location.locationName;
-        console.log(this.selected);
       })
     });
     this.cachebuster= Date.now();
@@ -65,15 +63,11 @@ submit() {
   this.user.phoneNum=this.phone.value;
   this.user.email=this.email.value;
   this.user.location=this.loc.value;
-  //this.user.role = "User";
   this.userService.updateUser(this.user).subscribe(res =>{
     this.router.navigate(['/user', this.userId]);
   });
   }
   getTimeStamp(){
-   /* setTimeout(() => {
-      
-    }, 2000);*/
     return this.cachebuster;
   }
 }

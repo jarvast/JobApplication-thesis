@@ -17,7 +17,6 @@ import { Rating } from '../../../../model/Rating';
 export class WriteMessageDialogComponent implements OnInit {
 
   form: FormGroup;
-  message : Message = new Message();
   receiver: UserUser | WorkerUser;
   isRateable: boolean;
   ratedBy: Rating[];
@@ -31,25 +30,20 @@ export class WriteMessageDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<WriteMessageDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
       this.receiver = data.receiver;
-      console.log(this.receiver)
       if (this.authService.user.role.role == "WORKER" && this.receiver.role.role == "USER"){
         this.ratingService.getAllRatingsByWorker(this.authService.user.id).subscribe(data =>{
           this.ratedBy= data;
           if (this.ratedBy.length ==0){
-            console.log("üres")
             this.isRateable =true;
           }
           for (let rater of this.ratedBy){
             if (rater.sender.id == this.receiver.id){
               this.isRateable = false;
-              //console.log("false" + rater.sender.id + this.message.sender.id)
               break;
             }else{
               this.isRateable=true;
-              //console.log("true"  + rater.sender.id + this.message.sender.id)
             }
           }
-          //this.isWorker = true;
         })
       }
       }

@@ -1,6 +1,6 @@
 .toppart{
     display: flex;
-    width: 50%;
+    width: 65%;
     margin-top: 3%;
 }
 h1{
@@ -16,9 +16,6 @@ img{
     max-width: 45%;
     margin-left: 6%;
 }
-span{
-    width: 30px;
-}
 .textpart{
     width: 100%;
 }
@@ -26,12 +23,12 @@ span{
     padding: 1%;
 }
 .reportbutton{
-    margin-left: 15%;
+    margin-left: 22.5%;
     background: red;
     
 }
 .messagebutton{
-    margin-left: 7.3%;
+    margin-left: 15%;
     margin-bottom: 1%;
     padding: 0.3% 4%;
 }

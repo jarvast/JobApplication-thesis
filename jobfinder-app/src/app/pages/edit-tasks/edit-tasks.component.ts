@@ -13,7 +13,6 @@ import { MatTableDataSource, MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@a
 export class EditTasksComponent implements OnInit {
 
   workerId: number;
-  //tasks: Task[];
   edites: boolean = false;
 
   tasks: MatTableDataSource<Task>;
@@ -33,7 +32,7 @@ export class EditTasksComponent implements OnInit {
   }
   openNewDialog(){
     let dialogRef = this.dialog.open(NewTaskDialog, {
-      width: '250px',
+      width: '300px',
       data: {id: this.workerId}
     });
     dialogRef.afterClosed().subscribe(temp =>{
@@ -45,8 +44,7 @@ export class EditTasksComponent implements OnInit {
 
   openDialog(task: Task){
     let dialogRef = this.dialog.open(DialogEditor, {
-      width: '250px',
-      //data: { id: task.id, name: task.taskName, prices: task.taskPrices, task: task }
+      width: '300px',
       data :{task:task}
     });
     dialogRef.afterClosed().subscribe(res =>{
@@ -55,11 +53,6 @@ export class EditTasksComponent implements OnInit {
     })
   })
   }
-
- /* swap(){
-    this.edites=true;
-  }*/
-
 }
 
 @Component({
@@ -80,8 +73,6 @@ export class DialogEditor implements OnInit{
      }
 
     ngOnInit(){
-      //ide egy kis error vizsgálat, stb.. kell
-      //console.log(this.task)
       this.form = this.formBuilder.group({
         name: ['',Validators.required],
         prices: ['', Validators.required]
@@ -101,10 +92,6 @@ export class DialogEditor implements OnInit{
     this.task.taskPrices=this.prices.value;
     this.taskService.updateTask(this.task).subscribe();
     this.dialogRef.close();
-    //this.data.task.
-    //console.log(this.data.task)
-    //this.taskService.updateTask(this.data.id)
-    //this.dialogRef.close([this.name.value, this.prices.value]);
   }
 
 }

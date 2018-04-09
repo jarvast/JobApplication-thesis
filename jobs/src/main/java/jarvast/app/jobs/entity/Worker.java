@@ -1,5 +1,5 @@
 package jarvast.app.jobs.entity;
-
+//
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +44,7 @@ public class Worker extends BaseUser {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @Column
+    @Column(length = 1000)
     private String description;
     
     @Column(columnDefinition = "boolean default false")

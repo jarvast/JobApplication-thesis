@@ -1,7 +1,6 @@
-<div class="fuk">
+<div class="headerpart">
   <h1>Kedvenceim: </h1>
   <mat-select *ngIf="favoriteWorkers?.length > 0" placeholder="Kedvencek rendezése" [(value)]="selectedOption">
-    <mat-option>None</mat-option>
     <mat-option (click)="sortbyBestRating()" value="option1">Legjobb értékelés elöl</mat-option>
     <mat-option (click)="sortbyWorstRating()" value="option2">Legrosszabb értékelés elöl</mat-option>
     <mat-option (click)="sortbyNameAZ()" value="option3">Név szerint A-Z</mat-option>
@@ -9,7 +8,7 @@
   </mat-select>
   </div>
 <div class="row" *ngIf="favoriteWorkers?.length == 0">
-  <h2>Jelenleg nincsenek kedvenc szakembereid!</h2>
+  <h2>Jelenleg nincsenek kedvenc szakemberei!</h2>
 </div>
 <div class="profiles">
   <mat-card *ngFor="let worker of favoriteWorkers" class="example-card">

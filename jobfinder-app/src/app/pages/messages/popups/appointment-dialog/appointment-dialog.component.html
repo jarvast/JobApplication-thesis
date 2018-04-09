@@ -6,14 +6,17 @@
         <mat-select placeholder="Válasszon időpontot"  formControlName="appointment" required>
           <mat-option *ngFor="let app of appointments" [value]="app">{{app.appDate | date:'MMMM d':'':'hu'}} - {{app.appTime}}</mat-option>
         </mat-select>
+        <mat-error *ngIf="task.invalid">Kérjük, válasszon időpontot</mat-error>
       </mat-form-field>
       <mat-form-field class= "namefield">
           <mat-select placeholder="Válasszon tervezett feladatot"  formControlName="task" required>
             <mat-option *ngFor="let task of tasks" [value]="task">{{task.taskName}}</mat-option>
           </mat-select>
+          <mat-error *ngIf="task.invalid">Kérjük, válasszon feladatot</mat-error>
         </mat-form-field>
-  <mat-form-field>
-          <textarea matInput formControlName="comment" placeholder="Megjegyzés" matAutosizeMinRows="3"></textarea>
+  <mat-form-field class="namefield" hintLabel="Részletezze foglalását, esetleg adja meg pontos címét">
+          <textarea matInput maxlength="200" formControlName="comment" placeholder="Megjegyzés" matAutosizeMinRows="3"></textarea>
+          <mat-hint align="end">{{comment.value?.length || 0}}/200</mat-hint>
   </mat-form-field>
 </div>
 <div mat-dialog-actions>

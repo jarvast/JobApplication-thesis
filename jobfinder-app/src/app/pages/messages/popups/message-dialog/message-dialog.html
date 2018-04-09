@@ -5,9 +5,9 @@
 <mat-divider></mat-divider>
         <div mat-dialog-content>
             <p>{{message.content}}</p>
-            <button class="accept" *ngIf="message.isRatingRequest" mat-button (click)="rate(message.sender)">Értékelem</button>
-            <button class="appoint" *ngIf="message.isAppRequest" mat-button (click)="acceptApp(message.sender)">Elfogadom</button>
-            <button class="appoint" *ngIf="message.isAppRequest" mat-button (click)="declineApp(message.sender)">Elutasítom</button>
+            <button class="acceptRateRequest" *ngIf="message.isRatingRequest" mat-button (click)="rate(message.sender)">Értékelem</button>
+            <button class="acceptAppo" *ngIf="message.isAppRequest" mat-button (click)="acceptApp(message.sender)">Elfogadom</button>
+            <button class="declineAppo" *ngIf="message.isAppRequest" mat-button (click)="declineApp(message.sender)">Elutasítom</button>
         </div>
         <mat-divider></mat-divider>
         <div mat-dialog-actions>

@@ -8,7 +8,7 @@ p{
 }
 mat-list-item{
     padding: 3%;
-    margin-bottom: 1%;
+    margin-bottom: 3%;
     border: 1px solid black;
     background:  rgba(70, 131, 180, 0.589);
 }

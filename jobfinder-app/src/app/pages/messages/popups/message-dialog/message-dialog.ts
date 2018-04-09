@@ -41,28 +41,20 @@ import { AppointmentService } from '../../../../services/appointment.service';
         this.message = data.message;
         this.isSent = data.type;
         if (!this.isSent){
-          this.messageService.seeMessage(this.message.id).subscribe(asd =>{
-            console.log("seen")
-          });
+          this.messageService.seeMessage(this.message.id).subscribe();
         }
-        /*if (this.authService.user.role.role == "WORKER"){
-          this.isWorker = true;
-        }*/
         if (this.authService.user.role.role == "WORKER" && this.message.sender.role.role == "USER"){
           this.ratingService.getAllRatingsByWorker(this.authService.user.id).subscribe(data =>{
             this.ratedBy= data;
             for (let rater of this.ratedBy){
               if (rater.sender.id == this.message.sender.id){
                 this.isRateable = false;
-                console.log("false" + rater.sender.id + this.message.sender.id)
                 break;
               }else{
                 this.isRateable=true;
-                console.log("true"  + rater.sender.id + this.message.sender.id)
               }
             }
-            //this.isWorker = true;
-          })
+          });
         }
        }
   
@@ -71,7 +63,6 @@ import { AppointmentService } from '../../../../services/appointment.service';
       writeMessage(sender : UserUser | WorkerUser){
         let dialogRefa = this.dialog.open(WriteMessageDialogComponent, {
           width: '30%',
-          //data: { id: task.id, name: task.taskName, prices: task.taskPrices, task: task }
           data :{receiver:sender}
         });
         dialogRefa.afterClosed().subscribe(res =>{
@@ -106,23 +97,21 @@ import { AppointmentService } from '../../../../services/appointment.service';
   acceptApp(user: UserUser){
     this.date = this.message.appointment.appDate;
     var day = new Date(this.date).toLocaleDateString();
-    let content = "Az üzenet feladója elfogadta az időpontot! Válaszott időpont : " + day + " " + this.message.appointment.appTime + " .";
-    this.messageService.send(new Message(user ,null, "Időpontkérés elfogadva", content,null,false,false,false,this.message.appointment)).subscribe();
+    let content = "Az üzenet feladója elfogadta a kívánt időpontot! Válaszott időpont : " + day + " " + this.message.appointment.appTime + " .";
+    this.messageService.send(new Message(user ,null, "Időpontkérelem elfogadva", content,null,false,false,false,this.message.appointment)).subscribe();
     this.appointmentService.reserve(this.message.appointment.id).subscribe();
     this.dialogRef.close();
   }
   declineApp(user:UserUser){
     this.date = this.message.appointment.appDate;
     var day = new Date(this.date).toLocaleDateString();
-    let content = "Az üzenet feladója elutasította az időpontot, kérjük válasszon másikat vagy vegye fel a kapcsolatot a szakemberrel üzenetben! Válaszott időpont : " + day + " " + this.message.appointment.appTime + " .";
-    this.messageService.send(new Message(user ,null, "Időpontkérés elutasítva", content,null,false,false,false,this.message.appointment)).subscribe();
+    let content = "Az üzenet feladója elutasította a kívánt időpontot, kérjük válasszon másikat vagy vegye fel a kapcsolatot a szakemberrel üzenetben! Válaszott időpont : " + day + " " + this.message.appointment.appTime + " .";
+    this.messageService.send(new Message(user ,null, "Időpontkérelem elutasítva", content,null,false,false,false,this.message.appointment)).subscribe();
     this.dialogRef.close()
   }
   rate(workerToRate: WorkerUser){
-    console.log("workertorate" + workerToRate.name);
     let dialogRefa = this.dialog.open(RatingDialogComponent, {
       width: '30%',
-      //data: { id: task.id, name: task.taskName, prices: task.taskPrices, task: task }
       data :{receiver:workerToRate}
     });
     dialogRefa.afterClosed().subscribe(res =>{

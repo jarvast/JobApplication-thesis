@@ -19,18 +19,19 @@
 </div>
 <div class="buttons">
   <button class="messagebutton" *ngIf="!ownprofile" [disabled]="!authService.isLoggedIn" mat-raised-button color="primary" (click)="writeMessage()" matTooltip="Üzenetküldéshez jelentkezzen be!" [matTooltipDisabled]=authService.isLoggedIn matTooltipHideDelay="2000">Üzenetküldés</button>
-  <button *ngIf="ownprofile" class="messagebutton" mat-raised-button color="primary" (click)="rut()">Profil szerkesztése</button>
+  <button *ngIf="ownprofile" class="messagebutton" mat-raised-button color="primary" (click)="editProfile()">Profil szerkesztése</button>
   <div>
     <button class="reportbutton" *ngIf="!ownprofile" [disabled]="!authService.isLoggedIn" mat-raised-button color="primary" (click)="report()" matTooltip="Jelentéshez jelentkezzen be!" [matTooltipDisabled]=authService.isLoggedIn matTooltipHideDelay="2000">Jelentés</button>
   </div>
   <mat-divider></mat-divider>
-  <h6>Leírás:</h6>
+  <h5>Leírás:</h5>
 </div>
 <div class="descpart">
   <body>{{worker.description}}</body>
 </div>
+<h5>Feladatok:</h5>
 <div class="taskpart">
-  <span class="disclaimer">Az árak a típustól, mérettől és határidőtől függenek!</span> <button mat-raised-button color="primary" *ngIf="!ownprofile && isUser" [disabled]="!authService.isLoggedIn" (click)="reservation()" matTooltip="Időpontfoglaláshoz jelentkezzen be!" [matTooltipDisabled]=authService.isLoggedIn matTooltipHideDelay="2000">Időpontfoglalás</button>
+  <span class="disclaimer">Az árak a típustól, mérettől és határidőtől függenek!</span> <button class="reservebutton" mat-raised-button color="primary" *ngIf="!ownprofile && isUser" [disabled]="!authService.isLoggedIn" (click)="reservation()" matTooltip="Időpontfoglaláshoz jelentkezzen be!" [matTooltipDisabled]=authService.isLoggedIn matTooltipHideDelay="2000">Időpontfoglalás</button>
   <app-task-table [workerId]='worker.id'></app-task-table>
 </div>
 <div class="ratingpart">

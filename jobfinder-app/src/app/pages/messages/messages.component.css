@@ -1,12 +1,20 @@
 mat-tab-group{
     margin-left: 30%;
     margin-right: 30%;
-    margin-top: 10%;
+    margin-top: 3%;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
 }
 mat-list-item:hover {
     background-color: burlywood;
     cursor: pointer;
 }
+mat-list-item{
+    border-bottom: 1px solid black;
+}
 .headerimage{
-    width: 10%;
-  }
+    width: 20%;
+}
+p{
+    margin-left: 10%;
+}

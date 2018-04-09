@@ -1,6 +1,6 @@
 <mat-tab-group>
     <mat-tab label="Fogadott üzenetek">
-      <mat-list>
+      <mat-list *ngIf="receivedMessages && receivedMessages.length>0">
         <mat-list-item [style.background-color]="message.isSeen ? '' : 'khaki' " *ngFor="let message of receivedMessages" (click)="openMessage(message, false)">
             <img src ="{{imgRoute + message.sender.imgName}}" class="headerimage">
             <h3 mat-line>{{message.sender.name}}</h3>
@@ -8,9 +8,10 @@
             <p mat-line> {{message.sendTimestamp | date:'MMMM d  H:mm':'':'hu'}} </p>
         </mat-list-item>
       </mat-list>
+      <p *ngIf="receivedMessages && receivedMessages.length==0">Jelenleg nincsenek fogadott üzenetei!</p>
       </mat-tab>
   <mat-tab label="Elküldött üzenetek">
-    <mat-list>
+    <mat-list *ngIf="sentMessages && sentMessages.length>0">
       <mat-list-item *ngFor="let message of sentMessages" (click)="openMessage(message, true)">
           <img src ="{{imgRoute + message.receiver.imgName}}" class="headerimage">
           <h3 mat-line>{{message.receiver.name}}</h3>
@@ -18,5 +19,6 @@
           <p mat-line> {{message.sendTimestamp | date:'MMMM d  H:mm':'':'hu'}} </p>
       </mat-list-item>
     </mat-list>
+    <p *ngIf="sentMessages && sentMessages.length==0">Jelenleg nincsenek küldött üzenetei!</p>
   </mat-tab>
 </mat-tab-group>

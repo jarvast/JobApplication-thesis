@@ -10,7 +10,6 @@ import { Server, Routes } from '../../utils/ServerRoutes';
   styleUrls: ['./worker-list.component.css']
 })
 export class WorkerListComponent implements OnInit {
-  selectedOption ="";
   categoryName : String;
   selectedWorkers: WorkerUser[];
   imgRoute: String;
@@ -35,7 +34,6 @@ export class WorkerListComponent implements OnInit {
         });
       }
     });
-    //console.log("ez a tab" + this.categoryName);
   }
   sortbyBestRating(){
     this.selectedWorkers.sort((leftSide,rightSide): number =>{

@@ -1,15 +1,17 @@
 <form [formGroup]="form" (ngSubmit)="submit()">
-        <h1 mat-dialog-title>Feladat szerkesztése</h1>
+        <h1 mat-dialog-title>Új feladat hozzáadása</h1>
         <div mat-dialog-content>
             <mat-form-field>
-                <input matInput formControlName="name" placeholder="Név">
+                <input matInput formControlName="name" maxlength="30" placeholder="Feladat elnevezése" required>
+                <mat-hint align="end">{{name.value?.length || 0}}/30</mat-hint>
             </mat-form-field>
             <mat-form-field>
-                    <input matInput formControlName="prices" placeholder="Árak">
+                <input matInput formControlName="prices" maxlength="30" placeholder="Becsült ár" required>
+                <mat-hint align="end">{{name.value?.length || 0}}/30</mat-hint>
             </mat-form-field>
         </div>
         <div mat-dialog-actions>
-            <button mat-button type="submit">Mentés</button>
+            <button mat-button type="submit" [disabled]="!form.valid">Mentés</button>
             <button mat-button type="button" mat-dialog-close>Mégse</button>
         </div>
         </form>
