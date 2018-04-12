@@ -18,7 +18,6 @@ public class CategoryService {
 
     public Category findByCategoryId(Long categoryId) {
         return categoryRepository.findOne(categoryId);
-        //return categoryRepository.findBycategoryName(categoryName);
     }
 
     public List<Category> getCategories() {

@@ -17,22 +17,22 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/ratings")
 public class RatingController {
-    
+
     @Autowired
     private RatingService ratingService;
-    
+
     @Autowired
     private UserService userService;
-    
+
     @GetMapping("/worker/{userId}")
-    private ResponseEntity<List<Rating>> getAllRatingsByWorker(@PathVariable(value = "userId") Long userId){
+    private ResponseEntity<List<Rating>> getAllRatingsByWorker(@PathVariable(value = "userId") Long userId) {
         Worker worker = userService.getWorker(userId);
         return ResponseEntity.ok(ratingService.getAllRatingsByWorker(worker));
     }
+
     @PostMapping("")
-    private ResponseEntity<Rating> newRating(@RequestBody Rating rating){
-        System.out.println(rating.toString());
+    private ResponseEntity<Rating> newRating(@RequestBody Rating rating) {
         return ResponseEntity.ok(ratingService.newRating(rating));
     }
-    
+
 }

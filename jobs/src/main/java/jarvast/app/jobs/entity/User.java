@@ -13,8 +13,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 @Entity(name = "User")
 @DiscriminatorValue("User")
@@ -29,11 +27,10 @@ public class User extends BaseUser {
     @Column
     private String phoneNum;
 
-    @ManyToOne(targetEntity = Location.class ,fetch = FetchType.EAGER) //cascade = CascadeType.ALL)
+    @ManyToOne(targetEntity = Location.class, fetch = FetchType.EAGER)
     @JoinColumn(name = "location_id")
-    //@JsonIgnores//s
     private Location location;
-    
+
     @OneToMany(
             mappedBy = "sender",
             cascade = CascadeType.ALL,
@@ -42,7 +39,6 @@ public class User extends BaseUser {
     @JsonIgnore
     private List<Rating> ratings = new ArrayList<Rating>();
 
-    //itt iss
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_favorites",
@@ -79,7 +75,6 @@ public class User extends BaseUser {
     public void setRatings(List<Rating> ratings) {
         this.ratings = ratings;
     }
-    
 
     public String getEmail() {
         return email;
@@ -115,7 +110,7 @@ public class User extends BaseUser {
 
     @Override
     public String toString() {
-        return "User{" + "email=" + email + ", name=" + name + ", phoneNum=" + phoneNum + ", location=" + location + "" + this.getUsername() + " " +  "}";
+        return "User{" + "email=" + email + ", name=" + name + ", phoneNum=" + phoneNum + ", location=" + location + "" + this.getUsername() + " " + "}";
     }
 
 }

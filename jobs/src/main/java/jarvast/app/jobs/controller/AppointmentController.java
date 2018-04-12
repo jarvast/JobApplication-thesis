@@ -1,7 +1,6 @@
 package jarvast.app.jobs.controller;
 
 import jarvast.app.jobs.entity.Appointment;
-import jarvast.app.jobs.entity.Task;
 import jarvast.app.jobs.entity.Worker;
 import jarvast.app.jobs.service.AppointmentService;
 import jarvast.app.jobs.service.UserService;
@@ -19,31 +18,34 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/appointments")
 public class AppointmentController {
-    
+
     @Autowired
     private AppointmentService appointmentService;
-    
+
     @Autowired
     private UserService userService;
-    
+
     @GetMapping("/{workerId}")
     private ResponseEntity<List<Appointment>> getAppointmentsByWorker(@PathVariable(value = "workerId") Long workerId) {
         Worker worker = userService.getWorker(workerId);
         return ResponseEntity.ok(appointmentService.getAppointmentsByWorker(worker));
     }
+
     @GetMapping("/occupied/{workerId}")
     private ResponseEntity<List<Appointment>> getOccupiedByWorker(@PathVariable(value = "workerId") Long workerId) {
         Worker worker = userService.getWorker(workerId);
         return ResponseEntity.ok(appointmentService.getOccupiedByWorker(worker));
     }
+
     @DeleteMapping("/{id}")
     private ResponseEntity reserve(@PathVariable(value = "id") Long id) {
         appointmentService.reserve(id);
         return ResponseEntity.ok(204);
     }
+
     @PostMapping("/{workerid}")
-    private ResponseEntity<Appointment> createAppointment(@PathVariable(value = "workerid") Long workerId, @RequestBody Appointment appointment){
+    private ResponseEntity<Appointment> createAppointment(@PathVariable(value = "workerid") Long workerId, @RequestBody Appointment appointment) {
         Worker worker = userService.getWorker(workerId);
-        return ResponseEntity.ok(appointmentService.createAppointment(worker,appointment));
+        return ResponseEntity.ok(appointmentService.createAppointment(worker, appointment));
     }
 }

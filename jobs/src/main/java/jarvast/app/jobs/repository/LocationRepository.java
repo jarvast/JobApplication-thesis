@@ -10,8 +10,7 @@ public interface LocationRepository extends CrudRepository<Location, Long> {
     public List<Location> findByWorker(Worker worker);
 
     public List<Location> findPeopleDistinctBylocationNameContainingAllIgnoreCase(String str);
-    
-    public List<Location> findAll();
 
+    public List<Location> findAll();
 
 }

@@ -11,17 +11,16 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-//
+
 @Entity(name = "Appointments")
-public class Appointment extends BaseEntity{
-    
-    
+public class Appointment extends BaseEntity {
+
     @Column(name = "appdate")
     private Date appDate;
 
     @Column(name = "apptime")
     private String appTime;
-    
+
     @Column
     private Boolean isFree;
 
@@ -29,7 +28,7 @@ public class Appointment extends BaseEntity{
     @JoinColumn(name = "worker_id")
     @JsonIgnore
     private Worker worker;
-    
+
     @OneToMany(
             mappedBy = "appointment",
             cascade = CascadeType.ALL,
@@ -38,7 +37,8 @@ public class Appointment extends BaseEntity{
     @JsonIgnore
     private List<Message> messages = new ArrayList<>();
 
-    public Appointment(){}
+    public Appointment() {
+    }
 
     public Appointment(Date appDate, String appTime, Worker worker, Boolean isFree) {
         this.appDate = appDate;
@@ -86,11 +86,10 @@ public class Appointment extends BaseEntity{
     public void setIsFree(Boolean isFree) {
         this.isFree = isFree;
     }
-    
-    
+
     @Override
     public String toString() {
         return "Appointment{" + "date=" + appDate + ", time=" + appTime + '}';
     }
-    
+
 }

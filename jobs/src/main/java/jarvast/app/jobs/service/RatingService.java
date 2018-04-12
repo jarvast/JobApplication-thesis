@@ -14,17 +14,13 @@ public class RatingService {
 
     @Autowired
     private RatingRepository repository;
-    
-    //@Autowired
+
     private UserService userService;
 
     @Autowired
     public void setUserService(UserService userService) {
         this.userService = userService;
     }
-    
-    
-    
 
     public double calculateRating(Worker worker) {
         List<Rating> rates = repository.findByReceiver(worker);
@@ -39,7 +35,8 @@ public class RatingService {
     public List<Rating> getAllRatingsByWorker(Worker worker) {
         return repository.findByReceiver(worker);
     }
-    public Rating newRating(Rating rating){
+
+    public Rating newRating(Rating rating) {
         rating.setSender((User) userService.getLoggedInUser());
         rating.setTimestamp(new Timestamp(System.currentTimeMillis()));
         return repository.save(rating);

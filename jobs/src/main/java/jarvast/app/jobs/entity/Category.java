@@ -8,18 +8,18 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
 @Entity(name = "Categories")
-public class Category extends BaseEntity{
-    
+public class Category extends BaseEntity {
+
     @Column(name = "category_name")
     private String categoryName;
-    
+
     @Column(name = "picture")
     private String picture;
-    
+
     @OneToMany(
-        mappedBy = "category", 
-        cascade = CascadeType.ALL,
-        orphanRemoval = true
+            mappedBy = "category",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
     )
     @JsonIgnore
     private List<Worker> workers;
@@ -31,7 +31,7 @@ public class Category extends BaseEntity{
     public void setWorkers(List<Worker> workers) {
         this.workers = workers;
     }
-    
+
     public String getCategoryName() {
         return categoryName;
     }
@@ -47,6 +47,5 @@ public class Category extends BaseEntity{
     public void setPicture(String picture) {
         this.picture = picture;
     }
-    
-    
+
 }

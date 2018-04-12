@@ -12,6 +12,4 @@ public class BaseEntity {
     public long getId() {
         return id;
     }
-    
-    
 }

@@ -29,13 +29,15 @@ public class TaskController {
         Worker worker = userService.getWorker(userId);
         return ResponseEntity.ok(taskService.getTasksByWorker(worker));
     }
+
     @PostMapping("/update")
-    private ResponseEntity<Task> updateTask(@RequestBody Task task){
+    private ResponseEntity<Task> updateTask(@RequestBody Task task) {
         return ResponseEntity.ok(taskService.updateTask(task));
     }
+
     @PostMapping("/create/{workerid}")
-    private ResponseEntity<Task> createTask(@PathVariable(value = "workerid") Long workerId, @RequestBody Task task){
+    private ResponseEntity<Task> createTask(@PathVariable(value = "workerid") Long workerId, @RequestBody Task task) {
         Worker worker = userService.getWorker(workerId);
-        return ResponseEntity.ok(taskService.createTask(worker,task));
+        return ResponseEntity.ok(taskService.createTask(worker, task));
     }
 }

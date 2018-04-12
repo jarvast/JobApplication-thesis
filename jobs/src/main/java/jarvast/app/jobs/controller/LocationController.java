@@ -29,10 +29,12 @@ public class LocationController {
         Worker worker = userService.getWorker(userId);
         return ResponseEntity.ok(locationService.getLocationsByWorker(worker));
     }
+
     @GetMapping()
-    private ResponseEntity<List<Location>> getLocations(){
+    private ResponseEntity<List<Location>> getLocations() {
         return ResponseEntity.ok(locationService.getLocations());
     }
+
     @PostMapping("/{userId}")
     private ResponseEntity<Worker> updateLocationsByWorker(@PathVariable(value = "userId") Long userId, @RequestBody List<Location> locations) {
         Worker worker = userService.getWorker(userId);

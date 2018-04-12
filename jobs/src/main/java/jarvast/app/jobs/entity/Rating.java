@@ -19,7 +19,6 @@ public class Rating extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "recipient_id")
-    //@JsonIgnore
     private Worker receiver;
 
     @Column(columnDefinition = "varchar(250) default 'A felhasználó nem adott meg szöveges értékelést.'")
@@ -35,8 +34,6 @@ public class Rating extends BaseEntity {
 
     public Rating() {
     }
-    
-    
 
     public Rating(User sender, Worker receiver, String content, Timestamp timestamp, int rating) {
         this.sender = sender;
@@ -91,5 +88,4 @@ public class Rating extends BaseEntity {
         return "Rating{" + "sender=" + sender + ", receiver=" + receiver + ", content=" + content + ", timestamp=" + timestamp + ", rating=" + rating + '}';
     }
 
-    
 }

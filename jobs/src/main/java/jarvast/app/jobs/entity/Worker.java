@@ -1,5 +1,5 @@
 package jarvast.app.jobs.entity;
-//
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +27,7 @@ public class Worker extends BaseUser {
 
     @Column
     private String phoneNum;
-    
+
     @ManyToMany()
     @JoinTable(
             name = "workers_locations",
@@ -39,17 +39,16 @@ public class Worker extends BaseUser {
     @JsonIgnore
     private List<Location> locations = new ArrayList<Location>();
 
-    
     @ManyToOne(targetEntity = Category.class, fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id")
     private Category category;
 
     @Column(length = 1000)
     private String description;
-    
+
     @Column(columnDefinition = "boolean default false")
     private Boolean approved;
-    
+
     @Transient
     private double rating;
 
@@ -60,7 +59,7 @@ public class Worker extends BaseUser {
     )
     @JsonIgnore
     private List<Task> tasks = new ArrayList<Task>();
-    
+
     @OneToMany(
             mappedBy = "worker",
             cascade = CascadeType.ALL,
@@ -87,7 +86,7 @@ public class Worker extends BaseUser {
         this.phoneNum = phoneNum;
         this.category = category;
         this.description = description;
-        this.rating =rating;
+        this.rating = rating;
         this.approved = approved;
     }
 
@@ -125,7 +124,7 @@ public class Worker extends BaseUser {
     public void setRating(double rating) {
         this.rating = rating;
     }
-    
+
     public List<Location> getLocations() {
         return locations;
     }
@@ -158,8 +157,6 @@ public class Worker extends BaseUser {
         this.tasks = tasks;
     }
 
-    
-
     public List<User> getUserList() {
         return userList;
     }
@@ -183,12 +180,10 @@ public class Worker extends BaseUser {
     public void setApproved(Boolean approved) {
         this.approved = approved;
     }
-    
 
     @Override
     public String toString() {
-        return "Worker{id"+ this.id + "email=" + email + ", name=" + name + ", phoneNum=" + phoneNum + ", locations="  + ", category=" + category + ", description=" + description ;//+ ", tasks=" + tasks + ", userList=" + userList + ", ratings=" + ratings + '}';
+        return "Worker{id" + this.id + "email=" + email + ", name=" + name + ", phoneNum=" + phoneNum + ", locations=" + ", category=" + category + ", description=" + description;//+ ", tasks=" + tasks + ", userList=" + userList + ", ratings=" + ratings + '}';
     }
 
-    
 }

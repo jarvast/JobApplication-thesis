@@ -21,18 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        /*http.addFilterBefore(new HeaderUsernamePasswordAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
-                .authorizeRequests()s
-                .antMatchers("/h2/**").hasAuthority("ADMIN")
-                .antMatchers("/fukk").permitAll()
-                .antMatchers("/admin/**").hasAuthority("USER")
-                .anyRequest().authenticated()
-                .and()
-            .formLogin().disable();
-        
-        http.csrf().disable();
-        http.headers().frameOptions().disable();*/
-        http//.addFilterBefore(new HeaderUsernamePasswordAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
+        http
                 .authorizeRequests()
                 //.antMatchers("/login").hasAuthority("ADMIN")
                 .antMatchers("/api/user/login").hasAnyAuthority("ADMIN", "USER", "WORKER")

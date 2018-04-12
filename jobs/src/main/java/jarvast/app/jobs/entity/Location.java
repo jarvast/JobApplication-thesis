@@ -7,10 +7,7 @@ import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity(name = "Locations")
@@ -18,15 +15,13 @@ public class Location extends BaseEntity {
 
     @Column(name = "location_name")
     private String locationName;
-    
+
     @ManyToMany(mappedBy = "locations", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Worker> worker = new ArrayList<Worker>();
-    
+
     @OneToMany(
-        mappedBy = "location"
-        //cascade = CascadeType.ALL
-        //orphanRemoval = true
+            mappedBy = "location"
     )
     @JsonIgnore
     private List<User> users;
@@ -47,17 +42,6 @@ public class Location extends BaseEntity {
         this.worker = worker;
     }
 
-    
-    
-    /*public List<Worker> getWorker() {
-        return worker;
-    }
-    
-
-    public void setWorker(List<Worker> worker) {
-        this.worker = worker;
-    }*/
-
     public List<User> getUsers() {
         return users;
     }
@@ -65,14 +49,6 @@ public class Location extends BaseEntity {
     public void setUsers(List<User> users) {
         this.users = users;
     }
-
-    /*public String getLocation() {
-        return locationName;
-    }
-
-    public void setLocation(String location) {
-        this.locationName = location;*/
-    //}
 
     @Override
     public String toString() {

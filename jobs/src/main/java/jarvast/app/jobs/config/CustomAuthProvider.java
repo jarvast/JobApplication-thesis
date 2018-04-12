@@ -20,7 +20,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
-
 @Component
 public class CustomAuthProvider implements AuthenticationProvider {
 
@@ -38,20 +37,16 @@ public class CustomAuthProvider implements AuthenticationProvider {
         BaseUser user = null;
         String username = auth.getPrincipal() + "";
         String password = auth.getCredentials() + "";
-        
-        System.out.println(password);
-        
+
         MessageDigest md;
         try {
             md = MessageDigest.getInstance("MD5");
-             byte[] temp = md.digest(password.getBytes());
+            byte[] temp = md.digest(password.getBytes());
             password = String.format("%032X", new BigInteger(1, temp));
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(CustomAuthProvider.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        System.out.println(password);
-        
+
         try {
             user = userRepository.findByUsername(username);
         } catch (Exception e) {
@@ -62,7 +57,6 @@ public class CustomAuthProvider implements AuthenticationProvider {
             throw new UsernameNotFoundException(String.format("Invalid credentials" + username, username));
         }
         Collection<GrantedAuthority> authorities = new HashSet<>();
-        System.out.println(user.getPassword() + "bazeg" + password);
         if (user.getPassword().equals(password)) {
             authorities.add(new SimpleGrantedAuthority(user.getRole().getRole()));
         }

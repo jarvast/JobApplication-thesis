@@ -57,21 +57,20 @@ public class UserController<T> {
     public ResponseEntity<List<Worker>> getWorkers() {
         return ResponseEntity.ok(userService.getWorkers());
     }
+
     @GetMapping("/workers/all")
     public ResponseEntity<List<Worker>> getAllWorkers() {
         return ResponseEntity.ok(userService.getAllWorkers());
     }
+
     @GetMapping("/users")
     public ResponseEntity<List<User>> getUsers() {
         return ResponseEntity.ok(userService.getUsers());
     }
 
-
     @GetMapping("/workers/{categoryName}")
     private ResponseEntity<Iterable<Worker>> listByCategory(@PathVariable(value = "categoryName") String categoryName) {
         Category category = categoryService.findByCategoryId(Long.parseLong(categoryName));
-        System.out.println(category.toString());
-        //Category category = categoryService.findByCategoryName(categoryName);
         return ResponseEntity.ok(userService.listByCategory(category));
     }
 
@@ -79,8 +78,9 @@ public class UserController<T> {
     private ResponseEntity<Iterable<Worker>> searchforWorkers(@PathVariable(value = "searchword") String searchword) {
         return ResponseEntity.ok(userService.searchForString(searchword));
     }
+
     @GetMapping("/workers/maintain")
-    private ResponseEntity maintain(){
+    private ResponseEntity maintain() {
         userService.maintain();
         return ResponseEntity.ok(200);
     }
@@ -89,86 +89,97 @@ public class UserController<T> {
     private ResponseEntity<Worker> getWorker(@PathVariable(value = "id") Long id) {
         return ResponseEntity.ok(userService.getWorker(id));
     }
+
     @GetMapping("/user/{id}")
     private ResponseEntity<User> getUser(@PathVariable(value = "id") Long id) {
         return ResponseEntity.ok(userService.getUser(id));
     }
+
     @PostMapping("/user")
     private ResponseEntity<User> updateUser(@RequestBody User user) {
         return ResponseEntity.ok(userService.updateUser(user));
     }
+
     @PostMapping("/worker")
     private ResponseEntity<Worker> updateUser(@RequestBody Worker worker) {
         return ResponseEntity.ok(userService.updateWorker(worker));
     }
-    
+
     @GetMapping("/workers/top")
-    private ResponseEntity<Iterable<Worker>> getTop5Workers(){
+    private ResponseEntity<Iterable<Worker>> getTop5Workers() {
         return ResponseEntity.ok(userService.getTop5());
     }
+
     @GetMapping("/favorite/{id}")
-    private ResponseEntity<User> favorite(@PathVariable(value = "id") Long id){
+    private ResponseEntity<User> favorite(@PathVariable(value = "id") Long id) {
         return ResponseEntity.ok(userService.favorite(id));
     }
+
     @GetMapping("/favorite/remove/{id}")
-    private ResponseEntity<User> removeFavorite(@PathVariable(value = "id") Long id){
+    private ResponseEntity<User> removeFavorite(@PathVariable(value = "id") Long id) {
         return ResponseEntity.ok(userService.removeFavorite(id));
     }
+
     @GetMapping("/favorite")
-    private ResponseEntity<List<Worker>> listFavorites(){
+    private ResponseEntity<List<Worker>> listFavorites() {
         return ResponseEntity.ok(userService.listFavorites());
     }
+
     @GetMapping("/worker/approve/{id}")
-    private ResponseEntity<Worker> approve(@PathVariable(value = "id") Long id){
+    private ResponseEntity<Worker> approve(@PathVariable(value = "id") Long id) {
         return ResponseEntity.ok(userService.approve(id));
     }
+
     @DeleteMapping("/worker/{id}")
-    private ResponseEntity deleteWorker(@PathVariable(value = "id") Long id){
+    private ResponseEntity deleteWorker(@PathVariable(value = "id") Long id) {
         userService.delete(id);
         return ResponseEntity.ok(204);
     }
+
     @PostMapping("/new/admin")
-    private ResponseEntity<Admin> registerAdmin(@RequestBody Admin admin, HttpServletRequest request) throws NoSuchAlgorithmException{
-        
+    private ResponseEntity<Admin> registerAdmin(@RequestBody Admin admin, HttpServletRequest request) throws NoSuchAlgorithmException {
+
         final String auth = request.getHeader("pass");
-        
+
         String base64Credentials = auth.substring("Basic".length()).trim();
         String credentials = new String(Base64.getDecoder().decode(base64Credentials),
                 Charset.forName("UTF-8"));
-                MessageDigest md = MessageDigest.getInstance("MD5");
-        byte[] temp = md.digest(credentials.getBytes());
-        credentials = String.format("%032X", new BigInteger(1, temp));
-        
-        return ResponseEntity.ok(userService.registerAdmin(admin,credentials));
-    }
-    @PostMapping("/new/user")
-    private ResponseEntity<User> registerUser(@RequestBody User user, HttpServletRequest request) throws NoSuchAlgorithmException{
-        
-        final String auth = request.getHeader("pass");
-        
-        String base64Credentials = auth.substring("Basic".length()).trim();
-        String credentials = new String(Base64.getDecoder().decode(base64Credentials),
-                Charset.forName("UTF-8"));
-                MessageDigest md = MessageDigest.getInstance("MD5");
-        byte[] temp = md.digest(credentials.getBytes());
-        credentials = String.format("%032X", new BigInteger(1, temp));
-        
-        return ResponseEntity.ok(userService.registerUser(user,credentials));
-    }
-    @PostMapping("/new/worker")
-    private ResponseEntity<Worker> registerWorker(@RequestBody Worker worker, HttpServletRequest request) throws NoSuchAlgorithmException{
-        
-        final String auth = request.getHeader("pass");
-        
-        String base64Credentials = auth.substring("Basic".length()).trim();
-        String credentials = new String(Base64.getDecoder().decode(base64Credentials),
-                Charset.forName("UTF-8"));
-        
         MessageDigest md = MessageDigest.getInstance("MD5");
         byte[] temp = md.digest(credentials.getBytes());
         credentials = String.format("%032X", new BigInteger(1, temp));
-        
-        return ResponseEntity.ok(userService.registerWorker(worker,credentials));
+
+        return ResponseEntity.ok(userService.registerAdmin(admin, credentials));
+    }
+
+    @PostMapping("/new/user")
+    private ResponseEntity<User> registerUser(@RequestBody User user, HttpServletRequest request) throws NoSuchAlgorithmException {
+
+        final String auth = request.getHeader("pass");
+
+        String base64Credentials = auth.substring("Basic".length()).trim();
+        String credentials = new String(Base64.getDecoder().decode(base64Credentials),
+                Charset.forName("UTF-8"));
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        byte[] temp = md.digest(credentials.getBytes());
+        credentials = String.format("%032X", new BigInteger(1, temp));
+
+        return ResponseEntity.ok(userService.registerUser(user, credentials));
+    }
+
+    @PostMapping("/new/worker")
+    private ResponseEntity<Worker> registerWorker(@RequestBody Worker worker, HttpServletRequest request) throws NoSuchAlgorithmException {
+
+        final String auth = request.getHeader("pass");
+
+        String base64Credentials = auth.substring("Basic".length()).trim();
+        String credentials = new String(Base64.getDecoder().decode(base64Credentials),
+                Charset.forName("UTF-8"));
+
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        byte[] temp = md.digest(credentials.getBytes());
+        credentials = String.format("%032X", new BigInteger(1, temp));
+
+        return ResponseEntity.ok(userService.registerWorker(worker, credentials));
     }
 
 }

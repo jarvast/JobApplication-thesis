@@ -24,11 +24,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
-//@JsonIgnoreProperties(value={ "money" }, allowGetters=true)
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "UserType")
 @JsonIgnoreProperties(ignoreUnknown = true, value = {"password"}, allowSetters = true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property="roletype")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "roletype")
 @JsonSubTypes({
     @JsonSubTypes.Type(value = User.class, name = "User"),
 
@@ -46,12 +45,11 @@ public abstract class BaseUser {
     private String username;
 
     @Column(nullable = false)
-    //@JsonIgnore
     private String password;
-    
+
     @Column(columnDefinition = "varchar(40) default 'default.jpg'")
     private String image;
-    
+
     @Column(columnDefinition = "datetime default CURRENT_TIMESTAMP")
     private Timestamp lastLogin;
 
@@ -98,7 +96,6 @@ public abstract class BaseUser {
     public void setImgName(String imgName) {
         this.image = imgName;
     }
-    
 
     public String getPassword() {
         return password;
@@ -147,11 +144,10 @@ public abstract class BaseUser {
     public void setLastLogin(Timestamp lastLogin) {
         this.lastLogin = lastLogin;
     }
-    
 
     @Override
     public String toString() {
-        return "User{" + "username=" + username + image +"iiii" + ", password=" + password + ", roles=" + role.getRole() + '}';
+        return "User{" + "username=" + username + image + "iiii" + ", password=" + password + ", roles=" + role.getRole() + '}';
     }
 
     @Override
@@ -182,6 +178,5 @@ public abstract class BaseUser {
         }
         return true;
     }
-    
 
 }

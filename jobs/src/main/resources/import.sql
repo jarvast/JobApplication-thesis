@@ -45,7 +45,6 @@ INSERT INTO LOCATIONS (LOCATION_NAME) VALUES ('Miskolc');
 INSERT INTO LOCATIONS (LOCATION_NAME) VALUES ('Debrecen');
 INSERT INTO LOCATIONS (LOCATION_NAME) VALUES ('Szekszárd');
 
-VARCHAR(32) asd = 'admin';
 
 --1-12
 INSERT INTO USERS (USER_TYPE, PASSWORD, USERNAME, ROLE_ID, NAME) VALUES ('Admin', '21232F297A57A5A743894A0E4A801FC3','admin',1, 'Tomi');
@@ -235,13 +234,14 @@ INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID)
 INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Jó napot kívánok! Felvenném önnel a kapcsolatot.', 'false', current_timestamp, 17,12);
 INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Jó napot kívánok! Felvenném önnel a kapcsolatot.', 'false', current_timestamp, 18,12);
 INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Jó napot kívánok! Felvenném önnel a kapcsolatot.', 'false', current_timestamp, 19,12);
-INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID, IS_REPORT) VALUES ('NENEA munkás téves információkat tüntetett fel a profilján, illetve a fizetésnél is problémák voltak, kérem vizsgálják felül!', 'true', '2017-02-21 13:21:32', 13,2,true);
+INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID, IS_REPORT) VALUES ('A munkás téves információkat tüntetett fel a profilján, illetve a fizetésnél is problémák voltak, kérem vizsgálják felül!', 'true', '2017-02-21 13:21:32', 13,2,true);
 INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID, IS_REPORT) VALUES ('A munkás téves információkat tüntetett fel a profilján, illetve a fizetésnél is problémák voltak, kérem vizsgálják felül!', 'false', current_timestamp, 19,12,true);
 
 INSERT INTO USERS_FAVORITES (USER_ID, WORKER_ID) VALUES (2,13);
 INSERT INTO USERS_FAVORITES (USER_ID, WORKER_ID) VALUES (2,14);
 INSERT INTO USERS_FAVORITES (USER_ID, WORKER_ID) VALUES (2,15);
 INSERT INTO USERS_FAVORITES (USER_ID, WORKER_ID) VALUES (3,13);
+INSERT INTO USERS_FAVORITES (USER_ID, WORKER_ID) VALUES (4,13);
 INSERT INTO USERS_FAVORITES (USER_ID, WORKER_ID) VALUES (5,17);
 INSERT INTO USERS_FAVORITES (USER_ID, WORKER_ID) VALUES (6,18);
 
