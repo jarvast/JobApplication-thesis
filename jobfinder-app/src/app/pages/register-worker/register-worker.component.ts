@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { LocationService } from '../../services/location.service';
 import { MatSnackBar } from '@angular/material';
@@ -19,6 +19,7 @@ export class RegisterWorkerComponent implements OnInit {
   form: FormGroup;
   form2: FormGroup;
   form3: FormGroup;
+  passwords : FormGroup;
   locations: Location[];
   categories: Category[];
   newWorker: WorkerUser;
@@ -32,12 +33,15 @@ export class RegisterWorkerComponent implements OnInit {
     })
     this.form = this.fb.group({
       username: ['',Validators.required],
-      password: ['',Validators.required],
     });
+    this.passwords= this.fb.group({
+        password: ['', [Validators.required]],
+        confirmPass: ['', [Validators.required]]
+      }, {validator: this.checkPasswords});
     this.form2 = this.fb.group({
       fullname: ['',Validators.required],
       email: ['',[Validators.required,Validators.email]],
-      phone: ['',Validators.required]
+      phone: ['',[Validators.required,Validators.pattern('^[0-9]+$')]]
     });
     this.form3 = this.fb.group({
       location: ['',Validators.required],
@@ -54,7 +58,10 @@ export class RegisterWorkerComponent implements OnInit {
     return this.form.get('username')
   }
   get password() {
-    return this.form.get('password')
+    return this.passwords.get('password')
+  }
+  get confirmPass(){
+    return this.passwords.get('confirmPass')
   }
   get phone() {
     return this.form2.get('phone')
@@ -74,6 +81,14 @@ get category() {
 }
 get description() {
   return this.form3.get('description')
+}
+
+
+checkPasswords(group: FormGroup) {
+  let pass = group.controls.password.value;
+  let confirmPass = group.controls.confirmPass.value;
+
+  return pass === confirmPass ? null : { notSame: true }     
 }
   submit(){
     this.userService.newWorker(new WorkerUser(this.username.value,'',this.fullname.value,this.phone.value,this.category.value,this.description.value,"Worker",null,false,new Date()), this.password.value).subscribe(data =>{

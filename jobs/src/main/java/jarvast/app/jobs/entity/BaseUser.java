@@ -49,7 +49,7 @@ public abstract class BaseUser {
     //@JsonIgnore
     private String password;
     
-    @Column(columnDefinition = "varchar(40) default 'default.png'")
+    @Column(columnDefinition = "varchar(40) default 'default.jpg'")
     private String image;
     
     @Column(columnDefinition = "datetime default CURRENT_TIMESTAMP")

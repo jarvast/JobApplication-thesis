@@ -1,17 +1,25 @@
 <mat-horizontal-stepper [linear]=true #stepper="matHorizontalStepper">
-    <mat-step [stepControl]="form">
+    <mat-step [stepControl]="passwords">
       <form [formGroup]="form" style="margin-left:20%;">
         <ng-template matStepLabel>Alapadatok</ng-template>
         <mat-form-field>
           <input matInput placeholder="Felhasználónév" maxlength="250" formControlName="username" required>
         </mat-form-field>
+        </form>
+        <form [formGroup]="passwords" style="margin-left:20%;">
         <mat-form-field>
             <input matInput placeholder="Jelszó" formControlName="password" maxlength="250" type="password" required>
           </mat-form-field>
-        <div>
-          <button mat-button matStepperNext>Következő</button>
-        </div>
-      </form>
+          <mat-form-field>
+            <input matInput placeholder="Jelszó megerősítése" formControlName="confirmPass" maxlength="250" type="password" required>
+          </mat-form-field>
+          <mat-error *ngIf="passwords.hasError('notSame')">
+            A jelszavak <strong>nem</strong> egyeznek!
+          </mat-error>
+          <div>
+            <button mat-button matStepperNext>Következő</button>
+          </div>
+        </form>
     </mat-step>
     <mat-step [stepControl]="form2">
       <form [formGroup]="form2" style="margin-left:20%;">
@@ -22,10 +30,16 @@
         </mat-form-field>
         <mat-form-field>
             <input matInput placeholder="Email" formControlName="email" required>
+            <mat-error *ngIf="email.hasError('email')">
+              Nem megfelelő email formátum!
+            </mat-error>
           </mat-form-field>
           <mat-form-field>
               <span matPrefix>+36 &nbsp;</span>
               <input matInput placeholder="Telefonszám" maxlength="9" formControlName="phone" required>
+              <mat-error *ngIf="phone.hasError('pattern')">
+                Nem megfelelő telefonszám formátum!
+              </mat-error>
             </mat-form-field>
         <div>
           <button mat-button matStepperPrevious>Vissza</button>

@@ -18,6 +18,7 @@ export class RegisterUserComponent implements OnInit {
   form: FormGroup;
   form2: FormGroup;
   form3: FormGroup;
+  passwords : FormGroup;
   locations: Location[];
 
   constructor(private userService: UserService, private fb:FormBuilder,private locationService: LocationService, private snackBar: MatSnackBar,private router:Router) { 
@@ -25,13 +26,16 @@ export class RegisterUserComponent implements OnInit {
       this.locations=res;
     });
     this.form = this.fb.group({
-      username: ['',Validators.required],
-      password: ['',Validators.required],
+      username: ['',Validators.required]
     });
+    this.passwords= this.fb.group({
+      password: ['', [Validators.required]],
+      confirmPass: ['', [Validators.required]]
+    }, {validator: this.checkPasswords});
     this.form2 = this.fb.group({
       fullname: ['',Validators.required],
       email: ['',[Validators.required,Validators.email]],
-      phone: ['',Validators.required]
+      phone: ['',[Validators.required,Validators.pattern('^[0-9]+$')]]
     });
     this.form3 = this.fb.group({
       location: ['',Validators.required]
@@ -46,7 +50,10 @@ export class RegisterUserComponent implements OnInit {
     return this.form.get('username')
   }
   get password() {
-    return this.form.get('password')
+    return this.passwords.get('password')
+  }
+  get confirmPass(){
+    return this.passwords.get('confirmPass')
   }
   get phone() {
     return this.form2.get('phone')
@@ -59,6 +66,13 @@ export class RegisterUserComponent implements OnInit {
   }
   get location() {
     return this.form3.get('location')
+}
+
+checkPasswords(group: FormGroup) {
+  let pass = group.controls.password.value;
+  let confirmPass = group.controls.confirmPass.value;
+
+  return pass === confirmPass ? null : { notSame: true }     
 }
   submit(){
     this.userService.newUser(new UserUser(this.fullname.value,this.email.value,this.phone.value,this.location.value,null,this.username.value,"User"), this.password.value).subscribe(data =>{

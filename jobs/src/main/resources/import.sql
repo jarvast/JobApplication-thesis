@@ -224,10 +224,10 @@ INSERT INTO APPOINTMENTS (APPDATE, APPTIME, WORKER_ID,IS_FREE) VALUES (current_t
 INSERT INTO MESSAGES (CONTENT,SUBJECT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Jó napot kívánok! Felvenném önnel a kapcsolatot.','Kapcsolatfelvétel' ,'false', current_timestamp, 13,2);
 INSERT INTO MESSAGES (CONTENT,SUBJECT,  IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Jó napot kívánok! Felvenném önnel a kapcsolatot.', 'Kapcsolatfelvétel' ,'false', current_timestamp, 13,6);
 INSERT INTO MESSAGES (CONTENT,SUBJECT,  IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Jó napot kívánok! Felvenném önnel a kapcsolatot.','Kapcsolatfelvétel' , 'false', current_timestamp, 14,2);
-INSERT INTO MESSAGES (CONTENT,SUBJECT,  IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Jó napot kívánok! Felvenném önnel a kapcsolatot.','Kapcsolatfelvétel' , 'false', '2018-02-21 13:21:32', 15,2);
-INSERT INTO MESSAGES (CONTENT,SUBJECT,  IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Jó napot kívánok! Felvenném önnel a kapcsolatot.','Kapcsolatfelvétel' , 'false', '2018-02-21 13:21:32', 2,13);
-INSERT INTO MESSAGES (CONTENT,SUBJECT,  IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Jó napot kívánok! Felvenném önnel a kapcsolatot.','Kapcsolatfelvétel' , 'false', '2018-02-21 13:21:32', 14,13);
-INSERT INTO MESSAGES (CONTENT,SUBJECT,  IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Jó napot kívánok! Felvenném önnel a kapcsolatot.','Kapcsolatfelvétel' , 'false', '2018-02-21 13:21:32', 13,14);
+INSERT INTO MESSAGES (CONTENT,SUBJECT,  IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Jó napot kívánok! Felvenném önnel a kapcsolatot.','Kapcsolatfelvétel' , 'false', '2018-03-21 13:21:32', 15,2);
+INSERT INTO MESSAGES (CONTENT,SUBJECT,  IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Jó napot kívánok! Felvenném önnel a kapcsolatot.','Kapcsolatfelvétel' , 'false', '2018-03-21 13:21:32', 2,13);
+INSERT INTO MESSAGES (CONTENT,SUBJECT,  IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Jó napot kívánok! Felvenném önnel a kapcsolatot.','Kapcsolatfelvétel' , 'false', '2018-03-21 13:21:32', 14,13);
+INSERT INTO MESSAGES (CONTENT,SUBJECT,  IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Jó napot kívánok! Felvenném önnel a kapcsolatot.','Kapcsolatfelvétel' , 'false', '2018-03-21 13:21:32', 13,14);
 INSERT INTO MESSAGES (CONTENT,SUBJECT,  IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Mikorra tudnék idõpontot foglalni egy teljes építkezésre a következõ hónapra várhatóan. ','Idõpontkérés az építkezéshez' , 'true', current_timestamp, 26,2);
 INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Jó napot kívánok! Felvenném önnel a kapcsolatot.', 'false', current_timestamp, 15,4);
 INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Jó napot kívánok! Felvenném önnel a kapcsolatot.', 'false', current_timestamp, 15,12);
@@ -235,6 +235,7 @@ INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID)
 INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Jó napot kívánok! Felvenném önnel a kapcsolatot.', 'false', current_timestamp, 17,12);
 INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Jó napot kívánok! Felvenném önnel a kapcsolatot.', 'false', current_timestamp, 18,12);
 INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID) VALUES ('Jó napot kívánok! Felvenném önnel a kapcsolatot.', 'false', current_timestamp, 19,12);
+INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID, IS_REPORT) VALUES ('NENEA munkás téves információkat tüntetett fel a profilján, illetve a fizetésnél is problémák voltak, kérem vizsgálják felül!', 'true', '2017-02-21 13:21:32', 13,2,true);
 INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID, IS_REPORT) VALUES ('A munkás téves információkat tüntetett fel a profilján, illetve a fizetésnél is problémák voltak, kérem vizsgálják felül!', 'false', current_timestamp, 19,12,true);
 
 INSERT INTO USERS_FAVORITES (USER_ID, WORKER_ID) VALUES (2,13);

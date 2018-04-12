@@ -7,6 +7,9 @@ import jarvast.app.jobs.entity.Worker;
 import jarvast.app.jobs.repository.MessageRepository;
 import jarvast.app.jobs.repository.UserRepository;
 import java.sql.Timestamp;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -33,13 +36,19 @@ public class MessageService {
     }
     
     public List<Message> getSentMessagesById(Long id){
+        Timestamp old = new Timestamp(System.currentTimeMillis());
+        ZonedDateTime zonedDateTime = old.toInstant().atZone(ZoneId.of("UTC"));
+        Timestamp monthless = Timestamp.from(zonedDateTime.minus(31, ChronoUnit.DAYS).toInstant());
+        
+        
         BaseUser sender = this.userRepository.findPeopleById(id);
         List<Message> sentMessages = sender.getSenderMessages();
         /*for (Message msg : sentMessages){
             if (msg.isIsRatingRequest()!=null) sentMessages.remove(msg);
         }*/
         for(Iterator<Message> it = sentMessages.iterator(); it.hasNext();){
-            if (it.next().isIsRatingRequest()!=null){
+            Message mess = it.next();
+            if (mess.isIsRatingRequest()!=null || mess.getSendTimestamp().before(monthless)){
                 it.remove();
             }
         }
@@ -56,8 +65,21 @@ public class MessageService {
         return reports;
     }
     public List<Message> getReceivedMessagesById(Long id){
+        Timestamp old = new Timestamp(System.currentTimeMillis());
+        ZonedDateTime zonedDateTime = old.toInstant().atZone(ZoneId.of("UTC"));
+        Timestamp monthless = Timestamp.from(zonedDateTime.minus(31, ChronoUnit.DAYS).toInstant());
+        
+        
         BaseUser recipient = this.userRepository.findPeopleById(id);
         List<Message> receivedMessages = recipient.getReceiverMessages();
+        
+        for(Iterator<Message> it = receivedMessages.iterator(); it.hasNext();){
+            Message mess = it.next();
+            if (mess.getSendTimestamp().before(monthless)){
+                it.remove();
+            }
+        }
+        
         return receivedMessages;
     }
     public Message seeMessage(Long messageId){

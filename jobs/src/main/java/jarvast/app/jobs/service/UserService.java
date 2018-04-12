@@ -26,7 +26,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService<T> {
 
-    private final String defaultimagename = "default.png";
+    private final String defaultimagename = "default.jpg";
     private UserRepository userRepository;
     private BaseUser user;
     private RatingService ratingService;
