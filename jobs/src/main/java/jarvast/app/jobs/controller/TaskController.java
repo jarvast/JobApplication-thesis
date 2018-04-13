@@ -7,6 +7,7 @@ import jarvast.app.jobs.service.UserService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,5 +40,10 @@ public class TaskController {
     private ResponseEntity<Task> createTask(@PathVariable(value = "workerid") Long workerId, @RequestBody Task task) {
         Worker worker = userService.getWorker(workerId);
         return ResponseEntity.ok(taskService.createTask(worker, task));
+    }
+    @DeleteMapping("/{taskId}")
+    private ResponseEntity deleteTask(@PathVariable(value = "taskId") Long taskId){
+        taskService.delete(taskId);
+        return ResponseEntity.ok(204);
     }
 }

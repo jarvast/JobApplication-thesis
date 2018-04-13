@@ -35,7 +35,7 @@ export class EditUserProfileComponent{
         });
         this.editForm = this.fb.group({
           name: ['',Validators.required],
-          phone: ['', Validators.required],
+          phone: ['',[ Validators.required, Validators.pattern('^[0-9]+$')]],
           email: ['', Validators.required],
           loc: ['',Validators.required]
         });

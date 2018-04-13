@@ -15,7 +15,7 @@ export class EditAppointmentsComponent implements OnInit {
   workerId: number;
   freeApps: MatTableDataSource<Appointment>;
   notFreeApps: MatTableDataSource<Appointment>;
-  displayedColumns: String[] = ['appDate', 'appTime'];
+  displayedColumns: String[] = ['appDate', 'appTime','delete'];
 
   constructor(private route: ActivatedRoute, private appsService: AppointmentService, public dialog: MatDialog) { 
     this.route.params.subscribe(param => {
@@ -30,6 +30,13 @@ export class EditAppointmentsComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+  deleteApp(id:number){
+    this.appsService.deleteApp(id).subscribe(data =>{
+      this.appsService.getAppointments(this.workerId).subscribe(data =>{
+        this.freeApps = new MatTableDataSource(data);
+    });
+    });
   }
 
   openNewDialog(){

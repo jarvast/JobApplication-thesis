@@ -68,7 +68,7 @@ public class Worker extends BaseUser {
     @JsonIgnore
     private List<Appointment> appointments = new ArrayList<Appointment>();
 
-    @ManyToMany(mappedBy = "favorites", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "favorites",cascade = CascadeType.ALL)
     @JsonIgnore
     private List<User> userList = new ArrayList<User>();
 

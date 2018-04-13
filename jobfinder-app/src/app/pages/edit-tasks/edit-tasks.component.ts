@@ -30,6 +30,13 @@ export class EditTasksComponent implements OnInit {
   ngOnInit() {
 
   }
+  deleteTask(id:number){
+    this.taskService.deleteTask(id).subscribe(data =>{
+      this.taskService.getTasks(this.workerId).subscribe(data =>{
+        this.tasks = new MatTableDataSource(data);
+    });
+    });
+  }
   openNewDialog(){
     let dialogRef = this.dialog.open(NewTaskDialog, {
       width: '300px',

@@ -151,13 +151,13 @@ public class UserService<T> {
         for (Iterator<Worker> it = workers.iterator(); it.hasNext();) {
             Worker worker = it.next();
             if (worker.getLastLogin().before(yearless)) {
-                userRepository.delete(worker.getId());
+                delete(worker.getId());
             }
         }
         for (Iterator<User> it = users.iterator(); it.hasNext();) {
             User user = it.next();
             if (user.getLastLogin().before(yearless)) {
-                userRepository.delete(user.getId());
+                delete(user.getId());
             }
         }
     }
@@ -241,8 +241,22 @@ public class UserService<T> {
         return userRepository.save(worker);
     }
 
-    public void delete(Long id) {
-        userRepository.delete(userRepository.findPeopleById(id));
+    public void delete(Long id) {//
+        BaseUser user = userRepository.findPeopleById(id);
+        if (user.getRole().getRole().equals("WORKER")){
+            Worker w = (Worker) user;
+            List<User> listToEmpty = w.getUserList();
+            for (int i=0;i<listToEmpty.size();i++){
+                User u = listToEmpty.get(i);
+                List<Worker> favorites = u.getFavorites();
+                favorites.remove(w);
+                u.setFavorites(favorites);
+                userRepository.save(u);
+            }
+            listToEmpty.clear();
+            w.setUserList(listToEmpty);
+        }
+        userRepository.delete(user);
     }
 
     public Admin registerAdmin(Admin admin, String pass) {

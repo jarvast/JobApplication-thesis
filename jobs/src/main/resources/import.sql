@@ -70,7 +70,7 @@ INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, P
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION, APPROVED) VALUES ('erika778.jpg', 'Worker', 'EFC847FA5A386A38FCC9D0573BB87272','erika778',3, 'erika778@asd.hu', 'Nagy Erika', '06202126',1, 'Foglaljon idõpontot és autóját akár pár órán belül megvizsgáljuk, a felmérés után az árlistát figyelembe véve kap tõlünk ajánlatot!','true');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION, APPROVED) VALUES ('barat.jpg', 'Worker', 'EFC847FA5A386A38FCC9D0573BB87272','barat',3, 'barattamas@gmail.com', 'Barát Tamás', '062022556236',1, 'Alvázjavításra nem talál jobb embert nálam, vegye fel a kapcsolatot!','true');
 --21-25
-INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION, APPROVED) VALUES ('alma112.jpg','Worker', 'EFC847FA5A386A38FCC9D0573BB87272','alma112',3, 'almaalma@citromail.hu', 'Kovács Alma', '06708765657',2, 'Üdvözloö! Kedvezményes kiszállási díjjal állok rendelkezésére, az árlistámon mindent megtalál, további információkért küldjön üzenetet!','true');
+INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION, APPROVED) VALUES ('alma112.jpg','Worker', 'EFC847FA5A386A38FCC9D0573BB87272','alma112',3, 'almaalma@citromail.hu', 'Kovács Alma', '06708765657',2, 'Üdvözlöm! Kedvezményes kiszállási díjjal állok rendelkezésére, az árlistámon mindent megtalál, további információkért küldjön üzenetet!','true');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION, APPROVED) VALUES ('peter.jpg','Worker', 'EFC847FA5A386A38FCC9D0573BB87272','peter',3, 'peternagy@citromail.hu', 'Nagy Péter', '06708765657',2, '20 éve villanyszereléssel foglalkozom, a felmérés után képességeimhez mérten bármit meg tudok valósitani!','true');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION, APPROVED) VALUES ('laci.jpg','Worker', 'EFC847FA5A386A38FCC9D0573BB87272','laci',3, 'laci1993@citromail.hu', 'László', '06708765657',2, 'Bármilyen villanyszerelési, illetve épületgépészeti munkával keressen bizalommal, velem a leggyorsabban megvalósíthatja terveit! ','true');
 INSERT INTO USERS (IMAGE, USER_TYPE, PASSWORD, USERNAME, ROLE_ID, EMAIL, NAME, PHONE_NUM, CATEGORY_ID, DESCRIPTION, APPROVED) VALUES ('andris5.jpg','Worker', 'EFC847FA5A386A38FCC9D0573BB87272','andris5',3, 'andris1956@citromail.hu', 'Alma András', '067065657',2, 'Új kapcsolók, dugaljak, lámpák felszerelése? Az ilyen gyors munkákat kedvezményes áron végzem el, tudva milyen gyorsan szükség lehet az ilyen apróságokra! ','true');
@@ -237,10 +237,9 @@ INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID)
 INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID, IS_REPORT) VALUES ('A munkás téves információkat tüntetett fel a profilján, illetve a fizetésnél is problémák voltak, kérem vizsgálják felül!', 'true', '2017-02-21 13:21:32', 13,2,true);
 INSERT INTO MESSAGES (CONTENT, IS_SEEN, SEND_TIMESTAMP, RECIPIENT_ID, SENDER_ID, IS_REPORT) VALUES ('A munkás téves információkat tüntetett fel a profilján, illetve a fizetésnél is problémák voltak, kérem vizsgálják felül!', 'false', current_timestamp, 19,12,true);
 
-INSERT INTO USERS_FAVORITES (USER_ID, WORKER_ID) VALUES (2,13);
+
 INSERT INTO USERS_FAVORITES (USER_ID, WORKER_ID) VALUES (2,14);
 INSERT INTO USERS_FAVORITES (USER_ID, WORKER_ID) VALUES (2,15);
-INSERT INTO USERS_FAVORITES (USER_ID, WORKER_ID) VALUES (3,13);
 INSERT INTO USERS_FAVORITES (USER_ID, WORKER_ID) VALUES (4,13);
 INSERT INTO USERS_FAVORITES (USER_ID, WORKER_ID) VALUES (5,17);
 INSERT INTO USERS_FAVORITES (USER_ID, WORKER_ID) VALUES (6,18);

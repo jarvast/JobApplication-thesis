@@ -13,6 +13,15 @@
                 <mat-header-cell *matHeaderCellDef>Időintervallum</mat-header-cell>
                 <mat-cell *matCellDef="let element"> {{element.appTime}}</mat-cell>
               </ng-container>
+
+              <ng-container matColumnDef="delete">
+                <mat-header-cell *matHeaderCellDef>Törlés</mat-header-cell>
+                <mat-cell *matCellDef="let element"> 
+                  <button mat-button (click)="deleteApp(element.id)">
+                      <mat-icon>delete</mat-icon>
+                  </button>
+                </mat-cell>
+            </ng-container>
               
               <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
               <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
@@ -29,6 +38,15 @@
             <mat-header-cell *matHeaderCellDef>Időintervallum</mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.appTime}}</mat-cell>
           </ng-container>
+
+          <ng-container matColumnDef="delete">
+            <mat-header-cell *matHeaderCellDef>Törlés</mat-header-cell>
+            <mat-cell *matCellDef="let element"> 
+              <button mat-button (click)="deleteApp(element.id)">
+                  <mat-icon>delete</mat-icon>
+              </button>
+            </mat-cell>
+        </ng-container>
           
           <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
           <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

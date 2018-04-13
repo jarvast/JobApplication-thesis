@@ -39,6 +39,9 @@ public class AppointmentService {
         app.setIsFree(Boolean.FALSE);
         appointmentRepository.save(app);
     }
+    public void delete(Long id){
+        appointmentRepository.delete(id);
+    }
 
     public Appointment createAppointment(Worker worker, Appointment appointment) {
         appointment.setIsFree(Boolean.TRUE);

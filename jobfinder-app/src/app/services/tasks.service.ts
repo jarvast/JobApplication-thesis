@@ -18,5 +18,8 @@ export class TasksService {
   create(id:number, task:Task){
     return this.http.post(Server.routeTo(Routes.NEWTASK) + '/' + id, task);
   }
+  deleteTask(id:number){
+    return this.http.delete(Server.routeTo(Routes.TASKSBYUSER) + '/' + id);
+  }
 
 }

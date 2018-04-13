@@ -1,8 +1,6 @@
 export class Routes {
     static LOGIN: String = 'user/login';
-    //static REGISTER: String = 'user/register';
     static LOGOUT: String = 'user/logout';
-    //static UPLOAD: String = 'upload/getallfiles';
     static UPLOADFILE: String = 'upload/post';
     static PICTURE: String = 'upload/files/';
     static ALLWORKERS: String = 'user/workers';

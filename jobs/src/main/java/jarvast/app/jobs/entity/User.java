@@ -43,9 +43,9 @@ public class User extends BaseUser {
     @JoinTable(
             name = "users_favorites",
             joinColumns = {
-                @JoinColumn(name = "user_id")},
+                @JoinColumn(name = "user_id", updatable = false)},
             inverseJoinColumns = {
-                @JoinColumn(name = "worker_id")}
+                @JoinColumn(name = "worker_id", updatable = false)}
     )
     @JsonIgnore
     private List<Worker> favorites = new ArrayList<Worker>();

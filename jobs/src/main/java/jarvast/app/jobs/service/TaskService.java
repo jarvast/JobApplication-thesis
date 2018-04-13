@@ -29,4 +29,7 @@ public class TaskService {
         task.setWorker(worker);
         return taskRepository.save(task);
     }
+    public void delete(Long id){
+        taskRepository.delete(id);
+    }
 }

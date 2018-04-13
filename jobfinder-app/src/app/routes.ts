@@ -20,7 +20,7 @@ export const appRoutes: Routes = [
         path:'',
         canActivateChild: [RouteGuard],
         children: [
-            {path: '', redirectTo:'login', pathMatch:'full'},
+            {path: '', redirectTo:'main', pathMatch:'full'},
             {path: 'login', component: LoginComponent},
             {path: 'main', component: MainComponent},
             {path: 'categories/:id', component: WorkerListComponent},

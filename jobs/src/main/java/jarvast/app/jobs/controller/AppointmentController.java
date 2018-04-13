@@ -42,6 +42,11 @@ public class AppointmentController {
         appointmentService.reserve(id);
         return ResponseEntity.ok(204);
     }
+    @DeleteMapping("/delete/{id}")
+    private ResponseEntity delete(@PathVariable(value = "id") Long id) {
+        appointmentService.delete(id);
+        return ResponseEntity.ok(204);
+    }
 
     @PostMapping("/{workerid}")
     private ResponseEntity<Appointment> createAppointment(@PathVariable(value = "workerid") Long workerId, @RequestBody Appointment appointment) {

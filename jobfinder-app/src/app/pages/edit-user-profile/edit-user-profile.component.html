@@ -9,6 +9,9 @@
     <mat-form-field class="namefield">
       <span matPrefix>+36 &nbsp;</span>
       <input matInput maxlength="9" placeholder="Telefonszám" formControlName="phone" required>
+      <mat-error *ngIf="phone.hasError('pattern')">
+        Nem megfelelő telefonszám formátum!
+      </mat-error>
     </mat-form-field>
     <mat-form-field class="namefield">
       <input matInput maxlength="35" placeholder="E-mail" formControlName="email" required>
