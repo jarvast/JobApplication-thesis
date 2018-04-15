@@ -3,6 +3,7 @@ package jarvast.app.jobs.service;
 import jarvast.app.jobs.entity.Admin;
 import jarvast.app.jobs.entity.BaseUser;
 import jarvast.app.jobs.entity.Category;
+import jarvast.app.jobs.entity.Message;
 import jarvast.app.jobs.entity.User;
 import jarvast.app.jobs.entity.Worker;
 import jarvast.app.jobs.repository.RoleRepository;
@@ -26,6 +27,7 @@ public class UserService<T> {
     private UserRepository userRepository;
     private BaseUser user;
     private RatingService ratingService;
+    private MessageService messageService;
     private LocationService locationService;
     private TaskRepository taskRepository;
     private RoleRepository roleRepository;
@@ -43,6 +45,10 @@ public class UserService<T> {
     @Autowired
     public void setRatingService(RatingService ratingService) {
         this.ratingService = ratingService;
+    }
+    @Autowired
+    public void setMessageService(MessageService messageService) {
+        this.messageService = messageService;
     }
 
     public void login(BaseUser user) {
@@ -237,6 +243,8 @@ public class UserService<T> {
     public Worker approve(Long id) {
         Worker worker = userRepository.findOne(id);
         worker.setApproved(Boolean.TRUE);
+        messageService.sendMessage(new Message(null, worker, "A profilja engedélyezve lett egy adminisztrátor által, most már megjelenik a listákban és keresésekben",
+                "A profilja engedélyezve lett", null, Boolean.FALSE, Boolean.FALSE, Boolean.FALSE, Boolean.FALSE));
 
         return userRepository.save(worker);
     }

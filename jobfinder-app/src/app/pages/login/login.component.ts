@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     err => this.openSnackBar())
     }
   openSnackBar() {
-    this.snackBar.open('Helytelen a felhaszálónév vagy a jelszó!','Értem' ,{
+    this.snackBar.open('Helytelen a felhasználónév vagy a jelszó!','Értem' ,{
       duration: 3000,
     });
   }
