@@ -130,7 +130,7 @@ public class UserController<T> {
         return ResponseEntity.ok(userService.approve(id));
     }
 
-    @DeleteMapping("/worker/{id}")
+    @DeleteMapping("/worker/delete/{id}")
     private ResponseEntity deleteWorker(@PathVariable(value = "id") Long id) {
         userService.delete(id);
         return ResponseEntity.ok(204);

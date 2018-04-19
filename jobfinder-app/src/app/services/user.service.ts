@@ -61,7 +61,7 @@ export class UserService {
     return this.http.get(Server.routeTo(Routes.SINGLEWORKER) + '/approve/' + id);
   }
   deleteWorker(id:number){
-    return this.http.delete(Server.routeTo(Routes.SINGLEWORKER) + '/'+ id);
+    return this.http.delete(Server.routeTo(Routes.SINGLEWORKER) + '/delete/'+ id);
   }
   newAdmin(admin: AdminUser, pass:string){
     const httpOptions = {

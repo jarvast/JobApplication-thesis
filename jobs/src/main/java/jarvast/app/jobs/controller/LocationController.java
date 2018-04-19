@@ -35,7 +35,7 @@ public class LocationController {
         return ResponseEntity.ok(locationService.getLocations());
     }
 
-    @PostMapping("/{userId}")
+    @PostMapping("/update/{userId}")
     private ResponseEntity<Worker> updateLocationsByWorker(@PathVariable(value = "userId") Long userId, @RequestBody List<Location> locations) {
         Worker worker = userService.getWorker(userId);
         return ResponseEntity.ok(locationService.updateLocationsByWorker(worker, locations));

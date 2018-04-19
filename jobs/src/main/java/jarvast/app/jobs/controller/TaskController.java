@@ -41,7 +41,7 @@ public class TaskController {
         Worker worker = userService.getWorker(workerId);
         return ResponseEntity.ok(taskService.createTask(worker, task));
     }
-    @DeleteMapping("/{taskId}")
+    @DeleteMapping("/delete/{taskId}")
     private ResponseEntity deleteTask(@PathVariable(value = "taskId") Long taskId){
         taskService.delete(taskId);
         return ResponseEntity.ok(204);

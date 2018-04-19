@@ -16,7 +16,7 @@ export class LocationService {
     return this.http.get<Location[]>(Server.routeTo(Routes.LOCATION));
   }
   updateLocations(locations: Location[], id: number){
-    return this.http.post(Server.routeTo(Routes.LOCATION) + '/' + id,locations);
+    return this.http.post(Server.routeTo(Routes.LOCATION) + '/update/' + id,locations);
   }
 
 }

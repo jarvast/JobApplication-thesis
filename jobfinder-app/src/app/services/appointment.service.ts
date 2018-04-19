@@ -19,7 +19,7 @@ export class AppointmentService {
     return this.http.delete<Appointment>(Server.routeTo(Routes.APPOINTMENTS) + '/' + id);
   }
   create(appointment: Appointment, id: number){
-    return this.http.post(Server.routeTo(Routes.APPOINTMENTS) + '/' + id,appointment);
+    return this.http.post(Server.routeTo(Routes.APPOINTMENTS) + '/create/' + id,appointment);
   }
   deleteApp(id:number){
     return this.http.delete(Server.routeTo(Routes.APPOINTMENTS) + '/delete/' + id);

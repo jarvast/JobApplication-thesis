@@ -48,7 +48,7 @@ public class AppointmentController {
         return ResponseEntity.ok(204);
     }
 
-    @PostMapping("/{workerid}")
+    @PostMapping("/create/{workerid}")
     private ResponseEntity<Appointment> createAppointment(@PathVariable(value = "workerid") Long workerId, @RequestBody Appointment appointment) {
         Worker worker = userService.getWorker(workerId);
         return ResponseEntity.ok(appointmentService.createAppointment(worker, appointment));

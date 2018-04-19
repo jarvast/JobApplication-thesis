@@ -36,6 +36,9 @@ export class EditAppointmentsComponent implements OnInit {
       this.appsService.getAppointments(this.workerId).subscribe(data =>{
         this.freeApps = new MatTableDataSource(data);
     });
+    this.appsService.getOccupiedAppointments(this.workerId).subscribe(data =>{
+      this.notFreeApps = new MatTableDataSource(data);
+    });
     });
   }
 
