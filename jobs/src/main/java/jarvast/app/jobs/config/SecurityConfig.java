@@ -26,7 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //.antMatchers("/login").hasAuthority("ADMIN")
                 .antMatchers("/api/user/login").hasAnyAuthority("ADMIN", "USER", "WORKER")
                 .antMatchers("/api/user/logout").hasAnyAuthority("ADMIN", "USER", "WORKER")
-                //.anyRequest().permitAll()
+                .antMatchers("/api/messages/**").hasAnyAuthority("ADMIN", "USER", "WORKER")
                 .and()//.formLogin().loginProcessingUrl("/api/user/login").permitAll().and()
                 .httpBasic();
 
