@@ -1,3 +1,3 @@
 # Szakdolgozat
 
-what
+Full documentation in Documentation.docx
