@@ -6,6 +6,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.Objects;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -18,13 +20,12 @@ import org.springframework.web.multipart.MultipartFile;
 public class StorageService {
 
     private final Path rootLocation = Paths.get("upload-dir");
-    private final String defaultFileName = "default.jpg";
     @Autowired
     private UserService userService;
 
     public void store(MultipartFile file) {
         try {
-            Files.copy(file.getInputStream(), this.rootLocation.resolve(file.getOriginalFilename()), StandardCopyOption.REPLACE_EXISTING);
+            Files.copy(file.getInputStream(), this.rootLocation.resolve(Objects.requireNonNull(file.getOriginalFilename())), StandardCopyOption.REPLACE_EXISTING);
             String extension = "";
             int i = file.getOriginalFilename().lastIndexOf('.');
             if (i > 0) {
@@ -39,6 +40,7 @@ public class StorageService {
                 Files.move(this.rootLocation.resolve(file.getOriginalFilename()), this.rootLocation.resolve(file.getOriginalFilename()).resolveSibling(newFileName), StandardCopyOption.REPLACE_EXISTING);
             } else {
 
+                String defaultFileName = "default.jpg";
                 if (!old.equals(defaultFileName)) {
                     Files.deleteIfExists(this.rootLocation.resolve(old));
                 }

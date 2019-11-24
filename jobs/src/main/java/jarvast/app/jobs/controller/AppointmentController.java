@@ -4,7 +4,9 @@ import jarvast.app.jobs.entity.Appointment;
 import jarvast.app.jobs.entity.Worker;
 import jarvast.app.jobs.service.AppointmentService;
 import jarvast.app.jobs.service.UserService;
+
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -42,6 +44,7 @@ public class AppointmentController {
         appointmentService.reserve(id);
         return ResponseEntity.ok(204);
     }
+
     @DeleteMapping("/delete/{id}")
     private ResponseEntity delete(@PathVariable(value = "id") Long id) {
         appointmentService.delete(id);

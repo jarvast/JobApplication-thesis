@@ -1,14 +1,12 @@
 package jarvast.app.jobs.service;
 
-import jarvast.app.jobs.entity.Admin;
-import jarvast.app.jobs.entity.BaseUser;
-import jarvast.app.jobs.entity.Category;
-import jarvast.app.jobs.entity.Message;
-import jarvast.app.jobs.entity.User;
-import jarvast.app.jobs.entity.Worker;
+import jarvast.app.jobs.entity.*;
 import jarvast.app.jobs.repository.RoleRepository;
 import jarvast.app.jobs.repository.TaskRepository;
 import jarvast.app.jobs.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.sql.Timestamp;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -17,8 +15,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 @Service
 public class UserService<T> {
@@ -29,7 +25,6 @@ public class UserService<T> {
     private RatingService ratingService;
     private MessageService messageService;
     private LocationService locationService;
-    private TaskRepository taskRepository;
     private RoleRepository roleRepository;
 
     @Autowired
@@ -37,7 +32,6 @@ public class UserService<T> {
         this.userRepository = userRepository;
         this.user = null;
         this.locationService = locationService;
-        this.taskRepository = taskRepository;
         this.roleRepository = roleRepository;
 
     }
@@ -46,6 +40,7 @@ public class UserService<T> {
     public void setRatingService(RatingService ratingService) {
         this.ratingService = ratingService;
     }
+
     @Autowired
     public void setMessageService(MessageService messageService) {
         this.messageService = messageService;
@@ -62,16 +57,16 @@ public class UserService<T> {
         return user;
     }
 
-    public String getLoggedInUserName() {
+    String getLoggedInUserName() {
         return user.getUsername();
     }
 
-    public void updateImg(String imgname) {
+    void updateImg(String imgname) {
         this.user.setImgName(imgname);
         userRepository.save(this.user);
     }
 
-    public String getImg() {
+    String getImg() {
         return this.user.getImgName();
     }
 
@@ -82,7 +77,7 @@ public class UserService<T> {
     public List<Worker> getWorkers() {
         List<Worker> list = userRepository.findAllWorkers();
 
-        for (Iterator<Worker> it = list.iterator(); it.hasNext();) {
+        for (Iterator<Worker> it = list.iterator(); it.hasNext(); ) {
             Worker temp = it.next();
             if (!temp.getApproved()) {
                 it.remove();
@@ -96,8 +91,7 @@ public class UserService<T> {
     public List<Worker> getAllWorkers() {
         List<Worker> allWorkers = userRepository.findAllWorkers();
 
-        for (Iterator<Worker> it = allWorkers.iterator(); it.hasNext();) {
-            Worker temp = it.next();
+        for (Worker temp : allWorkers) {
             calculateRate(temp);
         }
         return allWorkers;
@@ -110,7 +104,7 @@ public class UserService<T> {
     public List<Worker> listByCategory(Category category) {
         List<Worker> workerlist = userRepository.findByCategory(category);
 
-        for (Iterator<Worker> it = workerlist.iterator(); it.hasNext();) {
+        for (Iterator<Worker> it = workerlist.iterator(); it.hasNext(); ) {
             Worker temp = it.next();
             if (!temp.getApproved()) {
                 it.remove();
@@ -128,7 +122,7 @@ public class UserService<T> {
 
         List<Worker> mergedList = Stream.concat(workerList.stream(), locationList.stream()).collect(Collectors.toList());
 
-        for (Iterator<Worker> it = mergedList.iterator(); it.hasNext();) {
+        for (Iterator<Worker> it = mergedList.iterator(); it.hasNext(); ) {
             Worker temp = it.next();
             if (!temp.getApproved()) {
                 it.remove();
@@ -140,11 +134,11 @@ public class UserService<T> {
     }
 
     public Worker getWorker(Long id) {
-        return calculateRate(userRepository.findOne(id));
+        return calculateRate(userRepository.getOne(id));
     }
 
-    public User getUser(Long id) {
-        return userRepository.findById(id);
+    public User getUser(Long id) throws UserNotFoundException {
+        return (User) userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("No user found with id: " + id));
     }
 
     public void maintain() {
@@ -154,14 +148,12 @@ public class UserService<T> {
 
         List<User> users = userRepository.findAllUsers();
         List<Worker> workers = userRepository.findAllWorkers();
-        for (Iterator<Worker> it = workers.iterator(); it.hasNext();) {
-            Worker worker = it.next();
+        for (Worker worker : workers) {
             if (worker.getLastLogin().before(yearless)) {
                 delete(worker.getId());
             }
         }
-        for (Iterator<User> it = users.iterator(); it.hasNext();) {
-            User user = it.next();
+        for (User user : users) {
             if (user.getLastLogin().before(yearless)) {
                 delete(user.getId());
             }
@@ -169,7 +161,7 @@ public class UserService<T> {
     }
 
     private Worker calculateRate(Worker worker) {
-        Double rate = ratingService.calculateRating(worker);
+        double rate = ratingService.calculateRating(worker);
         if (Double.isNaN(rate)) {
             worker.setRating(0.0);
         } else {
@@ -183,7 +175,7 @@ public class UserService<T> {
         workerList.sort((r1, r2) -> Integer.compare(r2.getRatings().size(), r1.getRatings().size()));
         List<Worker> top5 = workerList.subList(0, 5);
 
-        for (Iterator<Worker> it = top5.iterator(); it.hasNext();) {
+        for (Iterator<Worker> it = top5.iterator(); it.hasNext(); ) {
             Worker temp = it.next();
             if (!temp.getApproved()) {
                 it.remove();
@@ -194,8 +186,8 @@ public class UserService<T> {
         return top5;
     }
 
-    public User updateUser(User user) {
-        User oldUser = userRepository.findById(user.getId());
+    public User updateUser(User user) throws UserNotFoundException {
+        User oldUser = (User) userRepository.findById(user.getId()).orElseThrow(() -> new UserNotFoundException("No user found with id: " + user.getId()));
 
         oldUser.setName(user.getName());
         oldUser.setEmail(user.getEmail());
@@ -205,7 +197,7 @@ public class UserService<T> {
     }
 
     public Worker updateWorker(Worker worker) {
-        Worker oldWorker = userRepository.findOne(worker.getId());
+        Worker oldWorker = userRepository.getOne(worker.getId());
 
         oldWorker.setName(worker.getName());
         oldWorker.setDescription(worker.getDescription());
@@ -214,7 +206,7 @@ public class UserService<T> {
     }
 
     public User favorite(Long workerId) {
-        Worker worker = userRepository.findOne(workerId);
+        Worker worker = userRepository.getOne(workerId);
         User currentUser = (User) getLoggedInUser();
         List<Worker> favorites = currentUser.getFavorites();
         favorites.add(worker);
@@ -223,7 +215,7 @@ public class UserService<T> {
     }
 
     public User removeFavorite(Long workerId) {
-        Worker worker = userRepository.findOne(workerId);
+        Worker worker = userRepository.getOne(workerId);
         User currentUser = (User) getLoggedInUser();
         List<Worker> favorites = currentUser.getFavorites();
         favorites.remove(worker);
@@ -234,14 +226,14 @@ public class UserService<T> {
     public List<Worker> listFavorites() {
         User currentUser = (User) getLoggedInUser();
         List<Worker> favorites = currentUser.getFavorites();
-        for (int i = 0; i < favorites.size(); i++) {
-            calculateRate(favorites.get(i));
+        for (Worker favorite : favorites) {
+            calculateRate(favorite);
         }
         return favorites;
     }
 
     public Worker approve(Long id) {
-        Worker worker = userRepository.findOne(id);
+        Worker worker = userRepository.getOne(id);
         worker.setApproved(Boolean.TRUE);
         messageService.sendMessage(new Message(null, worker, "A profilja engedélyezve lett egy adminisztrátor által, most már megjelenik a listákban és keresésekben",
                 "A profilja engedélyezve lett", null, Boolean.FALSE, Boolean.FALSE, Boolean.FALSE, Boolean.FALSE));
@@ -249,13 +241,12 @@ public class UserService<T> {
         return userRepository.save(worker);
     }
 
-    public void delete(Long id) {//
+    public void delete(Long id) {
         BaseUser user = userRepository.findPeopleById(id);
-        if (user.getRole().getRole().equals("WORKER")){
+        if (user.getRole().getRole().equals("WORKER")) {
             Worker w = (Worker) user;
             List<User> listToEmpty = w.getUserList();
-            for (int i=0;i<listToEmpty.size();i++){
-                User u = listToEmpty.get(i);
+            for (User u : listToEmpty) {
                 List<Worker> favorites = u.getFavorites();
                 favorites.remove(w);
                 u.setFavorites(favorites);
@@ -268,21 +259,21 @@ public class UserService<T> {
     }
 
     public Admin registerAdmin(Admin admin, String pass) {
-        admin.setRole(roleRepository.findOne(1l));
+        admin.setRole(roleRepository.getOne(1L));
         admin.setPassword(pass);
         admin.setImgName(defaultimagename);
         return userRepository.save(admin);
     }
 
     public User registerUser(User user, String pass) {
-        user.setRole(roleRepository.findOne(2l));
+        user.setRole(roleRepository.getOne(2L));
         user.setPassword(pass);
         user.setImgName(defaultimagename);
         return userRepository.save(user);
     }
 
     public Worker registerWorker(Worker worker, String pass) {
-        worker.setRole(roleRepository.findOne(3l));
+        worker.setRole(roleRepository.getOne(3L));
         worker.setPassword(pass);
         worker.setImgName(defaultimagename);
         return userRepository.save(worker);

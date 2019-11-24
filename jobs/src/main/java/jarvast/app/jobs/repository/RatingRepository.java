@@ -2,11 +2,14 @@ package jarvast.app.jobs.repository;
 
 import jarvast.app.jobs.entity.Rating;
 import jarvast.app.jobs.entity.Worker;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
-import org.springframework.data.repository.CrudRepository;
 
-public interface RatingRepository extends CrudRepository<Rating, Long> {
+@Repository
+public interface RatingRepository extends JpaRepository<Rating, Long> {
 
-    public List<Rating> findByReceiver(Worker worker);
+    List<Rating> findByReceiver(Worker worker);
 
 }

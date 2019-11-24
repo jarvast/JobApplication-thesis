@@ -2,11 +2,14 @@ package jarvast.app.jobs.repository;
 
 import jarvast.app.jobs.entity.Task;
 import jarvast.app.jobs.entity.Worker;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
-import org.springframework.data.repository.CrudRepository;
 
-public interface TaskRepository extends CrudRepository<Task, Long> {
+@Repository
+public interface TaskRepository extends JpaRepository<Task, Long> {
 
-    public List<Task> findByWorkert(Worker worker);
+    List<Task> findByWorkert(Worker worker);
 
 }

@@ -9,12 +9,12 @@
 	<packaging>jar</packaging>
 
 	<name>jobs</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Application for jobs</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.10.RELEASE</version>
+		<version>2.2.1.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 

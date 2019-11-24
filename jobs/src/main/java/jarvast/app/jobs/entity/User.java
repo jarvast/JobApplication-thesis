@@ -1,6 +1,7 @@
 package jarvast.app.jobs.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -43,9 +44,9 @@ public class User extends BaseUser {
     @JoinTable(
             name = "users_favorites",
             joinColumns = {
-                @JoinColumn(name = "user_id", updatable = false)},
+                    @JoinColumn(name = "user_id", updatable = false)},
             inverseJoinColumns = {
-                @JoinColumn(name = "worker_id", updatable = false)}
+                    @JoinColumn(name = "worker_id", updatable = false)}
     )
     @JsonIgnore
     private List<Worker> favorites = new ArrayList<Worker>();

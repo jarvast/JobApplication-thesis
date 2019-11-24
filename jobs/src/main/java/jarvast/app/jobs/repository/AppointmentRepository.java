@@ -2,12 +2,14 @@ package jarvast.app.jobs.repository;
 
 import jarvast.app.jobs.entity.Appointment;
 import jarvast.app.jobs.entity.Worker;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
-import org.springframework.data.repository.CrudRepository;
 
+@Repository
+public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
 
-public interface AppointmentRepository extends CrudRepository<Appointment, Long> {
-
-    public List<Appointment> findByWorker(Worker worker);
+    List<Appointment> findByWorker(Worker worker);
 
 }

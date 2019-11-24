@@ -4,7 +4,9 @@ import jarvast.app.jobs.entity.Task;
 import jarvast.app.jobs.entity.Worker;
 import jarvast.app.jobs.service.TaskService;
 import jarvast.app.jobs.service.UserService;
+
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -41,8 +43,9 @@ public class TaskController {
         Worker worker = userService.getWorker(workerId);
         return ResponseEntity.ok(taskService.createTask(worker, task));
     }
+
     @DeleteMapping("/delete/{taskId}")
-    private ResponseEntity deleteTask(@PathVariable(value = "taskId") Long taskId){
+    private ResponseEntity deleteTask(@PathVariable(value = "taskId") Long taskId) {
         taskService.delete(taskId);
         return ResponseEntity.ok(204);
     }

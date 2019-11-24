@@ -2,15 +2,18 @@ package jarvast.app.jobs.repository;
 
 import jarvast.app.jobs.entity.Location;
 import jarvast.app.jobs.entity.Worker;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
-import org.springframework.data.repository.CrudRepository;
 
-public interface LocationRepository extends CrudRepository<Location, Long> {
+@Repository
+public interface LocationRepository extends JpaRepository<Location, Long> {
 
-    public List<Location> findByWorker(Worker worker);
+    List<Location> findByWorker(Worker worker);
 
-    public List<Location> findPeopleDistinctBylocationNameContainingAllIgnoreCase(String str);
+    List<Location> findPeopleDistinctByLocationNameContainingAllIgnoreCase(String str);
 
-    public List<Location> findAll();
+    List<Location> findAll();
 
 }

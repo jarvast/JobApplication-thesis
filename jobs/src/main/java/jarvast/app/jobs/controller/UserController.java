@@ -5,27 +5,24 @@ import jarvast.app.jobs.entity.Category;
 import jarvast.app.jobs.entity.User;
 import jarvast.app.jobs.entity.Worker;
 import jarvast.app.jobs.service.CategoryService;
+import jarvast.app.jobs.service.UserNotFoundException;
 import jarvast.app.jobs.service.UserService;
-import java.math.BigInteger;
-import java.nio.charset.Charset;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.Base64;
-import java.util.List;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.math.BigInteger;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/user")
@@ -92,12 +89,22 @@ public class UserController<T> {
 
     @GetMapping("/user/{id}")
     private ResponseEntity<User> getUser(@PathVariable(value = "id") Long id) {
-        return ResponseEntity.ok(userService.getUser(id));
+        try {
+            return ResponseEntity.ok(userService.getUser(id));
+        } catch (UserNotFoundException e) {
+            e.printStackTrace();
+        }
+        return (ResponseEntity<User>) ResponseEntity.badRequest();
     }
 
     @PostMapping("/user")
     private ResponseEntity<User> updateUser(@RequestBody User user) {
-        return ResponseEntity.ok(userService.updateUser(user));
+        try {
+            return ResponseEntity.ok(userService.updateUser(user));
+        } catch (UserNotFoundException e) {
+            e.printStackTrace();
+        }
+        return (ResponseEntity<User>) ResponseEntity.badRequest();
     }
 
     @PostMapping("/worker")
@@ -143,7 +150,7 @@ public class UserController<T> {
 
         String base64Credentials = auth.substring("Basic".length()).trim();
         String credentials = new String(Base64.getDecoder().decode(base64Credentials),
-                Charset.forName("UTF-8"));
+                StandardCharsets.UTF_8);
         MessageDigest md = MessageDigest.getInstance("MD5");
         byte[] temp = md.digest(credentials.getBytes());
         credentials = String.format("%032X", new BigInteger(1, temp));
@@ -158,7 +165,7 @@ public class UserController<T> {
 
         String base64Credentials = auth.substring("Basic".length()).trim();
         String credentials = new String(Base64.getDecoder().decode(base64Credentials),
-                Charset.forName("UTF-8"));
+                StandardCharsets.UTF_8);
         MessageDigest md = MessageDigest.getInstance("MD5");
         byte[] temp = md.digest(credentials.getBytes());
         credentials = String.format("%032X", new BigInteger(1, temp));
@@ -173,7 +180,7 @@ public class UserController<T> {
 
         String base64Credentials = auth.substring("Basic".length()).trim();
         String credentials = new String(Base64.getDecoder().decode(base64Credentials),
-                Charset.forName("UTF-8"));
+                StandardCharsets.UTF_8);
 
         MessageDigest md = MessageDigest.getInstance("MD5");
         byte[] temp = md.digest(credentials.getBytes());

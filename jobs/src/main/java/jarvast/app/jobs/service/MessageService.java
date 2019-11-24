@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -41,21 +42,16 @@ public class MessageService {
 
         BaseUser sender = this.userRepository.findPeopleById(id);
         List<Message> sentMessages = sender.getSenderMessages();
-        for (Iterator<Message> it = sentMessages.iterator(); it.hasNext();) {
-            Message mess = it.next();
-            if (mess.isIsRatingRequest() != null || mess.getSendTimestamp().before(monthless)) {
-                it.remove();
-            }
-        }
+        sentMessages.removeIf(message -> message.isIsRatingRequest() != null || message.getSendTimestamp().before(monthless));
         return sentMessages;
     }
 
     public List<Message> getReports() {
         List<Message> messages = (List<Message>) messageRepository.findAll();
         List<Message> reports = new ArrayList<>();
-        for (int i = 0; i < messages.size(); i++) {
-            if (messages.get(i).getIsReport() != null) {
-                reports.add(messages.get(i));
+        for (Message message : messages) {
+            if (message.getIsReport() != null) {
+                reports.add(message);
             }
         }
         return reports;
@@ -69,18 +65,13 @@ public class MessageService {
         BaseUser recipient = this.userRepository.findPeopleById(id);
         List<Message> receivedMessages = recipient.getReceiverMessages();
 
-        for (Iterator<Message> it = receivedMessages.iterator(); it.hasNext();) {
-            Message mess = it.next();
-            if (mess.getSendTimestamp().before(monthless)) {
-                it.remove();
-            }
-        }
+        receivedMessages.removeIf(message -> message.getSendTimestamp().before(monthless));
 
         return receivedMessages;
     }
 
     public Message seeMessage(Long messageId) {
-        Message seenMessage = this.messageRepository.findOne(messageId);
+        Message seenMessage = this.messageRepository.getOne(messageId);
         seenMessage.setIsSeen(true);
         return messageRepository.save(seenMessage);
     }
@@ -88,17 +79,13 @@ public class MessageService {
     public List<Message> newMessages(Long id) {
         BaseUser sender = this.userRepository.findPeopleById(id);
         List<Message> newMessages = sender.getReceiverMessages();
-        for (Iterator<Message> it = newMessages.iterator(); it.hasNext();) {
-            if (it.next().isIsSeen()) {
-                it.remove();
-            }
-        }
+        newMessages.removeIf(Message::isIsSeen);
         return newMessages;
     }
 
-    public Message requestRating(Long id) {
+    public Message requestRating(Long id) throws UserNotFoundException {
         Worker requester = (Worker) userService.getLoggedInUser();
-        User raterUser = userRepository.findById(id);
+        BaseUser raterUser = userRepository.findById(id).orElseThrow(()-> new UserNotFoundException("No user found with id: " + id));
         String subject = "A(z) " + requester.getName() + " nevű felhasználó szeretné, ha értékelné";
         String content = "Kérjük értékelje a szakembert az 5 fokozatú skálán, illetve megadhat szöveges értékelést is. A minőség fenntartása érdekében kérjük reális értékelést adjon meg az elvégzett munka alapján!";
         Message requestRatingMessage = new Message(requester, raterUser, content, subject, new Timestamp(System.currentTimeMillis()), false, true, false, false);
@@ -106,6 +93,6 @@ public class MessageService {
     }
 
     public void delete(Long id) {
-        messageRepository.delete(id);
+        messageRepository.deleteById(id);
     }
 }

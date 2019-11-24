@@ -2,7 +2,9 @@ package jarvast.app.jobs.controller;
 
 import jarvast.app.jobs.entity.Category;
 import jarvast.app.jobs.service.CategoryService;
+
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

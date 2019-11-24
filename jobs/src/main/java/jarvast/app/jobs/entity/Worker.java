@@ -1,6 +1,7 @@
 package jarvast.app.jobs.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -32,9 +33,9 @@ public class Worker extends BaseUser {
     @JoinTable(
             name = "workers_locations",
             joinColumns = {
-                @JoinColumn(name = "worker_id")},
+                    @JoinColumn(name = "worker_id")},
             inverseJoinColumns = {
-                @JoinColumn(name = "locations_id")}
+                    @JoinColumn(name = "locations_id")}
     )
     @JsonIgnore
     private List<Location> locations = new ArrayList<Location>();
@@ -68,7 +69,7 @@ public class Worker extends BaseUser {
     @JsonIgnore
     private List<Appointment> appointments = new ArrayList<Appointment>();
 
-    @ManyToMany(mappedBy = "favorites",cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "favorites", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<User> userList = new ArrayList<User>();
 

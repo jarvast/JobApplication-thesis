@@ -1,13 +1,16 @@
 package jarvast.app.jobs.repository;
 
 import jarvast.app.jobs.entity.Category;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
-import org.springframework.data.repository.CrudRepository;
 
-public interface CategoryRepository extends CrudRepository<Category, Long> {
+@Repository
+public interface CategoryRepository extends JpaRepository<Category, Long> {
 
-    public List<Category> findAll();
+    List<Category> findAll();
 
-    public Category findBycategoryName(String name);
+    Category findByCategoryName(String name);
 
 }

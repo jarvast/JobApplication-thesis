@@ -39,8 +39,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/user/worker/approve/**").hasAnyAuthority("ADMIN")
                 .antMatchers("/api/user/worker/delete/**").hasAnyAuthority("ADMIN")
                 .antMatchers("/api/user/new/admin").hasAnyAuthority("ADMIN")
-                
-                
+
+
                 .and()//.formLogin().loginProcessingUrl("/api/user/login").permitAll().and()
                 .httpBasic();
 

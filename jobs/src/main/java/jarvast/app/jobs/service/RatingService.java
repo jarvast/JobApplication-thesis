@@ -4,8 +4,10 @@ import jarvast.app.jobs.entity.Rating;
 import jarvast.app.jobs.entity.User;
 import jarvast.app.jobs.entity.Worker;
 import jarvast.app.jobs.repository.RatingRepository;
+
 import java.sql.Timestamp;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

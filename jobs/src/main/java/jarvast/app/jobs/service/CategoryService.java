@@ -2,7 +2,9 @@ package jarvast.app.jobs.service;
 
 import jarvast.app.jobs.entity.Category;
 import jarvast.app.jobs.repository.CategoryRepository;
+
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +19,7 @@ public class CategoryService {
     }
 
     public Category findByCategoryId(Long categoryId) {
-        return categoryRepository.findOne(categoryId);
+        return categoryRepository.getOne(categoryId);
     }
 
     public List<Category> getCategories() {

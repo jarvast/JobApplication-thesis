@@ -16,31 +16,23 @@ public class AppointmentService {
 
     public List<Appointment> getAppointmentsByWorker(Worker worker) {
         List<Appointment> apps = appointmentRepository.findByWorker(worker);
-        for (Iterator<Appointment> it = apps.iterator(); it.hasNext();) {
-            if (!it.next().getIsFree()) {
-                it.remove();
-            }
-        }
+        apps.removeIf(appointment -> !appointment.getIsFree());
         return apps;
     }
 
     public List<Appointment> getOccupiedByWorker(Worker worker) {
         List<Appointment> apps = appointmentRepository.findByWorker(worker);
-        for (Iterator<Appointment> it = apps.iterator(); it.hasNext();) {
-            if (it.next().getIsFree()) {
-                it.remove();
-            }
-        }
+        apps.removeIf(Appointment::getIsFree);
         return apps;
     }
 
     public void reserve(Long id) {
-        Appointment app = appointmentRepository.findOne(id);
+        Appointment app = appointmentRepository.getOne(id);
         app.setIsFree(Boolean.FALSE);
         appointmentRepository.save(app);
     }
     public void delete(Long id){
-        appointmentRepository.delete(id);
+        appointmentRepository.deleteById(id);
     }
 
     public Appointment createAppointment(Worker worker, Appointment appointment) {

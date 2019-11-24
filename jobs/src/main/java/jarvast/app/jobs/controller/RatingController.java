@@ -4,7 +4,9 @@ import jarvast.app.jobs.entity.Rating;
 import jarvast.app.jobs.entity.Worker;
 import jarvast.app.jobs.service.RatingService;
 import jarvast.app.jobs.service.UserService;
+
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

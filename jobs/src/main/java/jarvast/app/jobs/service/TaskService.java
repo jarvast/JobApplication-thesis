@@ -3,7 +3,9 @@ package jarvast.app.jobs.service;
 import jarvast.app.jobs.entity.Task;
 import jarvast.app.jobs.entity.Worker;
 import jarvast.app.jobs.repository.TaskRepository;
+
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +20,7 @@ public class TaskService {
     }
 
     public Task updateTask(Task task) {
-        Task oldTask = taskRepository.findOne(task.getId());
+        Task oldTask = taskRepository.getOne(task.getId());
 
         oldTask.setTaskName(task.getTaskName());
         oldTask.setTaskPrices(task.getTaskPrices());
@@ -29,7 +31,8 @@ public class TaskService {
         task.setWorker(worker);
         return taskRepository.save(task);
     }
-    public void delete(Long id){
-        taskRepository.delete(id);
+
+    public void delete(Long id) {
+        taskRepository.deleteById(id);
     }
 }

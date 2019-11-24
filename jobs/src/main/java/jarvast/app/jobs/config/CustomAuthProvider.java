@@ -3,6 +3,7 @@ package jarvast.app.jobs.config;
 import jarvast.app.jobs.entity.BaseUser;
 import jarvast.app.jobs.repository.UserRepository;
 import jarvast.app.jobs.service.UserService;
+
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -10,6 +11,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

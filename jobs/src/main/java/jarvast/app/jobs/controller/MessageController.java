@@ -1,9 +1,11 @@
 package jarvast.app.jobs.controller;
-//
 
 import jarvast.app.jobs.entity.Message;
 import jarvast.app.jobs.service.MessageService;
+
 import java.util.List;
+
+import jarvast.app.jobs.service.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -59,7 +61,12 @@ public class MessageController {
 
     @GetMapping("/rating/{id}")
     private ResponseEntity<Message> requestRating(@PathVariable(value = "id") Long id) {
-        return ResponseEntity.ok(messageService.requestRating(id));
+        try {
+            return ResponseEntity.ok(messageService.requestRating(id));
+        } catch (UserNotFoundException e) {
+            e.printStackTrace();
+        }
+        return (ResponseEntity<Message>) ResponseEntity.badRequest();
     }
 
 }
