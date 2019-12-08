@@ -2,20 +2,18 @@ package jarvast.app.jobs.service;
 
 import jarvast.app.jobs.entity.BaseUser;
 import jarvast.app.jobs.entity.Message;
-import jarvast.app.jobs.entity.User;
 import jarvast.app.jobs.entity.Worker;
 import jarvast.app.jobs.repository.MessageRepository;
 import jarvast.app.jobs.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.sql.Timestamp;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
 
 @Service
 public class MessageService {
@@ -38,16 +36,16 @@ public class MessageService {
     public List<Message> getSentMessagesById(Long id) {
         Timestamp old = new Timestamp(System.currentTimeMillis());
         ZonedDateTime zonedDateTime = old.toInstant().atZone(ZoneId.of("UTC"));
-        Timestamp monthless = Timestamp.from(zonedDateTime.minus(31, ChronoUnit.DAYS).toInstant());
+        Timestamp aMonthLess = Timestamp.from(zonedDateTime.minus(31, ChronoUnit.DAYS).toInstant());
 
         BaseUser sender = this.userRepository.findPeopleById(id);
         List<Message> sentMessages = sender.getSenderMessages();
-        sentMessages.removeIf(message -> message.isIsRatingRequest() != null || message.getSendTimestamp().before(monthless));
+        sentMessages.removeIf(message -> message.isIsRatingRequest() != null || message.getSendTimestamp().before(aMonthLess));
         return sentMessages;
     }
 
     public List<Message> getReports() {
-        List<Message> messages = (List<Message>) messageRepository.findAll();
+        List<Message> messages = messageRepository.findAll();
         List<Message> reports = new ArrayList<>();
         for (Message message : messages) {
             if (message.getIsReport() != null) {
@@ -60,12 +58,12 @@ public class MessageService {
     public List<Message> getReceivedMessagesById(Long id) {
         Timestamp old = new Timestamp(System.currentTimeMillis());
         ZonedDateTime zonedDateTime = old.toInstant().atZone(ZoneId.of("UTC"));
-        Timestamp monthless = Timestamp.from(zonedDateTime.minus(31, ChronoUnit.DAYS).toInstant());
+        Timestamp aMonthLess = Timestamp.from(zonedDateTime.minus(31, ChronoUnit.DAYS).toInstant());
 
         BaseUser recipient = this.userRepository.findPeopleById(id);
         List<Message> receivedMessages = recipient.getReceiverMessages();
 
-        receivedMessages.removeIf(message -> message.getSendTimestamp().before(monthless));
+        receivedMessages.removeIf(message -> message.getSendTimestamp().before(aMonthLess));
 
         return receivedMessages;
     }

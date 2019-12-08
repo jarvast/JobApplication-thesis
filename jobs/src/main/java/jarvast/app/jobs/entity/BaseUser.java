@@ -4,41 +4,30 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
+import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "UserType")
 @JsonIgnoreProperties(ignoreUnknown = true, value = {"password"}, allowSetters = true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "roletype")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "roletype")
 @JsonSubTypes({
-    @JsonSubTypes.Type(value = User.class, name = "User"),
+        @JsonSubTypes.Type(value = User.class, name = "User"),
 
-    @JsonSubTypes.Type(value = Worker.class, name = "Worker"),
+        @JsonSubTypes.Type(value = Worker.class, name = "Worker"),
 
-    @JsonSubTypes.Type(value = Admin.class, name = "Admin")}
+        @JsonSubTypes.Type(value = Admin.class, name = "Admin")}
 )
 public abstract class BaseUser {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected long id;
 
     @Column(unique = true, nullable = false)
@@ -173,10 +162,7 @@ public abstract class BaseUser {
         if (this.id != other.id) {
             return false;
         }
-        if (!Objects.equals(this.username, other.username)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.username, other.username);
     }
 
 }

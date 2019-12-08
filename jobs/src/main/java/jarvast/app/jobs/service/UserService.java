@@ -17,9 +17,9 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Service
-public class UserService<T> {
+public class UserService {
 
-    private final String defaultimagename = "default.jpg";
+    private final String defaultImageName = "default.jpg";
     private UserRepository userRepository;
     private BaseUser user;
     private RatingService ratingService;
@@ -261,21 +261,21 @@ public class UserService<T> {
     public Admin registerAdmin(Admin admin, String pass) {
         admin.setRole(roleRepository.getOne(1L));
         admin.setPassword(pass);
-        admin.setImgName(defaultimagename);
+        admin.setImgName(defaultImageName);
         return userRepository.save(admin);
     }
 
     public User registerUser(User user, String pass) {
         user.setRole(roleRepository.getOne(2L));
         user.setPassword(pass);
-        user.setImgName(defaultimagename);
+        user.setImgName(defaultImageName);
         return userRepository.save(user);
     }
 
     public Worker registerWorker(Worker worker, String pass) {
         worker.setRole(roleRepository.getOne(3L));
         worker.setPassword(pass);
-        worker.setImgName(defaultimagename);
+        worker.setImgName(defaultImageName);
         return userRepository.save(worker);
     }
 
