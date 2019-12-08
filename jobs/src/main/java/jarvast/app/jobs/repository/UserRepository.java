@@ -22,8 +22,6 @@ public interface UserRepository extends JpaRepository<BaseUser, Long> {
     @Query("select a from BaseUser a WHERE User_Type = User")
     List<User> findAllUsers();
 
-    Worker getOne(Long id);
-
     Optional<BaseUser> findById(Long id);
 
     BaseUser findPeopleById(Long id);

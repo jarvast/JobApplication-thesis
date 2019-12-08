@@ -2,11 +2,11 @@ package jarvast.app.jobs.service;
 
 import jarvast.app.jobs.entity.Category;
 import jarvast.app.jobs.repository.CategoryRepository;
-
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class CategoryService {
@@ -19,7 +19,7 @@ public class CategoryService {
     }
 
     public Category findByCategoryId(Long categoryId) {
-        return categoryRepository.getOne(categoryId);
+        return categoryRepository.findById(categoryId).orElseThrow(NoSuchElementException::new);
     }
 
     public List<Category> getCategories() {

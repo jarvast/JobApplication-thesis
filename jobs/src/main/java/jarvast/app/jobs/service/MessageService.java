@@ -14,6 +14,7 @@ import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class MessageService {
@@ -69,7 +70,7 @@ public class MessageService {
     }
 
     public Message seeMessage(Long messageId) {
-        Message seenMessage = this.messageRepository.getOne(messageId);
+        Message seenMessage = this.messageRepository.findById(messageId).orElseThrow(NoSuchElementException::new);
         seenMessage.setIsSeen(true);
         return messageRepository.save(seenMessage);
     }

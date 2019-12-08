@@ -13,6 +13,7 @@ import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -134,7 +135,7 @@ public class UserService {
     }
 
     public Worker getWorker(Long id) {
-        return calculateRate(userRepository.getOne(id));
+        return calculateRate((Worker) userRepository.findById(id).orElseThrow(NoSuchElementException::new));
     }
 
     public User getUser(Long id) throws UserNotFoundException {
@@ -197,7 +198,7 @@ public class UserService {
     }
 
     public Worker updateWorker(Worker worker) {
-        Worker oldWorker = userRepository.getOne(worker.getId());
+        Worker oldWorker = (Worker) userRepository.findById(worker.getId()).orElseThrow(NoSuchElementException::new);
 
         oldWorker.setName(worker.getName());
         oldWorker.setDescription(worker.getDescription());
@@ -206,7 +207,7 @@ public class UserService {
     }
 
     public User favorite(Long workerId) {
-        Worker worker = userRepository.getOne(workerId);
+        Worker worker = (Worker) userRepository.findById(workerId).orElseThrow(NoSuchElementException::new);
         User currentUser = (User) getLoggedInUser();
         List<Worker> favorites = currentUser.getFavorites();
         favorites.add(worker);
@@ -215,7 +216,7 @@ public class UserService {
     }
 
     public User removeFavorite(Long workerId) {
-        Worker worker = userRepository.getOne(workerId);
+        Worker worker = (Worker) userRepository.findById(workerId).orElseThrow(NoSuchElementException::new);
         User currentUser = (User) getLoggedInUser();
         List<Worker> favorites = currentUser.getFavorites();
         favorites.remove(worker);
@@ -233,7 +234,7 @@ public class UserService {
     }
 
     public Worker approve(Long id) {
-        Worker worker = userRepository.getOne(id);
+        Worker worker = (Worker) userRepository.findById(id).orElseThrow(NoSuchElementException::new);
         worker.setApproved(Boolean.TRUE);
         messageService.sendMessage(new Message(null, worker, "A profilja engedélyezve lett egy adminisztrátor által, most már megjelenik a listákban és keresésekben",
                 "A profilja engedélyezve lett", null, Boolean.FALSE, Boolean.FALSE, Boolean.FALSE, Boolean.FALSE));
@@ -259,21 +260,21 @@ public class UserService {
     }
 
     public Admin registerAdmin(Admin admin, String pass) {
-        admin.setRole(roleRepository.getOne(1L));
+        admin.setRole(roleRepository.findById(1L).orElseThrow(NoSuchElementException::new));
         admin.setPassword(pass);
         admin.setImgName(defaultImageName);
         return userRepository.save(admin);
     }
 
     public User registerUser(User user, String pass) {
-        user.setRole(roleRepository.getOne(2L));
+        user.setRole(roleRepository.findById(2L).orElseThrow(NoSuchElementException::new));
         user.setPassword(pass);
         user.setImgName(defaultImageName);
         return userRepository.save(user);
     }
 
     public Worker registerWorker(Worker worker, String pass) {
-        worker.setRole(roleRepository.getOne(3L));
+        worker.setRole(roleRepository.findById(3L).orElseThrow(NoSuchElementException::new));
         worker.setPassword(pass);
         worker.setImgName(defaultImageName);
         return userRepository.save(worker);
